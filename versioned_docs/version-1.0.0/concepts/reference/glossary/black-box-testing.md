@@ -1,52 +1,52 @@
 ---
 id: black-box-testing
-title: Black Box Testing (v1.0.0)
-sidebar_label: Black Box Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 黑盒测试 (v1.0.0)
+sidebar_label: 黑盒测试
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-# Black-Box Testing
+# 黑盒测试
 
-Black-box testing is a software testing method that does not require knowledge of the internal structure or implementation details of the software being tested. Instead, the tester focuses on the software's external behavior and how it interacts with users.
+黑盒测试是一种软件测试方法，不需要了解被测试软件的内部结构或实现细节。测试者只需关注软件的外部行为及其与用户的交互方式。
 
-## Benefits of Black-Box Testing
+## 黑盒测试的优势
 
-- Can be performed by testers with a variety of skill levels
-- Can find a wide range of defects, including those that are related to the software's external behavior
-- Can be used to verify the software's functionality, usability, and performance
-- Can be used to identify potential security vulnerabilities
+- 可由不同技能水平的测试人员执行
+- 能发现各类缺陷，包括与软件外部行为相关的问题
+- 可用于验证软件的功能性、可用性和性能
+- 有助于识别潜在的安全漏洞
 
-## Types of Black-Box Testing
+## 黑盒测试类型
 
-### Equivalence partitioning
+### 等价类划分
 
-Divides the input space into equivalence classes, and then tests each class to ensure that the software behaves as expected.
+将输入空间划分为等价类，然后测试每个类别以确保软件行为符合预期。
 
-### Boundary value analysis
+### 边界值分析
 
-Tests the software at the boundaries of the input space, where unexpected behavior may occur.
+在输入空间的边界处测试软件，这些区域可能出现异常行为。
 
-### Decision table testing
+### 决策表测试
 
-Creates a table that lists all possible input combinations and their expected outputs. The software is then tested to ensure that it produces the correct output for each combination.
+创建列出所有可能输入组合及其预期输出的表格，通过测试验证软件对每个组合能否产生正确输出。
 
-### State transition testing
+### 状态转换测试
 
-Tests the software as it moves from one state to another. This can be used to verify that the software behaves correctly in all possible states and transitions.
+测试软件在不同状态间转换时的行为，用于验证所有可能状态和转换中的正确性。
 
-## Comparison of Black-Box Testing and White-Box Testing
+## 黑盒测试与白盒测试对比
 
-| Black-box testing                                                                                           | White-box testing                                                                                   |
+| 黑盒测试                                                                                           | 白盒测试                                                                                   |
 | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Does not require knowledge of the internal structure or implementation details of the software being tested | Requires knowledge of the internal structure or implementation details of the software being tested |
-| Focuses on the software's external behavior and how it interacts with users                                 | Focuses on the software's internal logic and how it works                                           |
-| Can be performed by testers with a variety of skill levels                                                  | Requires testers with specialized knowledge and skills                                              |
-| Can find a wide range of defects                                                                            | Can find defects that are related to the software's internal logic                                  |
+| 无需了解被测试软件的内部结构或实现细节 | 需要了解被测试软件的内部结构或实现细节 |
+| 关注软件的外部行为及用户交互方式                                 | 聚焦软件内部逻辑和运行机制                                           |
+| 适合不同技能水平的测试人员                                                  | 需要具备专业知识的测试人员                                              |
+| 能发现广泛类型的缺陷                                                                            | 可发现与软件内部逻辑相关的缺陷                                  |
 
-## Conclusion
+## 结论
 
-Black-box testing is a valuable tool for ensuring the quality of software. It can be used to find a wide range of defects, and it can be performed by testers with a variety of skill levels. The best testing strategy for a particular software project will depend on the specific needs of the project. In some cases, black-box testing may be sufficient. In other cases, white-box testing may be necessary to find all the defects in the software.
+黑盒测试是保障软件质量的重要工具，能够发现多种缺陷且对测试人员技能要求灵活。具体项目的最佳测试策略取决于实际需求：某些情况下黑盒测试已足够，而其他情况可能需要结合白盒测试来全面发现软件缺陷。

@@ -1,8 +1,8 @@
 ---
 id: samples-gin
-title: Sample URL Shortener App (Golang)
+title: URL短链应用示例(Golang)
 sidebar_label: Gin + Mongo
-description: The following sample app showcases how to use gin framework and the Keploy Platform.
+description: 本示例应用展示如何将gin框架与Keploy平台结合使用。
 tags:
   - go
   - quickstart
@@ -12,59 +12,59 @@ tags:
   - mongodb
   - gin-framework
 keyword:
-  - Gin Framework
-  - MongoDB Mock
+  - Gin框架
+  - MongoDB模拟
   - Golang
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-🪄 Dive into the world of URL shorteners and see how seamlessly Keploy integrates with Gin and MongoDB Buckle up, it's gonna be a fun ride! 🎢
+🪄 深入URL短链器的世界，见证Keploy如何与Gin和MongoDB无缝集成。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Clone the sample URL shortener app 🧪
+## 克隆示例URL短链应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-go.git && cd samples-go/gin-mongo
 go mod download
 ```
 
-## Installation 📥
+## 安装 📥
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用：
 
-- [Using Docker compose : running application as well as MongoDb on Docker container](#using-docker-compose-)
-- [Using Docker container for mongoDb and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用Docker compose：在Docker容器中运行应用及MongoDB](#使用docker-compose-)
+- [使用Docker容器运行MongoDB并在本地运行应用](#在linuxwsl本地运行应用-)
 
-## Using Docker Compose 🐳
+## 使用Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as MongoDb on Docker container.
+我们将使用Docker compose在Docker容器中运行应用和MongoDB。
 
-### Lights, Camera, Record! 🎥
+### 准备，开始，录制！🎥
 
-Fire up the application and mongoDB instance with Keploy. Keep an eye on the two key flags:
-`-c`: Command to run the app (e.g., `docker compose up`).
+启动应用和MongoDB实例并开始Keploy录制。注意两个关键参数：
+`-c`：运行应用的命令（如`docker compose up`）。
 
-`--container-name`: The container name in the `docker-compose.yml` for traffic interception.
+`--container-name`：`docker-compose.yml`中用于流量拦截的容器名称。
 
 ```bash
 keploy record -c "docker compose up" --container-name "ginMongoApp"
 ```
 
-Getting logs like this? Perfect! 👌
+看到如下日志？完美！👌
 
-   <img src="/docs/img/code-snippets/keploy-record-docker.png" alt="Keploy Record Test case" width="100%" />
+   <img src="/docs/img/code-snippets/keploy-record-docker.png" alt="Keploy录制测试用例" width="100%" />
 
-🔥 Challenge time! Generate some test cases. How? Just **make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥 挑战时间！生成一些测试用例。怎么做？只需**发起一些API调用**。可以使用Postman、Hoppscotch或curl！
 
-Let's make URLs short and sweet:
+让我们来缩短URL：
 
-#### Generate shortened url
+#### 生成短链
 
 ```bash
 curl --request POST \
@@ -75,7 +75,7 @@ curl --request POST \
 }'
 ```
 
-Here's a peek of what you get:
+返回结果示例：
 
 ```json
 {
@@ -84,7 +84,7 @@ Here's a peek of what you get:
 }
 ```
 
-🎉 Woohoo! With a simple API call, you've crafted a test case with a mock! Dive into the Keploy directory and feast your eyes on the newly minted `test-1.yml` and `mocks.yml`
+🎉 哇哦！通过简单的API调用，你已经创建了包含模拟数据的测试用例！查看Keploy目录，会发现新生成的`test-1.yml`和`mocks.yml`。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -126,7 +126,7 @@ spec:
   created: 1696173352
 ```
 
-this is how the generated **mock.yml** will look like:
+生成的**mock.yml**示例如下：
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -163,97 +163,97 @@ spec:
   created: 1696173347
 ```
 
-_Time to perform more API magic!_
-Follow the breadcrumbs... or the shortened URLs:
+_继续发起更多API调用！_
+跟随短链重定向：
 
-#### Redirect to original url from shortened url
+#### 通过短链跳转原始URL
 
 ```bash
 curl --request GET \  --url http://localhost:8080/Lhr4BWAi
 ```
 
-Or just type `http://localhost:8080/Lhr4BWAi` in your browser. Your choice!
+或者直接在浏览器输入`http://localhost:8080/Lhr4BWAi`。
 
-Spotted the new test and mock files in your project? High five! 🙌
+发现项目中新增的测试和模拟文件了吗？击掌庆祝！🙌
 
-<img src="/docs/img/code-snippets/gin-mongo-test-sample.png" alt="Sample Keploy Test case and Mock for Gin MongoDB" width="100%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/code-snippets/gin-mongo-test-sample.png" alt="Gin MongoDB测试用例和模拟示例" width="100%" style={{ borderRadius: '5px' }}/>
 
-Want to see if everything works as expected?
+想验证一切是否如预期工作？
 
-### Run Tests 🏃‍♀️
+### 运行测试 🏃‍♀️
 
-Time to put things to the test 🧪
+测试时间到 🧪
 
 ```bash
 keploy test -c "docker compose up" --container-name "ginMongoApp" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`参数？这是为了让你的应用在测试前有缓冲时间（单位：秒）。
 
-Your results should be looking all _snazzy_, like this:
+测试结果应该如下所示：
 
-<img src="/docs/img/code-snippets/url-shortner-test-result.png" alt="Sample Keploy Test Result Gin MongoDB" width="100%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/code-snippets/url-shortner-test-result.png" alt="Gin MongoDB测试结果示例" width="100%" style={{ borderRadius: '5px' }}/>
 
-Did you spot that the ts (timestamp) is showing some differences? Yep, time has a way of doing that! 🕰️
+注意到ts（时间戳）有差异了吗？时间总是这样！🕰️
 
-Worry not, just add the ever-changing fields (like our **ts** here) to the **noise parameter** to **dodge those assertions**.
+别担心，只需将这些易变字段（如这里的**ts**）添加到**噪声参数**中即可**跳过这些断言**。
 
-> Pro tip: Add `body.ts` to noise in `test-x.yaml`.
+> 专业建议：在`test-x.yaml`中添加`body.ts`到noise。
 
-<img src="/docs/img/code-snippets/noise-addition.png" alt="Adding Noise to Test case Gin MongoDB" width="70%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/code-snippets/noise-addition.png" alt="为Gin MongoDB测试用例添加噪声" width="70%" style={{ borderRadius: '5px' }}/>
 
-Run that keploy record command once more and watch as everything falls into place with all tests passing!🌟
+再次运行`keploy record`命令，见证所有测试通过的时刻！🌟
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后建议？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或修改`test-x.yml`中的请求/响应。重新运行测试，看奇迹发生！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜完成这段旅程！你已经见识了Keploy的强大，锻炼了编码能力，还享受了乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！✨👩‍💻👨‍💻✨
 
 ---
 
-## Running App Locally on Linux/WSL 🐧
+## 在Linux/WSL本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (mongoDB) chill on Docker. Ready? Let's get the party started!🎉
+我们将在Linux上直接运行示例应用，但为了让事情更有趣，数据库（MongoDB）会在Docker中运行。准备好了吗？派对开始！🎉
 
-If you are using WSL on Windows then use below to start wsl in the user's home directory:
+如果在Windows上使用WSL，请用以下命令在用户主目录启动wsl：
 
 ```bash
 wsl ~
 ```
 
-First things first, update the MongoDB URL to `localhost:27017` on **line 21** of our trusty `main.go` file.
+首先，将`main.go`文件**第21行**的MongoDB URL更新为`localhost:27017`。
 
-<img src="/docs/img/code-snippets/gin-mongo-linux-cmd.png" alt="Linux change Gin MongoDB" width="100%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/code-snippets/gin-mongo-linux-cmd.png" alt="Linux修改Gin MongoDB" width="100%" style={{ borderRadius: '5px' }}/>
 
-### 🍃 Kickstart MongoDB
+### 🍃 启动MongoDB
 
-Let's breathe life into your mongo container. A simple spell should do the trick:
+用以下命令启动Mongo容器：
 
 ```bash
 docker compose up mongo
 ```
 
-### 📼 Recording Time!
+### 📼 开始录制！
 
-Ready, set, record! Here's how:
+准备好录制：
 
 ```bash
 keploy record -c "go run main.go handler.go"
 ```
 
-Keep an eye out for the `-c `flag! It's the command charm to run the app. Whether you're using `go run main.go handler.go` or the binary path like `./test-app-url-shortener`, it's your call.
-If you're seeing logs that resemble the ones below, you're on the right track:
+注意`-c`参数！这是运行应用的命令。无论是`go run main.go handler.go`还是二进制路径如`./test-app-url-shortener`都可以。
+如果看到类似下面的日志，说明一切正常：
 
-   <img src="/docs/img/code-snippets/keploy-record-docker.png" alt="Keploy Record Test case" width="100%" />
+   <img src="/docs/img/code-snippets/keploy-record-docker.png" alt="Keploy录制测试用例" width="100%" />
   
-  Alright! With the app alive and kicking, let's weave some test cases. Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+应用运行正常后，让我们创建测试用例。发起一些API调用！可以使用Postman、Hoppscotch或curl。
 
-#### Generate shortened url
+#### 生成短链
 
-✨ A pinch of URL magic:
+✨ 施展URL魔法：
 
 ```bash
 curl --request POST \
@@ -264,7 +264,7 @@ curl --request POST \
 }'
 ```
 
-And... voila! A shortened URL appears:
+短链生成结果：
 
 ```json
 {
@@ -273,7 +273,7 @@ And... voila! A shortened URL appears:
 }
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+给自己点个赞！通过这个简单的命令，你已经创建了包含模拟数据的测试用例！查看**Keploy目录**，会发现`test-1.yml`和`mocks.yml`。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -315,7 +315,7 @@ spec:
   created: 1696173352
 ```
 
-this is how the generated **mock.yml** will look like:
+生成的**mock.yml**示例如下：
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -352,54 +352,54 @@ spec:
   created: 1696173347
 ```
 
-_Time to perform more API magic!_
-Follow the breadcrumbs... or the shortened URLs:
+_继续发起更多API调用！_
+跟随短链重定向：
 
-#### Redirect to original url from shortened url
+#### 通过短链跳转原始URL
 
 ```bash
 curl --request GET \  --url http://localhost:8080/Lhr4BWAi
 ```
 
-Or just type `http://localhost:8080/Lhr4BWAi` in your browser. Your choice!
+或者直接在浏览器输入`http://localhost:8080/Lhr4BWAi`。
 
-Spotted the new test and mock files in your project? High five! 🙌
+发现项目中新增的测试和模拟文件了吗？击掌庆祝！🙌
 
-<img src="/docs/img/code-snippets/gin-mongo-test-sample.png" alt="Sample Keploy Test case and Mock for Gin MongoDB" width="100%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/code-snippets/gin-mongo-test-sample.png" alt="Gin MongoDB测试用例和模拟示例" width="100%" style={{ borderRadius: '5px' }}/>
 
-Want to see if everything works as expected?
+想验证一切是否如预期工作？
 
-### 🏃‍♀️ Run Tests
+### 🏃‍♀️ 运行测试
 
-Time to put things to the test 🧪
+测试时间到 🧪
 
 ```bash
 keploy test -c "docker compose up" --container-name "ginMongoApp" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`参数？这是为了让你的应用在测试前有缓冲时间（单位：秒）。
 
-Your results should be looking all _snazzy_, like this:
+测试结果应该如下所示：
 
-<img src="/docs/img/code-snippets/url-shortner-test-result.png" alt="Sample Keploy Test Result Gin MongoDB" width="100%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/code-snippets/url-shortner-test-result.png" alt="Gin MongoDB测试结果示例" width="100%" style={{ borderRadius: '5px' }}/>
 
-Did you spot that the ts (timestamp) is showing some differences? Yep, time has a way of doing that! 🕰️
+注意到ts（时间戳）有差异了吗？时间总是这样！🕰️
 
-Worry not, just add the ever-changing fields (like our **ts** here) to the **noise parameter** to **dodge those assertions**.
+别担心，只需将这些易变字段（如这里的**ts**）添加到**噪声参数**中即可**跳过这些断言**。
 
-> Pro tip: Add `body.ts` to noise in `test-x.yaml`.
+> 专业建议：在`test-x.yaml`中添加`body.ts`到noise。
 
-<img src="/docs/img/code-snippets/noise-addition.png" alt="Adding Noise to Test case Gin MongoDB" width="70%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/code-snippets/noise-addition.png" alt="为Gin MongoDB测试用例添加噪声" width="70%" style={{ borderRadius: '5px' }}/>
 
-Run that `keploy test` command once more and watch as everything falls into place with all tests passing! 🌟
+再次运行`keploy test`命令，见证所有测试通过的时刻！🌟
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold! ✨👩‍💻👨‍💻✨
+最后建议？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或修改`test-x.yml`中的请求/响应。重新运行测试，看奇迹发生！✨👩‍💻👨‍💻✨
 
-### 🎉 Wrapping it up
+### 🎉 总结
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜完成这段旅程！你已经见识了Keploy的强大，锻炼了编码能力，还享受了乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

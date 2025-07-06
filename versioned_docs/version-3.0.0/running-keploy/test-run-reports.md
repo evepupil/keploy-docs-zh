@@ -1,68 +1,68 @@
 ---
 id: test-run-reports
-title: What is API testing?
-sidebar_label: Test Report generation
-description: This section documents what is API Testing and why we need it
+title: 什么是API测试？
+sidebar_label: 测试报告生成
+description: 本节文档介绍API测试的概念及其必要性
 tags:
-  - API testing
-  - API mocks
-  - generate test cases
-  - test automation
+  - API测试
+  - API模拟
+  - 生成测试用例
+  - 测试自动化
 keywords:
-  - api testing
-  - api mocks
-  - automated testing
-  - ai testing
+  - api测试
+  - api模拟
+  - 自动化测试
+  - 人工智能测试
   - keploy
   - Gemini
   - OpenAI
 ---
 
-# 🧪 Keploy Test Run Reports
+# 🧪 Keploy 测试运行报告
 
-Easily track and manage the outcome of your API test runs with detailed reporting on test executions, results, and creators.
+通过详细的测试执行、结果和创建者报告，轻松追踪和管理API测试运行结果。
 
-## 🔍 Search Test Run Reports
+## 🔍 搜索测试运行报告
 
-Use the search bar to filter reports by Report ID, creator email, or status.
+使用搜索栏按报告ID、创建者邮箱或状态筛选报告。
 
-### 📋 Test Report Summary
+### 📋 测试报告摘要
 
-- Report ID
-- Created At
-- Creator
-- Total Tests
-- Passed
-- Failed
-- Status
+- 报告ID
+- 创建时间
+- 创建者
+- 总测试数
+- 通过数
+- 失败数
+- 状态
 
-## 🧩 Test Suites
+## 🧩 测试套件
 
-Manage and fine-tune your test suites for each API endpoint. You can edit request inputs, response expectations, and assertion types.
+为每个API端点管理和微调测试套件。可编辑请求输入、响应预期和断言类型。
 
-### ✏️ Editable Test Cases
+### ✏️ 可编辑测试用例
 
-Each test case can be modified to:
+每个测试用例可修改以下内容：
 
-- Change the **request payload**, headers, or query parameters
-- Edit or update **expected response bodies**
-- Select or modify **assertion types**
+- 更改**请求负载**、请求头或查询参数
+- 编辑或更新**预期响应体**
+- 选择或修改**断言类型**
 
-### 🧪 Supported Assertion Types
+### 🧪 支持的断言类型
 
-| Assertion Type     | Description                                                    |
-| ------------------ | -------------------------------------------------------------- |
-| `statusCode`       | Asserts the HTTP status code matches expected (e.g., 200, 404) |
-| `bodyContains`     | Checks if the response body includes specific text or keys     |
-| `jsonEquals`       | Validates deep equality of the JSON response                   |
-| `headerMatch`      | Asserts presence or value of specific response headers         |
-| `schemaValidation` | Validates against OpenAPI/JSON schema if available             |
-| `custom`           | User-defined scripts or match rules                            |
+| 断言类型         | 描述                                                     |
+| ---------------- | -------------------------------------------------------- |
+| `statusCode`     | 断言HTTP状态码符合预期（如200、404）                     |
+| `bodyContains`   | 检查响应体是否包含特定文本或键值                         |
+| `jsonEquals`     | 验证JSON响应的深度相等性                                 |
+| `headerMatch`    | 断言特定响应头的存在或值                                 |
+| `schemaValidation` | 根据OpenAPI/JSON schema进行验证（如可用）               |
+| `custom`         | 用户自定义脚本或匹配规则                                 |
 
-#### ➕ Example Test Case Structure (YAML)
+#### ➕ 测试用例结构示例 (YAML)
 
 ```yaml
-- testName: Get All Users
+- testName: 获取所有用户
   method: GET
   endpoint: /users
   expectedStatus: 200
@@ -76,43 +76,43 @@ Each test case can be modified to:
           username: john_doe
 ```
 
-### 🧱 Edit Test Step
+### 🧱 编辑测试步骤
 
-Easily customize individual test steps to simulate real-world API usage and validate your app’s behavior under different conditions.
+轻松自定义单个测试步骤，模拟真实API使用场景，验证应用在不同条件下的行为。
 
-#### 🔧 Request Details
+#### 🔧 请求详情
 
-Update the request configuration for each test case:
+为每个测试用例更新请求配置：
 
-- **Name:**  
-  `Create Object P024 Invalid JSON`
+- **名称:**  
+  `创建对象 P024 无效JSON`
 
-- **Method:**  
+- **方法:**  
   `POST`
 
-- **URL Path:**  
+- **URL路径:**  
   `/objects`
 
-- **Headers:**
+- **请求头:**
 
-  | Key          | Value            |
-  | ------------ | ---------------- |
+  | 键           | 值                |
+  | ------------ | ----------------- |
   | Content-Type | application/json |
 
-  You can **Add Header** as needed (e.g., Authorization, Custom-Token).
+  可**添加请求头**（如Authorization、Custom-Token等）。
 
-- **Request Body:**
+- **请求体:**
 
   ````json
   {
-    "name": "AUT Test Object P024",
+    "name": "AUT测试对象 P024",
     "data": {
       "key": "value"
   }
   }```
   ````
 
-### 💾 Actions
+### 💾 操作
 
-- ✅ **Save Changes** — Apply edits to the test step and update the suite.
-- ❌ **Cancel** — Discard any unsaved modifications and revert to the last saved state.
+- ✅ **保存更改** — 应用对测试步骤的编辑并更新套件。
+- ❌ **取消** — 放弃未保存的修改，恢复到最后保存状态。

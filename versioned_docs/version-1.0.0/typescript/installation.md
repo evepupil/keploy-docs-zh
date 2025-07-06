@@ -1,45 +1,45 @@
 ---
 id: installation
-title: Integration for Keploy TypeScript SDK (v1.0.0)
-description: This provides a breif description of how to add the Keploy Typescript SDK to your application.
+title: Keploy TypeScript SDK 集成指南 (v1.0.0)
+description: 本文简要介绍如何将 Keploy Typescript SDK 添加到您的应用程序中。
 tags:
-  - developer-guide
+  - 开发者指南
   - typescript
 ---
 
-## Requirements
+## 要求
 
 - npm 8+
 - yarn
 
 ## Keploy Typescript-SDK
 
-[Keploy](https://keploy.io) is a no-code testing platform that generates tests from API calls. This is the Typescript client SDK for recording and replaying the API Calls. There are 2 modes:
+[Keploy](https://keploy.io) 是一个无代码测试平台，可从 API 调用生成测试用例。这是用于记录和回放 API 调用的 Typescript 客户端 SDK。包含两种模式：
 
-1. **Record mode**
-   1. Record requests, response and sends to Keploy server.
-   2. After keploy server removes duplicates, it then runs the request on the API again to identify noisy fields.
-   3. Sends the noisy fields to the keploy server to be saved along with the testcase.
-2. **Test mode**
-   1. Fetches testcases for the app from keploy server.
-   2. Calls the API with same request payload in testcase.
-   3. Validates the respones and uploads results to the keploy server.
+1. **记录模式**
+   1. 记录请求和响应并发送至 Keploy 服务器。
+   2. Keploy 服务器去重后，会再次用该请求调用 API 以识别噪声字段。
+   3. 将噪声字段发送至 Keploy 服务器，与测试用例一并保存。
+2. **测试模式**
+   1. 从 Keploy 服务器获取应用的测试用例。
+   2. 使用测试用例中的请求载荷调用 API。
+   3. 验证响应并将结果上传至 Keploy 服务器。
 
-## Installation
+## 安装
 
 ```bash
 npm i https://github.com/keploy/typescript-sdk
 ```
 
-## Usage
+## 使用方法
 
 ```js
 require("typescript-sdk/dist/integrations/express/register");
 ```
 
-The require statement should be at the top of your main file (server.js).
+require 语句应放在主文件（server.js）的顶部。
 
-Example :
+示例：
 
 ```js
 require("typescript-sdk/dist/integrations/express/register");
@@ -54,27 +54,27 @@ var server = app.listen(3000, () =>
 module.exports = server;
 ```
 
-## Configure
+## 配置
 
 ```
 export KEPLOY_MODE="test"
 export KEPLOY_APP_NAME="my-app"
 export KEPLOY_APP_HOST="localhost"
-export KEPLOY_APP_PORT=5050 # port on which server is running
-export KEPLOY_APP_DELAY=5 # time delay before starting testruns(in seconds)
-export KEPLOY_APP_TIMEOUT=100 # should be number
-# export KEPLOY_APP_FILTER={"urlRegex":"*"}  # should be json not to capture for certain url's
+export KEPLOY_APP_PORT=5050 # 服务运行的端口号
+export KEPLOY_APP_DELAY=5 # 开始测试前的延迟时间（秒）
+export KEPLOY_APP_TIMEOUT=100 # 应为数字
+# export KEPLOY_APP_FILTER={"urlRegex":"*"}  # 应为 JSON，用于排除特定 URL 的捕获
 
-export KEPLOY_SERVER_URL="http://localhost:6789/api" # self hosted keploy running server
-# export KEPLOY_SERVER_LICENSE="XXX-XXX-XXX" # hosted keploy server api key
+export KEPLOY_SERVER_URL="http://localhost:6789/api" # 自托管 Keploy 服务器地址
+# export KEPLOY_SERVER_LICENSE="XXX-XXX-XXX" # 托管版 Keploy 服务器 API 密钥
 ```
 
 ### KEPLOY_MODE
 
-There are 3 modes:
+包含 3 种模式：
 
-- **Record**: Sets to record mode.
-- **Test**: Sets to test mode.
-- **Off**: Turns off all the functionality provided by the API
+- **Record**: 设置为记录模式。
+- **Test**: 设置为测试模式。
+- **Off**: 关闭 SDK 提供的所有功能
 
-**Note:** `KEPLOY_MODE` value is case sensitive.
+**注意：** `KEPLOY_MODE` 的值区分大小写。

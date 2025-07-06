@@ -1,29 +1,29 @@
 ---
 id: integrations-vscode
-title: Integrations & Connected Tools
-sidebar_label: Integrations & Connected Tools
-description: Learn about IDE integrations for Keploy’s AI-powered unit testing.
+title: 集成与连接工具
+sidebar_label: 集成与连接工具
+description: 了解 Keploy 人工智能驱动的单元测试的 IDE 集成方案。
 tags:
-  - integrations
+  - 集成
   - vscode
-  - unit testing
+  - 单元测试
 ---
 
-# 🔌 Integrations with IDEs
+# 🔌 IDE 集成方案
 
-Keploy aims to make AI-powered unit testing as seamless as possible—right inside your favorite tools.
+Keploy 致力于让基于人工智能的单元测试在您喜爱的工具中实现无缝衔接。
 
-## ✅ Currently Supported
+## ✅ 当前支持的 IDE
 
 **Visual Studio Code (VS Code):**  
- We offer smooth integration with VS Code, so you can generate, view, and manage AI-generated unit tests without leaving your IDE.
+我们提供与 VS Code 的流畅集成，使您无需离开 IDE 即可生成、查看和管理 AI 生成的单元测试。
 
-## 💡 Want Support for Another IDE?
+## 💡 需要支持其他 IDE 吗？
 
-Need Keploy in JetBrains, Neovim, or another editor?
+希望在 JetBrains、Neovim 或其他编辑器中使用 Keploy？
 
-[Reach out to our team!](mailto:support@keploy.io)
+[联系我们的团队！](mailto:support@keploy.io)
 
-Your feedback shapes our roadmap!
+您的反馈将影响我们的发展路线！
 
-More IDE integrations are coming soon—stay tuned.
+更多 IDE 集成即将推出——敬请期待。

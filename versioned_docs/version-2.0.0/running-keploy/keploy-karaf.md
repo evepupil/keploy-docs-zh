@@ -1,117 +1,117 @@
 ---
 id: keploy-karaf-example
-title: Setting Up Keploy Agent in Apache Karaf for Local Development
-sidebar_label: Keploy Karaf Example
-description: This section documents how to run keploy with Karaf
+title: 在Apache Karaf中设置Keploy Agent进行本地开发
+sidebar_label: Keploy Karaf示例
+description: 本节文档介绍如何在Karaf中运行keploy
 tags:
   - keploy
   - keploy karaf
 keywords:
   - keploy
-  - documentation
-  - running-guide
+  - 文档
+  - 运行指南
 ---
 
-## Step 1: Download Required JARs and Keploy Version
+## 步骤1：下载所需JAR文件和Keploy版本
 
-### Pre-requisites
+### 前提条件
 
-- Linux kernel **5.15 or higher**
-- Tested with distributions:
+- Linux内核版本 **5.15或更高**
+- 已测试的发行版：
   - **Fedora 40+**
   - **Ubuntu 22.04+**
   - **Debian 12+**
-- Tested with JDK 1.8 to 17 and [Karaf 4.3.x](https://karaf.apache.org/download.html)
+- 已测试JDK 1.8至17和[Karaf 4.3.x](https://karaf.apache.org/download.html)
 
-### Install Keploy Binary
+### 安装Keploy二进制文件
 
-Use Keploy's one-click installation to download and install the latest Keploy binary:
+使用Keploy的一键安装脚本下载并安装最新版Keploy二进制文件：
 
 ```bash
 curl --silent -O -L https://keploy.io/ent/install.sh && source install.sh
 ```
 
-### Download Required JARs
+### 下载所需JAR文件
 
-Use `wget` to download the necessary JAR files:
+使用`wget`下载必要的JAR文件：
 
 - [io.keploy.agent-2.0.1.jar](https://keploy-enterprise.s3.us-west-2.amazonaws.com/agent-jars/io.keploy.agent-2.0.1.jar)
 - [org.jacoco.agent-0.8.12-runtime.jar](https://keploy-enterprise.s3.us-west-2.amazonaws.com/agent-jars/org.jacoco.agent-0.8.12-runtime.jar)
 
-Run the following commands to download the files:
+运行以下命令下载文件：
 
 ```bash
 wget https://keploy-enterprise.s3.us-west-2.amazonaws.com/agent-jars/io.keploy.agent-2.0.1.jar
 wget https://keploy-enterprise.s3.us-west-2.amazonaws.com/agent-jars/org.jacoco.agent-0.8.12-runtime.jar
 ```
 
-## Step 2: Configure Apache Karaf
+## 步骤2：配置Apache Karaf
 
-### Update `JAVA_OPTS` for Linux in `setenv` File:
+### 在`setenv`文件中更新Linux的`JAVA_OPTS`：
 
-1. Navigate to the `bin` directory of your Apache Karaf installation.
-2. Open the `setenv` file for editing.
-3. Add the paths of the downloaded agents under the `JAVA_OPTS` section. For example:
+1. 进入Apache Karaf安装目录的`bin`文件夹
+2. 打开`setenv`文件进行编辑
+3. 在`JAVA_OPTS`部分添加下载的agent路径。例如：
 
    ```bash
    export JAVA_OPTS="-javaagent:/path/to/io.keploy.agent-2.0.1.jar"
    export JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/org.jacoco.agent-0.8.12-runtime.jar=address=*,port=36320,destfile=jacoco-it.exec,output=tcpserver"
    ```
 
-Replace the placeholder values with actual paths and keys as needed.
+请将占位值替换为实际路径和密钥。
 
-## Step 3: Export Environment Variables
+## 步骤3：设置环境变量
 
-1. Export the API key specific to your user, as mentioned on [Keploy's User Dashboard](https://app.keploy.io/users), which is required for Keploy to function, by running the following command in the same terminal session:
+1. 导出用户在[Keploy用户仪表盘](https://app.keploy.io/users)中获取的API密钥（Keploy运行必需），在当前终端会话中运行：
 
    ```bash
    export KEPLOY_API_KEY="<KEPLOY_API_KEY>"
    ```
 
-   Replace the `KEPLOY_API_KEY` value with your actual API key if different.
+   如果API密钥不同，请替换`KEPLOY_API_KEY`值为实际密钥。
 
-2. Export the application path to point to your target folder containing Java classes:
+2. 导出应用路径指向包含Java类的目标文件夹：
 
    ```bash
    export KEPLOY_APP_UNDER_TEST_PATH="/Users/path/to/karaf-sample/user-service"
    ```
 
-   Replace the `KEPLOY_APP_UNDER_TEST_PATH` value with the absolute path to your application's target folder (Where Java compiled classes are present).
+   请将`KEPLOY_APP_UNDER_TEST_PATH`值替换为应用目标文件夹的绝对路径（存放Java编译后的类文件）。
 
-## Step 4: Record Test Cases
+## 步骤4：录制测试用例
 
-1. Start the karaf environment
+1. 启动karaf环境
    ```
      bin/karaf
    ```
-2. Record test cases using the following command:
+2. 使用以下命令录制测试用例：
 
    ```bash
    keploy record --base-path="http://localhost:8181"
    ```
 
-3. Make a series of API calls to your application's endpoints.
-4. After completing the API calls, press `Ctrl+C` in the session where you are running the Keploy binary to stop recording.
+3. 对应用端点发起一系列API调用
+4. 完成API调用后，在运行Keploy二进制文件的会话中按`Ctrl+C`停止录制
 
-## Step 5: Or Use Import Postman Collection
+## 步骤5：或导入Postman集合
 
-1. Ensure you have a Postman collection ready for your application.
-2. Run the following command to import the Postman collection as Keploy tests:
+1. 确保已准备好应用的Postman集合
+2. 运行以下命令将Postman集合导入为Keploy测试：
 
    ```bash
    keploy import postman --path="/path/to/YourPostmanCollection.json"
    ```
 
-   Replace `/path/to/YourPostmanCollection.json` with the actual path to your Postman collection.
+   请将`/path/to/YourPostmanCollection.json`替换为Postman集合的实际路径
 
-## Step 6: Run Keploy Tests
+## 步骤6：运行Keploy测试
 
-1. Use the following command to run the imported tests:
+1. 使用以下命令运行导入的测试：
 
    ```bash
    keploy test --base-path="http://localhost:8181"
    ```
 
-This assumes your Karaf application is running locally on port 8181.
+此命令假设Karaf应用运行在本地的8181端口。
 
-After running the tests, a `coverage.xml` file will be generated in the root directory of your project. This file contains the test coverage report, which can be used for further analysis or integrated with CI/CD pipelines.
+测试运行后，将在项目根目录生成`coverage.xml`文件。该文件包含测试覆盖率报告，可用于进一步分析或集成到CI/CD流程中。

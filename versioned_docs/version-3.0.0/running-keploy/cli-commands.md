@@ -1,29 +1,29 @@
 ---
 id: cli-commands
-title: Keploy CLI Commands
-sidebar_label: CLI Commands
-description: This section documents usecase of Keploy's CLI Commands
+title: Keploy CLI 命令
+sidebar_label: CLI 命令
+description: 本文档记录 Keploy CLI 命令的使用场景
 tags:
-  - cli commands
+  - cli 命令
 keywords:
   - cli
-  - documentation
-  - commands
+  - 文档
+  - 命令
 ---
 
-### Usage
+### 使用方式
 
 ```bash
 keploy [command] [flags]
 ```
 
-You can use `--help, -h` flag for all the commands to see available flag options and their purpose.
+所有命令均可使用 `--help, -h` 标志查看可用选项及其用途。
 
-## Modes and Flags
+## 模式与标志
 
-Here are some examples of how to use some common flags:
+以下是一些常用标志的使用示例：
 
-| Mode        | Flags Available                                                                                                                                                                                                                                                                                                                          |
+| 模式        | 可用标志                                                                                                                                                                                                                                                                                                                          |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `record`    | `-c, --command`, `--config-path`, `--containerName`, `-d, --delay`, `--metadata`, `-n, --networkName`, `--passThroughPorts`, `-p, --path`, `--proxyport`, `--debug`                                                                                                                                                                      |
 | `test`      | `--apiTimeout`, `-c, --command`, `--config-path`, `--containerName`, `-d, --delay`, `--mongoPassword`, `-n, --net, --networkName`, `--passThroughPorts`, `-p, --path`, `--proxyport`, `-t, --testsets`, `--debug`, `-g, --generateTestReport`, `--removeUnusedMocks`, `--coverage`, `--goCoverage`, `--ignoreOrdering`, `--skip-preview` |
@@ -34,84 +34,80 @@ Here are some examples of how to use some common flags:
 
 ## [record](#record)
 
-The `record` mode in Keploy allows the user to record Keploy testcases from the API calls. The recorded testcases and generated mocks are then saved in the `keploy` directory in the current working directory.
+`record` 模式用于记录 API 调用生成的测试用例。记录的测试用例和生成的模拟数据会保存在当前工作目录的 `keploy` 文件夹中。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy record [flags]
 ```
 
-<b> Available flags: </b>
+<b> 可用标志： </b>
 
-- `-c, --command string` - Command required to start the user application.
+- `-c, --command string` - 启动用户应用的命令。
 
   ```bash
   keploy record --command "node src/app.js"
   ```
 
-  In the command above, `node src/app.js` is the command which starts the user application.
+  上述命令中，`node src/app.js` 是启动用户应用的命令。
 
-- `--config-path string` - Path to the Keploy configuration file. The default is ".".
+- `--config-path string` - Keploy 配置文件路径，默认为当前目录。
 
   ```bash
   keploy record -c "node src/app.js" --config-path "./config-dir/"
   ```
 
-  In the above command, `config-dir` is the directory in the CWD where the Keploy configuration file `keploy.yaml` is stored.
+  上述命令中，`config-dir` 是存放 Keploy 配置文件 `keploy.yaml` 的目录。
 
-- `--container-name string` - Name of the docker container in which the user application is running.
+- `--container-name string` - 用户应用运行的 Docker 容器名称。
 
   ```bash
   keploy record -c "docker compose up" --container-name "my-app-container"
   ```
 
-- `-d, --delay uint` - Delay in seconds to run user application. The default is 5 seconds.
+- `-d, --delay uint` - 启动用户应用的延迟时间（秒），默认为 5 秒。
 
   ```bash
   keploy record -c "node src/app.js" -d 10
   ```
 
-- `--metadata string` - Key-value pairs to be added as metadata in the config.yaml file. If a `name` key is provided, it will be used as the test set name.
+- `--metadata string` - 添加到 config.yaml 文件的键值对元数据。若提供 `name` 键，将用作测试集名称。
 
   ```bash
   keploy record -c "node src/app.js" --metadata "name=mac,env=production,service=gin-mongo,version=2.0.0,team.members[0]=alice,team.members[1]=bob,team.members[2]=carol,labels[0]=canary,labels[1]=stable,config.timeout=30s,config.timeout=60s,complex=a\\,b\\,c\\,d,database.urls[0]=db1.internal,database.urls[1]=db2.internal,database.urls[2]=db3.internal,mode=fast,mode=slow"
   ```
 
-  ```bash
-  keploy record -c "node src/app.js" --metadata "name=mac,env=production,service=gin-mongo,version=2.0.0,team.members[0]=alice,team.members[1]=bob,team.members[2]=carol,labels[0]=canary,labels[1]=stable,config.timeout=30s,config.timeout=60s,complex=a\\,b\\,c\\,d,database.urls[0]=db1.internal,database.urls[1]=db2.internal,database.urls[2]=db3.internal,mode=fast,mode=slow"
-  ```
+  > **注意：** 同一键多次出现时，以最后一次为准。
 
-  > **Note:** If the same key is used multiple times, the last occurrence will be used.
-
-- `- n, --network-name string` - Name of the docker network in which the user application is running.
+- `- n, --network-name string` - 用户应用运行的 Docker 网络名称。
 
   ```bash
   keploy record -c "docker compose up" --container-name "my-app-container" -n "my-app-network"
   ```
 
-- `--pass-through-ports uints` - Ports of outgoing dependency calls to be ignored as mocks and passed through to the actual dependency. The default is no ports.
-- `-p, --path string` - Path to the local directory where the recorded testcases and generated mocks are to be saved.
+- `--pass-through-ports uints` - 忽略模拟直接访问实际依赖项的出口调用端口，默认为空。
+- `-p, --path string` - 保存测试用例和模拟数据的本地目录路径。
 
   ```bash
   keploy record -c "node src/app.js" -p "./tests"
   ```
 
-  In the above command, `tests` is the directory in the CWD where the recorded testcases and generated mocks are to be stored.
+  上述命令中，`tests` 是存储测试用例和模拟数据的目录。
 
-- `--proxy-port uint32` - Port to choose to run Keploy as a proxy. The default is 16789.
+- `--proxy-port uint32` - Keploy 代理运行端口，默认为 16789。
 
   ```bash
   keploy record -c "node src/app.js" --proxy-port 8080
   ```
 
-- `--debug` - To start recording testcases with debug mode enabled.
+- `--debug` - 启用调试模式记录测试用例。
 
   ```bash
   keploy record -c "node src/app.js" --debug
   ```
 
-- `rerecord` - Record certain test-sets again
+- `rerecord` - 重新记录指定测试集
 
   ```bash
   keploy record -c "node src/app.js" --rerecord "test-set-0"
@@ -119,179 +115,179 @@ keploy record [flags]
 
 ## [test](#test)
 
-The `test` mode in Keploy allows the user to run the recoded testcases from the API calls and execute assertion. A detailed report is produced after the tests are executed and it's then saved in the yaml format in `keploy/reports` directory in the current working directory.
+`test` 模式用于运行记录的测试用例并执行断言。测试完成后会在当前工作目录的 `keploy/reports` 下生成 YAML 格式的详细报告。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy test [flags]
 ```
 
-<b> Available flags: </b>
+<b> 可用标志： </b>
 
-- `--api-timeout uint` - Timeout in seconds for calling user application. The default is 5 seconds.
+- `--api-timeout uint` - 调用用户应用的超时时间（秒），默认为 5 秒。
 
   ```bash
   keploy test -c "node src/app.js" --api-timeout 10
   ```
 
-- `-c, --command string` - Command required to start the user application.
+- `-c, --command string` - 启动用户应用的命令。
 
   ```bash
   keploy test -c "node src/app.js"
   ```
 
-  In the command above, `node src/app.js` is the command which starts the user application.
+  上述命令中，`node src/app.js` 是启动用户应用的命令。
 
-- `--config-path string` - Path to the Keploy configuration file. The default is ".".
+- `--config-path string` - Keploy 配置文件路径，默认为当前目录。
 
   ```bash
   keploy test -c "node src/app.js" --config-path "./config-dir/"
   ```
 
-  In the above command, `config-dir` is the directory in the CWD where the Keploy configuration file `keploy.yaml` is stored.
+  上述命令中，`config-dir` 是存放 Keploy 配置文件 `keploy.yaml` 的目录。
 
-- `--container-name string` - Name of the docker container in which the user application is running.
+- `--container-name string` - 用户应用运行的 Docker 容器名称。
 
   ```bash
   keploy test -c "docker compose up" --container-name "my-app-container"
   ```
 
-- `-d, --delay uint` - Delay in seconds to run user application. The default is 5 seconds.
+- `-d, --delay uint` - 启动用户应用的延迟时间（秒），默认为 5 秒。
 
   ```bash
   keploy test -c "node src/app.js" --delay 10
   ```
 
-- `--mongo-password string` - Authentication password for mocking MongoDB connection. The default password is "default123".
+- `--mongo-password string` - 模拟 MongoDB 连接的认证密码，默认为 "default123"。
 
   ```bash
   keploy test -c "node src/app.js" --mongo-password "my-password"
   ```
 
-- `- n, --network-name string` - Name of the docker network in which the user application is running.
+- `- n, --network-name string` - 用户应用运行的 Docker 网络名称。
 
   ```bash
   keploy test -c "docker compose up" --container-name "my-app-container" -n "my-app-network" -d 9
   ```
 
-- `--pass-through-ports uints` - Ports of outgoing dependency calls to be ignored as mocks and passed through to the actual dependency. The default is no ports.
+- `--pass-through-ports uints` - 忽略模拟直接访问实际依赖项的出口调用端口，默认为空。
 
-- `-p, --path string` - Path to the local directory where the recorded testcases and generated mocks are saved.
+- `-p, --path string` - 存储测试用例和模拟数据的本地目录路径。
 
   ```bash
   keploy test -c "node src/app.js" -d 10 --path "./tests"
   ```
 
-  In the above command, `tests` is the directory in the CWD where the recorded testcases and generated mocks are saved.
+  上述命令中，`tests` 是存储测试用例和模拟数据的目录。
 
-- `--proxy-port uint32` - Port to choose to run Keploy as a proxy. The default is 16789.
+- `--proxy-port uint32` - Keploy 代理运行端口，默认为 16789。
 
   ```bash
   keploy test -c "node src/app.js" --proxy-port 8080
   ```
 
-- `-t, --test-sets strings` - To specify which specific testsets are to be executed. The default is all testsets.
+- `-t, --test-sets strings` - 指定要执行的测试集，默认为全部测试集。
 
   ```bash
   keploy test -c "node src/app.js" -t "test-set-1,test-set-3" --delay 10
   ```
 
-- `--debug` - To start executing testcases with debug mode enabled.
+- `--debug` - 启用调试模式执行测试用例。
 
   ```bash
   keploy test -c "node src/app.js" --delay 10 --debug
   ```
 
-- `-g, --generate-test-report` - To generate the test report. The default is true.
+- `-g, --generate-test-report` - 是否生成测试报告，默认为 true。
 
   ```bash
   keploy test -c "node src/app.js" --delay 10 -g=false
   ```
 
-- `--remove-unused-mocks` - To remove unused mocks from mock file. The default is false.
+- `--remove-unused-mocks` - 是否移除模拟文件中未使用的模拟数据，默认为 false。
 
   ```bash
   keploy test -c "node src/app.js" --delay 10 --remove-unused-mocks
   ```
 
-- `--ignore-ordering` - Ignore the order of elements in an array for a response, with the default value being true.
+- `--ignore-ordering` - 是否忽略响应数组中元素的顺序，默认为 true。
 
   ```bash
   keploy test -c "node src/app.js" --delay 10 --ignore-ordering
   ```
 
-- `--skip-coverage` - skip code coverage computation while running the test cases
+- `--skip-coverage` - 跳过测试用例运行时的代码覆盖率计算。
 
-- `--skip-preview` - skip line by line code coverage preview but display the total coverage.
+- `--skip-preview` - 跳过逐行代码覆盖率预览，仅显示总覆盖率。
 
   ```bash
   keploy test -c "node src/app.js" --delay 10 --skip-preview
   ```
 
-- `--jacoco-agent-path` - Only applicable for test coverage for Java projects. You can override the jacoco agent jar by providing its path
+- `--jacoco-agent-path` - 仅适用于 Java 项目测试覆盖率，可通过提供路径覆盖 jacoco agent jar。
 
 ## [gen](#gen)
 
-The `gen` cmd in Keploy allows user to generate unit tests using LLM Models.
+`gen` 命令允许用户使用 LLM 模型生成单元测试。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy gen [flags]
 ```
 
-<b> Available flags: </b>
+<b> 可用标志： </b>
 
-- `sourceFilePath` - Path to the source file for which tests are to be generated.
+- `sourceFilePath` - 待生成测试的源文件路径。
 
-- `testFilePath` - Path where the generated tests will be saved.
+- `testFilePath` - 生成测试的保存路径。
 
-- `coverageReportPath` - Path to generate the coverage report.
+- `coverageReportPath` - 覆盖率报告生成路径。
 
-- `testCommand` - Command to execute tests and generate the coverage report.
+- `testCommand` - 执行测试并生成覆盖率报告的命令。
 
-- `coverageFormat` - Type of the coverage report by default report is in "cobertura" format.
+- `coverageFormat` - 覆盖率报告格式，默认为 "cobertura"。
 
-- `expectedCoverage` - Desired coverage percentage by default it is set to be at 100%.
+- `expectedCoverage` - 期望覆盖率百分比，默认为 100%。
 
-- `maxIterations` - Maximum number of iterations for refining tests (default 5).
+- `maxIterations` - 测试优化的最大迭代次数（默认 5 次）。
 
-- `testDir` - Directory where tests will be written.
+- `testDir` - 测试文件写入目录。
 
-- `llmBaseUrl` - Base url of the llm.
+- `llmBaseUrl` - LLM 的基础 URL。
 
-- `model` - Specifies the AI model to use by default it uses "gpt-4o" model.
+- `model` - 指定使用的 AI 模型，默认为 "gpt-4o"。
 
-- `llmApiVersion` - API version of the llm if any.
+- `llmApiVersion` - LLM 的 API 版本（如有）。
 
 ## [normalize](#normalize)
 
-The `normalize` cmd in Keploy allows user to change the response of the testcases according to the latest test run response that is executed by the user, this is useful when the API response of the testcases are changed due to code change or any other intentional change in the application.
+`normalize` 命令允许用户根据最新测试运行的响应更新测试用例的响应，适用于因代码变更或应用调整导致 API 响应变化的情况。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy normalize [flags]
 ```
 
-<b> Available flags: </b>
+<b> 可用标志： </b>
 
-- `-p, --path string` - Path to the local directory where the recorded testcases and generated mocks are to be saved.
+- `-p, --path string` - 存储测试用例和模拟数据的本地目录路径。
 
   ```bash
   keploy normalize -p "./tests"
   ```
 
-  In the above command, `tests` is the directory in the CWD where the recorded testcases and generated mocks are to be stored.
+  上述命令中，`tests` 是存储测试用例和模拟数据的目录。
 
-- `--test-run string` - by default normalization considers the latest test-run to change the response of the testcases but if user want to do it for a particular test-run this flag can be used.
+- `--test-run string` - 默认使用最新测试运行进行标准化，此标志可指定特定测试运行。
 
   ```bash
   keploy normalize -p "./tests" --test-run "test-run-10"
   ```
 
-- `--tests string` - by default normalization considers all the testcases for normalization but if user want to normalize only few particular testcases this flag can be used
+- `--tests string` - 默认标准化所有测试用例，此标志可指定特定测试用例。
 
   ```bash
   keploy normalize -p "./tests" --test-run "test-run-10" --tests "test-set-1:test-case-1 test-case-2,test-set-2:test-case-1 test-case-2"
@@ -299,9 +295,9 @@ keploy normalize [flags]
 
 ## [rerecord](#rerecord)
 
-The `rerecord`cmd allow user to record new keploy testcases/mocks from the existing test cases for the given testset(s)
+`rerecord` 命令允许用户基于现有测试用例重新记录指定测试集的新测试用例/模拟数据。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy rerecord -c "node src/app.js" -t "test-set-0"
@@ -309,9 +305,9 @@ keploy rerecord -c "node src/app.js" -t "test-set-0"
 
 ## [templatize](#templatize)
 
-The `templatize` cmd allows the user to templatize important fields in the testcases who's values are used in the request of testcases and that may change in the future.
+`templatize` 命令允许用户模板化测试用例请求中可能变化的重要字段。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy templatize [flags]
@@ -319,40 +315,40 @@ keploy templatize [flags]
 
 ## [config](#config)
 
-The `config` command in Keploy is used to generate the Keploy Configuration File i.e. `keploy.yaml`. The generated configuration file is created in the current working directory.
+`config` 命令用于生成 Keploy 配置文件 `keploy.yaml`，文件会创建在当前工作目录。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy config [flags]
 ```
 
-<b> Available flags: </b>
+<b> 可用标志： </b>
 
-- `--generate` - Generate a new keploy configration file.
+- `--generate` - 生成新的 Keploy 配置文件。
 
   ```bash
   keploy config --generate
   ```
 
-- `-p, --path string` - Path to the local directory where the Keploy Configuration File will be stored. The default is ".".
+- `-p, --path string` - 配置文件存储目录路径，默认为当前目录。
 
   ```bash
   keploy config --generate --path "./config-dir/"
   ```
 
-  In the above command, `config-dir` is the directory in the CWD where the Keploy configuration file `keploy.yaml` is to be stored.
+  上述命令中，`config-dir` 是存储配置文件的目录。
 
 ## [example](#example)
 
-The `example` command in Keploy is designed to illustrate the usage of Keploy in various scenarios, showing its capabilities with different types of applications and setups. Below are examples for using Keploy with Golang, Node.js, Java, and Docker applications.
+`example` 命令展示 Keploy 在不同场景下的应用示例，包括 Golang、Node.js、Java 和 Docker 应用。
 
-<b> Usage: </b>
+<b> 用法： </b>
 
 ```bash
 keploy example [flags]
 ```
 
-<b> Available Flags: </b>
+<b> 可用标志： </b>
 
-- `--customSetup` - Displays commands tailored for custom user-defined setups.
+- `--customSetup` - 显示自定义用户设置的命令示例。

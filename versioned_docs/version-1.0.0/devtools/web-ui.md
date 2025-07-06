@@ -1,64 +1,64 @@
 ---
 id: ui-contrib-guide
-title: Contribute to Keploy UI (v1.0.0)
-label: UI Contribution Guide
-description: This contribution guide is for developers for setting up Keploy UI locally.
+title: 为 Keploy UI 做贡献 (v1.0.0)
+label: UI 贡献指南
+description: 本贡献指南面向开发者，用于本地搭建 Keploy UI 开发环境。
 keywords:
   - MongoDB
   - UI
-  - Local Server
+  - 本地服务器
   - dockerfile
 ---
 
-Make sure you're using **Node version 14.x.x**
+请确保使用 **Node 14.x.x 版本**
 
-### 1. Start the Keploy Server
+### 1. 启动 Keploy 服务器
 
-There's a separate docker-compose `docker-compose-dev.yaml` file which helps which exposes the mongo server and also builds the dockerfile from local code. The `build` flag ensures that the binary is built again to reflect the latest code changes. There's also docker-compose-debug.yaml `docker-compose-debug.yaml` which can help remote debugging the go server on port 4000.
+我们准备了独立的 docker-compose 文件 `docker-compose-dev.yaml`，该文件会暴露 MongoDB 服务，并根据本地代码构建 Docker 镜像。`build` 参数确保二进制文件会重新构建以反映最新代码变更。另提供 `docker-compose-debug.yaml` 文件用于在 4000 端口远程调试 Go 服务。
 
 ```shell
 git clone https://github.com/keploy/keploy.git && cd keploy
 docker-compose -f docker-compose-dev.yaml up --build
 ```
 
-### 2. Start the Keploy Console/UI
+### 2. 启动 Keploy 控制台/UI
 
 ```shell
 git clone https://github.com/keploy/ui.git && cd ui
 npm i
 ```
 
-For development, we'll add the API URL as keploy local server url running at http://localhost:6789
+开发环境下，我们需要配置运行在 http://localhost:6789 的本地 Keploy 服务器作为 API 地址：
 
 ```shell
 export GATSBY_API_URL=http://localhost:6789/api
 ```
 
-Now let's start the Gatsby Server
+现在启动 Gatsby 服务：
 
 ```shell
 gatsby develop
 ```
 
-If you make some UI/design changes and want to add test data. In the new directory, clone test data repo :
+若您修改了 UI/设计并需要测试数据，请在新目录克隆测试数据仓库：
 
 ```shell
 git clone https://github.com/keploy/test-data.git && cd test-data
 ```
 
-Within test-data directory
+在 test-data 目录中执行：
 
-#### Install mongo-database-tools
+#### 安装 mongo-database-tools
 
 ```
 brew tap mongodb/brew
 brew install mongodb-database-tools
 ```
 
-#### Restore DB
+#### 恢复数据库
 
 ```
 mongorestore  dump/
 ```
 
-You should now be able to see test data on the UI.
+此时您应该能在 UI 上看到测试数据。

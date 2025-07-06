@@ -1,52 +1,52 @@
 ---
 id: unit-test-automation
-title: Unit Test Automation Explaination (v1.0.0)
-sidebar_label: Unit Test Automation
-description: This glossary provides simple explanations for terms that beginners often find challenging to grasp in the context of unit testing.
+title: 单元测试自动化说明 (v1.0.0)
+sidebar_label: 单元测试自动化
+description: 本术语表为初学者提供了在单元测试背景下常感困惑的术语的简明解释。
 tags:
-  - explanation
+  - 说明
 keywords:
   - API
 ---
 
-# Unit Test Automation
+# 单元测试自动化
 
-Unit test automation is the use of software tools to automatically test individual units of code, such as methods or functions. It is used to find bugs and flaws in code early in the development process, when they are easier and less expensive to fix.
+单元测试自动化是指使用软件工具自动测试代码的独立单元（如方法或函数）。它用于在开发早期发现代码中的缺陷和问题，此时修复起来更容易且成本更低。
 
-## How does it work?
+## 工作原理
 
-A common approach to unit test automation is to write code that tests discrete pieces of code independently from the rest of the system. This can be done by using mock objects or other techniques to simulate the behavior of other parts of the system. The tests are then typically executed automatically whenever code is committed to a version control system.
+单元测试自动化的常见方法是编写独立于系统其他部分的测试代码。这可以通过使用模拟对象或其他技术来模拟系统其他部分的行为来实现。测试通常会在代码提交到版本控制系统时自动执行。
 
-## What are the benefits of unit test automation?
+## 单元测试自动化的优势
 
-There are many benefits to unit test automation, including:
+单元测试自动化具有诸多优势，包括：
 
-- **Increased quality:** Bugs and flaws in code are found earlier in the development process, when they are easier and less expensive to fix.
-- **Faster feedback:** Automated testing provides quick feedback on the quality and validity of code changes, allowing developers to quickly detect and fix bugs.
-- **Reduced risk:** Unit testing helps to ensure that each piece of code is working as it should, which reduces the risk of defects and errors in the final product.
-- **Increased efficiency:** Automated testing can save time and resources by automating the testing process.
-- **Improved collaboration:** Automated testing can help to improve collaboration among developers by providing a common testing framework and ensuring that code changes are fully verified before being merged into the system.
+- **质量提升**：在开发早期发现代码缺陷和问题，此时修复更容易且成本更低。
+- **快速反馈**：自动化测试能快速提供代码变更的质量和有效性反馈，帮助开发者迅速发现并修复缺陷。
+- **风险降低**：单元测试确保每个代码单元按预期工作，从而降低最终产品出现缺陷和错误的风险。
+- **效率提升**：自动化测试通过自动化测试流程节省时间和资源。
+- **协作增强**：自动化测试通过提供统一的测试框架，并确保代码变更在合并前得到充分验证，从而改善开发者之间的协作。
 
-## What are some unit test automation tools?
+## 常用单元测试自动化工具
 
-There are many unit testing tools available for a wide range of languages and environments. Some popular tools include:
+针对不同语言和环境有多种单元测试工具可用，一些流行的工具包括：
 
-- JUnit: An open-source unit testing framework for Java
-- NUnit: A unit testing framework for C# and VB.NET
-- xUnit.net: A unit testing framework for .NET languages
-- PyTest: An automated testing, integration testing, and functional testing framework for Python
-- PHPUnit: A framework for developing and running unit tests in PHP
-- Jasmine: A behavior-driven development (BDD) framework for JavaScript
-- Selenium: An open-source framework for testing web applications
+- JUnit：Java的开源单元测试框架
+- NUnit：C#和VB.NET的单元测试框架
+- xUnit.net：.NET语言的单元测试框架
+- PyTest：Python的自动化测试、集成测试和功能测试框架
+- PHPUnit：PHP的单元测试开发和运行框架
+- Jasmine：JavaScript的行为驱动开发（BDD）框架
+- Selenium：Web应用测试的开源框架
 
-## What are some additional benefits of unit test automation?
+## 单元测试自动化的额外优势
 
-In addition to the benefits listed above, unit test automation can also help to:
+除上述优势外，单元测试自动化还能：
 
-- Improve the maintainability of code by making it easier to track changes and identify potential problems.
-- Improve the documentation of code by providing test cases that demonstrate how the code is supposed to work.
-- Support continuous integration and continuous delivery (CI/CD) pipelines. This allows teams to release new code more frequently and with greater confidence.
+- **提升代码可维护性**：通过更轻松地跟踪变更和识别潜在问题。
+- **完善代码文档**：提供测试用例来展示代码的预期行为。
+- **支持持续集成和持续交付（CI/CD）管道**：使团队能更频繁且更有信心地发布新代码。
 
-## Conclusion
+## 结论
 
-Unit test automation is a valuable tool for software development teams that care about quality, reliability, and efficiency. When done well, it can greatly improve the development process and the time it takes to release a product.
+单元测试自动化是重视质量、可靠性和效率的软件开发团队的宝贵工具。实施得当，它能极大改善开发流程并缩短产品发布时间。

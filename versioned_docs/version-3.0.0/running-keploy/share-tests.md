@@ -1,28 +1,28 @@
 ---
 id: share-tests
-title: Share Test Suite With Your Team
-sidebar_label: Share Test Suite
-description: Learn how to use Keploy’s API Test Generator to generate high-quality API test suites using AI from OpenAPI, curl, Postman, or traffic.
+title: 与团队共享测试套件
+sidebar_label: 共享测试套件
+description: 了解如何使用Keploy的API测试生成器，通过AI从OpenAPI、curl、Postman或流量数据生成高质量的API测试套件。
 ---
 
-Keploy makes it easy to share any test suite so others can review results or run the tests in their own environments—without copying JSON or clunky exports.
+Keploy让共享任何测试套件变得简单，其他人可以查看结果或在自己的环境中运行测试——无需复制JSON或处理笨重的导出文件。
 
-## Open the Share Dialog
+## 打开共享对话框
 
-In the **Test Suites** list, hover over a suite row and click the **Share** icon (🔗).
+在**测试套件**列表中，将鼠标悬停在某个套件行上，点击**共享**图标(🔗)。
 
 ![Keploy](../../../static/img/share.png)
 
-The **Share Test Suites** modal appears with two tabs:
+此时会出现**共享测试套件**模态框，包含两个标签页：
 
-- **Find People** – Search existing workspace members.
-- **Add New User** – Invite someone via email.
+- **查找人员** – 搜索现有工作区成员。
+- **添加新用户** – 通过电子邮件邀请他人。
 
-## Confirm & Notify
+## 确认并通知
 
-Click **Share**. Keploy sends:
+点击**共享**。Keploy将发送：
 
-- An email
-  with a direct link to the suite.
+- 一封电子邮件
+  包含直接访问该套件的链接。
 
-New users must **accept the invite** to gain access.
+新用户必须**接受邀请**才能获得访问权限。

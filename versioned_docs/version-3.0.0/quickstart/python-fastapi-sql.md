@@ -1,8 +1,8 @@
 ---
 id: samples-fastapi
-title: Sample Student Data CRUD App (FastAPI)
+title: 学生数据CRUD应用示例（FastAPI）
 sidebar_label: FastAPI + Postgres
-description: The following sample app showcases how to use the FastAPI framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用FastAPI框架和Keploy平台。
 tags:
   - python
   - quickstart
@@ -13,60 +13,60 @@ tags:
   - fast-api-framework
   - postgres
 keyword:
-  - FastAPI Framework
+  - FastAPI框架
   - Postgres
   - SQL
   - Python
-  - API Test generator
-  - Auto case generation
+  - API测试生成器
+  - 自动化用例生成
 ---
 
-# Introduction
+# 简介
 
-🪄 Dive into the world of User CRUD Apps and see how seamlessly Keploy integrated with FastAPI and [PostgreSQL](https://www.postgresql.org/). Buckle up, it's gonna be a fun ride! 🎢
+🪄 深入用户CRUD应用的世界，看看Keploy如何与FastAPI和[PostgreSQL](https://www.postgresql.org/)无缝集成。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Setup the PostgreSQL Database 📦
+## 设置PostgreSQL数据库 📦
 
-## Clone the sample Student Data CRUD app 🧪
+## 克隆学生数据CRUD示例应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-python.git && cd samples-python/fastapi-postgres
 ```
 
-## Installation Keploy
+## 安装Keploy
 
-Depending on your OS, choose your adventure:
+根据您的操作系统选择安装方式：
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用：
 
-- [Using Docker compose : running application as well as Postgres on Docker container](#using-docker-compose-)
-- [Using Docker container for Postgres and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用Docker compose：在Docker容器中运行应用及Postgres](#使用docker-compose-)
+- [使用Docker容器运行Postgres并在本地运行应用](#在linuxwsl上本地运行应用-)
 
-## Using Docker Compose 🐳
+## 使用Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as Postgres on Docker container.
+我们将使用Docker compose在Docker容器中运行应用和Postgres。
 
-### Lights, Camera, Record! 🎥
+### 开始录制测试用例！ 🎥
 
-Capture the test-cases-
+捕获测试用例：
 
 ```shell
 keploy record -c "docker compose up" --container-name "fastapi-app" --build-delay 50
 ```
 
-🔥**Make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥**发起一些API调用**。可以使用Postman、Hoppscotch或curl。
 
-Let's make URLs short and sweet:
+简化URL示例：
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+只需**发起一些API调用**即可生成测试用例。
 
-**1. Make a POST request**
+**1. 发起POST请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/students/' \
@@ -78,13 +78,13 @@ curl --location 'http://127.0.0.1:8000/students/' \
     }'
 ```
 
-**2. Make a GET request**
+**2. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/students/'
 ```
 
-**3. Make a PUT request**
+**3. 发起PUT请求**
 
 ```bash
 curl --location --request PUT 'http://127.0.0.1:8000/students/1' \
@@ -97,19 +97,19 @@ curl --location --request PUT 'http://127.0.0.1:8000/students/1' \
     }'
 ```
 
-**4. Make a GET request**
+**4. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/students/1'
 ```
 
-**5. Make a DELETE request**
+**5. 发起DELETE请求**
 
 ```bash
 curl --location --request DELETE 'http://127.0.0.1:8000/students/1'
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+恭喜！通过这些简单的命令，您已经生成了一个包含模拟数据的测试用例！在**Keploy目录**中，您可以看到生成的`test-1.yml`和`mocks.yml`文件。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -155,7 +155,7 @@ curl: |
   --header 'Host: 127.0.0.1:8000' \
 ```
 
-This is how `mocks.yml` generated would look like:-
+`mocks.yml`文件内容示例：
 
 ```yaml
   version: api.keploy.io/v1beta2
@@ -200,49 +200,49 @@ This is how `mocks.yml` generated would look like:-
       restimestampmock: 2023-11-06T10:42:43.063544657+05:30
 ```
 
-Want to see if everything works as expected?
+想验证一切是否按预期工作？
 
-#### Run Tests
+#### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 keploy test -c "docker compose up" --container-name "fastapi-app" --build-delay 50  --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`标志？这是为了让您的应用在测试用例运行前有短暂的准备时间（以秒计）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后建议？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或修改`test-x.yml`中的请求或响应。再次运行测试，见证奇迹发生！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜您完成这段旅程！您已经体验了Keploy的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！ ✨👩‍💻👨‍💻✨
 
 **\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***
 
-## Running App Locally on Linux/WSL 🐧
+## 在Linux/WSL上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (PostgreSQL) chill on Docker. Ready? Let's get the party started!🎉
+我们将在Linux上直接运行示例应用，但为了让事情更有趣，数据库（PostgreSQL）将在Docker中运行。准备好了吗？让我们开始派对吧！🎉
 
-### 📼 Roll the Tape - Recording Time!
+### 📼 开始录制！
 
-Ready, set, record! Here's how:
+准备好录制：
 
 ```bash
 keploy record -c "uvicorn application.main:app --reload"
 ```
 
-Keep an eye out for the `-c `flag! It's the command charm to run the app.
+注意`-c`标志！这是运行应用的命令。
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+应用运行起来后，让我们生成一些测试用例。方法？发起一些API调用！可以使用Postman、Hoppscotch或经典的curl。
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+只需**发起一些API调用**即可生成测试用例。
 
-**1. Make a POST request**
+**1. 发起POST请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/students/' \
@@ -254,13 +254,13 @@ curl --location 'http://127.0.0.1:8000/students/' \
     }'
 ```
 
-**2. Make a GET request**
+**2. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/students/'
 ```
 
-**3. Make a PUT request**
+**3. 发起PUT请求**
 
 ```bash
 curl --location --request PUT 'http://127.0.0.1:8000/students/1' \
@@ -273,19 +273,19 @@ curl --location --request PUT 'http://127.0.0.1:8000/students/1' \
     }'
 ```
 
-**4. Make a GET request**
+**4. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/students/1'
 ```
 
-**5. Make a DELETE request**
+**5. 发起DELETE请求**
 
 ```bash
 curl --location --request DELETE 'http://127.0.0.1:8000/students/1'
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+恭喜！通过这些简单的命令，您已经生成了一个包含模拟数据的测试用例！在**Keploy目录**中，您可以看到生成的`test-1.yml`和`mocks.yml`文件。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -331,7 +331,7 @@ curl: |
   --header 'Host: 127.0.0.1:8000' \
 ```
 
-This is how `mocks.yml` generated would look like:-
+`mocks.yml`文件内容示例：
 
 ```yaml
   version: api.keploy.io/v1beta2
@@ -376,25 +376,25 @@ This is how `mocks.yml` generated would look like:-
       restimestampmock: 2023-11-06T10:42:43.063544657+05:30
 ```
 
-Want to see if everything works as expected?
+想验证一切是否按预期工作？
 
-#### Run Tests
+#### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 keploy test -c "uvicorn application.main:app --reload" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`标志？这是为了让您的应用在测试用例运行前有短暂的准备时间（以秒计）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后建议？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或修改`test-x.yml`中的请求或响应。再次运行测试，见证奇迹发生！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜您完成这段旅程！您已经体验了Keploy的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。 😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

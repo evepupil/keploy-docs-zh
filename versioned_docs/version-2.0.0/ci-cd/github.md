@@ -1,32 +1,32 @@
 ---
 id: github
-title: Integrating with GitHub CI
-description: Guide into Keploy GitHub CI Pipeline
-sidebar_label: GitHub Workflows
+title: 与GitHub CI集成
+description: Keploy GitHub CI流水线指南
+sidebar_label: GitHub工作流
 keywords:
-  - ci testing
-  - ci/cd
-  - github
-  - ci pipeline
+  - 持续集成测试
+  - CI/CD
+  - GitHub
+  - CI流水线
 tags:
-  - ci
-  - cd
-  - plugin
+  - 持续集成
+  - 持续交付
+  - 插件
 ---
 
-Keploy can be integrated with GitHub by two methods:-
+Keploy可以通过两种方式与GitHub集成：
 
-1. [Using Shell Scripts](#shell-scripts)
-2. [Using GitHub Actions](#github-actions)
+1. [使用Shell脚本](#shell-scripts)
+2. [使用GitHub Actions](#github-actions)
 
-## Shell Scripts
+## Shell脚本
 
-GitHub scripts are the easiest way to integrate Keploy with GitHub. We will be using [express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose) sample-application for the example. You can either add the following script to yout `github workflow` or create a new worflow `.github/workflows/keploy-test.yml`:-
+GitHub脚本是与Keploy集成的最简单方式。我们将使用[express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose)示例应用进行演示。您可以将以下脚本添加到您的`github workflow`中，或创建一个新的工作流`.github/workflows/keploy-test.yml`：
 
 ```yaml
-- name: Checkout Commit
+- name: 检出代码
   uses: actions/checkout@v2
-- name: Keploy Tests
+- name: Keploy测试
   id: keploy-run-test
   run: |
     curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz --overwrite -C /tmp
@@ -34,36 +34,36 @@ GitHub scripts are the easiest way to integrate Keploy with GitHub. We will be u
   ...
 ```
 
-> **Note: if you are using `arm_64` as runner use below to download keploy binary**
+> **注意：如果使用`arm_64`作为运行器，请使用以下命令下载Keploy二进制文件**
 
 `curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz" | tar xz --overwrite -C /tmp`
 
-### Example with Scripts
+### 脚本示例
 
-While using [express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose) sample-application with keploy test in GitHub CI, the workflow would like:-
+在GitHub CI中使用[express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose)示例应用进行Keploy测试时，工作流如下：
 
 ```yaml
-- name: Checkout Commit
+- name: 检出代码
   uses: actions/checkout@v2
-- name: Set up Node
+- name: 设置Node环境
   uses: actions/setup-node@v2
   with:
     node-version: 18
 
-- name: Keploy Tests
+- name: Keploy测试
   id: keploy-run-test
   run: |
     curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz --overwrite -C /tmp
     sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin/keploy
 
-    # Install application dependencies
+    # 安装应用依赖
     npm install
 
-    # Run the keploy captured tests
+    # 运行Keploy捕获的测试
     keploy test -c "node src/app.js"
 ```
 
-We will get to see output : -
+我们将看到如下输出：
 
 ```sh
 
@@ -77,85 +77,84 @@ We will get to see output : -
        ▓▌                           ▐█▌                   █▌
         ▓
 
-  version: 2.1.0-alpha23
+  版本: 2.1.0-alpha23
 
-  🐰 Keploy: 2024-06-05T04:55:12Z 	INFO	config file not found; proceeding with flags only
-  🐰 Keploy: 2024-06-05T04:55:12Z 	WARN	Delay is set to 5 seconds, incase your app takes more time to start use --delay to set custom delay
-  🐰 Keploy: 2024-06-05T04:55:12Z 	INFO	Example usage: keploy test -c "/path/to/user/app" --delay 6
-  🐰 Keploy: 2024-06-05T04:55:12Z 	INFO	GitHub Actions workflow file generated successfully	{"path": "/githubactions/keploy.yml"}
-  🐰 Keploy: 2024-06-05T04:55:13Z 	INFO	keploy initialized and probes added to the kernel.
+  🐰 Keploy: 2024-06-05T04:55:12Z 	INFO	未找到配置文件；仅使用标志继续
+  🐰 Keploy: 2024-06-05T04:55:12Z 	WARN	延迟设置为5秒，如果您的应用需要更长时间启动，请使用--delay设置自定义延迟
+  🐰 Keploy: 2024-06-05T04:55:12Z 	INFO	示例用法：keploy test -c "/path/to/user/app" --delay 6
+  🐰 Keploy: 2024-06-05T04:55:12Z 	INFO	GitHub Actions工作流文件生成成功	{"path": "/githubactions/keploy.yml"}
+  🐰 Keploy: 2024-06-05T04:55:13Z 	INFO	keploy已初始化并将探针添加到内核。
 
   ...
 
-  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	starting TCP DNS server at addr :26789
-  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	starting UDP DNS server at addr :26789
-  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	Proxy started at port:16789
-  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	running	{"test-set": "test-set-0"}
+  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	启动TCP DNS服务器，地址：:26789
+  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	启动UDP DNS服务器，地址：:26789
+  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	代理启动于端口：16789
+  🐰 Keploy: 2024-06-05T04:55:16Z 	INFO	运行中	{"test-set": "test-set-0"}
 
-  Listening on port 8000
-  Connected to MongoDB
+  监听端口8000
+  已连接到MongoDB
 
-  🐰 Keploy: 2024-06-05T04:55:21Z 	INFO	starting test for of	{"test case": "test-1", "test set": "test-set-0"}
+  🐰 Keploy: 2024-06-05T04:55:21Z 	INFO	开始测试	{"test case": "test-1", "test set": "test-set-0"}
 
-  Testrun passed for testcase with id: "test-1"
+  测试用例ID为"test-1"的测试运行通过
 
   --------------------------------------------------------------------
 
-  🐰 Keploy: 2024-06-05T04:55:21Z    INFO    result  {"testcase id": "test-1", "testset id": "test-set-0", "passed": "true"}
+  🐰 Keploy: 2024-06-05T04:55:21Z    INFO    结果  {"testcase id": "test-1", "testset id": "test-set-0", "passed": "true"}
 
   <=========================================>
-    TESTRUN SUMMARY. For test-set: "test-set-0"
-          Total tests: 1
-          Total test passed: 1
-          Total test failed: 0
+    TESTRUN 摘要。测试集："test-set-0"
+          总测试数：1
+          通过测试数：1
+          失败测试数：0
   <=========================================>
 
-  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	test run completed	{"passed overall": true}
-  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	stopping Keploy	{"reason": "replay completed successfully"}
-  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	proxy stopped...
-  🐰 Keploy: 2024-06-05T05:18:50Z 	INFO	eBPF resources released successfully...
+  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	测试运行完成	{"passed overall": true}
+  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	停止Keploy	{"reason": "回放成功完成"}
+  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	代理已停止...
+  🐰 Keploy: 2024-06-05T05:18:50Z 	INFO	eBPF资源已成功释放...
 ```
 
-_And... voila! You have successfully integrated keploy in GitHub CI pipeline 🌟_
+_太棒了！您已成功在GitHub CI流水线中集成了Keploy 🌟_
 
 ---
 
 ## GitHub Actions
 
-GitHub Actions are a more advanced way to integrate Keploy with GitHub. We will be using [express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose) sample-application for the example. Create a new workflow under `.github/workflow` with the name `keploy-test.yml`: -
-GitHub Actions are a more advanced way to integrate Keploy with GitHub. We will be using [express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose) sample-application for the example. Create a new workflow under `.github/workflow` with the name `keploy-test.yml`: -
+GitHub Actions是与Keploy集成的更高级方式。我们将使用[express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose)示例应用进行演示。在`.github/workflow`下创建一个名为`keploy-test.yml`的新工作流：
 
 ```yaml
 jobs:
   my_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 检出代码
         uses: actions/checkout@v2
-      - name: Test-Report
+      - name: 测试报告
         uses: keploy/testgpt@main
         with:
-          command: "<CMD_TO_RUN_APP>" ## Command to run the application
+          command: "<运行应用的命令>" ## 运行应用的命令
 ```
 
-In the above example, we are using the `keploy/testgpt` action to run the test cases.
+在上述示例中，我们使用`keploy/testgpt` Action来运行测试用例。
 
-> - `working-directory` (optional) is the path to the application by default it takes root to find keploy folder.
-> - `delay` (optional) is the time to wait for the application to start.
-> - `command` is the command to run your application.
+> - `working-directory`（可选）是应用的路径，默认在根目录下查找keploy文件夹。
+> - `delay`（可选）是等待应用启动的时间。
+> - `command`是运行应用的命令。
 
-### Example with Actions
+### Actions示例
 
-While using [express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose) sample-application with keploy test in GitHub CI via actions, the workflow would like:-
+在GitHub CI中使用[express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose)示例应用通过Actions进行Keploy测试时，工作流如下：
 
 ```yaml
 jobs:
   keploy_test_case:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 检出代码
         uses: actions/checkout@v2
-      - name: Test-Report
+      - name: 测试报告
         uses: keploy/testgpt@main
         with:
           working-directory: /express-mongoose
@@ -163,12 +162,12 @@ jobs:
           command: "node src/app.js"
 ```
 
-> **Note: `keploy/testgpt` action supports only amd_64 based runners.**
+> **注意：`keploy/testgpt` Action仅支持基于amd_64的运行器。**
 
-We will get to see output : -
+我们将看到如下输出：
 
 ```sh
-Test Mode Starting 🎉
+测试模式启动中 🎉
 sudo -E keploy test -c node src/app.js --delay 10 --path ./
 
        ▓██▓▄
@@ -181,41 +180,41 @@ sudo -E keploy test -c node src/app.js --delay 10 --path ./
        ▓▌                           ▐█▌                   █▌
         ▓
 
-  version: 2.1.0-alpha23
+  版本: 2.1.0-alpha23
 
-  🐰 Keploy: 2024-06-05T05:18:35Z 	INFO	config file not found; proceeding with flags only
-  🐰 Keploy: 2024-06-05T05:18:35Z 	INFO	GitHub Actions workflow file generated successfully	{"path": "/githubactions/keploy.yml"}
-  🐰 Keploy: 2024-06-05T05:18:35Z 	INFO	keploy initialized and probes added to the kernel.
+  🐰 Keploy: 2024-06-05T05:18:35Z 	INFO	未找到配置文件；仅使用标志继续
+  🐰 Keploy: 2024-06-05T05:18:35Z 	INFO	GitHub Actions工作流文件生成成功	{"path": "/githubactions/keploy.yml"}
+  🐰 Keploy: 2024-06-05T05:18:35Z 	INFO	keploy已初始化并将探针添加到内核。
 
   ...
 
-  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	starting TCP DNS server at addr :26789
-  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	starting UDP DNS server at addr :26789
-  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	Proxy started at port:16789
-  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	running	{"test-set": "test-set-0"}
-  Listening on port 8000
-  Connected to MongoDB
-  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	starting test for of	{"test case": "test-1", "test set": "test-set-0"}
+  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	启动TCP DNS服务器，地址：:26789
+  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	启动UDP DNS服务器，地址：:26789
+  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	代理启动于端口：16789
+  🐰 Keploy: 2024-06-05T05:18:39Z 	INFO	运行中	{"test-set": "test-set-0"}
+  监听端口8000
+  已连接到MongoDB
+  🐰 Keploy: 2024-06-05T05:18:49Z 	INFO	开始测试	{"test case": "test-1", "test set": "test-set-0"}
 
-  Testrun passed for testcase with id: "test-1"
+  测试用例ID为"test-1"的测试运行通过
 
   --------------------------------------------------------------------
 
-  🐰 Keploy: 2024-06-05T04:55:21Z    INFO    result  {"testcase id": "test-1", "testset id": "test-set-0", "passed": "true"}
+  🐰 Keploy: 2024-06-05T04:55:21Z    INFO    结果  {"testcase id": "test-1", "testset id": "test-set-0", "passed": "true"}
 
   <=========================================>
-    TESTRUN SUMMARY. For test-set: "test-set-0"
-          Total tests: 1
-          Total test passed: 1
-          Total test failed: 0
+    TESTRUN 摘要。测试集："test-set-0"
+          总测试数：1
+          通过测试数：1
+          失败测试数：0
   <=========================================>
   ...
-  🐰 Keploy: 2024-06-05T04:55:21Z    INFO    test run completed      {"passed overall": true}
+  🐰 Keploy: 2024-06-05T04:55:21Z    INFO    测试运行完成      {"passed overall": true}
 ```
 
-_And... voila! You have successfully integrated keploy in GitHub CI pipeline 🌟_
+_太棒了！您已成功在GitHub CI流水线中集成了Keploy 🌟_
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

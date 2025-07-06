@@ -10,7 +10,7 @@ export default function Heading({as: As, id, ...props}) {
   const {
     navbar: {hideOnScroll},
   } = useThemeConfig();
-  // H1 headings do not need an id because they don't appear in the TOC.
+  // H1标题不需要id，因为它们不会出现在目录中
   // if (As === 'h1' || !id) {
   //   return <As {...props} id={"heading"} />;
   // }
@@ -22,8 +22,8 @@ export default function Heading({as: As, id, ...props}) {
   const anchorTitle = translate(
     {
       id: "theme.common.headingLinkTitle",
-      message: "Direct link to {heading}",
-      description: "Title for link to heading",
+      message: "直达 {heading} 的链接",
+      description: "指向标题的链接标题",
     },
     {
       heading: typeof props.children === "string" ? props.children : id,

@@ -1,22 +1,22 @@
 ---
 id: replay
-title: Replay Tests & Mocks for Java (v1.0.0)
-description: Replay Test Suite for Java in Keploy.
+title: Java回放测试与模拟工具 (v1.0.0)
+description: Keploy中的Java回放测试套件。
 tags:
-  - developer-guide
+  - 开发者指南
   - go
-  - replay-guide
-  - replay-test-case
+  - 回放指南
+  - 回放测试用例
 ---
 
 import ReplayTest from '../operation/test.md'
 
 <ReplayTest/>
 
-### Method 2 [preferred]
+### 方法二 [推荐]
 
 <details><summary>
-Testing using Unit Test File
+使用单元测试文件进行测试
 
 </summary>
 
@@ -26,16 +26,16 @@ import JUnit from './integration-with-junit.md'
 
 </details>
 
-### Method 3
+### 方法三
 
 <details><summary>
-Get Test-Coverage with Surgefire
+使用Surgefire获取测试覆盖率
 
 </summary>
 
-To get test coverage, in addition to above Method-2 follow below instructions
+要获取测试覆盖率，在方法二的基础上，请遵循以下步骤：
 
-- Add maven-surefire-plugin to your _pom.xml_.
+- 在_pom.xml_中添加maven-surefire-plugin插件：
 
 ```xml
             <plugin>
@@ -54,7 +54,7 @@ To get test coverage, in addition to above Method-2 follow below instructions
             </plugin>
 ```
 
-- Add Jacoco plugin to your _pom.xml_.
+- 在_pom.xml_中添加Jacoco插件：
 
 ```xml
             <plugin>
@@ -82,10 +82,10 @@ To get test coverage, in addition to above Method-2 follow below instructions
                            <goal>report</goal>
                        </goals>
                        <configuration>
-                           <!-- Sets the path to the file which contains the execution data. -->
+                           <!-- 设置包含执行数据文件的路径 -->
 
                            <dataFile>target/jacoco.exec</dataFile>
-                           <!-- Sets the output directory for the code coverage report. -->
+                           <!-- 设置代码覆盖率报告的输出目录 -->
                            <outputDirectory>target/my-reports</outputDirectory>
                        </configuration>
                    </execution>
@@ -93,18 +93,18 @@ To get test coverage, in addition to above Method-2 follow below instructions
            </plugin>
 ```
 
-- Run your tests using command : `mvn test`.
+- 使用命令运行测试：`mvn test`。
 
 </details>
 
-### Method 4
+### 方法四
 
 <details><summary>
-Run Tests in CI/CD
+在CI/CD中运行测试
 
 </summary>
 
-After following METHOD 2 above ^, Keploy will be integrated to `junit`.
-If you already have `junit` no changes are required in the CI/CD pipeline.
+按照上述方法二操作后，Keploy将与`junit`集成。
+如果您的CI/CD流水线中已有`junit`，则无需进行任何更改。
 
 </details>

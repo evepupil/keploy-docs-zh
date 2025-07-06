@@ -1,33 +1,33 @@
 ---
 id: configuration-file
-title: Configuration File
-sidebar_label: Configuration file
-description: This section introduces the configuration file
+title: 配置文件
+sidebar_label: 配置文件
+description: 本节介绍配置文件
 tags:
-  - configuration file
+  - 配置文件
 keywords:
-  - configuration
+  - 配置
 ---
 
-## Introduction
+## 简介
 
-Tired of specifying the same container name, app command, or delay, filters for each record or test command? 😴
+厌倦了为每条记录或测试命令重复指定相同的容器名称、应用命令、延迟和过滤器？😴  
 
-Introducing **Keploy-config** 🎉 - It is a YAML-based file that will allow you to define the testing configurations, including container setups, delays, and any other relevant parameters.
+隆重推出 **Keploy-config** 🎉 —— 这是一个基于YAML的配置文件，允许您定义测试配置，包括容器设置、延迟以及其他相关参数。
 
-## Getting Started:
+## 快速开始
 
-We will be using a sample app to demonstrate working of Keploy configuration file.
+我们将使用一个示例应用来演示Keploy配置文件的使用。
 
-To generate a keploy-config file, run:
+要生成keploy-config文件，请运行：
 
 ```bash
 keploy config --generate --path "./config-dir/"
 ```
 
-For demonstration purposes, we are using the [root directory of the echo-sql application](https://github.com/keploy/samples-go/tree/main/echo-sql). We can place it wherever we want to inside the project.
+为了演示，我们使用了[echo-sql应用的根目录](https://github.com/keploy/samples-go/tree/main/echo-sql)。您可以将它放在项目中的任意位置。
 
-After successful execution of the command, a default initialized config file named as `keploy.yaml` has been created with the content as shown below:
+命令成功执行后，会创建一个名为`keploy.yaml`的默认初始化配置文件，内容如下：
 
 ```yaml
 path: ""
@@ -65,48 +65,48 @@ cmdType: "native"
 enableTesting: false
 keployContainer: "keploy-v2"
 keployNetwork: "keploy-network"
-# Visit [https://keploy.io/docs/running-keploy/configuration-file/] to learn about using keploy through configration file.
+# 访问 [https://keploy.io/docs/running-keploy/configuration-file/] 了解如何通过配置文件使用keploy。
 ```
 
-## Using the Config File
+## 使用配置文件
 
-The Keploy-config file eliminates the need to repeatedly specify parameters for each record or test command. The parameters in the file correspond to the flags in the Keploy [CLI Command Docs](http://keploy.io/docs/running-keploy/cli-commands/).Using keploy-config can help to reduce the record and test command to just:
+Keploy-config文件消除了为每条记录或测试命令重复指定参数的需要。文件中的参数对应于Keploy [CLI命令文档](http://keploy.io/docs/running-keploy/cli-commands/)中的标志。使用keploy-config可以将记录和测试命令简化为：
 
-### Record Command:
+### 记录命令：
 
 ```bash
 keploy record
 ```
 
-### Test Command:
+### 测试命令：
 
 ```bash
 keploy test
 ```
 
-Visit the [CLI Command Docs](http://keploy.io/docs/running-keploy/cli-commands/) to know more about the flags/parameters and their usage.
+访问[CLI命令文档](http://keploy.io/docs/running-keploy/cli-commands/)了解更多关于标志/参数及其用法的信息。
 
-## Configuration Sections
+## 配置部分
 
-### Record Section
+### 记录部分
 
-The `record` section in the Keploy-config file allows you to define parameters for recording API calls.
+Keploy-config文件中的`record`部分允许您定义记录API调用的参数。
 
-- **`path`**: Path to the project where recording occurs. (Mandatory field)
+- **`path`**：记录发生的项目路径。（必填字段）
 
-- **`command`**: Command executed during recording.
+- **`command`**：记录期间执行的命令。
 
-- **`proxyport`**: Port number for the proxy. Default is 0.
+- **`proxyport`**：代理的端口号。默认为0。
 
-- **`containerName`**: Name of the container during recording.
+- **`containerName`**：记录期间的容器名称。
 
-- **`networkName`**: Network name for the container during recording.
+- **`networkName`**：记录期间的容器网络名称。
 
-- **`delay`**: Delay in seconds before recording each request. Default is 5 seconds.
+- **`delay`**：记录每个请求前的延迟秒数。默认为5秒。
 
-- **`filters`**: API calls to the application to avoid recording.
+- **`filters`**：避免记录的应用程序API调用。
 
-  Example:
+  示例：
 
   ```yaml
   record:
@@ -117,11 +117,11 @@ The `record` section in the Keploy-config file allows you to define parameters f
         host: "dc.services.visualstudio.com"
   ```
 
-  This will avoid recording the API calls to the path `/user/app` with the method `GET`, headers starting with `asdf` and host `dc.services.visualstudio.com`.
+  这将避免记录路径为`/user/app`、方法为`GET`、头部以`asdf`开头且主机为`dc.services.visualstudio.com`的API调用。
 
-- **`tests`**: Filters to record Tests.
+- **`tests`**：记录测试的过滤器。
 
-  Example:
+  示例：
 
   ```yaml
   tests:
@@ -132,9 +132,9 @@ The `record` section in the Keploy-config file allows you to define parameters f
         host: ""
   ```
 
-- **`bypassRules`**: A bypass for mocking API calls.
+- **`bypassRules`**：用于模拟API调用的绕过规则。
 
-  Example:
+  示例：
 
   ```yaml
   bypassRules:
@@ -144,24 +144,24 @@ The `record` section in the Keploy-config file allows you to define parameters f
         port: 0
   ```
 
-### Test Section
+### 测试部分
 
-The `test` section in the Keploy-config file allows you to define parameters for testing API calls.
+Keploy-config文件中的`test`部分允许您定义测试API调用的参数。
 
-- **`path`**: Path to the project where testing occurs. (Mandatory field)
+- **`path`**：测试发生的项目路径。（必填字段）
 
-- **`command`**: Command executed during testing.
+- **`command`**：测试期间执行的命令。
 
-- **`proxyport`**: Port number for the proxy during testing. Default is 0.
+- **`proxyport`**：测试期间的代理端口号。默认为0。
 
-- **`containerName`**: Name of the container during testing.
+- **`containerName`**：测试期间的容器名称。
 
-- **`networkName`**: Network name for the container during testing.
+- **`networkName`**：测试期间的容器网络名称。
 
-- **`ignoreOrdering`**: When set to `true`, ignores the order of array elements in response bodies during testing.
+- **`ignoreOrdering`**：设置为`true`时，测试期间忽略响应体中数组元素的顺序。
 
-- **`selectedTests`**: : Selected tests to run.
-  Example:
+- **`selectedTests`**：选择要运行的测试。
+  示例：
 
   ```yaml
   selectedTests:
@@ -169,8 +169,8 @@ The `test` section in the Keploy-config file allows you to define parameters for
     "test-set-2": []
   ```
 
-- **`globalNoise`**: Noisy fields to be ignored at global/test-set level.
-  Example:
+- **`globalNoise`**：在全局/测试集级别忽略的噪声字段。
+  示例：
 
   ```yml
   globalNoise:
@@ -179,11 +179,11 @@ The `test` section in the Keploy-config file allows you to define parameters for
   test-sets: {}
   ```
 
-- **`delay`**: Delay in seconds before testing each request. Default is 5 seconds.
+- **`delay`**：测试每个请求前的延迟秒数。默认为5秒。
 
-- **`apiTimeout`**: Timeout in seconds for API calls during testing. Default is 5 seconds.
+- **`apiTimeout`**：测试期间API调用的超时秒数。默认为5秒。
 
-- **` bypassRules`**: A bypass for mocking API calls.
+- **` bypassRules`**：用于模拟API调用的绕过规则。
 
   ```yaml
   bypassRules:
@@ -193,19 +193,19 @@ The `test` section in the Keploy-config file allows you to define parameters for
       port: 0
   ```
 
-- **`withCoverage`**: Whether to generate coverage reports during testing. Default is `false`.
+- **`withCoverage`**：是否在测试期间生成覆盖率报告。默认为`false`。
 
-- **`coverageReportPath`**: Path to store the coverage report.
-  Example:
+- **`coverageReportPath`**：存储覆盖率报告的路径。
+  示例：
   ```yaml
   coverageReportPath: "/path/to/coverage/report"
   ```
 
-The tests section in the Keploy-config file allows you to define parameters for recording test scenarios during API calls.
+Keploy-config文件中的tests部分允许您定义在API调用期间记录测试场景的参数。
 
-- **`filters`**: Filters to record specific tests based on path, HTTP methods, headers, and host.
+- **`filters`**：根据路径、HTTP方法、头部和主机记录特定测试的过滤器。
 
-  Example:
+  示例：
 
   ```yml
   tests:
@@ -217,25 +217,25 @@ The tests section in the Keploy-config file allows you to define parameters for 
         host: "dc.services.visualstudio.com"
   ```
 
-The tests section enables you to specify conditions for recording tests during API calls. The filters subsection allows you to define specific criteria, such as path, HTTP methods, headers, and host, to record relevant test scenarios.
+tests部分使您能够指定在API调用期间记录测试的条件。filters子部分允许您定义特定条件，如路径、HTTP方法、头部和主机，以记录相关的测试场景。
 
-- **`path`**: Specifies the path for which the test should be recorded. It defines the URL path of the API endpoint.
+- **`path`**：指定应记录测试的路径。它定义了API端点的URL路径。
 
-- **`urlMethods`**: Specifies the HTTP methods for which the test should be recorded. It allows you to focus on specific HTTP methods like GET, POST, etc.
+- **`urlMethods`**：指定应记录测试的HTTP方法。它允许您专注于特定的HTTP方法，如GET、POST等。
 
-- **`headers`**: Specifies headers and their values for which the test should be recorded. It enables you to filter tests based on specific headers.
+- **`headers`**：指定应记录测试的头部及其值。它使您能够根据特定头部过滤测试。
 
-- **`host`**: Specifies the host for which the test should be recorded. It defines the domain or IP address of the API server.
+- **`host`**：指定应记录测试的主机。它定义了API服务器的域名或IP地址。
 
-#### Using Test Filters Together or Independently
+#### 组合或独立使用测试过滤器
 
-You can use the **`path`**, **`urlMethods`**, **`headers`**, and **`host`** filters together or independently based on your testing scenarios. This flexibility allows you to precisely define the conditions under which tests are recorded.
+您可以根据测试场景组合或独立使用**`path`**、**`urlMethods`**、**`headers`**和**`host`**过滤器。这种灵活性使您能够精确定义记录测试的条件。
 
-### Bypass Rules Section
+### 绕过规则部分
 
-The `bypassRules` section in the Keploy-config file allows you to define parameters for bypassing and mocking API calls.
+Keploy-config文件中的`bypassRules`部分允许您定义绕过和模拟API调用的参数。
 
-Example:
+示例：
 
 ```yaml
 bypassRules:
@@ -248,81 +248,81 @@ bypassRules:
     path: "/user/app"
 ```
 
-The `bypassRules` section provides a way to bypass and mock API calls during testing. The filters subsection allows you to define specific conditions for applying stubs, such as path, port, and host. You can use these filters together or independently based on your testing scenarios.
+`bypassRules`部分提供了一种在测试期间绕过和模拟API调用的方法。filters子部分允许您定义应用存根的具体条件，如路径、端口和主机。您可以根据测试场景组合或独立使用这些过滤器。
 
-- **`path`**: Specifies the path for which the stub should be applied. It defines the URL path of the API endpoint.
+- **`path`**：指定应应用存根的路径。它定义了API端点的URL路径。
 
-- **`port`**: Specifies the port for which the stub should be applied. It defines the network port on which the API call is made.
+- **`port`**：指定应应用存根的端口。它定义了API调用的网络端口。
 
-- **`host`**: Specifies the host for which the stub should be applied. It defines the domain or IP address of the API server.
+- **`host`**：指定应应用存根的主机。它定义了API服务器的域名或IP地址。
 
-In the provided example:
+在提供的示例中：
 
-- The first bypass rule applies to the path "/user/app" and the port 8080.
-- The second bypass rule applies to the port 8081.
-- The third bypass rule applies to the host "dc.services.visual
+- 第一条绕过规则适用于路径"/user/app"和端口8080。
+- 第二条绕过规则适用于端口8081。
+- 第三条绕过规则适用于主机"dc.services.visual
 
-## Advanced Noise Filtering:
+## 高级噪声过滤
 
-Earlier the only way to add the [noisy fields](http://keploy.io/docs/concepts/general-glossary/#3-noisy-field) was by modifying individual test file (testcase level). Now, With the introduction of config file, users can add the noisy fields at test-set and global level through config file itself.
+以前，添加[噪声字段](http://keploy.io/docs/concepts/general-glossary/#3-noisy-field)的唯一方法是修改单个测试文件（测试用例级别）。现在，随着配置文件的引入，用户可以通过配置文件本身在测试集和全局级别添加噪声字段。
 
-### Global Noise
+### 全局噪声
 
-The `global subsection` of `globalNoise` is used to define parameters that are globally ignored for all API calls during testing. It enables you to filter out consistent noise, ensuring a cleaner evaluation of responses.
+`globalNoise`的`global子部分`用于定义在测试期间所有API调用中全局忽略的参数。它使您能够过滤掉一致的噪声，确保更干净的响应评估。
 
-**Note** - The examples below support both the xml as well as the json type responses.
+**注意** - 以下示例支持xml和json类型的响应。
 
 ```yml
 globalNoise:
   global: {body: {
-          # To ignore some values for a field, pass regex patterns to the corresponding array value
+          # 要忽略某个字段的某些值，将正则模式传递给相应的数组值
           "url": ['https?://\S+', 'http://\S+'],
         }, header: {
-          # To ignore the entire field, pass an empty array
+          # 要忽略整个字段，传递一个空数组
           "Date": [],
         }}
 ```
 
-**Note:** For marking entire response body as global noise use -
+**注意：** 要将整个响应体标记为全局噪声，请使用：
 
 ```yml
 globalNoise:
 global: {body: {"*": "*"}}
 ```
 
-1. **`global`**:
+1. **`global`**：
 
-- **`body`**: Defines patterns to ignore for the response body, such as filtering out URLs. Example: `{"url": ['https?://\S+', 'http://\S+']}`
-- **`header`**: Specifies headers or header values to be ignored globally. Example: `{"Date": []}`
+- **`body`**：定义要忽略的响应体模式，例如过滤掉URL。示例：`{"url": ['https?://\S+', 'http://\S+']}`
+- **`header`**：指定要全局忽略的头部或头部值。示例：`{"Date": []}`
 
-2. **`test-sets`**: This section is left empty in the example. It allows you to specify additional noise parameters for specific test sets, offering tailored noise filtering for different testing scenarios.
+2. **`test-sets`**：示例中此部分为空。它允许您为特定测试集指定额外的噪声参数，为不同的测试场景提供定制的噪声过滤。
 
-### Test-Set Noise
+### 测试集噪声
 
-Under the `test-sets` subsection of `globalNoise`, you can define noise parameters specific to a particular test set. This ensures that certain noise is only ignored for the API calls associated with that specific test set.
+在`globalNoise`的`test-sets子部分`下，您可以定义特定于某个测试集的噪声参数。这确保某些噪声仅在与该特定测试集相关的API调用中被忽略。
 
 ```yml
 test-sets: {test-set-1: {body: {
-            # ignore all the values for the "uuid" field
+            # 忽略"uuid"字段的所有值
             "uuid": [],
           }, header: {
-            # we can also pass the exact value to ignore for a field
+            # 我们也可以传递要忽略的字段的精确值
             "User-Agent": ["PostmanRuntime/7.34.0"],
           }}}
 ```
 
-**`test-set-1`**:
+**`test-set-1`**：
 
-- **`body`**: Defines patterns to ignore for the response body within the specified test set.
-- **`header`**: Specifies headers or header values to be ignored for the specified test set. Example: `{"User-Agent": ["PostmanRuntime/7.34.0"]}`
+- **`body`**：定义在指定测试集中要忽略的响应体模式。
+- **`header`**：指定在指定测试集中要忽略的头部或头部值。示例：`{"User-Agent": ["PostmanRuntime/7.34.0"]}`
 
-## Handling Deeply Nested JSON Fields in Keploy Configuration 🧩
+## 处理深度嵌套的JSON字段 🧩
 
-When dealing with deeply nested JSON fields in the response body, it’s important to correctly specify the path to the fields in the Keploy configuration file. Here’s an example to illustrate how to add a nested `token` field to the global noise configuration.
+在处理响应体中的深度嵌套JSON字段时，正确指定Keploy配置文件中字段的路径非常重要。以下示例说明如何将嵌套的`token`字段添加到全局噪声配置中。
 
-### Example JSON Response 📄
+### 示例JSON响应 📄
 
-Consider the following JSON response:
+考虑以下JSON响应：
 
 ```json
 {
@@ -341,9 +341,9 @@ Consider the following JSON response:
 }
 ```
 
-### Adding Nested Fields to the Configuration ⚙️
+### 将嵌套字段添加到配置中 ⚙️
 
-To add the `token` field inside the `signUp` object in the global noise configuration, you need to specify the complete path to the field.
+要将`signUp`对象中的`token`字段添加到全局噪声配置中，您需要指定字段的完整路径。
 
 ```yaml
 globalNoise:
@@ -354,21 +354,21 @@ globalNoise:
     - path: "data.signUp.deletedAt"
 ```
 
-In this example:
+在此示例中：
 
-- `data.signUp.token` refers to the `token` field inside the nested `signUp` object.
-- Similarly, other nested fields like `createdAt`, `updatedAt`, and `deletedAt` are specified.
+- `data.signUp.token`指的是嵌套`signUp`对象中的`token`字段。
+- 类似地，其他嵌套字段如`createdAt`、`updatedAt`和`deletedAt`也被指定。
 
-By specifying the path in this manner, Keploy will correctly identify and handle these deeply nested fields in the configuration.
+通过以这种方式指定路径，Keploy将正确识别和处理配置中的这些深度嵌套字段。
 
-### **Note**:
+### **注意**：
 
-The `globalNoise` and `test-sets` are optional fields in the config file. If not specified, the default value for both fields is an empty object `{}`. This flexibility allows you to seamlessly integrate advanced noise filtering based on your testing requirements.
+`globalNoise`和`test-sets`是配置文件中的可选字段。如果未指定，这两个字段的默认值为空对象`{}`。这种灵活性使您能够根据测试需求无缝集成高级噪声过滤。
 
-## Conclusion
+## 结论
 
-Congratulations! You've now explored the features and configuration options provided by `Keploy-config`.
+恭喜！您现在已经探索了`Keploy-config`提供的功能和配置选项。
 
-Now armed with Keploy-config, you are ready to embark on a more organized and productive journey of recording and testing APIs with Keploy. Feel free to explore additional features, customize configurations, and refer to the [CLI Command Docs](http://keploy.io/docs/running-keploy/cli-commands/) for more details on available flags and parameters.
+现在，借助Keploy-config，您可以开始更有组织、更高效地使用Keploy记录和测试API。请随意探索其他功能，自定义配置，并参考[CLI命令文档](http://keploy.io/docs/running-keploy/cli-commands/)了解更多关于可用标志和参数的详细信息。
 
-Happy testing and may your APIs always return the expected results! 🚀
+祝您测试愉快，愿您的API始终返回预期结果！🚀

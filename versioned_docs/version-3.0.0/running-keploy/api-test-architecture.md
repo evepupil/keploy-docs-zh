@@ -1,51 +1,51 @@
 ---
 id: api-test-architecture
-title: Behind the Scenes
-sidebar_label: Behind the Scenes
-description: How Keploy turns your schema and API requests into edge-case API tests—instantly.
+title: 幕后揭秘
+sidebar_label: 幕后揭秘
+description: Keploy如何将您的API规范和请求即时转化为边界用例测试。
 tags:
-  - api testing
-  - architecture
+  - API测试
+  - 架构
   - OpenAPI
   - curl
 ---
 
-# 🛠️ API Testing Architecture
+# 🛠️ API测试架构
 
-With Keploy, go from API specs to real, production-grade API tests—**instantly!**  
-Here’s how our architecture works under the hood.
+通过Keploy，从API规范到真实的生产级测试用例——**瞬间完成！**  
+以下是我们的底层架构工作原理。
 
-![Keploy API Testing Architecture](https://res.cloudinary.com/dfhtr1rwo/image/upload/v1748784682/keploy-api-arch_i3hjco.png)
+![Keploy API测试架构](https://res.cloudinary.com/dfhtr1rwo/image/upload/v1748784682/keploy-api-arch_i3hjco.png)
 
-> _From schema and cURL to edge-case API tests, pass/fail tracking, and detailed diffs—all automated._
+> _从Schema到cURL请求，自动生成边界用例测试、通过/失败追踪及详细差异报告。_
 
-## 📋 Requirements to Get Started
+## 📋 开始前的准备条件
 
-You can use Keploy’s API testing for **any application, in any language**.  
-To generate the most valuable and accurate test cases, you’ll need:
+Keploy的API测试支持**任意语言开发的应用程序**。  
+为了生成最有价值且精确的测试用例，您需要：
 
-### 1. Upload Your OpenAPI Schema (Swagger)
+### 1. 上传OpenAPI规范（Swagger）
 
-_Why?_  
-This gives Keploy a detailed map of your API endpoints, making test generation much smarter and more precise.
+_为什么？_  
+这为Keploy提供了API端点的详细路线图，使测试生成更智能精准。
 
-### 2. Drop in Your cURL Commands
+### 2. 导入cURL命令
 
-_Why?_  
-Your real-world cURL requests show Keploy how your APIs are actually used, covering positive, negative, and edge cases.
+_为什么？_  
+真实的cURL请求能展示API的实际使用场景，覆盖正向、负向及边界用例。
 
-### 3. Make Your App Publicly Accessible (Ngrok Works Great!)
+### 3. 确保应用可公开访问（推荐Ngrok）
 
-_Why?_  
-Keploy needs to interact with your live API endpoints to generate and validate tests. Tools like Ngrok make this easy, even for local apps.
+_为什么？_  
+Keploy需要与实时API端点交互来生成验证测试。即使本地应用，Ngrok等工具也能轻松实现。
 
-## ⚡ How Keploy Turns Your Inputs Into API Tests
+## ⚡ Keploy如何将输入转化为API测试
 
-- Upload your OpenAPI schema, API docs, and cURL requests.
-- Keploy analyzes these to auto-generate edge case test cases—covering positive, negative, and neutral scenarios.
-- Tests are run, tracked, and diffs are shown so you can catch issues instantly.
-- Results are visible at a glance: what passed, what failed, and what needs fixing.
+- 上传OpenAPI规范、API文档及cURL请求
+- Keploy自动分析生成边界测试用例，覆盖正向/负向/中性场景
+- 自动执行测试并显示差异报告，即时发现问题
+- 结果一目了然：通过项、失败项及待修复项
 
-Ready to try it? [app.keploy.io](https://app.keploy.io)
+立即体验：[app.keploy.io](https://app.keploy.io)
 
-Questions? [Contact our team](mailto:support@keploy.io).
+仍有疑问？[联系团队](mailto:support@keploy.io)

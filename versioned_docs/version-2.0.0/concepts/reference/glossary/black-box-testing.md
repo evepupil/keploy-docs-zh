@@ -1,202 +1,201 @@
 ---
 id: black-box-testing
-title: Mastering Black Box Testing - Techniques, Benefits, and Best Practices
-sidebar_label: Black Box Testing
-description: Discover the fundamentals of black box testing. Learn about key techniques like equivalence partitioning, boundary value analysis, and decision table testing. Enhance your software's quality by focusing on external behavior without internal code knowledge.
+title: 掌握黑盒测试 - 技术、优势与最佳实践
+sidebar_label: 黑盒测试
+description: 探索黑盒测试的基础知识。学习等价类划分、边界值分析和决策表测试等关键技术。通过关注外部行为（无需了解内部代码）来提升软件质量。
 tags:
-  - explanation
-  - Glossary
+  - 说明
+  - 术语表
 keywords:
   - API
-  - white box testing tools
-  - white box testing techniques
-  - white box testing
-  - what is white box testing
-  - black box testing tools
-  - black box testing techniques
-  - black box testing
-  - what is black box testing
+  - 白盒测试工具
+  - 白盒测试技术
+  - 白盒测试
+  - 什么是白盒测试
+  - 黑盒测试工具
+  - 黑盒测试技术
+  - 黑盒测试
+  - 什么是黑盒测试
   - keploy
-  - regression testing
+  - 回归测试
 ---
 
-Black-box testing is a software testing method where the tester evaluates the functionality of an application without having access to its internal code structure, algorithms, or implementation details. Instead, the tester interacts with the software through its user interface or exposed APIs, treating it as a "black box" whose internal workings are not visible or known.
+黑盒测试是一种软件测试方法，测试人员在无需了解应用程序内部代码结构、算法或实现细节的情况下评估其功能。测试人员通过用户界面或暴露的API与软件交互，将其视为一个"黑盒"，其内部工作机制不可见或未知。
 
-The focus lies solely on examining the software's external behavior, inputs, outputs, and responses to different user actions or system interactions.
+该方法仅关注检查软件的外部行为、输入输出以及对不同用户操作或系统交互的响应。
 
-![types of testing](../../../../../static/img/glossary/types-of-testing.jpeg)
+![测试类型](../../../../../static/img/glossary/types-of-testing.jpeg)
 
-## What are the Fundamentals of Black-Box Testing?
+## 黑盒测试的基本原理是什么？
 
-This testing approach is essential for several reasons:
+这种测试方法至关重要，原因如下：
 
-- **Independence from Internal Implementation:** Black-box testing allows testers to assess the software's functionality without needing knowledge of its internal workings. This independence ensures that the evaluation remains unbiased and realistic, as it mimics the perspective of end-users who are unaware of the software's internal structure.
+- **独立于内部实现**：黑盒测试允许测试人员在不了解软件内部工作原理的情况下评估其功能。这种独立性确保评估保持客观和真实，因为它模拟了不了解软件内部结构的最终用户视角。
 
-- **User-Centric Perspective**: By concentrating on the software's external behavior, black-box testing aligns closely with the user's experience. It helps identify issues that impact user interactions, such as usability flaws, incorrect outputs, or unexpected behaviors, leading to a more user-centric approach to quality assurance.
+- **以用户为中心的视角**：通过专注于软件的外部行为，黑盒测试与用户体验紧密契合。它有助于识别影响用户交互的问题，如可用性缺陷、错误输出或意外行为，从而形成更以用户为中心的质量保证方法。
 
-- **Comprehensive Test Coverage**: Black-box testing facilitates comprehensive test coverage by exploring various scenarios, inputs, and usage patterns. Testers can assess the software's functionality across different environments, user roles, and usage scenarios, helping uncover defects that might not be apparent during development or white-box testing.
+- **全面的测试覆盖**：黑盒测试通过探索各种场景、输入和使用模式，实现全面的测试覆盖。测试人员可以评估软件在不同环境、用户角色和使用场景下的功能，帮助发现开发或白盒测试期间可能不明显的问题。
 
-- **Validation of Requirements and Specifications**: Black-box testing serves as a validation mechanism for ensuring that the software meets its intended requirements and specifications. By testing against user expectations and documented requirements, testers can verify that the software behaves as expected and fulfills its intended purpose.
+- **需求和规范的验证**：黑盒测试作为一种验证机制，确保软件符合其预期需求和规范。通过根据用户期望和文档化需求进行测试，测试人员可以验证软件是否按预期行为并实现其预期目的。
 
-- **Detection of Defects and Vulnerabilities**: Black-box testing helps uncover defects, errors, and vulnerabilities in the software's external behavior. By subjecting the application to diverse inputs, boundary conditions, and usage scenarios, testers can identify issues such as functional errors, security vulnerabilities, performance bottlenecks, and compatibility issues.
+- **缺陷和漏洞的检测**：黑盒测试有助于发现软件外部行为中的缺陷、错误和漏洞。通过将应用程序置于不同的输入、边界条件和使用场景下，测试人员可以识别功能错误、安全漏洞、性能瓶颈和兼容性问题等问题。
 
-- **Accessibility and Flexibility**: Black-box testing is accessible and adaptable to testers with varying levels of technical expertise. It does not require in-depth programming knowledge or access to source code, making it suitable for testers with diverse backgrounds and skill sets. Additionally, black-box testing techniques can be applied to different types of software applications, including web applications, mobile apps, and standalone software products.
+- **可访问性和灵活性**：黑盒测试对具有不同技术专业水平的测试人员都是可访问和适应的。它不需要深入的编程知识或源代码访问权限，适合具有不同背景和技能集的测试人员。此外，黑盒测试技术可应用于不同类型的软件应用程序，包括Web应用程序、移动应用和独立软件产品。
 
-![Black Box Testing](https://res.cloudinary.com/practicaldev/image/fetch/s--shG8HMmV--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/f639sq6krordxspv1wxi.gif)
+![黑盒测试](https://res.cloudinary.com/practicaldev/image/fetch/s--shG8HMmV--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/f639sq6krordxspv1wxi.gif)
 
-## What are the Benefits of Black-Box Testing?
+## 黑盒测试的优势有哪些？
 
-1. **Independence from Internal Implementation**: Allows unbiased and realistic assessment, mimicking end-user perspectives.
-2. **User-Centric Perspective**: Aligns testing with user experience, identifying usability flaws and unexpected behaviors.
-3. **Comprehensive Test Coverage**: Covers various scenarios, inputs, and usage patterns, uncovering defects not apparent during development.
-4. **Validation of Requirements**: Ensures the software meets documented requirements and user expectations.
-5. **Detection of Defects**: Identifies functional errors, security vulnerabilities, and performance bottlenecks.
-6. **Accessibility**: Suitable for testers with diverse backgrounds and skill sets, adaptable to various software applications.
+1. **独立于内部实现**：允许客观真实的评估，模拟最终用户视角。
+2. **以用户为中心的视角**：使测试与用户体验保持一致，识别可用性缺陷和意外行为。
+3. **全面的测试覆盖**：涵盖各种场景、输入和使用模式，发现开发期间不明显的问题。
+4. **需求验证**：确保软件符合文档化需求和用户期望。
+5. **缺陷检测**：识别功能错误、安全漏洞和性能瓶颈。
+6. **可访问性**：适合具有不同背景和技能集的测试人员，可适应各种软件应用程序。
 
-## Whate are types of Black-Box Testing Techniques ?
+## 黑盒测试技术有哪些类型？
 
-![How Black Box testing Works?](https://www.imperva.com/learn/wp-content/uploads/sites/13/2020/03/thumbnail_Black-box.jpg)
+![黑盒测试如何工作？](https://www.imperva.com/learn/wp-content/uploads/sites/13/2020/03/thumbnail_Black-box.jpg)
 
-### 1. Equivalence Partitioning:
+### 1. 等价类划分：
 
-Equivalence partitioning is a black-box testing technique that divides the input domain of a software application into equivalence classes. Each equivalence class represents a set of valid or invalid inputs that should produce similar outputs from the software. Test cases are then designed to cover at least one representative from each equivalence class.
+等价类划分是一种黑盒测试技术，将软件应用程序的输入域划分为等价类。每个等价类代表一组应产生类似输出的有效或无效输入。然后设计测试用例以覆盖每个等价类中的至少一个代表。
 
-**Example:** Consider a login screen for a web application that requires users to enter their username and password. In equivalence partitioning, we can identify three equivalence classes for each input:
+**示例**：考虑一个Web应用程序的登录界面，要求用户输入用户名和密码。在等价类划分中，我们可以为每个输入识别三个等价类：
 
-- _Valid username_: Any valid username (e.g., "user123")
-- _Invalid username_: Username that doesn't exist in the system (e.g., "invaliduser")
-- _Empty username_: No username provided
+- _有效用户名_：任何有效的用户名（如"user123"）
+- _无效用户名_：系统中不存在的用户名（如"invaliduser"）
+- _空用户名_：未提供用户名
 
-Similarly, for the password field, we can identify equivalence classes such as:
+同样，对于密码字段，我们可以识别以下等价类：
 
-- _Valid password_: Correct password corresponding to the provided username
-- _Invalid password_: Incorrect password for the provided username
-- _Empty password_: No password provided
+- _有效密码_：与提供的用户名对应的正确密码
+- _无效密码_：与提供的用户名不匹配的密码
+- _空密码_：未提供密码
 
-Test cases would then be designed to cover at least one scenario from each equivalence class, ensuring comprehensive test coverage while minimizing redundancy.
+然后设计测试用例以覆盖每个等价类中的至少一个场景，确保全面的测试覆盖，同时最小化冗余。
 
-### 2. Boundary Value Analysis:
+### 2. 边界值分析：
 
-Boundary value analysis (BVA) is a black-box testing technique used to test the boundaries of input domains. Test cases are designed to evaluate how the software behaves at the edges or boundaries of valid and invalid input ranges. This helps identify potential errors or unexpected behavior that may occur near the boundaries.
+边界值分析（BVA）是一种用于测试输入域边界的黑盒测试技术。设计测试用例以评估软件在有效和无效输入范围的边缘或边界处的行为。这有助于识别在边界附近可能出现的错误或意外行为。
 
-**Example:** Consider a software application that accepts user input for the age of a person, with the valid range defined as 18 to 65 years. In boundary value analysis, we would design test cases to evaluate the behavior of the application at the boundaries and just beyond them:
+**示例**：考虑一个接受用户输入年龄的软件应用程序，有效范围定义为18至65岁。在边界值分析中，我们将设计测试用例以评估应用程序在边界及其附近的行为：
 
-- _Test case 1_: Input age as 17 (just below the lower boundary)
-- _Test case 2_: Input age as 18 (lower boundary)
-- _Test case 3_: Input age as 19 (within the valid range)
-- _Test case 4_: Input age as 65 (upper boundary)
-- _Test case 5_: Input age as 66 (just above the upper boundary)
+- _测试用例1_：输入年龄为17（刚好低于下限）
+- _测试用例2_：输入年龄为18（下限）
+- _测试用例3_：输入年龄为19（在有效范围内）
+- _测试用例4_：输入年龄为65（上限）
+- _测试用例5_：输入年龄为66（刚好高于上限）
 
-By testing at these boundary values, we can uncover potential issues such as off-by-one errors, boundary-related validation failures, and unexpected behaviors near the edges of the input range.
+通过在这些边界值上进行测试，我们可以发现潜在的差一错误、与边界相关的验证失败以及输入范围边缘的意外行为等问题。
 
-### 3. Decision Table Testing:
+### 3. 决策表测试：
 
-Decision table testing is a black-box testing technique used to test systems with complex business logic or decision-making processes. A decision table is created to represent all possible combinations of inputs and their corresponding outputs or actions. Test cases are then derived from the decision table to ensure comprehensive coverage of various decision paths.
+决策表测试是一种用于测试具有复杂业务逻辑或决策过程的系统的黑盒测试技术。创建一个决策表来表示所有可能的输入组合及其相应的输出或操作。然后从决策表中导出测试用例，以确保对各种决策路径的全面覆盖。
 
-**Example:** Consider a shipping application that calculates shipping charges based on the weight and destination of a package. The decision table would list all possible combinations of inputs (weight and destination) and specify the corresponding shipping charges or actions. Test cases would then be derived to cover each combination:
+**示例**：考虑一个根据包裹重量和目的地计算运费的运输应用程序。决策表将列出所有可能的输入组合（重量和目的地）并指定相应的运费或操作。然后导出测试用例以覆盖每种组合：
 
-- _Test case 1_: Package weight = 2 kg, Destination = Local (Domestic)
-- _Test case 2_: Package weight = 5 kg, Destination = International
-- _Test case 3_: Package weight = 10 kg, Destination = Local (Domestic)
-- _Test case 4_: Package weight = 15 kg, Destination = International
+- _测试用例1_：包裹重量=2 kg，目的地=本地（国内）
+- _测试用例2_：包裹重量=5 kg，目的地=国际
+- _测试用例3_：包裹重量=10 kg，目的地=本地（国内）
+- _测试用例4_：包裹重量=15 kg，目的地=国际
 
-By testing each combination of inputs, decision table testing helps us ensuring that the software behaves correctly under various scenarios.
+通过测试每种输入组合，决策表测试有助于确保软件在各种场景下行为正确。
 
-### 4. State Transition Testing:
+### 4. 状态转换测试：
 
-State transition testing is a black-box testing technique used to test systems that exhibit different states or modes of operation. Test cases are designed to validate the transitions between different states and ensure that the software behaves correctly throughout the state transition process.
+状态转换测试是一种用于测试具有不同状态或操作模式的系统的黑盒测试技术。设计测试用例以验证不同状态之间的转换，并确保软件在整个状态转换过程中行为正确。
 
-**Example:** Consider a traffic light control system with three states: Green, Yellow, and Red. State transition testing would involve designing test cases to validate the transitions between these states based on predefined rules:
+**示例**：考虑一个具有三种状态的交通灯控制系统：绿色、黄色和红色。状态转换测试将涉及设计测试用例以根据预定义规则验证这些状态之间的转换：
 
-- _Test case 1_: Transition from Green to Yellow when the timer expires
-- _Test case 2_: Transition from Yellow to Red when the timer expires
-- _Test case 3_: Transition from Red to Green after a specified delay
-- _Test case 4_: Validate that the system remains in the Red state during a power outage
+- _测试用例1_：计时器到期时从绿色转换为黄色
+- _测试用例2_：计时器到期时从黄色转换为红色
+- _测试用例3_：指定延迟后从红色转换为绿色
+- _测试用例4_：验证系统在断电期间保持在红色状态
 
-By testing the transitions between states and verifying the system's behavior under different conditions, state transition testing helps ensure the reliability and correctness of state-based systems.
+通过测试状态之间的转换并验证系统在不同条件下的行为，状态转换测试有助于确保基于状态的系统的可靠性和正确性。
 
-## Comparison of Black-Box Testing and White-Box Testing
+## 黑盒测试与白盒测试的比较
 
-| **Black-box testing**                                                                                       | **White-box testing**                                                                               |
+| **黑盒测试**                                                                                       | **白盒测试**                                                                               |
 | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Does not require knowledge of the internal structure or implementation details of the software being tested | Requires knowledge of the internal structure or implementation details of the software being tested |
-| Focuses on the software's external behavior and how it interacts with users                                 | Focuses on the software's internal logic and how it works                                           |
-| Can be performed by testers with a variety of skill levels                                                  | Requires testers with specialized knowledge and skills                                              |
-| Can find a wide range of defects                                                                            | Can find defects that are related to the software's internal logic                                  |
-| Can be used to verify the software's functionality, usability, and performance                              | Can be used to optimize performance, identify vulnerabilities, and ensure robust applications       |
+| 不需要了解被测试软件的内部结构或实现细节 | 需要了解被测试软件的内部结构或实现细节 |
+| 关注软件的外部行为及其与用户的交互方式 | 关注软件的内部逻辑及其工作方式 |
+| 可由具有不同技能水平的测试人员执行 | 需要具有专业知识和技能的测试人员 |
+| 可以发现广泛的缺陷 | 可以发现与软件内部逻辑相关的缺陷 |
+| 可用于验证软件的功能性、可用性和性能 | 可用于优化性能、识别漏洞并确保应用程序的健壮性 |
 
-## How to use Keploy for black-Box testing?
+## 如何使用Keploy进行黑盒测试？
 
-Firstly, install [Keploy](https://keploy.io/), a testing tool that helps you automate the testing process. Here’s how you can perform black box
-testing with Keploy:
+首先安装[Keploy](https://keploy.io/)，这是一个帮助自动化测试过程的测试工具。以下是使用Keploy进行黑盒测试的步骤：
 
-- **Record User Interactions**: Use Keploy to record user interactions with your application. This includes actions such as clicking buttons, entering text, navigating menus, and submitting forms.
+- **记录用户交互**：使用Keploy记录用户与应用程序的交互。这包括点击按钮、输入文本、导航菜单和提交表单等操作。
 
-- **Generate Test Cases**: Keploy automatically generates test cases based on the recorded user interactions. These test cases represent different scenarios and functionalities of your application from an external perspective.
+- **生成测试用例**：Keploy根据记录的用户交互自动生成测试用例。这些测试用例从外部视角代表应用程序的不同场景和功能。
 
-- **Customize and Expand Test Coverage**: Customize the generated test cases to cover specific features, edge cases, or user scenarios. You can expand test coverage by adding additional test scenarios that may not have been captured during initial recording.
+- **自定义和扩展测试覆盖**：自定义生成的测试用例以覆盖特定功能、边缘情况或用户场景。可以通过添加在初始记录期间未捕获的额外测试场景来扩展测试覆盖。
 
-- **Execute Tests**: Run the generated test cases using Keploy. It will simulate user interactions and validate the functionality of your application based on the recorded scenarios.
+- **执行测试**：使用Keploy运行生成的测试用例。它将模拟用户交互并根据记录的场景验证应用程序的功能。
 
-- **Analyze Results**: Analyze the test results generated by Keploy. It provides detailed reports on test coverage, pass/fail status, and any errors encountered during testing.
+- **分析结果**：分析Keploy生成的测试结果。它提供关于测试覆盖、通过/失败状态以及测试期间遇到的任何错误的详细报告。
 
-- **Regression Testing**: Use Keploy to perform regression testing by re-running previously recorded test cases after making changes to your application. This ensures that new updates do not introduce unintended side effects or break existing functionality.
+- **回归测试**：在对应用程序进行更改后，使用Keploy通过重新运行先前记录的测试用例来执行回归测试。这确保新更新不会引入意外副作用或破坏现有功能。
 
-## Conclusion
+## 结论
 
-Black-box testing is a valuable tool for ensuring the quality of software. It can be used to find a wide range of defects, and it can be performed by testers with a variety of skill levels. The best testing strategy for a particular software project will depend on the specific needs of the project. In some cases, black-box testing may be sufficient. In other cases, white-box testing may be necessary to find all the defects in the software.
+黑盒测试是确保软件质量的宝贵工具。它可以用于发现广泛的缺陷，并且可以由具有不同技能水平的测试人员执行。特定软件项目的最佳测试策略将取决于项目的具体需求。在某些情况下，黑盒测试可能足够。在其他情况下，可能需要白盒测试来发现软件中的所有缺陷。
 
-## FAQ
+## 常见问题
 
-### What is black-box testing?
+### 什么是黑盒测试？
 
-Black-box testing is a software testing method that evaluates the functionality of an application without examining its internal code or implementation. Testers focus on the inputs and outputs to ensure the software behaves as expected.
+黑盒测试是一种在不检查内部代码或实现的情况下评估应用程序功能的软件测试方法。测试人员专注于输入和输出，以确保软件按预期行为。
 
-### Why is black-box testing important?
+### 为什么黑盒测试很重要？
 
-Black-box testing is crucial because it mimics the end-user experience, ensuring the software meets user expectations and requirements. It helps identify functional issues, usability problems, and security vulnerabilities.
+黑盒测试至关重要，因为它模拟最终用户体验，确保软件满足用户期望和需求。它有助于识别功能问题、可用性问题和安全漏洞。
 
-### What are the main types of black-box testing?
+### 黑盒测试的主要类型有哪些？
 
-The main types of black-box testing are:
+黑盒测试的主要类型包括：
 
-- Equivalence Partitioning
-- Boundary Value Analysis
-- Decision Table Testing
-- State Transition Testing
+- 等价类划分
+- 边界值分析
+- 决策表测试
+- 状态转换测试
 
-### Can black-box testing be automated?
+### 黑盒测试可以自动化吗？
 
-Yes, black-box testing can be automated using various testing tools and frameworks. Automation helps in efficiently covering a wide range of test cases and scenarios, especially for regression testing.
+是的，可以使用各种测试工具和框架自动化黑盒测试。自动化有助于高效覆盖广泛的测试用例和场景，特别是对于回归测试。
 
-### How does black-box testing differ from white-box testing?
+### 黑盒测试与白盒测试有何不同？
 
-Black-box testing focuses on the software's external behavior without knowledge of its internal code, whereas white-box testing involves examining the internal structure and logic of the software.
+黑盒测试在不了解内部代码的情况下关注软件的外部行为，而白盒测试涉及检查软件的内部结构和逻辑。
 
-### What skills are required for black-box testing?
+### 黑盒测试需要哪些技能？
 
-Black-box testing can be performed by testers with various skill levels. Key skills include understanding user requirements, creating test cases, executing tests, and reporting defects.
+具有不同技能水平的测试人员都可以执行黑盒测试。关键技能包括理解用户需求、创建测试用例、执行测试和报告缺陷。
 
-### When should black-box testing be performed in the software development lifecycle?
+### 在软件开发生命周期中何时应进行黑盒测试？
 
-Black-box testing is typically performed during the later stages of development, such as system testing, acceptance testing, and regression testing. It can also be conducted during unit testing for isolated modules.
+黑盒测试通常在开发的后期阶段进行，如系统测试、验收测试和回归测试。也可以在单元测试期间对隔离模块进行。
 
-### Can black-box testing be used for all types of software applications?
+### 黑盒测试可以用于所有类型的软件应用程序吗？
 
-Yes, black-box testing can be applied to various types of software applications, including web applications, mobile apps, desktop software, and embedded systems.
+是的，黑盒测试可应用于各种类型的软件应用程序，包括Web应用程序、移动应用、桌面软件和嵌入式系统。
 
-### What tools are commonly used for black-box testing?
+### 黑盒测试常用的工具有哪些？
 
-Common tools for black-box testing include Selenium, QTP (Quick Test Professional), TestComplete, Appium, and JMeter. These tools assist in automating test cases and validating application behavior.
+黑盒测试的常用工具包括Selenium、QTP（Quick Test Professional）、TestComplete、Appium和JMeter。这些工具帮助自动化测试用例并验证应用程序行为。
 
-### How do you ensure comprehensive test coverage in black-box testing?
+### 如何确保黑盒测试的全面覆盖？
 
-To ensure comprehensive test coverage, testers should use a combination of different black-box testing techniques, create detailed test plans, and systematically test all possible input combinations and scenarios.
+为确保全面的测试覆盖，测试人员应结合使用不同的黑盒测试技术，创建详细的测试计划，并系统地测试所有可能的输入组合和场景。
 
-### What are the limitations of black-box testing?
+### 黑盒测试有哪些局限性？
 
-Black-box testing cannot guarantee complete coverage of all possible scenarios, especially those related to internal code paths and logic. It may miss certain types of defects that are only visible through the code, such as memory leaks or performance bottlenecks.
+黑盒测试不能保证完全覆盖所有可能的场景，特别是与内部代码路径和逻辑相关的场景。它可能会遗漏仅通过代码可见的某些类型缺陷，如内存泄漏或性能瓶颈。
 
-### How does black-box testing contribute to software quality assurance?
+### 黑盒测试如何贡献于软件质量保证？
 
-Black-box testing contributes to software quality assurance by verifying that the software meets user requirements, behaves correctly under various conditions, and provides a positive user experience. It helps in identifying defects that could impact the software's functionality, usability, and security.
+黑盒测试通过验证软件是否符合用户需求、在各种条件下行为正确并提供积极的用户体验，贡献于软件质量保证。它有助于识别可能影响软件功能性、可用性和安全性的缺陷。

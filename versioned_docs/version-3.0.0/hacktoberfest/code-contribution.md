@@ -1,15 +1,15 @@
 ---
 id: code-contribution
-title: Code Contribution
+title: 代码贡献
 label: Hacktoberfest
 ---
 
-# Code Contribution to Keploy Projects
+# 为 Keploy 项目贡献代码
 
-There are different ways you can contribute to Keploy projects codebase. You can help with:
+您可以通过多种方式为 Keploy 项目的代码库做出贡献。您可以参与以下工作：
 
-- 🛠️ Bug fixes :- If you'd like to break and build software, fix a [current issue](https://github.com/keploy/keploy/issues?q=is%3Aissue+is%3Aopen+label%3AHACKTOBERFEST2024) reported by the community and be a hero!
+- 🛠️ 修复错误 :- 如果您喜欢拆解和构建软件，可以修复社区报告的[现有问题](https://github.com/keploy/keploy/issues?q=is%3Aissue+is%3Aopen+label%3AHACKTOBERFEST2024)，成为英雄！
 
-- 👉 Implement features :- You can choose from a carefully curated selection of Hacktoberfest requests that have been made by community members.
+- 👉 实现功能 :- 您可以从社区成员精心挑选的 Hacktoberfest 需求中选择实现。
 
-- 👨‍💻 Build a Demo-App :- Build a sample-app with Keploy using the [specific stacks](https://github.com/keploy/keploy/issues?q=is%3Aissue+is%3Aopen+label%3Asample-apps) and share it with the community.
+- 👨‍💻 构建演示应用 :- 使用[特定技术栈](https://github.com/keploy/keploy/issues?q=is%3Aissue+is%3Aopen+label%3Asample-apps)构建一个 Keploy 示例应用，并与社区分享。

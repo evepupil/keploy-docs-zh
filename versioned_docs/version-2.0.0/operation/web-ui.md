@@ -1,63 +1,60 @@
 ---
 id: web-ui-operations
-title: Operations on Web UI
-description: Guide into Keploy Console
-sidebar_label: Web UI
+title: Web UI 操作指南
+description: Keploy 控制台使用指南
+sidebar_label: Web 界面
 tags:
-  - operation-guide
-  - ui
+  - 操作指南
+  - 用户界面
 ---
 
-Keploy Console consists of 2 pages majorly :
+Keploy 控制台主要包含两个页面：
 
-1. [Test Cases](/operation/web-ui-operations/#test-cases)
-2. [Test Runs](/operation/web-ui-operations/#test-runs)
+1. [测试用例](/operation/web-ui-operations/#测试用例)
+2. [测试运行](/operation/web-ui-operations/#测试运行)
 
-## Test Cases
+## 测试用例
 
-The Test Cases page lists all the Application names and their respective Test-Cases captured.
+测试用例页面列出了所有应用程序名称及其捕获的对应测试用例。
 
-![test case page](/img/test-case-page1.png)
+![测试用例页面](/img/test-case-page1.png)
 
-You can see the details of the Test Cases captures. Currently following details can be seen from the Web console :
+您可以查看捕获的测试用例详情。目前通过 Web 控制台可查看以下详细信息：
 
-- API Request
-- API Response
-- Dependency Captured Type and Operation
-- Raw Event with details like noisy and anchor fields
+- API 请求
+- API 响应
+- 捕获的依赖类型和操作
+- 包含噪声字段和锚点字段等详细信息的原始事件
 
-![test case detail](/img/test-case-detail.png)
+![测试用例详情](/img/test-case-detail.png)
 
-### Edit a Test Case
+### 编辑测试用例
 
-To change the behavior of the API request captured as a test-case, you can go to the detail of the test-case and click
-on Edit icon.
+要修改作为测试用例捕获的 API 请求行为，您可以进入测试用例详情页面并点击编辑图标。
 
-> Please note that editing a test-case is not a recommended practice since the dependency behavior might change with the change
-> of the API request. It's suggested to re-record the test-case and delete the previous one if not applicable.
+> 请注意：不建议编辑测试用例，因为依赖行为可能会随 API 请求的更改而变化。建议重新录制测试用例并删除不适用的旧用例。
 
-### Delete a Test Case
+### 删除测试用例
 
-You can delete the test-case from the test-cases listing page by clicking on the Delete Icon.
+您可以通过点击删除图标从测试用例列表页面删除测试用例。
 
-## Test Runs
+## 测试运行
 
-On the Test runs pages you will see the recent Test Runs with details like :
+在测试运行页面，您将看到最近的测试运行记录，包含以下详细信息：
 
-1. Number of Test Cases for the given application
-2. Number of Test Cases Successfully Ran
-3. Number of Test Cases Failed
-4. Meta details like : App name, time, user.
+1. 指定应用程序的测试用例数量
+2. 成功运行的测试用例数量
+3. 失败的测试用例数量
+4. 元数据信息：如应用名称、时间、用户等
 
-![test run page](/img/test-run-page1.png)
+![测试运行页面](/img/test-run-page1.png)
 
-### Normalise a Test Case
+### 标准化测试用例
 
-For times, when the behavior of the API changes and Keploy flags it while testing the application, you can go to the
-test run and particular test case detail that failed and mark it as normalised behaviour.
+当 API 行为发生变化且 Keploy 在测试应用程序时标记出差异时，您可以进入测试运行记录和特定的失败测试用例详情页面，将其标记为标准化行为。
 
-This will modify the test-case and will be accepted as the expected response for future test runs.
+这将修改测试用例，该响应将被接受为未来测试运行的预期结果。
 
-![normalise](/img/normalise-test-case.png)
+![标准化](/img/normalise-test-case.png)
 
-> Note : Since Test Runs are historical, normalising a test-case result in a test-run would not mark it success.
+> 注意：由于测试运行是历史记录，标准化测试运行中的测试用例不会将其标记为成功。

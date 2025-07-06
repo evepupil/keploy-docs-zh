@@ -1,40 +1,40 @@
 ---
 id: ai-models
-title: How Keploy Uses AI Models for Testing
-sidebar_label: How Keploy Uses AI Models for Testing
-description: How Keploy leverages state-of-the-art AI models for next-generation testing automation.
+title: Keploy如何利用AI模型进行测试
+sidebar_label: Keploy如何利用AI模型进行测试
+description: Keploy如何利用最先进的AI模型实现新一代测试自动化。
 tags:
   - AI
   - LLM
-  - unit testing
+  - 单元测试
   - Gemini
   - GPT-4
 ---
 
-# 🤖 AI Models at Keploy
+# 🤖 Keploy的AI模型
 
-Keploy is a vertical testing agent, built to generate high-quality unit tests using the world’s best AI.
+Keploy是一个垂直测试代理，旨在使用全球最优秀的AI生成高质量的单元测试。
 
-We don’t just rely on one model—we harness the strengths of multiple cutting-edge LLMs to give you smarter, more accurate, and more relevant tests.
+我们不仅依赖单一模型——而是整合多个前沿LLM的优势，为您提供更智能、更准确、更相关的测试。
 
-## 🚀 Multi-Model, Multi-Benefit
+## 🚀 多模型，多优势
 
-- **Gemini 2.5 Pro (Google):** Advanced reasoning, code understanding, and context awareness.
-- **GPT-4 Family (OpenAI):** Exceptional language ability, coverage of edge cases, and broad code knowledge.
-- **Other Specialized Models:** We continuously evaluate and integrate new AI models to keep raising the bar for testing automation.
+- **Gemini 2.5 Pro（谷歌）：** 高级推理能力、代码理解与上下文感知
+- **GPT-4系列（OpenAI）：** 卓越的语言能力、边缘案例覆盖与广泛代码知识
+- **其他专业模型：** 我们持续评估并集成新的AI模型，不断提升测试自动化标准
 
-By combining different models, Keploy can generate better test cases, filter out weak tests, and cover more scenarios.
+通过组合不同模型，Keploy能生成更优质的测试用例，过滤低效测试，覆盖更多场景。
 
-## 🏗️ How It Works
+## 🏗️ 工作原理
 
-- **Best of All Worlds:** For each test file, Keploy routes tasks to different models—letting each one play to its strengths.
-- **Quality Over Quantity:** Results are validated and cross-checked, so you get fewer, but stronger and more useful tests.
-- **Rapid Updates:** As AI models evolve, Keploy upgrades seamlessly—always keeping you on the leading edge.
+- **博采众长：** 对每个测试文件，Keploy将任务分配给不同模型——让每个模型发挥其专长
+- **质量优先：** 结果经过验证与交叉检查，您将获得更少但更强、更有价值的测试
+- **快速更新：** 随着AI模型进化，Keploy无缝升级——始终保持技术领先
 
-## 🌐 Transparency & User Trust
+## 🌐 透明度与用户信任
 
-- **No Code Used for Training:** Your code and test data are **never** used to train any external AI model.
+- **不用于模型训练：** 您的代码和测试数据**绝不会**被用于训练任何外部AI模型
 
-- **Model Selection:** We choose models for you automatically, but always with a focus on security, reliability, and test quality.
+- **模型选择：** 我们自动为您选择模型，始终以安全性、可靠性和测试质量为优先考量
 
-Want to learn more about how AI powers Keploy? [Contact us](mailto:support@keploy.io)
+想了解更多AI如何赋能Keploy？[联系我们](mailto:support@keploy.io)

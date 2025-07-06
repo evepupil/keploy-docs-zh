@@ -1,40 +1,40 @@
 ---
 id: rename-testcases
-title: Rename Default Test-names
-sidebar_label: Rename Testname
-description: This section documents how to rename testcases & testsets
+title: 重命名默认测试名称
+sidebar_label: 重命名测试名称
+description: 本文档介绍如何重命名测试用例和测试集
 tags:
-  - rename testcases
-  - rename testsets
+  - 重命名测试用例
+  - 重命名测试集
 keywords:
-  - testcases
-  - documentation
-  - rename
-  - testsets
+  - 测试用例
+  - 文档
+  - 重命名
+  - 测试集
 ---
 
-## Rename Test-Cases
+## 重命名测试用例
 
-To name your test case, make an API call and **add a header field** whose key is set to `Keploy-Test-Name` and value is set to the name you want for your test case.
+要为测试用例命名，请发起API调用并**添加一个头字段**，其键设置为`Keploy-Test-Name`，值设置为所需的测试用例名称。
 
-### Example
+### 示例
 
-To demonstrate this, let's consider the [gin-mongo](https://github.com/keploy/samples-go/tree/main/gin-mongo) sample application.
+我们以[gin-mongo](https://github.com/keploy/samples-go/tree/main/gin-mongo)示例应用进行演示。
 
-1. Clone the repository and build the application.
+1. 克隆仓库并构建应用。
 
 ```bash
 git clone https://github.com/keploy/samples-go && cd samples-go/gin-mongo
 go build
 ```
 
-2. Run keploy in record mode and provide the path to the binary.
+2. 在记录模式下运行keploy，并提供二进制文件路径。
 
 ```bash
 sudo -E keploy record -c "./test-app-url-shortener"
 ```
 
-3. Make an api call and add a header field with key set to `Keploy-Test-Name` and value set to the name you want for your testcase, let's say 'renametest'.
+3. 发起API调用并添加头字段，键设为`Keploy-Test-Name`，值设为想要的测试用例名称（例如'renametest'）。
 
 ```bash
 curl --request POST \
@@ -46,8 +46,8 @@ curl --request POST \
 }'
 ```
 
-5. Test case with the name `renamed-test.yaml` has been successfully created. 🎉
+5. 名为`renamed-test.yaml`的测试用例已成功创建。🎉
 
-## Rename Test-Sets
+## 重命名测试集
 
-To rename your test set, you can manually override the default name from `test-set-0` to a `kTest-0` in the `keploy` folder.
+要重命名测试集，您可以手动将`keploy`文件夹中的默认名称从`test-set-0`改为`kTest-0`。

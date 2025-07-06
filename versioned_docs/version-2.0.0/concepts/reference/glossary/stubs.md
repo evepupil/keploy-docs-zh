@@ -1,22 +1,22 @@
 ---
 id: stubs
-title: Create Data Stubs using Keploy
-sidebar_label: Stubs
-description: In software testing, stubs are used to simulate the behavior of external systems or modules that are not yet implemented.
+title: 使用Keploy创建数据桩
+sidebar_label: 数据桩
+description: 在软件测试中，桩用于模拟尚未实现的外部系统或模块的行为。
 tags:
-  - explanation
-  - Glossary
+  - 解释说明
+  - 术语表
 keywords:
   - API
 ---
 
-## What are stubs?
+## 什么是桩？
 
-Stubs are a piece of code that stands in for some other programming functionality. It can simulate the behavior of existing code (such as a procedure on a remote machine) or be a temporary substitute for yet-to-be-developed code. Stubs are most useful in porting, distributed computing, and general software development and testing.
+桩是一段用于替代其他编程功能的代码。它可以模拟现有代码的行为（如远程机器上的过程），或作为尚未开发代码的临时替代品。桩在移植、分布式计算以及通用软件开发和测试中最为有用。
 
-In software testing, stubs are used to simulate the behavior of external systems or modules that are not yet implemented. This allows the developer to test the calling module without having to wait for the external system to be ready. Stubs can also be used to test the calling module in isolation, without having to worry about the side effects of calling the external system.
+在软件测试中，桩用于模拟尚未实现的外部系统或模块的行为。这使得开发者无需等待外部系统就绪即可测试调用模块。桩还可用于隔离测试调用模块，而无需担心调用外部系统的副作用。
 
-Here is an example of a stub in Java:
+以下是一个Java桩的示例：
 
 ```java
 public class Stub {
@@ -27,29 +27,29 @@ public class Stub {
 }
 ```
 
-The above stub simulates the behavior of a real-world thermometer. It always returns the temperature of 72 degrees Fahrenheit. The stubs we created earlier could be used to test a program that reads the temperature from a thermometer.
+上述桩模拟了真实温度计的行为，它总是返回72华氏度的温度。我们创建的桩可用于测试从温度计读取温度的程序。
 
-When we talk about stubs, they are a valuable tool in the process of software development and testing, as they help to speed up the development process and ensure that the code is working correctly.
+当我们讨论桩时，它们是软件开发和测试过程中的宝贵工具，因为它们有助于加快开发进程并确保代码正确运行。
 
-## Benefits of using data stubs:
+## 使用数据桩的优势：
 
-- They can help to speed up the development process by allowing the developer to test the calling module without having to wait for the external system to be ready.
-- They can help to ensure that the code is working correctly by isolating the calling module from the external system.
-- They can help to identify problems with the calling module by providing a simplified interface to the external system.
+- 通过允许开发者在外部系统就绪前测试调用模块，可以加速开发进程
+- 通过将调用模块与外部系统隔离，有助于确保代码正确运行
+- 通过提供简化的外部系统接口，有助于识别调用模块的问题
 
-## Challenges with data Stubs:
+## 数据桩的挑战：
 
-- Data stubs/mocks are difficult to create, especially if the external system is complex.
-- And they may not always be accurate representations of the real-world system.
-- Also, with data stubs may not be able to handle all of the possible scenarios that the real-world system can handle.
-- Stubs are generally brittle.
+- 数据桩/模拟难以创建，特别是当外部系统复杂时
+- 它们可能并不总是真实系统的准确表示
+- 数据桩可能无法处理真实系统能处理的所有可能场景
+- 桩通常比较脆弱
 
-## Overcoming Stub Challeges with Keploy:
+## 使用Keploy克服桩的挑战：
 
-Overall, stubs are a valuable tool for software development and testing. They can help to speed up the development process, ensure that the code is working correctly, and identify problems with the calling module.
+总体而言，桩是软件开发和测试的宝贵工具。它们可以加速开发进程，确保代码正确运行，并帮助识别调用模块的问题。
 
-Keploy can generate dependency stubs in addition to the testcases by recording your application network calls making your testing process not only faster than unit tests but also incredibly efficient.
+Keploy除了生成测试用例外，还能通过记录应用程序网络调用来生成依赖桩，使你的测试过程不仅比单元测试更快，而且极其高效。
 
 <img src="https://keploy.io/docs/gif/record-replay.gif?raw=true"/>
 
-Since the data stubs are generated based on the real-time capturing of API calls from your application, they will be from real-world scenarios. This can help to ensure that the mock data is accurate and that it represents the real data as closely as possible. As well as, it makes the data maintenance process easier by providing a same environment for testing. This can help to identify the source of bugs more easily.
+由于数据桩是基于从应用程序实时捕获的API调用生成的，它们将来自真实场景。这有助于确保模拟数据的准确性，并尽可能接近地表示真实数据。同时，通过提供相同的测试环境，使数据维护过程更加容易。这有助于更轻松地识别错误来源。

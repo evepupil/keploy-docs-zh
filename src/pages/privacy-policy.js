@@ -7,178 +7,116 @@ function PrivacyPolicy() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      title="Keploy, Inc. Privacy Policy"
+      title="Keploy公司隐私政策"
       permalink="/privacy-policy"
-      description="Privacy Policy information about Keploy."
+      description="关于Keploy的隐私政策信息"
     >
       <main className="margin-vert--lg container">
         <div className="pb-5 text-center text-4xl font-bold">
-          Keploy Inc. Privacy Policy
+          Keploy公司隐私政策
         </div>
         <p className="text-2l md:text-3l mb-2 font-bold tracking-wide">
-          Last updated: April 28th, 2024
+          最后更新：2024年4月28日
         </p>
         <p className="text-l mb-8">
-          Keploy Inc. operates{" "}
+          Keploy公司运营{" "}
           <a href="https://keploy.io" style={{color: "#FF914D"}}>
             https://keploy.io
           </a>{" "}
-          and{" "}
+          和{" "}
           <a href="https://keploy.io/docs" style={{color: "#FF914D"}}>
             https://docs.keploy.io
           </a>{" "}
-          (the &quot;Sites&quot;). Please read this Privacy Policy carefully to
-          understand our policies and practices in relation to the collection,
-          processing, and storage of your personal information. By accessing or
-          using our Services (defined below), you understand that we will
-          process your personal information as described in this Privacy Policy.
-          If you do not agree with or are not comfortable with any aspect of
-          this Privacy Policy, you should immediately discontinue access or use
-          of our Services.
+          （以下简称"网站"）。请仔细阅读本隐私政策，了解我们关于个人信息收集、处理和存储的政策与实践。通过访问或使用我们的服务（定义见下文），即表示您理解我们将按照本隐私政策处理您的个人信息。如果您不同意或不满意本隐私政策的任何方面，应立即停止访问或使用我们的服务。
         </p>
         <p className="text-l mb-8">
-          We use your Personal Information only for providing and improving the
-          Sites. By using the Sites, you agree to the collection and use of
-          information in accordance with this policy.
+          我们仅将您的个人信息用于提供和改进网站服务。使用网站即表示您同意按照本政策收集和使用信息。
         </p>
         <h2
           id="information-collection-and-use"
           className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl"
         >
-          Information Collection And Use
+          信息收集与使用
         </h2>
         <p className="text-l mb-8">
-          As you navigate through and interact with our Website, we may use
-          automatic data collection technologies to collect certain information
-          about your equipment, browsing actions, and patterns, including: (a)
-          details of your visits to our Website, including traffic data,
-          location data, logs, and other communication data and the resources
-          that you access and use our Services; and (b) information about your
-          computer and internet connection, including your IP address, operating
-          system, and browser type. The information we collect automatically
-          helps us to improve our Services and to deliver a better and more
-          personalized service, including by enabling us to: (i) estimate our
-          audience size and usage patterns; (ii) store information about your
-          preferences, allowing us to customize our Services according to your
-          individual interests; (iii) speed up your searches; and (iv) recognize
-          you when you return to our Services. For more information about the
-          cookies and tracking technologies we may use please review the Cookie
-          section below. (&quot;Personal Information&quot;).
+          当您浏览并与我们的网站互动时，我们可能使用自动数据收集技术收集有关您设备、浏览行为和模式的特定信息，包括：(a) 您访问网站的详细信息，包括流量数据、位置数据、日志和其他通信数据，以及您访问和使用的资源；(b) 关于您计算机和互联网连接的信息，包括IP地址、操作系统和浏览器类型。我们自动收集的信息有助于改进我们的服务，提供更好且更个性化的服务，包括使我们能够：(i) 估计受众规模和用户模式；(ii) 存储您的偏好信息，让我们根据您的个人兴趣定制服务；(iii) 加快您的搜索速度；(iv) 当您返回我们的服务时识别您。有关我们可能使用的Cookie和跟踪技术的更多信息，请参阅下文"Cookie"部分。（"个人信息"）
         </p>
         <h2
           id="log-data"
           className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl"
         >
-          Log Data
+          日志数据
         </h2>
         <p className="text-l mb-8">
-          Like many site operators, we collect information that your browser
-          sends whenever you visit our Sites (&quot;Log Data&quot;). This Log
-          Data may include information such as your computer&#39;s Internet
-          Protocol (&quot;IP&quot;) address, browser type, browser version, the
-          pages of our Sites that you visit, the time and date of your visit,
-          the time spent on those pages and other statistics. In addition, we
-          may use third party services such as Google Analytics that collect,
-          monitor and analyze this data.
+          与许多网站运营商一样，我们收集您的浏览器在访问我们网站时发送的信息（"日志数据"）。这些日志数据可能包括您计算机的互联网协议（"IP"）地址、浏览器类型、浏览器版本、您访问的网站页面、访问时间和日期、在这些页面上花费的时间以及其他统计数据。此外，我们可能使用Google Analytics等第三方服务来收集、监控和分析这些数据。
         </p>
         <h2
           id="communications"
           className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl"
         >
-          Communications
+          通信
         </h2>
         <p className="text-l mb-8">
-          Depending on the method of collection, we may use your Personal
-          Information to contact you with newsletters, marketing or promotional
-          materials and other information that we believe is relevant for you.
+          根据收集方式的不同，我们可能会使用您的个人信息通过新闻通讯、营销或促销材料以及其他我们认为与您相关的信息与您联系。
         </p>
         <h2
           id="cookies"
           className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl"
         >
-          Cookies
+          Cookie
         </h2>
         <p className="text-l mb-8">
-          Cookies are files with a small amount of data, which may include an
-          anonymous unique identifier. Cookies are sent to your browser from a
-          web site and stored on your computer&#39;s hard drive.
+          Cookie是包含少量数据的文件，其中可能包含匿名唯一标识符。Cookie从网站发送到您的浏览器，并存储在您计算机的硬盘上。
         </p>
         <p className="text-l mb-8">
-          Like many sites, we use &quot;cookies&quot; to collect information.
-          You can instruct your browser to refuse all cookies or to indicate
-          when a cookie is being sent. However, if you do not accept cookies,
-          you may not be able to use some portions of our Sites.
+          与许多网站一样，我们使用"Cookie"来收集信息。您可以指示浏览器拒绝所有Cookie或在发送Cookie时提示。但是，如果您不接受Cookie，可能无法使用我们网站的某些部分。
         </p>
         <h2
           id="security"
           className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl"
         >
-          Security
+          安全
         </h2>
         <p className="text-l mb-8">
-          The security of your Personal Information is important to us, but
-          remember that no method of transmission over the Internet, or method
-          of electronic storage, is 100% secure. While we strive to use
-          commercially acceptable means to protect your Personal Information, we
-          cannot guarantee its absolute security.
+          您的个人信息安全对我们至关重要，但请记住，任何通过互联网传输的方法或电子存储方法都不是100%安全的。虽然我们努力使用商业上可接受的手段来保护您的个人信息，但我们无法保证其绝对安全。
         </p>
         <p className="text-l mb-8">
-          We have implemented appropriate technical and organizational measures
-          designed to secure your information, or any data you, your employees,
-          or agents provide to us pursuant to your role as an employee of
-          another business (“Business Data”), from accidental loss and from
-          unauthorized access, use, alteration, and disclosure. For more
-          information on our security practices please refer to:{" "}
+          我们已经实施了适当的技术和组织措施，旨在保护您的信息或您作为其他企业员工角色时（"业务数据"）提供给我们、您的员工或代理人的任何数据免受意外丢失和未经授权的访问、使用、更改和披露。有关我们安全实践的更多信息，请参阅：{" "}
           <a href="https://keploy.io/docs/security" style={{color: "#FF914D"}}>
-            keploy.io/docs/security.
+            keploy.io/docs/security
           </a>
           {""}
         </p>
         <p className="text-l mb-8">
-          The safety and security of your information depends on you. Where we
-          have given you (or where you have chosen) a password for access to
-          certain parts of our Services you are responsible for keeping this
-          password confidential. We ask you not to share your password with
-          anyone.
+          您信息的安全性和保密性取决于您自己。在我们为您提供（或您已选择）密码以访问我们服务的某些部分时，您有责任对此密码保密。我们要求您不要与任何人共享您的密码。
         </p>
         <h2
           id="changes-to-this-privacy-policy"
           className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl"
         >
-          Changes To This Privacy Policy
+          隐私政策的变更
         </h2>
         <p className="text-l mb-8">
-          This Privacy Policy is effective as of April 28th 2024 and will remain
-          in effect except with respect to any changes in its provisions in the
-          future, which will be in effect immediately after being posted on this
-          page.
+          本隐私政策自2024年4月28日起生效，除非未来条款有所变更，变更将在本页发布后立即生效。
         </p>
         <p className="text-l mb-8">
-          We reserve the right to update or change our Privacy Policy at any
-          time and you should check this Privacy Policy periodically. Your
-          continued use of the Service after we post any modifications to the
-          Privacy Policy on this page will constitute your acknowledgment of the
-          modifications and your consent to abide and be bound by the modified
-          Privacy Policy.
+          我们保留随时更新或更改隐私政策的权利，您应定期查看本隐私政策。在本页对隐私政策进行任何修改后继续使用服务，即表示您确认修改并同意遵守并受修改后的隐私政策约束。
         </p>
         <p className="text-l mb-8">
-          If we make any material changes to this Privacy Policy, we will notify
-          you either through the email address you have provided us, or by
-          placing a prominent notice on our website.
+          如果我们对本隐私政策做出任何重大变更，我们将通过您提供的电子邮件地址或在我们的网站上发布显著通知的方式通知您。
         </p>
         <h2
           id="contact-us"
           className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl"
         >
-          Contact Us
+          联系我们
         </h2>
         <p className="text-l mb-8">
-          If you have any questions about this Privacy Policy, please contact
-          us-{" "}
+          如果您对本隐私政策有任何疑问，请联系我们 -{" "}
           <a href="mailto:hello@keploy.io" style={{color: "#FF914D"}}>
             hello@keploy.io
           </a>
-          .
+          。
         </p>
       </main>
     </Layout>

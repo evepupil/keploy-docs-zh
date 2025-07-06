@@ -1,55 +1,55 @@
 ---
 id: samples-rust-wrap
-title: Rust Sample Application
+title: Rust 示例应用
 sidebar_label: Warp + Mongo
-description: The following sample app to test Keploy integration capabilities using Warp HTTP and MongoDb.
+description: 以下示例应用用于测试 Keploy 与 Warp HTTP 和 MongoDB 的集成能力。
 tags:
   - Rust
   - MongoDB
 keyword:
   - Rust
   - MongoDB
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-This is a sample app to test Keploy integration capabilities using rust and MongoDb. Buckle up, it's gonna be a fun ride! 🎢
+这是一个使用 Rust 和 MongoDB 测试 Keploy 集成能力的示例应用。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 快速开始 🎬
 
-## Setup app
+## 设置应用
 
-Now that we have bun installed, we will setup our application.
+现在我们已经安装了 bun，接下来将设置我们的应用。
 
 ```bash
 git clone https://github.com/keploy/samples-rust && cd samples-rust/CRUD-rust-mongo
 ```
 
-## Running App Locally on Linux/WSL 🐧
+## 在 Linux/WSL 上本地运行应用 🐧
 
-We will be using Docker compose to run Mongo on Docker container.
+我们将使用 Docker compose 在 Docker 容器中运行 MongoDB。
 
-### Let's start the MongoDB Instance
+### 启动 MongoDB 实例
 
 ```zsh
 docker compose up -d
 ```
 
-### Capture testcase
+### 捕获测试用例
 
 ```bash
 sudo -E env PATH=$PATH keploy record -c 'cargo run'
 ```
 
-#### Generate testcase
+#### 生成测试用例
 
-1. Create Notes
+1. 创建笔记
 
 ```bash
 curl --location 'http://localhost:8000/api/notes/' \
@@ -61,7 +61,7 @@ curl --location 'http://localhost:8000/api/notes/' \
 }'
 ```
 
-which will return
+将返回
 
 ```json
 {
@@ -80,27 +80,27 @@ which will return
 }
 ```
 
-2. Get Notes
+2. 获取笔记
 
 ```bash
 curl --location 'http://localhost:8000/api/notes/6618fa20875aedcfe96e08ed'
 ```
 
-This is how keploy terminal would look like:
+Keploy 终端将显示如下内容：
 
-![Testcase](../../../static/img/rust-crud-record.png?raw=true)
+![测试用例](../../../static/img/rust-crud-record.png?raw=true)
 
-### Run the testcases
+### 运行测试用例
 
-Now, let's run the keploy in test mode again:-
+现在，让我们再次以测试模式运行 Keploy：
 
 ```bash
 sudo -E env PATH=$PATH keploy test -c 'cargo run'
 ```
 
-_Voila!! Our testcases has passed 🌟_
+_太棒了！！我们的测试用例已通过 🌟_
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

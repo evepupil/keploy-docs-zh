@@ -1,18 +1,18 @@
 ---
 id: introduction
-title: Keploy Devtools introduction (v1.0.0)
-label: Introduction
-description: This guide is for developers trying to contribute to Keploy codebase.
+title: Keploy 开发者工具介绍 (v1.0.0)
+label: 简介
+description: 本指南面向希望为 Keploy 代码库贡献力量的开发者。
 keywords:
   - SDK
   - Server
   - UI
-  - Contribution
+  - 贡献
 ---
 
-Keploy has 3 major components.
+Keploy 包含 3 个主要组件：
 
-- [Server Contribution Guide](/docs/1.0.0/devtools/server-contrib-guide)
-- [SDK Contribution Guide](/docs/1.0.0/devtools/sdk-contrib-guide)
-- [Web UI Contribution Guide](/docs/1.0.0/devtools/ui-contrib-guide)
-- [Keploy Docs Contribution Guide](/docs/1.0.0/devtools/docs-contrib-guide)
+- [服务器贡献指南](/docs/1.0.0/devtools/server-contrib-guide)
+- [SDK 贡献指南](/docs/1.0.0/devtools/sdk-contrib-guide)
+- [Web 界面贡献指南](/docs/1.0.0/devtools/ui-contrib-guide)
+- [Keploy 文档贡献指南](/docs/1.0.0/devtools/docs-contrib-guide)

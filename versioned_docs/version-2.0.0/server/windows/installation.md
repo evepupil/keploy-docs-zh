@@ -1,6 +1,6 @@
 ---
 id: installation
-title: Windows Installation
+title: Windows 安装指南
 sidebar_label: Windows
 tags:
   - hello-world
@@ -20,44 +20,41 @@ keywords:
   - docker
 ---
 
-Keploy can be installed in two ways:
+Keploy 提供两种安装方式：
 
-1. [One-Click Install](#one-click-install-keploy).
-2. [Manual Install](#manual-install)
+1. [一键安装](#one-click-install-keploy)
+2. [手动安装](#manual-install)
 
-## One click install Keploy.
+## 一键安装 Keploy
 
 ```shell
  curl --silent -O https://keploy.io/install.sh && source install.sh
 ```
 
-## Manual Install
+## 手动安装
 
-There are two ways to use Keploy eBPF in windows, you can use either use:
+在 Windows 系统中有两种使用 Keploy eBPF 的方式：
 
-1. [Natively in Windows](#windows-native) using WSL.
-2. By [Using Docker](#using-docker).
+1. [原生 Windows 环境](#windows-native)（通过 WSL）
+2. [使用 Docker 容器](#using-docker)
 
-## Windows Native
+## 原生 Windows 环境
 
-### Download the Keploy Binary
+### 下载 Keploy 二进制文件
 
-On Windows, WSL is required to run Keploy Binary. You must be running Windows 10 version 2004 and higher (Build 19041
-and higher) or Windows 11 to use the commands below.
+Windows 系统需要通过 WSL 运行 Keploy 二进制文件。您的系统需满足 Windows 10 版本 2004 及以上（内部版本 19041 及以上）或 Windows 11。
 
 ```shell
-wsl --install -d <Distribution Name>
+wsl --install -d <发行版名称>
 ```
 
-Recommended to use "Ubuntu-22.04"
+推荐使用 "Ubuntu-22.04"
 
-This command will enable the features necessary to run WSL and install the Ubuntu distribution of Linux. (This default
-distribution can be changed).
+该命令将启用 WSL 所需功能并安装 Ubuntu Linux 发行版（可更改默认发行版）。
 
-If you're running an older build, or just prefer not to use the install command and would like step-by-step directions,
-see WSL manual installation steps for older versions.
+如需旧版系统或分步安装指导，请参考 WSL 旧版手动安装步骤。
 
-Once installed download and Install "Keploy Binary" :
+安装完成后，通过以下命令下载 Keploy 二进制文件：
 
 ```shell
 curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz -C /tmp
@@ -65,83 +62,78 @@ curl --silent --location "https://github.com/keploy/keploy/releases/latest/downl
 sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin && keploy
 ```
 
-#### Run the Record Mode
+#### 运行录制模式
 
-Run this command on your terminal to start the recording of API calls:-
-
-```shell
-sudo -E keploy record -c "path/to/the/application/binary"
-```
-
-Make API Calls using [Postman](https://www.postman.com/) or cURL command.
-
-Keploy with capture the API calls you have made to generate the test-suites which will contain the testcases and data
-mocks into `YAML` format.
-
-#### Run the Test Mode
-
-Run this command on your terminal to run the testcases and generate the test coverage report:-
+在终端执行以下命令开始录制 API 调用：
 
 ```shell
-sudo -E keploy test -c "path/to/the/application/binary" --delay 10
+sudo -E keploy record -c "应用程序二进制文件路径"
 ```
 
-Voilà! 🧑🏻‍💻 We have the server running!
+使用 [Postman](https://www.postman.com/) 或 cURL 命令发起 API 调用。
+
+Keploy 将捕获这些 API 调用，生成包含测试用例和数据模拟的 `YAML` 格式测试套件。
+
+#### 运行测试模式
+
+在终端执行以下命令运行测试用例并生成覆盖率报告：
+
+```shell
+sudo -E keploy test -c "应用程序二进制文件路径" --delay 10
+```
+
+恭喜！🧑🏻‍💻 服务已成功运行！
 
 ---
 
-## Using Docker
+## 使用 Docker 容器
 
-### Setting up the Docker Desktop for WSL 2
+### 为 WSL 2 配置 Docker Desktop
 
-1. Install Docker Desktop for Windows from [here](https://docs.docker.com/desktop/windows/install/).
+1. 从[官网](https://docs.docker.com/desktop/windows/install/)下载 Docker Desktop for Windows
 
-When developing on Windows with Docker Desktop and WSL 2, it's crucial to configure Docker Desktop to allow WSL 2 distributions to access the Docker daemon. This setup enables seamless integration between your Windows environment, WSL 2 Linux distros, and Docker.
+在 Windows 上使用 Docker Desktop 和 WSL 2 开发时，必须配置 Docker Desktop 允许 WSL 2 发行版访问 Docker 守护进程。这种配置能实现 Windows 环境、WSL 2 Linux 发行版与 Docker 的无缝集成。
 
-By default, Docker Desktop may not be configured to work with all WSL 2 distros out of the box. Proper configuration ensures that you can run Docker commands from within your WSL 2 environment, allowing for a more native Linux development experience while leveraging the power of Windows.
+默认情况下，Docker Desktop 可能未配置为支持所有 WSL 2 发行版。正确配置后，您可以直接在 WSL 2 环境中运行 Docker 命令，获得更接近原生 Linux 的开发体验。
 
-> This setup is essential for Keploy to function correctly in a WSL 2 environment, as it needs to interact with the Docker daemon to manage containers and networks effectively.
+> 此配置对 Keploy 在 WSL 2 环境中正常运行至关重要，因为其需要与 Docker 守护进程交互来管理容器和网络。
 
-For detailed instructions on how to configure `Docker Desktop` for WSL 2, please refer to the [official Docker documentation](https://docs.docker.com/desktop/wsl/).
+详细配置指南请参考 [Docker 官方文档](https://docs.docker.com/desktop/wsl/)。
 
-### Creating Alias
+### 创建别名
 
-We need to create a custom network for Keploy since we are using the Docker, therefore application container would
-require `docker network` to act as the bridge between them.
+由于使用 Docker，我们需要为 Keploy 创建自定义网络，这样应用容器之间可以通过 `docker network` 建立桥接。
 
-If you're using a **docker-compose network**, replace `keploy-network` with your app's `docker_compose_network_name`
-below.
+如果使用 **docker-compose 网络**，请将下方命令中的 `keploy-network` 替换为您的应用网络名称。
 
 ```shell
 docker network create keploy-network
 ```
 
-#### Run the Record Mode
+#### 运行录制模式
 
-Now, we record the testcases.
-
-```shell
-keploy record -c "docker run -p <appPort>:<hostPort> --name <containerName> --network keploy-network --rm <applicationImage>" --containerName "<containerName>" --delay 10
-```
-
-#### Run the Test Mode
-
-Now, we will test the testcases.
+开始录制测试用例：
 
 ```shell
-keploy test -c "docker run -p <appPort>:<hostPort> --name <containerName> --network keploy-network --rm <applicationImage>" --containerName "<containerName>" --delay 20
+keploy record -c "docker run -p <应用端口>:<主机端口> --name <容器名称> --network keploy-network --rm <应用镜像>" --containerName "<容器名称>" --delay 10
 ```
 
-> **CMD_to_run_user_container** is the docker command to run the application.
-> If you are using `docker compose` command to start the application, `--containerName` is required.
+#### 运行测试模式
 
-Voilà! 🧑🏻‍💻 We have the server running!
+运行已录制的测试用例：
 
-You'll be able to see the test-cases that ran with the results report on the console as well locally in the `testReport`
-directory.
+```shell
+keploy test -c "docker run -p <应用端口>:<主机端口> --name <容器名称> --network keploy-network --rm <应用镜像>" --containerName "<容器名称>" --delay 20
+```
 
-**Footnote**
+> **CMD_to_run_user_container** 是运行应用的 docker 命令。
+> 如果使用 `docker compose` 启动应用，则必须指定 `--containerName` 参数。
 
-1. `delay` is required while using Test Mode.
-2. containerName is optional if you are using `Docker run` command, as the Container name must be present within the
-   command itself.
+恭喜！🧑🏻‍💻 服务已成功运行！
+
+您可以在控制台查看测试结果报告，同时本地 `testReport` 目录也会保存测试报告。
+
+**注意事项**
+
+1. 测试模式必须设置 `delay` 参数
+2. 使用 `Docker run` 命令时可省略 containerName 参数，因为容器名称已包含在命令中

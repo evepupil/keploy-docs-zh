@@ -1,65 +1,58 @@
 ---
 id: what-is-keploy
-title: What is Keploy?
-sidebar_label: Introduction to Keploy
-description: Keploy is open source backend testing toolkit that creates tests and mocks faster than unit tests, from user-traffic.
+title: 什么是Keploy？
+sidebar_label: Keploy简介
+description: Keploy是一个开源的后端测试工具包，能够通过用户流量快速生成测试用例和模拟对象，速度远超单元测试。
 tags:
-  - explanation
-  - introduction
-  - features
-  - what is keploy
+  - 说明
+  - 简介
+  - 特性
+  - 什么是keploy
 keywords:
   - Junit
   - PyTest
   - GoTest
   - Jest
-  - Backend Testing
-  - Open Source
-  - API Tests
-  - AI Generated Tests
+  - 后端测试
+  - 开源
+  - API测试
+  - AI生成测试
 ---
 
-Keploy creates backend **API tests with built-in-mocks** or stubs **by recording your application network calls** making
-your testing process not only faster than unit tests but also incredibly efficient.
+Keploy通过记录应用程序网络调用，创建带有**内置模拟对象**或桩的**后端API测试**，不仅使测试过程比单元测试更快，而且极其高效。
 
-<img src="/docs/gif/record-tc.gif" alt="Test Case Generator" width="80%" height="150" />
+<img src="/docs/gif/record-tc.gif" alt="测试用例生成器" width="80%" height="150" />
 
-Keploy acts a proxy in your application that captures and replays all network interaction served to application from any
-source.
+Keploy作为应用程序中的代理，捕获并重放所有来自任何源头的网络交互。
 
-### Step 1 : Record Unique Network Interactions as Test Case
+### 第一步：将独特网络交互记录为测试用例
 
-Once you start the application in record mode to capture API calls as test cases.
+当您以记录模式启动应用程序时，Keploy会将API调用捕获为测试用例。
 
-Now, when the application serves an API, all the unique network interactions are stored within Keploy server as a
-test-case.
+此时，应用程序服务的所有独特网络交互都会作为测试用例存储在Keploy服务器中。
 
 <div style={{backgroundColor:'white', padding:'10px', display:'inline-block', borderRadius:'8px'}}>
-  <img src="/docs/gif/how-keploy-works.gif" alt="Test Case Generator" />
+  <img src="/docs/gif/how-keploy-works.gif" alt="测试用例生成器" />
 </div>
 
-### Step 2 : Replay Test-Cases
+### 第二步：重放测试用例
 
-Let's say you developed new application version(v2). To test locally, start the Keploy in test mode to replay all
-recorded API calls/test-cases previously captured in record-mode.
+假设您开发了新版本应用程序(v2)。要在本地测试，启动Keploy的测试模式来重放之前记录的所有API调用/测试用例。
 
-Now, when the application starts:
+当应用程序启动时：
 
-- Keploy will download all the previously recorded test-cases/API calls with a 5 sec delay(configurable application
-  build time).
-- When the application will try to talk to any dependencies like DBs, Routers, vendor services, Keploy will intercept
-  and provide the previously recorded dependency response.
+- Keploy会以5秒延迟（可配置的应用程序构建时间）下载所有之前记录的测试用例/API调用
+- 当应用程序尝试与任何依赖项（如数据库、路由器、供应商服务）通信时，Keploy会拦截并提供之前记录的依赖响应
 
-> **Note:** _You didn't need to setup test-environment here. 🙅🏻‍♀️_
+> **注意：** _这里您不需要搭建测试环境。🙅🏻‍♀️_
 
-- Keploy will compare the API response to the previously captured response and a report will be generated on the Keploy
-  console.
+- Keploy会将API响应与之前捕获的响应进行比较，并在Keploy控制台生成测试报告
 
-You can test with Keploy locally or can integrate Keploy with popular testing-frameworks and existing CI pipelines.
+您可以在本地使用Keploy测试，也可以将其与流行的测试框架和现有CI流水线集成。
 
-> **Note:** You can generate test cases from any environment which has all the infrastructure dependencies setup. Please consider using this to generate tests from low-traffic environments first. The deduplication feature necessary for high-traffic environments is currently experimental.
+> **注意：** 您可以从任何已设置完整基础设施依赖的环境生成测试用例。建议首先在低流量环境中使用此功能生成测试。目前针对高流量环境所需的去重功能仍处于实验阶段。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这些信息对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

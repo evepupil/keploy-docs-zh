@@ -1,8 +1,8 @@
 ---
 id: samples-fastapi-twilio
-title: Sample SMS Sending App (FastAPI-Twilio)
+title: 短信发送示例应用 (FastAPI-Twilio)
 sidebar_label: FastAPI + Twilio (HTTP)
-description: The following sample app showcases how to use the FastAPI framework with Twilio's SMS Service and the Keploy Platform.
+description: 本示例应用展示了如何将FastAPI框架与Twilio短信服务及Keploy平台结合使用。
 tags:
   - python
   - quickstart
@@ -15,73 +15,72 @@ tags:
   - sms
   - twilio
 keyword:
-  - FastAPI Framework
+  - FastAPI框架
   - Twilio
-  - SMS
+  - 短信服务
   - Python
-  - API Test generator
-  - Auto case generation
+  - API测试生成器
+  - 自动化用例生成
 ---
 
-# Introduction
+# 简介
 
-🪄 Dive into the world of SMS Sending Apps and see how seamlessly Keploy can be integrated with FastAPI and Twilio . Buckle up, it's gonna be a fun ride! 🎢
+🪄 探索短信发送应用的世界，了解Keploy如何与FastAPI和Twilio无缝集成。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 快速开始 🎬
 
-## Setup the Twilio Account 💬
+## 设置Twilio账户 💬
 
-You can get your Twilio credentials by signing in to Twilio Console.
-Once you get the `Twilio Account SID, Auth Token, and Phone Number`, modify the `.env` file with your credentials.
+登录Twilio控制台获取凭证。获得`Twilio账户SID、认证令牌和电话号码`后，在`.env`文件中更新您的凭证。
 
-## Clone the Sample App 🧪
+## 克隆示例应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-python.git && cd samples-python/fastapi-twilio
 ```
 
-## Installation Keploy
+## 安装Keploy
 
-Depending on your OS, choose your adventure:
+根据您的操作系统选择安装方式：
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用：
 
-- [Using Docker : running application](#using-docker-compose-)
-- [Running application locally](#running-app-locally-on-linuxwsl-)
+- [使用Docker运行应用](#使用docker-compose-)
+- [在Linux/WSL本地运行应用](#在linuxwsl本地运行应用-)
 
-## Using Docker Compose 🐳
+## 使用Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as Mongo on Docker container.
+我们将使用Docker compose来运行应用及MongoDB容器。
 
-### Lights, Camera, Record! 🎥
+### 开始录制！🎥
 
-Create the docker image of the app:
+创建应用镜像：
 
 ```bash
 docker build -t fastapi-twilio:1.0 .
 ```
 
-Capture the test-cases-
+录制测试用例：
 
 ```shell
 keploy record -c "docker run -p 8000:8000 --name fastapi-twilio fastapi-twilio:1.0"
 ```
 
-🔥**Make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥**发起一些API调用**。可以使用Postman、Hoppscotch或curl。
 
-Let's make URLs short and sweet:
+简化URL示例：
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+只需**发起API调用**即可生成测试用例。
 
-**Make the POST requests**
+**发起POST请求**
 
-    1. Replace the place holder below i.e. `YOUR_REGISTERED_PERSONAL_PHONE_NUMBER` with your registered personal phone number that you linked with Twilio.
+1. 将下方占位符`YOUR_REGISTERED_PERSONAL_PHONE_NUMBER`替换为您在Twilio绑定的个人手机号：
 
      ```bash
      curl --location 'http://127.0.0.1:8000/send-sms/' \
@@ -92,7 +91,7 @@ To generate testcases we just need to **make some API calls.**
      }'
      ```
 
-    2. Replace the place holder below i.e. `SOME_WRONG_PHONE_NUMBER` with any wrong phone number and make the request.
+2. 将下方占位符`SOME_WRONG_PHONE_NUMBER`替换为任意错误号码：
 
      ```bash
      curl --location 'http://127.0.0.1:8000/send-sms/' \
@@ -103,7 +102,7 @@ To generate testcases we just need to **make some API calls.**
      }'
      ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+恭喜！您已成功生成包含mock的测试用例。在`Keploy目录`中查看生成的`test-1.yml`和`mocks.yml`。
 
 ```yaml
 version: api.keploy.io/v1beta1
@@ -166,7 +165,7 @@ curl: |-
   }'
 ```
 
-This is how `mocks.yml` generated would look like:-
+生成的`mocks.yml`示例：
 
 ```yaml
 version: api.keploy.io/v1beta1
@@ -224,69 +223,65 @@ spec:
   resTimestampMock: 2023-11-14T14:57:21.298027703+05:30
 ```
 
-Want to see if everything works as expected?
+### 运行测试
 
-### Run Tests
-
-Time to put things to the test 🧪
+测试时间到 🧪
 
 ```shell
 keploy test -c "docker run -p 8000:8000 --name fastapi-twilio fastapi-twilio:1.0" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`参数是为应用预留的启动时间（秒）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the Twilio response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+尝试修改`mocks.yml`中的Twilio响应，或调整`test-x.yml`中的请求/响应，重新运行测试见证神奇效果！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜完成！您已体验Keploy的强大功能，展示了编码技巧并享受了乐趣！继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！✨👩‍💻👨‍💻✨
 
 **\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***
 
-## Running App Locally on Linux/WSL 🐧
+## 在Linux/WSL本地运行应用 🐧
 
-We'll be running our sample application right on Linux. Ready? Let's get the party started!🎉
+直接在Linux系统上运行示例应用。准备开始吧！🎉
 
-### 📼 Roll the Tape - Recording Time!
+### 开始录制
 
-Install Python's virtual environment library:
+安装Python虚拟环境：
 
 ```bash
 pip3 install virtualenv
 ```
 
-Create a virtual environment and activate it:
+创建并激活虚拟环境：
 
 ```bash
 python3 -m virtualenv venv && source venv/bin/activate
 ```
 
-Install the dependencies using the `requirements.txt` file:
+安装依赖：
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-Ready, set, record! Here's how:
+开始录制：
 
 ```bash
 keploy record -c "uvicorn application.main:app --reload"
 ```
 
-Keep an eye out for the `-c `flag! It's the command charm to run the app.
+注意`-c`参数是运行应用的命令。
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+### 生成测试用例
 
-### Generate testcases
+发起API调用来生成测试用例。
 
-To generate testcases we just need to **make some API calls.**
+**发起POST请求**
 
-**Make the POST requests**
-
-    1. Replace the place holder below i.e. `YOUR_REGISTERED_PERSONAL_PHONE_NUMBER` with your registered personal phone number that you linked with Twilio.
+1. 替换下方占位符为Twilio绑定的手机号：
 
      ```bash
      curl --location 'http://127.0.0.1:8000/send-sms/' \
@@ -297,7 +292,7 @@ To generate testcases we just need to **make some API calls.**
      }'
      ```
 
-    2. Replace the place holder below i.e. `SOME_WRONG_PHONE_NUMBER` with any wrong phone number and make the request.
+2. 替换为错误号码：
 
      ```bash
      curl --location 'http://127.0.0.1:8000/send-sms/' \
@@ -308,146 +303,21 @@ To generate testcases we just need to **make some API calls.**
      }'
      ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
-
-```yaml
-version: api.keploy.io/v1beta1
-kind: Http
-name: test-1
-spec:
-  metadata: {}
-  req:
-    method: POST
-    proto_major: 1
-    proto_minor: 1
-    url: http://127.0.0.1:8000/send-sms/
-    header:
-      Accept: "*/*"
-      Accept-Encoding: gzip, deflate, br
-      Connection: keep-alive
-      Content-Length: "75"
-      Content-Type: application/json
-      Host: 127.0.0.1:8000
-      Postman-Token: c871b715-7aae-46b6-8e0d-1341aa426624
-      User-Agent: PostmanRuntime/7.34.0
-    body: |-
-      {
-          "Body": "Test, testtt, testttttttssss :)",
-          "To": "+91700004379"
-      }
-    body_type: ""
-    timestamp: 2023-11-14T14:56:25.800517709+05:30
-  resp:
-    status_code: 200
-    header:
-      Content-Length: "73"
-      Content-Type: application/json
-      Date: Tue, 14 Nov 2023 09:26:25 GMT
-      Server: uvicorn
-    body: '{"message":"Failed to send SMS. Please check the provided phone number."}'
-    body_type: ""
-    status_message: ""
-    proto_major: 0
-    proto_minor: 0
-    timestamp: 2023-11-14T14:56:32.013566624+05:30
-  objects: []
-  assertions:
-    noise:
-      header.Date: []
-  created: 1699953992
-curl: |-
-  curl --request POST \
-  --url http://127.0.0.1:8000/send-sms/ \
-  --header 'User-Agent: PostmanRuntime/7.34.0' \
-  --header 'Accept: */*' \
-  --header 'Postman-Token: c871b715-7aae-46b6-8e0d-1341aa426624' \
-  --header 'Host: 127.0.0.1:8000' \
-  --header 'Accept-Encoding: gzip, deflate, br' \
-  --header 'Connection: keep-alive' \
-  --header 'Content-Type: application/json' \
-  --data '{
-      "Body": "Test, testtt, testttttttssss :)",
-      "To": "+91700004379"
-  }'
-```
-
-This is how `mocks.yml` generated would look like:-
-
-```yaml
-version: api.keploy.io/v1beta1
-kind: Http
-name: mocks
-spec:
-  metadata:
-    name: Http
-    operation: POST
-    type: HTTP_CLIENT
-  req:
-    method: POST
-    proto_major: 1
-    proto_minor: 1
-    url: /2010-04-01/Accounts/AC19413687d9ce28c80cda944730f8b286/Messages.json
-    header:
-      Accept: "*/*"
-      Accept-Encoding: gzip, deflate
-      Authorization: Basic QUMxOTQxMzY4N2Q5Y2UyOGM4MGNkYTk0NDczMGY4YjI4NjpjMTc0MDc5YzU2NTA0N2FmYWJmNDk5MWI2ZGQ1MmFiYg==
-      Connection: keep-alive
-      Content-Length: "81"
-      Content-Type: application/x-www-form-urlencoded
-      User-Agent: python-requests/2.31.0
-    body: Body=Test%2C+testtt%2C+testttttttssss+%3A%29&From=%2B16413324066&To=%2B9170000437
-    body_type: ""
-    timestamp: 0001-01-01T00:00:00Z
-  resp:
-    status_code: 400
-    header:
-      Access-Control-Allow-Credentials: "true"
-      Access-Control-Allow-Headers: Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since, Idempotency-Key
-      Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS
-      Access-Control-Allow-Origin: "*"
-      Access-Control-Expose-Headers: ETag
-      Connection: keep-alive
-      Content-Length: 335,335
-      Content-Type: application/json
-      Date: Tue, 14 Nov 2023 09:27:21 GMT
-      Twilio-Concurrent-Requests: "1"
-      Twilio-Request-Duration: "0.080"
-      Twilio-Request-Id: RQb54d7f05d29e83bc89889cc136bcd99d
-      X-Api-Domain: api.twilio.com
-      X-Home-Region: us1
-      X-Powered-By: AT-5000
-      X-Shenanigans: none
-    body: '{"code": 21608, "message": "The number +917000XXXX is unverified. Trial accounts cannot send messages to unverified numbers; verify +917000XXXX at twilio.com/user/account/phone-numbers/verified, or purchase a Twilio number to send messages to unverified numbers", "more_info": "https://www.twilio.com/docs/errors/21608", "status": 400}'
-    body_type: ""
-    status_message: ""
-    proto_major: 0
-    proto_minor: 0
-    timestamp: 0001-01-01T00:00:00Z
-  objects: []
-  created: 1699954041
-  reqTimestampMock: 2023-11-14T14:57:20.914415283+05:30
-  resTimestampMock: 2023-11-14T14:57:21.298027703+05:30
-```
-
-Want to see if everything works as expected?
-
-### Run Tests
-
-Time to put things to the test 🧪
+### 运行测试
 
 ```shell
 keploy test -c "uvicorn application.main:app --reload" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`参数是应用启动等待时间。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the Twilio response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+尝试修改测试文件并重新运行，体验Keploy的强大功能！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜完成！您已掌握Keploy的核心功能，现在可以继续探索更多可能性。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

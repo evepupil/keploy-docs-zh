@@ -1,18 +1,18 @@
 ---
 id: python
-title: Merge Unit Test Coverage Data
+title: 合并单元测试覆盖率数据
 sidebar_label: Python
 tags:
   - python
   - coverage
 keyword:
-  - Pytest Framework
-  - Flask Framework
-  - coverage
+  - Pytest框架
+  - Flask框架
+  - 覆盖率
   - MongoDb
   - Python
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
   - Pytest
 ---
 
@@ -20,39 +20,39 @@ import WhatAreKeployFeatures from './index.md'
 
 <WhatAreKeployFeatures/>
 
-| Programming Language | Prerequisites                                                             |
-| :------------------: | :------------------------------------------------------------------------ |
-|        python        | [Python 3 and above](https://www.python.org/downloads/) <br/> coverage.py |
+| 编程语言 | 前提条件                                                                 |
+| :------: | :----------------------------------------------------------------------- |
+|  python  | [Python 3及以上版本](https://www.python.org/downloads/) <br/> coverage.py |
 
-## Usage
+## 使用方法
 
-To get the coverage data for your unit tests:
+获取单元测试的覆盖率数据：
 
 ```sh
 coverage run --data-file=.coverage.unit test_program.py
 ```
 
-Here, test_program.py is the unit test program you want to run, and --data-file is set to .coverage.unit because, by default, raw coverage data would be written to .coverage which is where coverage data for keploy tests is present, so to avoid overwriting we pass a new file through data-file flag.
+此处，test_program.py是您要运行的单元测试程序，--data-file设置为.coverage.unit是因为默认情况下，原始覆盖率数据会写入.coverage文件（该文件存放Keploy测试的覆盖率数据），为避免覆盖，我们通过data-file标志指定新文件。
 
-> Note: If you face any problems with running the coverage library, you can refer to the documentation.
+> 注意：如果在运行coverage库时遇到任何问题，可以参考官方文档。
 
-### Combine And Get Report
+### 合并并获取报告
 
-To combine the coverage from the unit tests, and Keploy's API tests we can use the command below:
+要合并单元测试和Keploy API测试的覆盖率，可以使用以下命令：
 
 ```bash
 coverage combine
 ```
 
-Make sure to run this command before starting a new test run to avoid getting multiple coverage files.
+请确保在开始新的测试运行前执行此命令，以避免生成多个覆盖率文件。
 
-Finally, to generate the coverage report for the test run, you can run:
+最后，要生成测试运行的覆盖率报告，可以执行：
 
 ```bash
 coverage report
 ```
 
-and if you want the coverage in an html file, you can run:
+如果需要以html格式获取覆盖率报告，可以运行：
 
 ```bash
 coverage html

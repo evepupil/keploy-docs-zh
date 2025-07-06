@@ -1,66 +1,66 @@
 ---
 id: about-api-testing
-title: What is API testing?
-sidebar_label: What is API testing?
-description: This section documents what is API Testing and why we need it
+title: 什么是API测试？
+sidebar_label: 什么是API测试？
+description: 本节文档介绍API测试的概念及其必要性
 tags:
-  - API testing
-  - API mocks
-  - generate test cases
-  - test automation
+  - API测试
+  - API模拟
+  - 生成测试用例
+  - 测试自动化
 keywords:
-  - api testing
-  - api mocks
-  - automated testing
-  - ai testing
+  - api测试
+  - api模拟
+  - 自动化测试
+  - 人工智能测试
   - keploy
   - Gemini
   - OpenAI
 ---
 
-# 📘 What is API Testing?
+# 📘 什么是API测试？
 
-**API Testing** is a type of software testing that focuses on verifying that **Application Programming Interfaces (APIs)** function as expected. Instead of testing the UI, API tests validate business logic, data responses, and the performance of an application’s backend services.
+**API测试**是一种专注于验证**应用程序接口(APIs)**是否按预期工作的软件测试类型。不同于UI测试，API测试主要验证业务逻辑、数据响应和应用程序后端服务的性能。
 
-APIs act as the _bridge_ between different software systems — enabling communication and data exchange. Testing ensures these bridges are **reliable, secure, and performant**.
+API作为不同软件系统之间的_桥梁_，实现通信和数据交换。测试能确保这些桥梁**可靠、安全且性能良好**。
 
-## ✅ Why Do We Need API Testing?
+## ✅ 为什么需要API测试？
 
-| Reason                            | Description                                                                                               |
-| --------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| **1. Early Bug Detection**        | API testing is usually done before UI testing, allowing faster detection and resolution of critical bugs. |
-| **2. Improved Test Coverage**     | Validates all layers of the application including edge cases, error codes, and data responses.            |
-| **3. Faster Execution**           | API tests are faster than UI tests, enabling quicker feedback loops in CI/CD pipelines.                   |
-| **4. Language-Agnostic**          | APIs can be tested independently of the frontend technology — enabling broader automation.                |
-| **5. Enhanced Security**          | Validates authentication, authorization, and data privacy mechanisms.                                     |
-| **6. Enables Continuous Testing** | Ideal for automated pipelines to ensure every build meets quality standards.                              |
+| 原因                            | 说明                                                                                               |
+| ------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **1. 早期缺陷发现**             | API测试通常在UI测试之前进行，可以更快发现和解决关键缺陷。                                         |
+| **2. 提高测试覆盖率**           | 验证应用程序各层级，包括边界情况、错误码和数据响应。                                               |
+| **3. 执行速度更快**             | API测试比UI测试更快，能在CI/CD管道中实现更快的反馈循环。                                           |
+| **4. 语言无关性**              | API测试可独立于前端技术进行，实现更广泛的自动化。                                                  |
+| **5. 增强安全性**              | 验证身份认证、授权和数据隐私机制。                                                                 |
+| **6. 支持持续测试**             | 适合自动化管道，确保每次构建都符合质量标准。                                                       |
 
-## 🧪 What Do We Test in an API?
+## 🧪 API测试内容
 
-- Request & Response Validation
-- Status Codes (200, 400, 500, etc.)
-- Data Format (JSON, XML, etc.)
-- Authentication & Authorization
-- Load and Performance
-- Edge Cases and Error Handling
+- 请求与响应验证
+- 状态码（200、400、500等）
+- 数据格式（JSON、XML等）
+- 身份认证与授权
+- 负载与性能
+- 边界情况和错误处理
 
-## 🔍 Types of API Testing
+## 🔍 API测试类型
 
-| Type                                | Description                                                              |
-| ----------------------------------- | ------------------------------------------------------------------------ |
-| **Functional Testing**              | Ensures the API performs expected functions correctly with valid inputs. |
-| **Validation Testing**              | Verifies the API meets business and technical requirements.              |
-| **Load Testing**                    | Evaluates how the API handles a large volume of requests.                |
-| **Security Testing**                | Checks for vulnerabilities, data leaks, and access control.              |
-| **Error/Negative Testing**          | Validates behavior when given invalid inputs or unexpected conditions.   |
-| **Regression Testing**              | Ensures recent changes haven't broken existing functionality.            |
-| **Runtime and Reliability Testing** | Confirms the API's stability and availability during sustained use.      |
+| 类型                                | 说明                                                              |
+| ----------------------------------- | ----------------------------------------------------------------- |
+| **功能测试**                        | 确保API在有效输入下正确执行预期功能。                              |
+| **验证测试**                        | 确认API符合业务和技术需求。                                        |
+| **负载测试**                        | 评估API处理大量请求的能力。                                        |
+| **安全测试**                        | 检查漏洞、数据泄露和访问控制。                                      |
+| **错误/负面测试**                   | 验证输入无效或异常条件时的行为。                                    |
+| **回归测试**                        | 确保近期变更未破坏现有功能。                                        |
+| **运行时与可靠性测试**              | 确认API在持续使用时的稳定性和可用性。                              |
 
-## ⚠️ Common Challenges in API Testing
+## ⚠️ API测试常见挑战
 
-- Lack of proper API documentation
-- Handling dynamic responses and tokens
-- Managing large test data and scenarios
-- Testing across multiple environments (dev, staging, prod)
-- Ensuring version compatibility and backward support
-- Automating complex workflows involving chained API calls
+- 缺乏完善的API文档
+- 处理动态响应和令牌
+- 管理大量测试数据和场景
+- 跨多环境测试（开发、预发布、生产）
+- 确保版本兼容性和向后支持
+- 自动化涉及链式API调用的复杂工作流

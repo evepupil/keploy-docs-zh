@@ -1,26 +1,26 @@
 ---
 id: debugger-guide
-title: Debugger Guide
-sidebar_label: Debugger Guide
+title: 调试器指南
+sidebar_label: 调试器指南
 tags:
-  - explanation
-  - dev guide
-  - debugger guide
+  - 说明文档
+  - 开发指南
+  - 调试指南
 ---
 
-# Debugger Guide 👨‍🔧
+# 调试器指南 👨‍🔧
 
-In this blog, we will learn how to debug keploy using Visual Studio Code integrated debugger.
+本篇博客将介绍如何使用Visual Studio Code集成调试器调试keploy。
 
-## Setting Up Configuration File
+## 配置文件设置
 
-To bring up the **Run and Debug** view, select the **Run and Debug** icon in the **Activity Bar** on the side of VS Code. You can also use the keyboard shortcut `Cmd + Shift + D` for MacOS and `Ctrl + shift + D` for Windows.
+要打开**运行和调试**视图，请点击VS Code侧边栏活动栏中的**运行和调试**图标。您也可以使用快捷键：MacOS按`Cmd + Shift + D`，Windows按`Ctrl + shift + D`。
 
-If running and debugging is not yet configured (no `launch.json` has been created), VS Code shows the Run start view.
+如果尚未配置运行和调试（未创建`launch.json`文件），VS Code会显示运行启动视图。
 
-Click on **create a launch.json file** 👉 **Go** 👉 **Go: Launch Package**
+点击**创建launch.json文件** 👉 **Go** 👉 **Go: Launch Package**
 
-Navigate to `launch.json` to begin crafting JSON objects.
+导航至`launch.json`文件开始编写JSON对象。
 
 ```json
 {
@@ -56,13 +56,13 @@ Navigate to `launch.json` to begin crafting JSON objects.
 }
 ```
 
-## Retrieving the PATH Environment Variable
+## 获取PATH环境变量
 
-### macOS/ Linux
+### macOS/Linux系统
 
 <ul><li>
 
-Terminal:
+终端执行：
 
 ```shell
 echo $PATH
@@ -72,11 +72,11 @@ echo $PATH
 
 </ul>
 
-### Windows
+### Windows系统
 
 <ul><li>
 
-Command Prompt (CMD):
+命令提示符(CMD):
 
 ```shell
 echo %PATH%
@@ -85,20 +85,21 @@ echo %PATH%
 </li>
 
 </ul>
-Let's take a closer look at some important key-value pairs in our JSON file:
 
-- The `"name"` parameter can be anything, but for convenience, consider using the keploy command name (e.g., `Record` and `Test`).
-- The `args` parameter represents the entire keploy command to run your application. For example, in [Gin + Mongo](https://keploy.io/docs/quickstart/samples-gin/), on Linux, it's `record -c "go run main.go handler.go"`, and for MacOS, it's `record -c "docker compose up" --containerName "ginMongoApp"`.
+让我们仔细看看JSON文件中几个重要的键值对：
 
-You can either add more objects in the "configurations" array or modify the "args" property within a single object to add more commands.
+- `"name"`参数可以任意命名，但为方便起见建议使用keploy命令名称（如`Record`和`Test`）。
+- `args`参数表示运行应用程序的完整keploy命令。例如在[Gin + Mongo](https://keploy.io/docs/quickstart/samples-gin/)中，Linux系统使用`record -c "go run main.go handler.go"`，MacOS系统使用`record -c "docker compose up" --containerName "ginMongoApp"`。
 
-> **Note**: By default, the keploy tests and reports will be generated in the keploy directory. You can change this by creating the [generate-config](https://keploy.io/docs/running-keploy/cli-commands/#generate-config) and specifying the desired path.
+您可以在"configurations"数组中添加更多对象，或修改单个对象中的"args"属性来添加更多命令。
 
-## Running the Debugger
+> **注意**：默认情况下，keploy测试和报告会生成在keploy目录中。您可以通过创建[generate-config](https://keploy.io/docs/running-keploy/cli-commands/#generate-config)并指定所需路径来更改此设置。
 
-Click the **Start Debugging** button to witness the magic of debugging unfold seamlessly.
+## 运行调试器
 
-Hope this helps you out, if you still have any questions, reach out to us .
+点击**开始调试**按钮，即可见证调试魔法无缝展开。
+
+希望本指南对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

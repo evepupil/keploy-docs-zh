@@ -1,8 +1,8 @@
 ---
 id: express-mongoose-application
-title: sample course selling api (express)
+title: 示例课程销售API（Express）
 sidebar_label: NodeJS - Express + Mongoose
-description: The following sample app showcases how to use NodeJS framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用NodeJS框架和Keploy平台。
 tags:
   - javascript
   - quickstart
@@ -10,85 +10,85 @@ tags:
   - examples
   - tutorial
 keyword:
-  - NodeJS Framework
+  - NodeJS框架
   - MongoDB
   - NodeJS
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-A simple sample CRUD application and see how seamlessly Keploy integrates with Express and MongoDB Buckle up, it's gonna be a fun ride! 🎢
+一个简单的CRUD示例应用，看看Keploy如何无缝集成Express和MongoDB。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始吧！🎬
 
-Clone the repository and move to express-mongoose folder
+克隆仓库并进入express-mongoose文件夹
 
 ```bash
 git clone https://github.com/keploy/samples-typescript && cd samples-typescript/node-mongoose
 
-# Install the dependencies
+# 安装依赖
 npm install
 ```
 
-### Lights, Camera, Record! 🎥
+### 灯光，摄影，开始录制！🎥
 
-### Docker installation and running the mongodb compass
+### Docker安装并运行mongodb compass
 
-## Here I'm using WSL , so follow below steps to configure docker with mongo db compass
+## 这里我使用WSL，所以按照以下步骤配置docker与mongodb compass
 
-**1. Install docker in your windows and follow this tutorial to connect with mongodb compass :**
+**1. 在Windows中安装docker并按照本教程连接mongodb compass：**
 
 ```bash
 https://www.youtube.com/watch?v=NEPZqSvKx40&list=PLff_PESolMjuDXQdjiqYRW_GnDQjU32QX
 ```
 
-**2. after installing docker and running those commands in video use this command as well to create a network:**
+**2. 安装docker并运行视频中的命令后，使用此命令创建网络：**
 
 ```bash
 docker network create keploy-network
 ```
 
-> \*_url should look something like this depending on your connection you can adjust, also update your .env file with mongodb_url:`mongodb://127.0.0.1:27023/courses`._
+> \*_URL应类似于此，具体取决于您的连接，您可以调整，同时更新.env文件中的mongodb_url：`mongodb://127.0.0.1:27023/courses`。_
 
-#### Capturing Testcases
+#### 捕获测试用例
 
 ```bash
 keploy record -c "npm start"
 ```
 
-if using wsl use this :
+如果使用wsl，请使用此命令：
 
 ```bash
 sudo -E env PATH=$PATH keploy record -c 'npm start'
 ```
 
-🔥 Challenge time! Generate some test cases. How? Just **make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥 挑战时间！生成一些测试用例。怎么做？只需**进行一些API调用**。Postman、Hoppscotch甚至curl - 任您选择！
 
-#### Let's generate the testcases.
+#### 让我们生成测试用例。
 
-Make API Calls using [Postman](https://postman.com) or cURL command. Keploy with capture those calls to generate the test-suites containing testcases and data mocks.
+使用[Postman](https://postman.com)或cURL命令进行API调用。Keploy将捕获这些调用以生成包含测试用例和数据模拟的测试套件。
 
-🎉 Woohoo! With a simple API call, you've crafted a test case with a mock! Dive into the Keploy directory and feast your eyes on the newly minted `test-1.yml` and `mocks.yml` after doing below steps
+🎉 哇哦！通过一个简单的API调用，您已经创建了一个带有模拟的测试用例！进入Keploy目录，查看执行以下步骤后新生成的`test-1.yml`和`mocks.yml`。
 
-_Time to perform API magic!_
-Follow the breadcrumbs... or Make more API Calls
+_是时候施展API魔法了！_
+跟随面包屑...或进行更多API调用
 
-Some api calls you can make
+您可以进行的一些API调用
 
-Get request - Get all courses
+Get请求 - 获取所有课程
 
 ```bash
 curl --request GET \
 --url http://localhost:3000/courses
 ```
 
-Post request - Add a new course
+Post请求 - 添加新课程
 
 ```bash
 curl --location 'http://localhost:3000/courses' \
@@ -99,9 +99,9 @@ curl --location 'http://localhost:3000/courses' \
 --data-urlencode 'published=true'
 ```
 
-Put request - Add a new course
+Put请求 - 更新课程
 
-- Make sure to replace id of course
+- 确保替换课程ID
 
 ```bash
 curl --location --request PUT 'http://localhost:3000/courses/6626a9cd3840cb305c0a6d52' \
@@ -109,15 +109,15 @@ curl --location --request PUT 'http://localhost:3000/courses/6626a9cd3840cb305c0
 --data-urlencode 'title=react advance'
 ```
 
-Delete request - Delete a course
+Delete请求 - 删除课程
 
-- Make sure to replace id of course
+- 确保替换课程ID
 
 ```bash
 curl --location --request DELETE 'http://localhost:3000/courses/6626a9cd3840cb305c0a6d52'
 ```
 
-🎉 Easy right! Just one API call and you've whipped up a test case with a mock. Check out the Keploy directory to find your shiny new `test-1.yml` and `mocks.yml` files.
+🎉 很简单吧！只需一个API调用，您就创建了一个带有模拟的测试用例。查看Keploy目录，找到您闪亮的新`test-1.yml`和`mocks.yml`文件。
 
 ```yaml
 version: api.keploy.io/v1beta1
@@ -173,63 +173,63 @@ curl: |
     --header 'Accept-Encoding: gzip, deflate, br' \
 ```
 
-Or simply wander over to your browser and visit `http://localhost:3000/courses`.
+或者简单地访问您的浏览器并访问`http://localhost:3000/courses`。
 
-Did you spot the new test and mock scrolls in your project library? Awesome! 👏
+您是否在项目库中发现了新的测试和模拟卷轴？太棒了！👏
 
-### Run Tests
+### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```bash
 keploy test -c "npm start" --delay 10
 ```
 
-If using wsl use this :
+如果使用wsl，请使用此命令：
 
 ```bash
 keploy -E env PATH=$PATH keploy test -c 'npm start' --delay 10
 ```
 
-Keploy test report:
+Keploy测试报告：
 ![image](https://github.com/s2ahil/samples-typescript/assets/101473078/48f2b866-04d1-433b-9270-34c15786893c)
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`标志？哦，那只是给您的应用一点喘息时间（以秒为单位），然后测试用例才会来敲门。
 
-### To Run test using jest use this command :
+### 使用jest运行测试，使用此命令：
 
 ```bash
 npm test
 ```
 
-jest test coverage report :
+jest测试覆盖率报告：
 
 ![Screenshot 2024-04-22 025850](https://github.com/s2ahil/samples-typescript/assets/101473078/f60570d0-b998-4b4a-912d-80d4c73604e3)
 
-## Get Keploy jest sdk
+## 获取Keploy jest sdk
 
 ```bash
 npm i @keploy/sdk nyc jest
 ```
 
-## Update package file
+## 更新package文件
 
-Update the `package.json` file that runs the application:
+更新运行应用的`package.json`文件：
 
 ```json
  "scripts": {
-    //other scripts
+    //其他脚本
     "test": "jest --coverage --collectCoverageFrom='src/**/*.{js,jsx}'",
     "coverage": "nyc npm test && npm run coverage:merge && npm run coverage:report",
     "coverage:merge": "mkdir -p ./coverage && nyc merge ./coverage .nyc_output/out.json",
     "coverage:report": "nyc report --reporter=lcov --reporter=text"
-    //other scripts
+    //其他脚本
   }
 ```
 
-## Usage
+## 使用
 
-For the code coverage for the keploy API tests using the jest integration, you need to add the following test to your Jest test file. It can be called as `keploy.test.js`. Jest test file. It can be called as `keploy.test.js`.
+对于使用jest集成的Keploy API测试的代码覆盖率，您需要在Jest测试文件中添加以下测试。可以称为`keploy.test.js`。Jest测试文件。可以称为`keploy.test.js`。
 
 ```javascript
 const {expect} = require("@jest/globals");
@@ -248,7 +248,7 @@ describe(
           if (err) {
             done(err);
           } else {
-            expect(res).toBeTruthy(); // Assert the test result
+            expect(res).toBeTruthy(); // 断言测试结果
             done();
           }
         });
@@ -260,20 +260,20 @@ describe(
 );
 ```
 
-Now let's run jest tests along keploy using command
+现在让我们运行jest测试以及keploy，使用命令
 
 ```bash
 npm test
 ```
 
-To get Combined coverage with keploy test coverage
+获取与keploy测试覆盖率结合的覆盖率
 
 ```bash
 npm run coverage
 ```
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜您走到这一步！您已经见识了Keploy的力量，锻炼了您的编码肌肉，还玩得开心！现在，出去继续探索、创新和创造吧！记住，有了正确的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！✨👩‍💻👨‍💻✨

@@ -1,8 +1,8 @@
 ---
 id: crud-nodejs
-title: NodeJS Sample Application
+title: NodeJS 示例应用
 sidebar_label: NodeJS - Express + Mongoose
-description: The following sample app showcases how to use NodeJS framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用 NodeJS 框架和 Keploy 平台。
 tags:
   - javascript
   - nodejs
@@ -13,26 +13,26 @@ tags:
   - examples
   - tutorial
 keyword:
-  - NodeJS Framework
+  - NodeJS 框架
   - ExpressJs
   - MongoDB
   - NodeJS
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
 ---
 
-## Intoduction 📌
+## 介绍 📌
 
-A sample **_CRUD_** application to see how Keploy integrates effortlessly with **_Express.js_** and **_MongoDB_**. Get ready to see the power of Keploy 🔅🔅.
+这是一个展示 Keploy 如何无缝集成 **_Express.js_** 和 **_MongoDB_** 的 **_CRUD_** 示例应用。准备好见证 Keploy 的强大功能吧 🔅🔅。
 
-## Get Started! 🎬
+## 开始使用！🎬
 
-Clone the repository and move to crud-API folder
+克隆仓库并进入 crud-API 文件夹
 
 ```bash
 git clone https://github.com/keploy/samples-typescript && cd samples-typescript/crud-API
 
-# Install the dependencies
+# 安装依赖
 npm install
 ```
 
@@ -40,20 +40,20 @@ import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-🎉 Wohoo! We are all set to use Keploy.
+🎉 哇哦！我们已经准备好使用 Keploy 了。
 
-## 🎬 Capturing Testcases
+## 🎬 捕获测试用例
 
-To begin recording your application's API calls, open your terminal and navigate to your application directory using the cd command. Then, execute the following command:
+要开始记录应用的 API 调用，打开终端并导航到应用目录，然后执行以下命令：
 
 ```bash
 keploy record -c "npm start"
 ```
 
-Make API Calls using Hoppscotch, Postman or curl command. Keploy will capture those calls to generate the test-suites containing testcases and data mocks.
+使用 Hoppscotch、Postman 或 curl 命令发起 API 调用。Keploy 将捕获这些调用并生成包含测试用例和数据模拟的测试套件。
 
-**1. Give Product details**<br />
-**_POST REQUEST_**
+**1. 提交商品详情**<br />
+**_POST 请求_**
 
 ```bash
 curl --request POST \
@@ -66,7 +66,7 @@ curl --request POST \
 }'
 ```
 
-Here's a response of what you get:
+以下是返回的响应示例：
 
 ```json
 {
@@ -80,17 +80,17 @@ Here's a response of what you get:
 }
 ```
 
-**2. Get the Product details** <br />
-**_GET REQUEST_**
+**2. 获取商品详情** <br />
+**_GET 请求_**
 
 ```bash
 curl --location --request GET 'http://localhost:3000/api/products/:id'
 ```
 
-Replace the :id, with the id of the product of which you want the details in the upcoming API request!<br />
+将 :id 替换为你想要获取详情的商品 ID！<br />
 
-**3. Update the Product details**<br />
-**_PUT REQUEST_**
+**3. 更新商品详情**<br />
+**_PUT 请求_**
 
 ```bash
 curl --location --request PUT 'http://localhost:3000/api/products/:id' \
@@ -102,14 +102,14 @@ curl --location --request PUT 'http://localhost:3000/api/products/:id' \
     }'
 ```
 
-**4. Delete a Product details**<br />
-**_DELETE REQUEST_**
+**4. 删除商品详情**<br />
+**_DELETE 请求_**
 
 ```bash
 curl --location --request DELETE 'http://localhost:8080/potions/:id'
 ```
 
-🎉 Easy right! Just one API call and you've whipped up a test case with a mock. Check out the Keploy directory to find your shiny new `test-1.yml` and `mocks.yml` files.
+🎉 简单吧！只需一个 API 调用，你就创建了一个包含模拟数据的测试用例。查看 Keploy 目录，你会发现新生成的 `test-1.yml` 和 `mocks.yml` 文件。
 
 ```yaml
 version: api.keploy.io/v1beta1
@@ -180,40 +180,40 @@ curl: |
     --header 'Sec-Ch-Ua-Platform: "Linux"' \
 ```
 
-## Run keploy test
+## 运行 keploy 测试
 
-Want to see it in action? Run the following command to execute your Keploy tests
+想看看实际效果吗？运行以下命令执行 Keploy 测试：
 
 ```bash
 keploy test -c "npm run" --delay 10
 ```
 
-Great job following along 🥳! Now, let's dive deeper and explore how to do Keploy integration with jest test 📌
+太棒了，你已经完成了所有步骤 🥳！现在，让我们深入探索如何将 Keploy 与 jest 测试集成 📌
 
-## Get Keploy jest sdk
+## 获取 Keploy jest SDK
 
 ```bash
 npm i @keploy/sdk nyc jest
 ```
 
-## Update package file
+## 更新 package 文件
 
-Update the `package.json` file that runs the application:
+更新运行应用的 `package.json` 文件：
 
 ```json
  "scripts": {
-    //other scripts
+    //其他脚本
     "test": "jest --coverage --collectCoverageFrom='src/**/*.{js,jsx}'",
     "coverage": "nyc npm test && npm run coverage:merge && npm run coverage:report",
     "coverage:merge": "mkdir -p ./coverage && nyc merge ./coverage .nyc_output/out.json",
     "coverage:report": "nyc report --reporter=lcov --reporter=text"
-    //other scripts
+    //其他脚本
   }
 ```
 
-## Usage
+## 使用方法
 
-For the code coverage for the keploy API tests using the jest integration, you need to add the following test to your Jest test file. It can be called as `keploy.test.js`. Jest test file. It can be called as `keploy.test.js`.
+要为 Keploy API 测试生成代码覆盖率，你需要在 Jest 测试文件中添加以下测试。可以将其命名为 `keploy.test.js`。
 
 ```javascript
 const {expect} = require("@jest/globals");
@@ -232,7 +232,7 @@ describe(
           if (err) {
             done(err);
           } else {
-            expect(res).toBeTruthy(); // Assert the test result
+            expect(res).toBeTruthy(); // 断言测试结果
             done();
           }
         });
@@ -244,23 +244,23 @@ describe(
 );
 ```
 
-Now let's run jest tests along keploy using command
+现在运行以下命令来执行包含 Keploy 的 jest 测试：
 
 ```bash
 npm test
 ```
 
-To get Combined coverage with keploy test coverage
+要获取包含 Keploy 测试覆盖率的综合覆盖率报告：
 
 ```bash
 npm run coverage
 ```
 
-## Wrapping it up 🎉
+## 总结 🎉
 
-Congratulations! You've conquered Keploy and unleashed its power for effortless testing in your NodeJS application. With Jest by your side, you can ensure rock-solid code coverage. Time to go forth and build amazing things! 🧑🏻‍💻
+恭喜！你已经掌握了 Keploy，并在 NodeJS 应用中释放了其强大的自动化测试能力。结合 Jest，你可以确保代码覆盖率坚如磐石。现在，去创造更棒的东西吧！🧑🏻‍💻
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如果还有任何问题，欢迎联系我们。
 
 import GetSupport from '../concepts/support.md'
 

@@ -1,7 +1,7 @@
 ---
 id: introduction
-title: "What is Keploy?"
-sidebar_label: Introduction
+title: "什么是Keploy？"
+sidebar_label: 简介
 ---
 
 import WhatIsKeploy from '../concepts/what-is-keploy.md'

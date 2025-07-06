@@ -1,125 +1,125 @@
 ---
 id: utg-best-practices
-title: Best practices for unit testing and UTG?
-sidebar_label: Best Practices?
+title: 单元测试与UTG最佳实践？
+sidebar_label: 最佳实践？
 tags:
-  - explanation
-  - why keploy
-  - automated testing
-  - test scripts
-  - manual testing
-  - record replay test
+  - 说明
+  - 为什么选择Keploy
+  - 自动化测试
+  - 测试脚本
+  - 手动测试
+  - 录制回放测试
 ---
 
-> **Master the art of automated testing with proven strategies, expert insights, and advanced techniques for maximizing your testing ROI.**
+> **通过验证策略、专家见解和先进技术，掌握自动化测试的艺术，最大化测试投资回报率。**
 
-This comprehensive guide outlines battle-tested best practices for writing exceptional unit tests, leveraging automation effectively, and extracting maximum value from Keploy's Unit Test Generation ecosystem — including the PR Agent and VS Code extension.
+本综合指南概述了经过实战检验的最佳实践，包括编写高质量单元测试、有效利用自动化，以及从Keploy单元测试生成生态系统中获取最大价值（含PR Agent和VS Code扩展）。
 
-## **Foundational Unit Testing Principles**
+## **单元测试基础原则**
 
-### **1. Single Responsibility Testing**
+### **1. 单一职责测试**
 
-Each unit test should validate exactly one behavior or functionality. This laser-focused approach improves debugging efficiency and makes test failures immediately actionable.
-
-```javascript
-// Good: Tests one specific behavior
-test("should calculate discount for premium customers", () => {
-  // Test implementation
-});
-
-// Avoid: Testing multiple concerns
-test("should calculate discount and send email and update database", () => {
-  // Too many responsibilities
-});
-```
-
-### **2. Test Isolation & Independence**
-
-Design tests to run in any order without side effects. Each test should create its own test data and clean up after itself.
-
-**Key Strategies:**
-
-- Use setup/teardown methods effectively
-- Avoid shared mutable state between tests
-- Implement proper database/file system cleanup
-- Use fresh object instances for each test
-
-### **3. Descriptive Test Naming Convention**
-
-Adopt a consistent naming pattern that immediately communicates intent, context, and expected outcome.
-
-**Recommended Pattern:**
-
-```
-should[ExpectedBehavior]When[SpecificCondition]
-```
-
-**Examples:**
-
-- `shouldReturnErrorWhenInputIsNull()`
-- `shouldCalculateCorrectTaxForHighIncomeUsers()`
-- `shouldThrowTimeoutExceptionWhenApiResponseDelayed()`
-
-### **4. AAA Pattern Implementation**
-
-Structure every test using the Arrange-Act-Assert pattern for maximum clarity and maintainability:
+每个单元测试应仅验证一个行为或功能。这种聚焦方法可提高调试效率，使测试失败立即可操作。
 
 ```javascript
-test("shouldCalculateCorrectInterest", () => {
-  // Arrange: Set up test data and conditions
+// 良好：测试单一特定行为
+test("应为高级客户计算折扣", () => {
+  // 测试实现
+});
+
+// 避免：测试多个关注点
+test("应计算折扣并发送邮件且更新数据库", () => {
+  // 职责过多
+});
+```
+
+### **2. 测试隔离与独立性**
+
+设计测试使其可按任意顺序运行且无副作用。每个测试应创建自己的测试数据并自行清理。
+
+**关键策略：**
+
+- 有效使用setup/teardown方法
+- 避免测试间共享可变状态
+- 实现适当的数据库/文件系统清理
+- 每个测试使用新的对象实例
+
+### **3. 描述性测试命名规范**
+
+采用一致的命名模式，立即传达意图、上下文和预期结果。
+
+**推荐模式：**
+
+```
+当[特定条件]时应[预期行为]
+```
+
+**示例：**
+
+- `当输入为空时应返回错误()`
+- `应为高收入用户计算正确税款()`
+- `当API响应延迟时应抛出超时异常()`
+
+### **4. AAA模式实现**
+
+使用Arrange-Act-Assert模式构建每个测试，确保最大清晰度和可维护性：
+
+```javascript
+test("应计算正确利息", () => {
+  // 准备：设置测试数据和条件
   const principal = 1000;
   const rate = 5;
   const time = 2;
 
-  // Act: Execute the function under test
+  // 执行：运行被测函数
   const result = calculateSimpleInterest(principal, rate, time);
 
-  // Assert: Verify the expected outcome
+  // 断言：验证预期结果
   expect(result).toBe(100);
 });
 ```
 
-### **5. Test-Driven Development Integration**
+### **5. 测试驱动开发集成**
 
-Consider implementing TDD workflows where tests drive design decisions:
+考虑实施TDD工作流，让测试驱动设计决策：
 
-- **Red Phase**: Write failing tests first
-- **Green Phase**: Implement minimal code to pass tests
-- **Refactor Phase**: Improve code while keeping tests green
-- **Benefits**: Better API design, improved code coverage, reduced debugging time
+- **红阶段**：先写失败测试
+- **绿阶段**：实现最小代码使测试通过
+- **重构阶段**：改进代码同时保持测试通过
+- **优势**：更好的API设计、提高代码覆盖率、减少调试时间
 
-### **6. Strategic Dependency Mocking**
+### **6. 战略性的依赖模拟**
 
-Isolate units under test by mocking external dependencies:
+通过模拟外部依赖来隔离被测单元：
 
-**When to Mock:**
+**应模拟的场景：**
 
-- External APIs and web services
-- Database connections and queries
-- File system operations
-- Time-dependent functions
-- Third-party libraries with side effects
+- 外部API和Web服务
+- 数据库连接和查询
+- 文件系统操作
+- 时间相关函数
+- 有副作用的第三方库
 
-**When NOT to Mock:**
+**不应模拟的场景：**
 
-- Simple value objects and DTOs
-- Internal utility functions
-- Domain logic that should be tested together
+- 简单值对象和DTO
+- 内部工具函数
+- 应一起测试的领域逻辑
 
-## **Advanced Automated Testing Strategies**
+## **高级自动化测试策略**
 
-### **1. Treat Generated Tests as Intelligence Amplifiers**
+### **1. 将生成的测试视为智能放大器**
 
-Leverage Keploy UTG-generated tests as sophisticated starting points rather than final solutions:
+将Keploy UTG生成的测试作为复杂起点而非最终方案：
 
-- **Review Generated Logic**: Validate that test assertions match business requirements
-- **Enhance Edge Cases**: Add domain-specific edge cases that AI might miss
-- **Refine Assertions**: Strengthen test assertions with business-specific validations
-- **Add Context**: Include comments explaining complex business logic
+- **审查生成逻辑**：验证测试断言是否符合业务需求
+- **增强边界案例**：添加AI可能遗漏的领域特定边界案例
+- **优化断言**：通过业务特定验证加强测试断言
+- **添加上下文**：包含解释复杂业务逻辑的注释
 
-### **2. Intelligent Test Organization**
+### **2. 智能测试组织**
 
-Implement a hierarchical structure that scales with your codebase:
+实现随代码库扩展的分层结构：
 
 ```
 tests/
@@ -134,95 +134,95 @@ tests/
     └── mocks/
 ```
 
-### **3. Coverage-Driven Quality Metrics**
+### **3. 覆盖率驱动的质量指标**
 
-Focus on meaningful coverage metrics rather than arbitrary percentage targets:
+关注有意义的覆盖率指标而非任意百分比目标：
 
-- **Critical Path Coverage**: Ensure 100% coverage for business-critical functions
-- **Branch Coverage**: Validate all conditional logic paths
-- **Error Path Coverage**: Test exception handling and error scenarios
-- **Integration Point Coverage**: Focus on boundaries between modules
+- **关键路径覆盖率**：确保业务关键函数100%覆盖
+- **分支覆盖率**：验证所有条件逻辑路径
+- **错误路径覆盖率**：测试异常处理和错误场景
+- **集成点覆盖率**：聚焦模块间边界
 
-### **4. CI/CD Pipeline Integration**
+### **4. CI/CD流水线集成**
 
-Embed automated testing into every stage of your development pipeline:
+将自动化测试嵌入开发生命周期的每个阶段：
 
-- **Pre-commit Hooks**: Run unit tests before code commits
-- **PR Validation**: Automatically trigger test generation and execution
-- **Deployment Gates**: Block deployments without adequate test coverage
-- **Performance Monitoring**: Track test execution time and optimize slow tests
+- **预提交钩子**：提交代码前运行单元测试
+- **PR验证**：自动触发测试生成和执行
+- **部署门控**：阻止测试覆盖率不足的部署
+- **性能监控**：跟踪测试执行时间并优化慢测试
 
-### **5. Version Control Best Practices**
+### **5. 版本控制最佳实践**
 
-Maintain test code with the same rigor as production code:
+以生产代码同等严格度维护测试代码：
 
-- **Meaningful Commit Messages**: Document test changes clearly
-- **Test Code Reviews**: Review generated and modified tests thoroughly
-- **Test Refactoring**: Keep tests clean and maintainable
-- **Documentation Updates**: Update test documentation with code changes
+- **有意义的提交信息**：清晰记录测试变更
+- **测试代码审查**：彻底审查生成和修改的测试
+- **测试重构**：保持测试整洁可维护
+- **文档更新**：随代码变更更新测试文档
 
-## **Keploy UTG PR Agent Mastery**
+## **Keploy UTG PR Agent精通指南**
 
-### **1. Pre-PR Test Generation Workflow**
+### **1. PR前测试生成工作流**
 
-Integrate PR Agent into your development workflow for maximum efficiency:
+将PR Agent集成到开发工作流以实现最大效率：
 
 ```bash
-# Recommended workflow
+# 推荐工作流
 git checkout -b feature/new-payment-method
-# Implement your changes
+# 实现变更
 git add .
-git commit -m "feat: add cryptocurrency payment support"
-# PR Agent automatically analyzes changes and suggests tests
+git commit -m "feat: 添加加密货币支付支持"
+# PR Agent自动分析变更并建议测试
 git push origin feature/new-payment-method
 ```
 
-### **2. Intelligent Test Review Process**
+### **2. 智能测试审查流程**
 
-Develop a systematic approach to reviewing AI-generated tests:
+建立系统化审查AI生成测试的方法：
 
-**Review Checklist:**
+**审查清单：**
 
-- Do test assertions match business requirements?
-- Are edge cases relevant to the domain?
-- Do mocks accurately represent external dependencies?
-- Are test names descriptive and meaningful?
-- Is test data realistic and varied?
+- 测试断言是否符合业务需求？
+- 边界案例是否与领域相关？
+- 模拟是否准确代表外部依赖？
+- 测试名称是否描述性强且有意义？
+- 测试数据是否真实且多样？
 
-### **3. Strategic Commit Message Patterns**
+### **3. 战略性提交信息模式**
 
-Use consistent commit messages when integrating PR Agent results:
+集成PR Agent结果时使用一致的提交信息：
 
 ```bash
-# Descriptive patterns
-git commit -m "test: add unit tests for payment processing module"
-git commit -m "test: enhance edge case coverage for user authentication"
-git commit -m "test: update mocks for external API integration"
+# 描述性模式
+git commit -m "test: 添加支付处理模块单元测试"
+git commit -m "test: 增强用户认证边界案例覆盖"
+git commit -m "test: 更新外部API集成的模拟"
 ```
 
-### **4. Hybrid Testing Approach**
+### **4. 混合测试方法**
 
-Combine automated generation with manual expertise:
+结合自动生成与人工专业知识：
 
-- **Auto-Generated Foundation**: Use PR Agent for baseline test coverage
-- **Manual Enhancement**: Add business-specific test scenarios
-- **Domain Expert Review**: Have domain experts validate test logic
-- **Continuous Refinement**: Iteratively improve generated test quality
+- **自动生成基础**：使用PR Agent获取基线测试覆盖
+- **人工增强**：添加业务特定测试场景
+- **领域专家审查**：由专家验证测试逻辑
+- **持续改进**：迭代提升生成测试质量
 
-## **VS Code Extension Power User Techniques**
+## **VS Code扩展高级使用技巧**
 
-### **1. Real-Time Development Integration** ⚡
+### **1. 实时开发集成** ⚡
 
-Maximize productivity by generating tests during active development:
+通过在开发过程中生成测试实现最高效率：
 
-- **Function-Level Testing**: Generate tests immediately after writing functions
-- **Refactoring Safety**: Create tests before refactoring existing code
-- **Bug Reproduction**: Generate tests to reproduce and fix reported bugs
-- **API Exploration**: Use generated tests to understand third-party APIs
+- **函数级测试**：编写函数后立即生成测试
+- **重构安全**：重构现有代码前创建测试
+- **错误复现**：生成测试以复现和修复报告的错误
+- **API探索**：使用生成测试理解第三方API
 
-### **2. Advanced Configuration Management**
+### **2. 高级配置管理**
 
-Customize the VS Code extension for optimal team workflows:
+自定义VS Code扩展以优化团队工作流：
 
 ```json
 {
@@ -234,49 +234,49 @@ Customize the VS Code extension for optimal team workflows:
 }
 ```
 
-### **3. Incremental Test Development**
+### **3. 增量式测试开发**
 
-Build comprehensive test suites incrementally:
+逐步构建全面测试套件：
 
-- **Start Small**: Begin with core utility functions
-- **Expand Gradually**: Add tests for more complex business logic
-- **Maintain Quality**: Regularly review and refactor generated tests
-- **Document Patterns**: Create team guidelines for test generation
+- **从小开始**：从核心工具函数入手
+- **逐步扩展**：添加更复杂业务逻辑的测试
+- **保持质量**：定期审查和重构生成测试
+- **记录模式**：创建团队测试生成指南
 
-### **4. Integration with Development Workflow**
+### **4. 与开发工作流集成**
 
-Seamlessly blend test generation with existing development practices:
+将测试生成无缝融入现有开发实践：
 
-- **Code Review Integration**: Generate tests before requesting code reviews
-- **Pair Programming**: Use generated tests as conversation starters
-- **Knowledge Sharing**: Use tests to document expected behavior
-- **Onboarding Tool**: Help new team members understand codebase behavior
+- **代码审查集成**：请求代码审查前生成测试
+- **结对编程**：将生成测试作为讨论起点
+- **知识共享**：用测试记录预期行为
+- **入职工具**：帮助新成员理解代码库行为
 
-## **Advanced Metrics & Monitoring**
+## **高级指标与监控**
 
-### **Test Quality Indicators**
+### **测试质量指标**
 
-- **Assertion Strength**: Measure specificity and relevance of test assertions
-- **Mock Accuracy**: Evaluate how well mocks represent real dependencies
-- **Edge Case Coverage**: Track coverage of boundary conditions and error scenarios
-- **Maintenance Overhead**: Monitor time spent maintaining generated tests
+- **断言强度**：衡量测试断言的特异性和相关性
+- **模拟准确性**：评估模拟代表真实依赖的程度
+- **边界案例覆盖**：跟踪边界条件和错误场景的覆盖
+- **维护开销**：监控维护生成测试的时间
 
-### **Team Adoption Metrics**
+### **团队采用指标**
 
-- **Generation Frequency**: Track how often team members use UTG tools
-- **Review Efficiency**: Measure time saved in code review processes
-- **Bug Detection Rate**: Monitor bugs caught by generated tests
-- **Developer Satisfaction**: Survey team satisfaction with automated testing tools
+- **生成频率**：跟踪团队成员使用UTG工具的频率
+- **审查效率**：衡量代码审查节省的时间
+- **错误检测率**：监控生成测试发现的错误
+- **开发者满意度**：调研团队对自动化测试工具的满意度
 
-## **Pro Tips for Success**
+## **成功专业技巧**
 
-- **Start with High-Impact Areas**: Focus on business-critical code first
-- **Invest in Team Training**: Ensure everyone understands best practices
-- **Monitor and Adjust**: Regularly evaluate and improve your testing approach
-- **Community Engagement**: Share experiences and learn from other teams
-- **Continuous Learning**: Stay updated with testing industry best practices
+- **从高影响区域开始**：首先聚焦业务关键代码
+- **投入团队培训**：确保所有人理解最佳实践
+- **监控与调整**：定期评估和改进测试方法
+- **社区参与**：分享经验并向其他团队学习
+- **持续学习**：跟进测试行业最新最佳实践
 
-_Remember: Automated testing tools are force multipliers, not replacements for thoughtful testing strategy. The goal is to amplify human expertise, not replace human judgment._
+_记住：自动化测试工具是力量倍增器，而非深思熟虑测试策略的替代品。目标是放大人类专业知识，而非取代人类判断。_
 
 import GetSupport from '../concepts/support.md'
 

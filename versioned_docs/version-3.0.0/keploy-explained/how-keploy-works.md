@@ -1,62 +1,64 @@
 ---
 id: how-keploy-works
-title: How Keploy Works?
-sidebar_label: Architecture
+title: Keploy 工作原理
+sidebar_label: 架构解析
 tags:
-  - explanation
-  - replay-test-case
-  - replay-guide
-  - record-guide
-  - record-test-case
+  - 技术说明
+  - 测试用例回放
+  - 回放指南
+  - 录制指南
+  - 录制测试用例
 ---
 
-## 🌟 Keploy V2 Architecture 🌟
+## 🌟 Keploy V2 架构 🌟
 
-### 🎯 Goals
+### 🎯 设计目标
 
-- 🛠 **Automatic instrumentation:** No code changes required.
-- 📡 **Automatic traffic capture:** Both incoming and outgoing traffic is captured and manipulated.
-- ✍️ **Readable and Editable:** Tests and stubs are easy to understand and modify.
-- 🔒 **TLS Support:** Secure connections in HTTPS or databases are supported.
-- 🔄 **Request Matching:** Mocking responses during testing by matching requests.
+- 🛠 **自动插桩:** 无需修改代码
+- 📡 **自动流量捕获:** 捕获并操纵进出流量
+- ✍️ **可读可编辑:** 测试用例和桩数据易于理解修改
+- 🔒 **TLS支持:** 支持HTTPS或数据库的安全连接
+- 🔄 **请求匹配:** 通过请求匹配实现测试时的响应模拟
 
-## 🏗 High-level architecture
+## 🏗 高层架构
 
-Keploy uses eBPF to instrument applications without code changes. Key components include:
+Keploy 使用 eBPF 技术实现无代码修改的应用插桩，主要组件包括：
 
-- **eBPF hooks loader**
-- **Network Proxy**
-- **API server**
+- **eBPF 钩子加载器**
+- **网络代理**
+- **API 服务端**
 
-<img src="/docs/img/oss/keploy-arch.png?raw=true" alt="Keploy Architecture"/>
+<img src="/docs/img/oss/keploy-arch.png?raw=true" alt="Keploy架构图"/>
 
-### 🪝 eBPF hooks loader
+### 🪝 eBPF 钩子加载器
 
-The eBPF hooks loader handles the Ingress and Egress Interceptor logic.
+eBPF 钩子加载器处理入口和出口拦截逻辑：
 
-- **Ingress Interceptor:** Captures incoming HTTP calls and stores them in YAML format. It intercepts system calls related to incoming HTTP request connections.
-- **Egress Interceptor:** Forwards TCP and certain UDP connections to the proxy for interception. Applications are unaware of this transparent process.
+- **入口拦截器:** 捕获HTTP入站调用并存储为YAML格式，拦截与HTTP请求连接相关的系统调用
+- **出口拦截器:** 将TCP和特定UDP连接透明转发至代理进行拦截，应用对此过程无感知
 
-### 🌐 Network Proxy
+### 🌐 网络代理
 
-The Network Proxy acts as a transparent proxy for recording or mocking outgoing network calls. It processes TCP streams, matching the protocol and using the appropriate [integration packages](https://github.com/keploy/keploy/tree/main/pkg/core/proxy/integrations).
+网络代理作为透明代理用于记录或模拟出站网络调用：
 
-- **Readability:** To maintain readability in tests and mocks, Keploy converts binary streams from TCP connections into well-structured YAMLs, covering outgoing calls like databases, caches, and API calls
-- **Support for Unknown Dependencies:** Keploy can handle unknown dependencies by recording binary data as base64 in YAML and using fuzzy matching to correlate incoming requests during testing and mocking.
-- **TLS Interception:** For TLS-based connections like HTTPS, Keploy intercepts traffic by inserting a fake certificate chain between the application and itself. The specific method varies with the language and runtime.
+- **可读性处理:** 将TCP连接的二进制流转换为结构化的YAML，涵盖数据库、缓存、API调用等出站请求
+- **未知依赖支持:** 通过base64编码记录二进制数据，测试时使用模糊匹配关联入站请求
+- **TLS拦截:** 对HTTPS等TLS连接，通过在应用与代理间插入伪造证书链实现流量拦截
 
-### 🖥 API server
+### 🖥 API 服务端
 
-The API server manages commands for start/stop and resource management (e.g., testicles, stubs). It's evolving to enable full agent mode, beyond just CLI.
+API服务端提供启停命令和资源管理（如测试用例、桩数据），正在演进为支持完整代理模式。
 
-## 🧪 Example
+## 🧪 工作示例
 
-Consider an application server serving HTTP APIs for clients like web/mobile apps, postman, or curl, and depending on a database and another API.
+假设应用服务器为Web/移动端提供HTTP API，并依赖数据库和外部API：
 
-- **Record Mode:** Keploy injects eBPF hooks to capture incoming HTTP traffic and redirects outgoing TCP/UDP traffic to its proxy server. The proxy server captures packets asynchronously and saves them in YAML files.
-- **Test Mode:** Keploy reads the YAML files for test cases and stubs/mocks. It starts the application, sends recorded HTTP test cases, and mocks responses for outgoing calls. This ensures no side effects due to non-idempotency.
+- **录制模式:** 注入eBPF钩子捕获入站HTTP流量，重定向出站TCP/UDP流量至代理服务器异步存储为YAML
+- **测试模式:** 读取YAML测试用例和桩数据，启动应用后发送录制的HTTP请求，同时模拟出站调用响应
 
-Hope this helps you out, if you still have any questions, reach out to us .
+这种机制确保了非幂等性操作不会产生副作用。
+
+如有其他问题，欢迎联系我们。
 
 import GetSupport from '../concepts/support.md'
 

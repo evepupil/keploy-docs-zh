@@ -1,31 +1,31 @@
 ---
 id: samples-typescript
-title: Typescript Sample Application
+title: Typescript 示例应用
 sidebar_label: Typescript - Nhost
-description: The following sample app to test Keploy integration capabilities using Typescript and Nhost.
+description: 以下示例应用用于测试 Keploy 与 Typescript 和 Nhost 的集成能力。
 tags:
   - Typescript
   - Nhost
 keyword:
   - Typescript
   - Nhost
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-This is a sample app to test Keploy integration capabilities using Typescript and Nhost Let's get started without delaying any further! 🎢
+这是一个使用 Typescript 和 Nhost 测试 Keploy 集成能力的示例应用。让我们立即开始吧！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 快速开始 🎬
 
-### Setup app
+### 设置应用
 
-Clone and install the necessary packages with the below command
+克隆仓库并通过以下命令安装必要依赖：
 
 ```bash
 git clone https://github.com/keploy/samples-typescript && cd samples-typescript/ts-nhost
@@ -35,47 +35,47 @@ git clone https://github.com/keploy/samples-typescript && cd samples-typescript/
 npm install
 ```
 
-### Creating .env
+### 创建 .env 文件
 
-Create a .env file which should contain `HASURA_ADMIN_SECRET`and `GRAPHQL_ENDPOINT` (as mentioned in ts-nhost/sample.env)
+创建包含 `HASURA_ADMIN_SECRET` 和 `GRAPHQL_ENDPOINT` 的 .env 文件（参考 ts-nhost/sample.env 文件）
 
-Steps on how to generate your HASURA_ADMIN_SECRET and GRAPHQL_ENDPOINT :
+生成 HASURA_ADMIN_SECRET 和 GRAPHQL_ENDPOINT 的步骤：
 
-1. Go to nhost
-2. Sign Up/Sign In and create new project
-3. Go to Hasura Console and open Hasura (Make sure to save your secret key before going to the next step)
-4. Get the `x-hasura-admin-secret` and `GraphQL Endpoint` and name them as `HASURA_ADMIN_SECRET` and `GRAPHQL_ENDPOINT `respectively in .env
+1. 访问 nhost
+2. 注册/登录并创建新项目
+3. 进入 Hasura 控制台并打开 Hasura（确保在下一步前保存好密钥）
+4. 获取 `x-hasura-admin-secret` 和 `GraphQL Endpoint`，在 .env 中分别命名为 `HASURA_ADMIN_SECRET` 和 `GRAPHQL_ENDPOINT`
 
-## Running the Application 📥
+## 运行应用 📥
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用：
 
-- [Running Natively on Linux/WSL](#running-natively-on-linuxwsl)
-- [Running the app using Docker](#running-the-app-using-docker)
+- [在 Linux/WSL 原生运行](#在-linuxwsl-原生运行)
+- [使用 Docker 运行应用](#使用-docker-运行应用)
 
-## Running Natively on Linux/WSL
+## 在 Linux/WSL 原生运行
 
-We're about to set up our sample application right on Linux, with a twist—our GraphQL backend will be powered by Hasura through Nhost. And to add a bit of flair, we’ll handle the database management with Nhost’s cloud-based service.
+我们将在 Linux 上直接设置示例应用，同时通过 Nhost 的 Hasura 提供 GraphQL 后端支持，并使用 Nhost 的云服务管理数据库。
 
-Ready to dive in? Let’s make this setup as smooth as a breeze! 🌟
+准备好开始了吗？让我们轻松完成设置！🌟
 
-### Start recording tests:
+### 开始记录测试：
 
 ```bash
 sudo -E env "PATH=$PATH" keploy record -c 'ts-node src/app.ts'
 ```
 
-`sudo -E`: Runs the command with elevated privileges while preserving the user environment.
+`sudo -E`: 以提升的权限运行命令并保留用户环境。
 
-`env "PATH=$PATH"`: Ensures that the current PATH environment variable is preserved and used.
+`env "PATH=$PATH"`: 确保保留并使用当前 PATH 环境变量。
 
-`keploy record`: Invokes Keploy in recording mode.
+`keploy record`: 以记录模式调用 Keploy。
 
-`-c 'ts-node src/app.ts`': Specifies the command to start your application (in this case, using ts-node to execute the TypeScript application entry point).
+`-c 'ts-node src/app.ts`': 指定启动应用的命令（此处使用 ts-node 执行 TypeScript 应用入口）。
 
-### Generating the test cases
+### 生成测试用例
 
-1. Create User
+1. 创建用户
 
 ```bash
 curl --request POST \
@@ -92,7 +92,7 @@ curl --request POST \
       }'
 ```
 
-2. Get User
+2. 获取用户
 
 ```bash
     curl --request GET \
@@ -104,7 +104,7 @@ curl --request POST \
 
 ```
 
-3. Delete User
+3. 删除用户
 
 ```bash
     curl --request DELETE \
@@ -115,11 +115,11 @@ curl --request POST \
       --header 'Content-Type: application/json'
 ```
 
-Voila we have captured our api calls!
+我们已成功捕获 API 调用！
 
-Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+查看 **Keploy 目录**，您将在 `test-1.yml` 和 `mocks.yml` 中找到生成的测试用例。
 
-This is a sample of what your yaml file would look like
+以下是 YAML 文件的示例：
 
 ```bash
 version: api.keploy.io/v1beta1
@@ -182,27 +182,27 @@ curl: |-
       }'
 ```
 
-### Running the test cases
+### 运行测试用例
 
-Now, let's put things to test and run the keploy in test mode again:-
+现在，让我们测试并再次以测试模式运行 Keploy：
 
 ```bash
 sudo -E env "PATH=$PATH" keploy test -c 'ts-node src/app.ts' --delay 10
 ```
 
-Voila!! Our test cases have passed 🌟
+太棒了！！我们的测试用例已通过 🌟
 
-You will be able to see the summary of your test cases run in your terminal!
+您将在终端中看到测试用例运行的摘要！
 
-Now its time for you to experiment further with different API calls and tweak the responses accordingly!
+现在您可以尝试不同的 API 调用并调整响应！
 
-## Running the app using Docker
+## 使用 Docker 运行应用
 
-We will be using Docker compose to run the application as well as GraphQL on Docker container.
+我们将使用 Docker compose 在 Docker 容器中运行应用和 GraphQL。
 
-### Capture the testcases
+### 捕获测试用例
 
-We will run the keploy in record mode with docker-compose to start our application:-
+我们将以记录模式运行 Keploy，并使用 docker-compose 启动应用：
 
 ```bash
 keploy record -c "sudo docker-compose up" --containerName "ts-nhost"
@@ -210,13 +210,13 @@ keploy record -c "sudo docker-compose up" --containerName "ts-nhost"
 
 <img src="/docs/img/wsl-record-ts.png" alt="Sample Keploy Record TS Nhost" width="100%" style={{ borderRadius: '5px' }} />
 
-### Generate the testcases
+### 生成测试用例
 
-Let's generate the testcases.
+让我们生成测试用例。
 
-Make API Calls using Hoppscotch, Postman or cURL command. Keploy will capture those calls to generate test suites containing test cases and data mocks.
+使用 Hoppscotch、Postman 或 cURL 命令发起 API 调用。Keploy 将捕获这些调用以生成包含测试用例和数据模拟的测试套件。
 
-1. Create User
+1. 创建用户
 
 ```bash
 curl --request POST \
@@ -233,7 +233,7 @@ curl --request POST \
       }'
 ```
 
-2. Get User
+2. 获取用户
 
 ```bash
     curl --request GET \
@@ -244,7 +244,7 @@ curl --request POST \
       --header 'Host: localhost:3000'
 ```
 
-3. Delete User
+3. 删除用户
 
 ```
     curl --request DELETE \
@@ -255,29 +255,29 @@ curl --request POST \
       --header 'Content-Type: application/json'
 ```
 
-### Running the testcases
+### 运行测试用例
 
-Let's run our captured test cases
+让我们运行捕获的测试用例：
 
 ```bash
 keploy test -c 'sudo docker-compose up' --containerName "ts-nhost" --delay 10
 ```
 
-This is what your response should look like!
+响应应如下所示！
 
 <img src="/docs/img/wsl-test-ts.png" alt="Sample Keploy Test TS Nhost" width="100%" style={{ borderRadius: '5px' }} />
 
 <img src="/docs/img/wsl-test-summary-ts.png" alt="Sample Keploy TS Nhost Summary" width="100%" style={{ borderRadius: '5px' }} />
 
-## Wrapping it up 🎉
+## 总结 🎉
 
-🎉 **Congratulations on Reaching This Milestone!** 🎉
+🎉 **恭喜您完成这一里程碑！** 🎉
 
-You've successfully tested the tool and created your mocks and test cases—fantastic work! Now that you've laid a solid foundation, it's time to elevate your achievements even further.
+您已成功测试工具并创建模拟和测试用例——做得太棒了！现在您已打下坚实基础，是时候进一步提升成就了。
 
-Here’s to building more, innovating, and reaching new heights with your project! 🚀
+祝您在项目中不断创新，达到新高度！🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

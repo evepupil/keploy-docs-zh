@@ -1,32 +1,32 @@
 ---
 id: auto-test-generation
-title: Auto Test Generation 🚀
-sidebar_label: Test Generation 🚀
+title: 自动化测试生成 🚀
+sidebar_label: 测试生成 🚀
 tags:
-  - Auto Test Generation
+  - 自动化测试生成
   - OpenAPI
-  - Test Automation
+  - 测试自动化
   - OpenAI
 keywords:
-  - Auto Test Generation
+  - 自动化测试生成
   - Keploy
   - OpenAPI
-  - Test Automation
+  - 测试自动化
 ---
 
-Auto Test Generation simplifies the testing process by automating the generation of test cases based on the provided OpenAPI Schema file.
+自动化测试生成通过基于提供的OpenAPI Schema文件自动生成测试用例，简化了测试流程。
 
-## Usage 🛠️
+## 使用方法 🛠️
 
-Keploy can generate tests automatically, with the help of schema file of the application:-
+Keploy可以借助应用程序的模式文件自动生成测试：
 
 ```bash
 keploy generate-tests -c "<appCmd>" -s "<schemaFilePath>"
 ```
 
-## Example
+## 示例
 
-Let's consider the [employee-manager](https://github.com/keploy/samples-java/tree/main/employee-manager) application as the example. First we need to create the `schema.json` file for the app, which would like something:-
+以[employee-manager](https://github.com/keploy/samples-java/tree/main/employee-manager)应用程序为例。首先我们需要为应用创建`schema.json`文件，内容如下：
 
 ```json
 {
@@ -406,28 +406,28 @@ Let's consider the [employee-manager](https://github.com/keploy/samples-java/tre
 }
 ```
 
-### Start Database Instance
+### 启动数据库实例
 
-Let's start our postgres database instance via docker:-
+通过docker启动postgres数据库实例：
 
 ```sh
 docker-compose up -d postgres
 ```
 
-## Generate test-cases
+## 生成测试用例
 
-Now that we have our schema file, we need to create create jar file since we are using java sample-application :-
+现在我们有了模式文件，需要创建jar文件（因为我们使用的是Java示例应用）：
 
 ```sh
 mvn clean install -DskipTests
 ```
 
-Now that we have our jar file ready, let's start the application with keploy : -
+jar文件准备就绪后，让我们用keploy启动应用程序：
 
 ```sh
 keploy generate-tests -c "java -jar <JAR_FILE_PATH>" -s "schema.json"
 ```
 
-We will get similar output: -
+我们将得到类似输出：
 
 <img width="881" alt="image" src="https://github.com/keploy/docs/assets/53110238/2586dd57-dee8-46dd-9886-08ad729685c1"/>

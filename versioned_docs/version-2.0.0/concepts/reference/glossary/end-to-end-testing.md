@@ -1,84 +1,84 @@
 ---
 id: end-to-end-testing
-title: Creating end to end tests with Keploy
-sidebar_label: End To End Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 使用Keploy创建端到端测试
+sidebar_label: 端到端测试
+description: 本术语表解释了初学者初次接触时难以理解的所有术语。
 tags:
-  - explanation
-  - Glossary
+  - 解释
+  - 术语表
 keywords:
   - API
 ---
 
-End-to-end testing or E2E testing is a testing technique that validates the functionality and performance of an entire software application from start to finish. This means that E2E tests simulate real-world user scenarios and replicate live data. The goal of E2E testing is to identify bugs that arise when all components are integrated, ensuring that the application delivers the expected output as a unified entity.
+端到端测试（E2E测试）是一种验证整个软件应用从开始到结束的功能和性能的测试技术。这意味着E2E测试模拟真实用户场景并复制实际数据。E2E测试的目标是识别所有组件集成时出现的错误，确保应用作为一个统一整体交付预期输出。
 
-E2E testing is typically performed by quality assurance (QA) teams, and are executed in dedicated test environments. This normally takes place after functional and system testing. End-to-end testing typically includes testing the following:
+E2E测试通常由质量保证（QA）团队执行，并在专用测试环境中进行。这通常在功能和系统测试之后进行。端到端测试通常包括以下内容：
 
-- **The application's functionality**: Does the application do what it is supposed to do?
-- **The application's reliability**: Does the application work consistently?
-- **The application's performance**: How fast and efficient is the application?
-- **The application's security**: Is the application protected from unauthorized access or misuse?
-- **The application's usability**: Is the application easy to use?
+- **应用功能**：应用是否按预期工作？
+- **应用可靠性**：应用是否能稳定运行？
+- **应用性能**：应用的速度和效率如何？
+- **应用安全性**：应用是否能防止未经授权的访问或滥用？
+- **应用可用性**：应用是否易于使用？
 
-## Benefits of End to End Testing
+## 端到端测试的优势
 
-End-to-end testing is an important part of the software development process. It helps to ensure that applications are of high quality and meet the needs of their users.
+端到端测试是软件开发过程中的重要部分。它有助于确保应用的高质量并满足用户需求。
 
-Here are some of the benefits of end-to-end testing:
+以下是端到端测试的一些优势：
 
-- **Reduced risk of defects:** End-to-end testing helps to identify and fix defects early in the development process, which can reduce the risk of defects reaching production.
-- **Improved user experience:** End-to-end testing can help to ensure that applications are user-friendly and meet the needs of their users.
-- **Earlier bug detection:** End-to-end testing can help to detect bugs earlier in the development process, which can save time and money.
-- **Increased productivity:** End-to-end testing can help to increase productivity by reducing the amount of time and effort required to find and fix bugs.
-- **Improved confidence in releases:** End-to-end testing can help to increase confidence in releases by providing assurance that applications are of high quality.
-- **Enhanced collaboration:** End-to-end testing can help to enhance collaboration between development teams by providing a common understanding of the application's requirements and functionality.
+- **降低缺陷风险**：端到端测试有助于在开发早期识别和修复缺陷，从而减少缺陷进入生产环境的风险。
+- **提升用户体验**：端到端测试有助于确保应用用户友好并满足用户需求。
+- **早期错误检测**：端到端测试有助于在开发早期发现错误，从而节省时间和成本。
+- **提高生产力**：端到端测试通过减少查找和修复错误所需的时间和精力来提高生产力。
+- **增强发布信心**：端到端测试通过确保应用的高质量来增强对发布的信心。
+- **促进协作**：端到端测试通过提供对应用需求和功能的共同理解来促进开发团队之间的协作。
 
-## Challenges of End to End Testing ?
+## 端到端测试的挑战
 
-- It can be time-consuming and expensive.
-- It can be difficult to automate E2E tests.
-- It can be difficult to create test cases that cover all possible real-world scenarios.
+- 它可能耗时且昂贵。
+- 自动化E2E测试可能很困难。
+- 创建覆盖所有可能真实场景的测试用例可能很困难。
 
-Despite the challenges, E2E testing is an important part of the software development lifecycle. By identifying and fixing bugs early, E2E testing can help to ensure that the application is released with a high level of quality.
+尽管存在挑战，E2E测试是软件开发生命周期的重要部分。通过早期识别和修复错误，E2E测试有助于确保应用以高质量发布。
 
-## Solution to the above challenges
+## 上述挑战的解决方案
 
-Keploy generate E2E API tests with built-in-mocks or stubs by recording your application network calls making your testing process not only faster than unit tests but also incredibly efficient.
+Keploy通过记录应用程序的网络调用来生成带有内置模拟或桩的E2E API测试，使您的测试过程不仅比单元测试更快，而且极其高效。
 
 <img src="https://keploy.io/docs/gif/record-tc.gif"/>
 
-### How Keploy works?
+### Keploy如何工作？
 
-Keploy acts a proxy in your application that captures and replays all network interaction served to application from any source. Once you start the application in record mode to capture API calls as test cases. Now, when the application serves an API, all the unique network interactions are stored within Keploy server as a test-case.
+Keploy在您的应用程序中充当代理，捕获并重放从任何来源提供给应用程序的所有网络交互。当您在记录模式下启动应用程序以捕获API调用作为测试用例时，所有独特的网络交互都会作为测试用例存储在Keploy服务器中。
 
-Let's assume you developed released version(v2) of your application. To test locally, start the Keploy in `test mode` to replay all recorded API calls/test-cases previously captured in record-mode.
+假设您发布了应用程序的v2版本。要在本地测试，启动Keploy的`测试模式`以重放之前在记录模式下捕获的所有API调用/测试用例。
 
-Now, when the application starts:
+现在，当应用程序启动时：
 
-- Keploy will run all the previously recorded test-cases/API calls with a 5 sec delay by default, which is configurable application build time of your application. You can also increase the delay time based on your application's startup time.
-- When the application will try to talk to any dependencies like DBs, Routers, vendor services, Keploy will intercept and provide the previously recorded dependency response.
-- Keploy will compare the API response to the previously captured response and a report will be generated on the Keploy console.
+- Keploy将默认以5秒的延迟运行所有之前记录的测试用例/API调用，这是可配置的应用程序构建时间。您还可以根据应用程序的启动时间增加延迟时间。
+- 当应用程序尝试与任何依赖项（如数据库、路由器、供应商服务）通信时，Keploy将拦截并提供之前记录的依赖项响应。
+- Keploy将比较API响应与之前捕获的响应，并在Keploy控制台上生成报告。
 
-Since you don't require to setup any test environment, Keploy can be used in any environment, be it local, staging, or production. Also, since the test cases are generated based on the real-time capturing of API calls from your application, they will be from real-world scenarios.
+由于不需要设置任何测试环境，Keploy可以在任何环境中使用，无论是本地、预发布还是生产环境。此外，由于测试用例是基于从应用程序实时捕获的API调用生成的，它们将来自真实场景。
 
-## Conclusion
+## 结论
 
-End-to-end (E2E) testing is a important component of the software development process, as it ensures that applications function correctly and meet user expectations across all integrated components. While E2E testing presents challenges, such as time consumption and automation complexity, tools like Keploy offer powerful solutions to streamline the process. By capturing and replaying real-world API interactions, Keploy enhances the efficiency and effectiveness of end-to-end testing, contributing to the delivery of high-quality software.
+端到端（E2E）测试是软件开发过程中的重要组成部分，因为它确保应用程序在所有集成组件中正确运行并满足用户期望。尽管E2E测试存在耗时和自动化复杂性等挑战，但像Keploy这样的工具提供了强大的解决方案来简化流程。通过捕获和重放真实世界的API交互，Keploy提高了端到端测试的效率和效果，有助于交付高质量的软件。
 
-## FAQs
+## 常见问题
 
-### What is End-to-End Testing?
+### 什么是端到端测试？
 
-End-to-end testing validates the complete functionality of a software application by simulating real-world scenarios and interactions from start to finish.
+端到端测试通过模拟真实场景和从开始到结束的交互来验证软件应用的完整功能。
 
-### Why is End-to-End Testing Important?
+### 为什么端到端测试很重要？
 
-It ensures that all integrated components of an application work together as expected, helping to identify and fix bugs that might not be detected in isolated tests.
+它确保应用的所有集成组件按预期协同工作，帮助识别和修复在孤立测试中可能无法检测到的错误。
 
-### What Challenges are Associated with End-to-End Testing?
+### 端到端测试有哪些挑战？
 
-Challenges include the time and cost involved, difficulty in automating tests, and creating comprehensive test cases that cover all possible scenarios.
+挑战包括涉及的时间和成本、自动化测试的困难以及创建覆盖所有可能场景的全面测试用例。
 
-### How Does Keploy Simplify End-to-End Testing?
+### Keploy如何简化端到端测试？
 
-Keploy simplifies E2E testing by recording API calls and generating test cases with built-in mocks or stubs. It provides a streamlined process for capturing and replaying real-world interactions, enhancing testing efficiency.
+Keploy通过记录API调用并生成带有内置模拟或桩的测试用例来简化E2E测试。它提供了一个简化的流程来捕获和重放真实世界的交互，提高测试效率。

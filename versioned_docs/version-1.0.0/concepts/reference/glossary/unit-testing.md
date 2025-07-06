@@ -1,45 +1,45 @@
 ---
 id: unit-testing
-title: Unit Testing (v1.0.0)
-sidebar_label: Unit Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 单元测试 (v1.0.0)
+sidebar_label: 单元测试
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-# Unit Testing
+# 单元测试
 
-## What is Unit Testing?
+## 什么是单元测试？
 
-Unit testing is a software testing approach that isolates individual units or components of a software program from the rest of the application. The primary purpose of unit testing is to find flaws or errors in the smallest testable bits of code (functions, methods, or classes) before they are connected with other parts of the system.
+单元测试是一种软件测试方法，它将软件程序的各个独立单元或组件与应用程序的其他部分隔离开来进行测试。单元测试的主要目的是在代码的最小可测试单元（函数、方法或类）与其他系统部分连接之前，发现其中的缺陷或错误。
 
-## Benefits of Unit Testing
+## 单元测试的优势
 
-- **Early bug detection:** Unit tests can help to find bugs early in the development process, when they are easier and cheaper to fix.
-- **Code documentation:** Unit tests can serve as documentation for the code, making it easier for other developers to understand how the code works and how it should be used.
-- **Refactoring support:** Unit tests can help to make refactoring safer by providing a way to verify that the code still works after it has been changed.
-- **Regression testing:** Unit tests can help to prevent regression testing, which is the introduction of new bugs or the loss of functionality when changes are made to the code.
-- **Improved code quality:** Unit tests can help to improve the quality of code by encouraging developers to write code that is more concise, modular, and testable.
+- **早期缺陷发现：** 单元测试有助于在开发过程中早期发现缺陷，此时修复问题更容易且成本更低。
+- **代码文档：** 单元测试可以作为代码的文档，帮助其他开发者更容易理解代码的工作原理及使用方法。
+- **重构支持：** 单元测试通过验证代码在修改后仍能正常工作，使重构更加安全。
+- **回归测试：** 单元测试有助于防止回归测试问题，即在代码变更时引入新缺陷或功能丢失的情况。
+- **提高代码质量：** 单元测试鼓励开发者编写更简洁、模块化和可测试的代码，从而提高代码质量。
 
-## Examples of Unit Tests
+## 单元测试示例
 
-- A unit test for a function that adds two numbers together might check that the function returns the correct value for different input values.
-- A unit test for a class that represents a customer might check that the class can correctly store and retrieve customer data.
-- A unit test for a method that logs an error message might check that the method correctly logs the error message to the console.
+- 对两个数字相加的函数进行单元测试，可能会检查该函数在不同输入值下是否返回正确的结果。
+- 对表示客户的类进行单元测试，可能会检查该类是否能正确存储和检索客户数据。
+- 对记录错误信息的方法进行单元测试，可能会检查该方法是否正确将错误信息记录到控制台。
 
-## Unit Testing Frameworks
+## 单元测试框架
 
-Unit tests can be written in a variety of programming languages. Some popular unit testing frameworks include:
+单元测试可以用多种编程语言编写。一些流行的单元测试框架包括：
 
 - JUnit (Java)
 - NUnit (.NET)
 - PHPUnit (PHP)
 - PyTest (Python)
 - Jasmine (JavaScript)
-- Selenium (web applications)
+- Selenium (web应用程序)
 
-## Conclusion
+## 结论
 
-Unit testing is an important part of the software development process that can help to improve the quality, dependability, and maintainability of software programs. By writing unit tests, developers can help to ensure that their code is free of errors and that it works as expected.
+单元测试是软件开发过程中重要的一环，有助于提高软件程序的质量、可靠性和可维护性。通过编写单元测试，开发者可以确保代码没有错误，并且按预期工作。

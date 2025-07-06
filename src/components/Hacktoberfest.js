@@ -6,7 +6,7 @@ export const Hacktoberfest = () => {
   return (
     <section className="mb-14 mt-1">
       <h2 className="mt-8 text-2xl font-semibold tracking-wide md:text-3xl">
-        Keploy Hacktoberfest Guide
+        Keploy Hacktoberfest 指南
       </h2>
       <img
         className="mt-8 "
@@ -18,13 +18,13 @@ export const Hacktoberfest = () => {
           className=" scale flex flex-col items-center justify-center space-y-3 rounded-lg bg-[color:orange] p-4 text-center shadow-lg"
           href="https://github.com/keploy/keploy/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest2023"
         >
-          <p className="text-lg font-semibold">Active Issues</p>
+          <p className="text-lg font-semibold">活跃议题</p>
         </a>
         <Link
           className=" scale flex flex-col items-center justify-center space-y-3 rounded-lg bg-[color:orange] p-4 text-center shadow-lg"
           to={useBaseUrl("/hacktoberfest/contribution-guide")}
         >
-          <p className="text-lg font-semibold">Know More</p>
+          <p className="text-lg font-semibold">了解更多</p>
         </Link>
       </div>
     </section>

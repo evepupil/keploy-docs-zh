@@ -1,56 +1,56 @@
 ---
 id: contribution-guide
-title: GSoC Hacktoberfest Contribution (v1.0.0)
+title: GSoC Hacktoberfest 贡献指南 (v1.0.0)
 label: GSoC
 keywords:
   - GSoC
-  - Open Source
+  - 开源
   - Hacktoberfest
 ---
 
-# Getting Started with Google Summer of Code (GSoC)
+# Google Summer of Code (GSoC) 入门指南
 
-## About the Program
+## 关于项目
 
-### Welcome to Google Summer of Code
+### 欢迎来到 Google Summer of Code
 
-[Google Summer of Code](https://summerofcode.withgoogle.com/) is a 16 years old program, run every summer, with the intention of bringing more students into open source.
+[Google Summer of Code](https://summerofcode.withgoogle.com/) 是一个已有16年历史的暑期项目，旨在吸引更多学生参与开源。
 
-Open source projects apply as mentor organizations and if they are accepted, students send proposals to them to work on a few months' long project. Projects can be planned out by the organizations in advance or can be proposed by students.
+开源项目可以申请成为导师组织，如果被接受，学生可以向他们提交为期数月的项目提案。项目可以由组织提前规划，也可以由学生提出。
 
-Google pays the students, not the organizations they work with. Beginning in 2023, Google is opening the program up to all newcomers of open source that are 18 years and older.
+Google 向学生而非他们合作的组织支付报酬。从2023年开始，Google 将该项目开放给所有18岁及以上的开源新手。
 
-You can read more about the format of the program and its goals [here](https://google.github.io/gsocguides/mentor/).
+您可以在此[阅读更多](https://google.github.io/gsocguides/mentor/)关于项目形式及其目标的信息。
 
 <img src="/docs/img/gsoc-banner.png"/>
 
 ## Keploy X GSoC
 
-We at Keploy are excited to announce that Keploy is among the first few mentoring organizations from India 🇮🇳 this year! If you are a student looking to participate in GSoC, Keploy offers several projects for you to choose from.
+我们 Keploy 团队兴奋地宣布，Keploy 今年成为印度 🇮🇳 首批导师组织之一！如果您是希望参与 GSoC 的学生，Keploy 提供了多个项目供您选择。
 
-Keploy is looking for motivated students who are passionate about open source software and interested in gaining valuable experience in the field. We welcome students from all over the world with diverse backgrounds and skill sets to participate.
+Keploy 正在寻找对开源软件充满热情并希望在该领域获得宝贵经验的积极学生。我们欢迎来自世界各地、具有不同背景和技能的学生参与。
 
-## How to Get Started
+## 如何开始
 
-To get started with GSoC and Keploy, follow these steps:
+要开始参与 GSoC 和 Keploy，请按照以下步骤操作：
 
-1. If you are new to Keploy, try setting up Keploy in your local machine and running one (or more) of the sample applications. You can refer the docs.
-2. You can then check out the [projects](#projects-in-gsoc-2023) that are selected for GSoC 2023 and try completing the tasks in the task list. Remember, the tasks will act as a selection criteria for shortlisting candidates.
-3. You can connect with the mentors over slack to clear any of your doubts.
-4. Submit your proposal and that's it!
+1. 如果您是 Keploy 的新手，请尝试在本地机器上设置 Keploy 并运行一个（或多个）示例应用程序。您可以参考文档。
+2. 然后，您可以查看为 GSoC 2023 选定的[项目](#projects-in-gsoc-2023)，并尝试完成任务列表中的任务。请记住，这些任务将作为筛选候选人的标准。
+3. 您可以通过 Slack 与导师联系，以澄清任何疑问。
+4. 提交您的提案，就这样！
 
-## Projects in GSoC 2023
+## GSoC 2023 项目
 
 <table>
   <tr>
-    <td>Project Title</td>
-    <td>Ideas List</td>
-    <td>Project Link</td>
+    <td>项目标题</td>
+    <td>创意列表</td>
+    <td>项目链接</td>
   </tr>
   <tr>
-    <td>Keploy CLI Refactoring</td>
-    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#1-keploy-cli-refactoring" alt='Idea List'>Ideas</a></td>
-    <td ><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy"  alt="project link">
+    <td>Keploy CLI 重构</td>
+    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#1-keploy-cli-refactoring" alt='创意列表'>创意</a></td>
+    <td ><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy"  alt="项目链接">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
         <path d="M12 .3c-6.63 0-12 5.37-12 12 0 5.3 3.438 9.8 8.205 11.385.6.11.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.746.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.304 3.495.997.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.385 1.236-3.22-.135-.302-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.874.12 3.176.765.835 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.215 0 1.604-.015 2.894-.015 3.284 0 .315.21.688.825.576 4.77-1.585 8.205-6.086 8.205-11.385 0-6.63-5.37-12-12-12z"/>
 </svg>
@@ -58,8 +58,8 @@ To get started with GSoC and Keploy, follow these steps:
   </tr>
   <tr>
     <td>Keploy Java SDK</td>
-    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#2-keploy-java-sdk" alt="Ideas Lst">Ideas</a></td>
-    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/java-sdk"  alt="project link">
+    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#2-keploy-java-sdk" alt="创意列表">创意</a></td>
+    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/java-sdk"  alt="项目链接">
        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
         <path d="M12 .3c-6.63 0-12 5.37-12 12 0 5.3 3.438 9.8 8.205 11.385.6.11.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.746.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.304 3.495.997.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.385 1.236-3.22-.135-.302-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.874.12 3.176.765.835 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.215 0 1.604-.015 2.894-.015 3.284 0 .315.21.688.825.576 4.77-1.585 8.205-6.086 8.205-11.385 0-6.63-5.37-12-12-12z"/>
 </svg> 
@@ -67,72 +67,51 @@ To get started with GSoC and Keploy, follow these steps:
   </tr>
   <tr>
     <td>Keploy Typescript/Javascript SDK</td>
-    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#3-keploy-typescriptjavascript-sdk" alt="Ideas Lst">Ideas</a></td>
-    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/typescript-sdk"  alt="project link">
+    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#3-keploy-typescriptjavascript-sdk" alt="创意列表">创意</a></td>
+    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/typescript-sdk"  alt="项目链接">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
         <path d="M12 .3c-6.63 0-12 5.37-12 12 0 5.3 3.438 9.8 8.205 11.385.6.11.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.746.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.304 3.495.997.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.385 1.236-3.22-.135-.302-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.874.12 3.176.765.835 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.215 0 1.604-.015 2.894-.015 3.284 0 .315.21.688.825.576 4.77-1.585 8.205-6.086 8.205-11.385 0-6.63-5.37-12-12-12z"/>
 </svg>
     </a></td>
   </tr>
   <tr>
-    <td>Autogenerate Test Cases</td>
-    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#3-keploy-typescriptjavascript-sdk" alt="Ideas Lst">Ideas</a></td>
-    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy/issues/24"  alt="project link">
+    <td>自动生成测试用例</td>
+    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#3-keploy-typescriptjavascript-sdk" alt="创意列表">创意</a></td>
+    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy/issues/24"  alt="项目链接">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
         <path d="M12 .3c-6.63 0-12 5.37-12 12 0 5.3 3.438 9.8 8.205 11.385.6.11.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.746.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.304 3.495.997.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.385 1.236-3.22-.135-.302-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.874.12 3.176.765.835 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.215 0 1.604-.015 2.894-.015 3.284 0 .315.21.688.825.576 4.77-1.585 8.205-6.086 8.205-11.385 0-6.63-5.37-12-12-12z"/>
 </svg></a></td>
   </tr>
   <tr>
-    <td>eBPF based Keploy Integration</td>
-    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#5-ebpf-based-keploy-integration" alt="Ideas Lst">Ideas</a></td>
-    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy"  alt="project link">
+    <td>基于 eBPF 的 Keploy 集成</td>
+    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#5-ebpf-based-keploy-integration" alt="创意列表">创意</a></td>
+    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy"  alt="项目链接">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
         <path d="M12 .3c-6.63 0-12 5.37-12 12 0 5.3 3.438 9.8 8.205 11.385.6.11.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.746.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.304 3.495.997.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.385 1.236-3.22-.135-.302-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.874.12 3.176.765.835 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.215 0 1.604-.015 2.894-.015 3.284 0 .315.21.688.825.576 4.77-1.585 8.205-6.086 8.205-11.385 0-6.63-5.37-12-12-12z"/>
 </svg></a></td>
   </tr>
   <tr>
-    <td>JS or Go based DSL for Keploy</td>
-    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#6-js-or-go-based-dsl-for-keploy" alt="Ideas Lst">Ideas</a></td>
-    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy"  alt="project link">
+    <td>基于 JS 或 Go 的 Keploy DSL</td>
+    <td><a href="https://github.com/keploy/gsoc/tree/main/2023#6-js-or-go-based-dsl-for-keploy" alt="创意列表">创意</a></td>
+    <td><a style={{display:"flex",justifyContent:"center",alignItems:"center"}} href="https://github.com/keploy/keploy"  alt="项目链接">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
         <path d="M12 .3c-6.63 0-12 5.37-12 12 0 5.3 3.438 9.8 8.205 11.385.6.11.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.746.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.304 3.495.997.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.385 1.236-3.22-.135-.302-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.874.12 3.176.765.835 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.215 0 1.604-.015 2.894-.015 3.284 0 .315.21.688.825.576 4.77-1.585 8.205-6.086 8.205-11.385 0-6.63-5.37-12-12-12z"/>
 </svg></a></td>
   </tr>
 </table>
 
-<!-- ## Code Contribution Guidelines
+## 时间线
 
-When contributing to a Keploy project, please follow these guidelines:
-
-- Fork the repository and create a new branch for your work.
-- Write clear and concise commit messages.
-- Follow the project's coding style and conventions.
-- Write tests for your code and ensure they pass.
-- Create a pull request and describe your changes in detail.
-
-## Non-Code Contribution Guidelines
-
-Non-code contributions to a Keploy project are also valuable. Some examples of non-code contributions include:
-
-- Documentation: improving project documentation or writing new documentation.
-- Translation: translating project documentation or software into a different language.
-- Outreach: helping to promote the project to a wider audience.
-- Design: creating logos, icons, or other design elements for the project.
-
-If you are interested in making a non-code contribution to a Keploy project, please reach out to the project mentors to discuss how you can best contribute. -->
-
-## Timeline
-
-| Important events                                                                   | Deadline                        |
+| 重要事件                                                                   | 截止日期                        |
 | ---------------------------------------------------------------------------------- | ------------------------------- |
-| Organization Applications Open                                                     | January 23, 2023                |
-| Organization Application Deadline                                                  | February 7, 2023                |
-| Organizations Announced                                                            | February 22, 2023               |
-| Potential GSoC contributors discuss application ideas with mentoring organizations | February 22 - March 20, 2023    |
-| GSoC contributor application period                                                | March 20 - April 4, 2023        |
-| Accepted GSoC Contributor projects announced                                       | May 4, 2023                     |
-| Students work on their Google Summer of Code project                               | May 4, 2023 - November 17, 2023 |
+| 组织申请开放                                                     | 2023年1月23日                |
+| 组织申请截止                                                  | 2023年2月7日                |
+| 组织公布                                                            | 2023年2月22日               |
+| 潜在 GSoC 贡献者与导师组织讨论申请创意 | 2023年2月22日 - 2023年3月20日    |
+| GSoC 贡献者申请期                                                | 2023年3月20日 - 2023年4月4日        |
+| 接受的 GSoC 贡献者项目公布                                       | 2023年5月4日                     |
+| 学生在 Google Summer of Code 项目上工作                               | 2023年5月4日 - 2023年11月17日 |
 
-## Conclusion
+## 结论
 
-Participating in GSoC with Keploy is a great opportunity to gain valuable experience in open source software development. We look forward to receiving your proposals and working with you on our projects.
+参与 Keploy 的 GSoC 是获得开源软件开发宝贵经验的绝佳机会。我们期待收到您的提案并与您合作我们的项目。

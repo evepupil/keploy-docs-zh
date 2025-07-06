@@ -1,50 +1,50 @@
 ---
 id: run-ai-generated-api-tests
-title: Run AI-Generated API Tests
-sidebar_label: Run Tests
-description: Discover how to execute Keploy’s AI-generated API test suites—locally, on-demand from the console, or automatically in CI/CD—and interpret the results to keep your API stable.
+title: 运行AI生成的API测试
+sidebar_label: 运行测试
+description: 了解如何执行Keploy的AI生成API测试套件——在本地、通过控制台按需运行或自动在CI/CD中执行，并通过解读结果保持API稳定性。
 ---
 
-Once you’ve finished curating a suite , it’s time to hit **Run** and see how your API behaves against the latest contract.
+完成测试套件整理后，点击**运行**按钮即可查看API在最新契约下的表现。
 
-## Open the **Run Tests** Modal
+## 打开**运行测试**模态框
 
-1. In the top-right of the Test-Suite workspace, click the green **Run Tests** button.
+1. 在测试套件工作区右上角，点击绿色的**运行测试**按钮。
 
-2. The modal will open with **two tabs**:
+2. 模态框将显示**两个标签页**：
 
-   | Tab                | What to Fill In                                                                                                                                                      |
+   | 标签页             | 填写内容                                                                                                                                                      |
    | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Endpoint**       | **API Endpoint URL** – the base URL Keploy will prepend to every request in the suite (e.g. `https://jsonplaceholder.typicode.com`).                                 |
-   | **Authentication** | (Optional) Drop in a **Bearer**, **Basic**, or **API-key** credential that applies to every step.<br />You can also add per-step auth later in the test-step editor. |
+   | **端点**       | **API端点URL**——Keploy将为套件中每个请求添加的基础URL（例如`https://jsonplaceholder.typicode.com`）。                                 |
+   | **认证** | （可选）添加适用于每个步骤的**Bearer**、**Basic**或**API-key**凭证。<br />您也可以在测试步骤编辑器中为单个步骤添加认证信息。 |
 
-3. Click **Run Tests** to start execution. A toast confirmation appears and the modal closes.
+3. 点击**运行测试**开始执行。系统将显示Toast通知确认，随后模态框关闭。
 
-## Watch the Run Spin Up
+## 实时查看运行状态
 
-A **Run Badge** next to each suite row flips from _queued_ → _running_ → _✔ passed_ or _✖ failed_ in real time.
+每行测试套件旁的**运行标识**会实时显示状态变化：_排队中_ → _运行中_ → _✔ 通过_ 或 _✖ 失败_。
 
-## View the Test-Run Report
+## 查看测试运行报告
 
-1. Click the **📄 View Test Run Report** link that appears in the toast, or switch to the **Run Reports** icon in the sidebar.
-2. The summary table shows:
+1. 点击Toast通知中的**📄 查看测试运行报告**链接，或切换至侧边栏的**运行报告**图标。
+2. 摘要表格显示：
 
-   | Column                      | Meaning                                                    |
+   | 列名                      | 含义                                                    |
    | --------------------------- | ---------------------------------------------------------- |
-   | **Report ID**               | UUID of this run (use it in CI logs or API calls).         |
-   | **Created At**              | Timestamp the run was triggered.                           |
-   | **Creator**                 | Email or token that kicked off the run.                    |
-   | **Total / Passed / Failed** | Quick health check of your suite.                          |
-   | **Status**                  | `QUEUED`, `RUNNING`, or `COMPLETED` (green if 100 % pass). |
+   | **报告ID**               | 本次运行的UUID（可用于CI日志或API调用）。         |
+   | **创建时间**              | 运行触发的时间戳。                           |
+   | **创建者**                 | 发起运行的邮箱或令牌。                    |
+   | **总数/通过/失败** | 测试套件的快速健康检查。                          |
+   | **状态**                  | `排队中`、`运行中`或`已完成`（100%通过时显示绿色）。 |
 
-3. Click any **Report ID** to drill into per-test details: request/response dumps, assertion diff views, execution time, and re-run buttons for flaky steps.
+3. 点击任意**报告ID**可查看详细测试数据：请求/响应转储、断言差异视图、执行时间，以及针对不稳定步骤的重试按钮。
 
-## Re-running After Fixes
+## 修复后重新运行
 
-Iterate quickly:
+快速迭代流程：
 
-1. Patch your API or tweak assertions from the "Test Suite".
-2. Re-click **Run Tests**—Keploy re-uses the same Endpoint/Auth settings you last entered.
-3. Compare the new report with the previous one right in the dashboard to verify the fix.
+1. 在"测试套件"中修复API或调整断言。
+2. 重新点击**运行测试**——Keploy会自动复用上次输入的端点/认证设置。
+3. 在仪表盘中直接对比新旧报告以验证修复效果。
 
-You now have a pipeline—from triggering the run to an all-green build—that safeguards your API contract in every environment.
+现在您已建立完整流程——从触发运行到全绿构建——该流程可在所有环境中守护您的API契约。

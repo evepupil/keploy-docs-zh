@@ -1,22 +1,22 @@
 ---
 id: replay
-title: Replay Tests & Mocks for Go (v1.0.0)
-description: Replay Test Suite for Go in Keploy.
+title: Go语言回放测试与模拟工具 (v1.0.0)
+description: Keploy中的Go语言回放测试套件。
 tags:
-  - developer-guide
+  - 开发者指南
   - go
-  - replay-guide
-  - replay-test-case
+  - 回放指南
+  - 回放测试用例
 ---
 
 import ReplayTest from '../operation/test.md'
 
 <ReplayTest/>
 
-### Method 2 [preferred]
+### 方法二 [推荐]
 
 <details><summary>
-Testing using Unit Test File
+使用单元测试文件进行测试
 
 </summary>
 
@@ -26,14 +26,14 @@ import GoTest from './integration-with-go-test.md'
 
 </details>
 
-### Method 3
+### 方法三
 
 <details><summary>
-Run Tests in CI/CD
+在CI/CD中运行测试
 
 </summary>
 
-After following METHOD 2 above ^, Keploy will be integrated to `go-test`.
-If you already have `go-test` no changes are required in the CI/CD pipeline.
+按照上述方法二操作后，Keploy将与`go-test`集成。
+如果您已使用`go-test`，则无需对CI/CD流水线进行任何修改。
 
 </details>

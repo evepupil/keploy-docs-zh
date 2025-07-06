@@ -1,58 +1,58 @@
 ---
 id: api-test-generator
-title: Keploy API Test Generator
-sidebar_label: API Test Generator
-description: This section documents usecase of Keploy's API Test Generator
+title: Keploy API测试生成器
+sidebar_label: API测试生成器
+description: 本文档记录Keploy API测试生成器的使用场景
 tags:
-  - API testing
-  - API mocks
-  - generate test cases
-  - test automation
+  - API测试
+  - API模拟
+  - 生成测试用例
+  - 测试自动化
 keywords:
-  - api testing
-  - api mocks
-  - automated testing
-  - ai testing
+  - api测试
+  - api模拟
+  - 自动化测试
+  - 人工智能测试
   - keploy
   - Gemini
   - OpenAI
 ---
 
-# Keploy API Testing Agent
+# Keploy API测试代理
 
-Keploy's **API Testing Agent** allows you to auto-generate API test cases and mocks from real API usage data like `cURL` commands, OpenAPI schemas, or PRD/BRD documents — powered by LLMs.
+Keploy的**API测试代理**允许您从真实API使用数据（如`cURL`命令、OpenAPI模式或PRD/BRD文档）自动生成API测试用例和模拟数据——由大语言模型驱动。
 
-> 🚀 Zero-code setup. Paste real requests. Get test cases, mocks, and flaky test detection in minutes.
+> 🚀 零代码设置。粘贴真实请求。几分钟内获得测试用例、模拟数据和脆弱测试检测。
 
-## What It Does
+## 功能特性
 
-- Auto-generates test cases and mocks from:
-  - `cURL` commands
-  - OpenAPI/Swagger schemas
-  - API documentation, PRD/BRD snippets
-- Detects **flaky test cases** through 5 validation iterations
-- Allows full control to **edit, delete**, or **rename** test suites and assertions
+- 从以下内容自动生成测试用例和模拟数据：
+  - `cURL`命令
+  - OpenAPI/Swagger模式
+  - API文档、PRD/BRD片段
+- 通过5次验证迭代检测**脆弱测试用例**
+- 允许完全控制**编辑、删除**或**重命名**测试套件和断言
 
-# Getting Started
+# 快速开始
 
-This guide walks you through generating, editing, running, and managing automated API tests using Keploy — demonstrated using the **PetClinic** application.
+本指南将引导您使用Keploy生成、编辑、运行和管理自动化API测试——以**PetClinic**应用为例进行演示。
 
-## Step 1: Login and Access the Testing Panel
+## 步骤1：登录并访问测试面板
 
-1. Visit [https://app.keploy.io](https://app.keploy.io)
-2. Log in with your credentials.
-3. Navigate to the **API Testing** section in the sidebar.
-4. Click on **Generate API Tests**  
-   → This opens the test generation flow:  
+1. 访问 [https://app.keploy.io](https://app.keploy.io)
+2. 使用您的凭据登录。
+3. 在侧边栏中导航至**API测试**部分。
+4. 点击**生成API测试**  
+   → 这将打开测试生成流程：  
    [https://app.keploy.io/api-testing/generate](https://app.keploy.io/api-testing/generate)
 
-![API testing](/img/api-testing-generate.png)
+![API测试](/img/api-testing-generate.png)
 
-## Step 2: Add API Information
+## 步骤2：添加API信息
 
-We'll be using the **PetClinic** application for this demonstration.
+我们将使用**PetClinic**应用进行演示。
 
-### Step A: Run PetClinic Locally
+### 步骤A：本地运行PetClinic
 
 ```bash
 git clone https://github.com/keploy/samples-java.git
@@ -61,40 +61,40 @@ git checkout atg
 cd spring-petclinic/spring-petclinic-rest
 ```
 
-**Start PostgreSQL container**
+**启动PostgreSQL容器**
 
 ```bash
 docker run --name postgres-petclinic -e POSTGRES_PASSWORD=petclinic -e POSTGRES_DB=petclinic -p 5432:5432 -d postgres:17
 ```
 
-**Build and run the app**
+**构建并运行应用**
 
 ```bash
 mvn clean -DskipTests install
 java -jar target/spring-petclinic-rest-3.0.2.jar
 ```
 
-### Expose the App Using ngrok
+### 使用ngrok暴露应用
 
 ```bash
 ngrok http http://localhost:9966
 ```
 
-Copy the generated ngrok URL (e.g., https://95777-115-245-249-101.ngrok-free.app)
+复制生成的ngrok URL（例如 https://95777-115-245-249-101.ngrok-free.app）
 
-Your Live Base URL will be:
+您的实时基础URL将是：
 
 ```bash
 https://<your-ngrok-url>/petclinic/api
 ```
 
-### Step B: Setting up the pre-requisites
+### 步骤B：设置前提条件
 
-**CURL Commands (Required):**
-Paste at least 3–5 working curl requests for the endpoints.
+**CURL命令（必需）：**
+为端点粘贴至少3-5个有效的curl请求。
 
 ```bash
-# Test 1: GET all owners
+# 测试1：获取所有所有者
 curl -X GET "http://localhost:9966/petclinic/api/owners" \
   -H "Accept: application/json, text/plain, */*" \
   -H "Accept-Encoding: gzip, deflate" \
@@ -104,34 +104,34 @@ curl -X GET "http://localhost:9966/petclinic/api/owners" \
   -H "Origin: http://localhost:4200" \
   -H "Referer: http://localhost:4200/"
 
-# Test 2: OPTIONS request
+# 测试2：OPTIONS请求
 curl -X OPTIONS "http://localhost:9966/petclinic/api/owners" \
   -H "Accept: */*" \
   -H "Access-Control-Request-Headers: content-type" \
   -H "Access-Control-Request-Method: POST" \
   -H "Content-Length: 0"
 
-# Test 3: POST new owner
+# 测试3：POST新增所有者
 curl -X POST "http://localhost:9966/petclinic/api/owners" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/plain, */*" \
   -d '{"id":null,"firstName":"Abimanyu","lastName":"Singh","address":"Berlin","city":"Berlin","telephone":"8882110959"}'
 
-# Test 4: GET all owners (again)
+# 测试4：再次获取所有所有者
 curl -X GET "http://localhost:9966/petclinic/api/owners" \
   -H "Accept: application/json, text/plain, */*"
 
-# Test 5: Search owners by last name
+# 测试5：按姓氏搜索所有者
 curl -X GET "http://localhost:9966/petclinic/api/owners?lastName=Sin" \
   -H "Accept: application/json, text/plain, */*"
 
-# Test 6: Search for non-existent owner
+# 测试6：搜索不存在的所有者
 curl -X GET "http://localhost:9966/petclinic/api/owners?lastName=asdf" \
   -H "Accept: application/json, text/plain, */*"
 ```
 
-**OpenAPI Schema (Optional but Recommended):**
-Add your Swagger/OpenAPI spec in YAML or JSON format.
+**OpenAPI模式（可选但推荐）：**
+以YAML或JSON格式添加您的Swagger/OpenAPI规范。
 
 ```bash
 openapi: 3.0.1
@@ -519,26 +519,26 @@ components:
     # [Additional schemas would follow...]
 ```
 
-**Additional Resources (Optional):**
+**附加资源（可选）：**
 
-- API Documentation
-- Code Snippets
-- PRD/BRD
+- API文档
+- 代码片段
+- PRD/BRD文档
 
-## Step 3: Click 'Generate Test'
+## 步骤3：点击"生成测试"
 
-Keploy will auto-generate a test suite using the inputs provided.
-![API testing](/img/api-generate-it.png)
+Keploy将使用提供的输入自动生成测试套件。
+![API测试](/img/api-generate-it.png)
 
-- Click the 'Generate Test' button. Keploy will:
-- Analyze your API endpoints
-- Create positive and negative test cases
-- Generate mock data
-- Validate test stability
+- 点击"生成测试"按钮。Keploy将：
+- 分析您的API端点
+- 创建正向和负向测试用例
+- 生成模拟数据
+- 验证测试稳定性
 
-Example Test Suite: https://957f-115-245-249-101.ngrok-free.app/petclinic/api
+示例测试套件：https://957f-115-245-249-101.ngrok-free.app/petclinic/api
 
-Example Test Cases:
+示例测试用例：
 
 - ✅ Vet_Update_ChangeSpecialties_Successful
 - ✅ Pet_UpdateOwnersPet_BirthDateOnly
@@ -546,19 +546,19 @@ Example Test Cases:
 - ❌ Visit_AddToPet_DescriptionTooLong_400
 - ❌ Pet_UpdateOwnersPet_InvalidData_400
 
-![API testing](/img/test-suites.png)
+![API测试](/img/test-suites.png)
 
-Each test will include:
+每个测试将包含：
 
-- Endpoint
-- Request Body
-- Headers
-- Assertions
+- 端点
+- 请求体
+- 请求头
+- 断言
 
-## Step 4: Sample Test Case Structure
+## 步骤4：示例测试用例结构
 
-Test Name: Create PetType for Visit Test LD
-Request :
+测试名称：Create PetType for Visit Test LD
+请求：
 
 ```bash
 POST /pettypes
@@ -566,100 +566,100 @@ Content-Type: application/json
 {
   "name": "VisitPetTypeLD"
 }
-Assertions
-Type: status_code
-Expected: 200
+断言
+类型：status_code
+期望值：200
 ```
 
-## Step 5: Edit Test Case and Assertions
+## 步骤5：编辑测试用例和断言
 
-You can edit test request details and assertions via the UI.
+您可以通过UI编辑测试请求详情和断言。
 
 ```bash
-Name: Create PetType for VisitUpdateDescTooLong
- Method: POST
- URL Path: /petclinic/api/pettypes
- Headers: Content-Type: application/json
- Request Body:
+名称：Create PetType for VisitUpdateDescTooLong
+ 方法：POST
+ URL路径：/petclinic/api/pettypes
+ 请求头：Content-Type: application/json
+ 请求体：
 {
   "name": "CatForVisitUpdateDescTooLong"
 }
 ```
 
-You can also switch to the Assertions tab and modify or add:
+您还可以切换到"断言"标签页进行修改或添加：
 
 ```bash
-Type: status_code
-Expected: 200
+类型：status_code
+期望值：200
 ```
 
-![Edit test](/img/test-edit.png)
+![编辑测试](/img/test-edit.png)
 
-## Step 6: Run Tests and Generate Reports
+## 步骤6：运行测试并生成报告
 
-Re-enter the Base URL.
+重新输入基础URL。
 
 ```bash
  https://95777-115-245-249-101.ngrok-free.app
 ```
 
-Click Run Tests to trigger test execution.
+点击"运行测试"触发测试执行。
 
-View test results and download reports for QA or CI pipelines.
+查看测试结果并下载报告用于QA或CI流水线。
 
-## Step 7: Manage Test Suites
+## 步骤7：管理测试套件
 
-From the dashboard, you can:
+在仪表板中，您可以：
 
-**Delete a test suite entirely.**
-![Edit test](/img/delete-suite.png)
+**完全删除测试套件。**
+![编辑测试](/img/delete-suite.png)
 
-**Delete individual test cases within a suite.**
-![Edit test](/img/delete-individual.png)
+**删除套件中的单个测试用例。**
+![编辑测试](/img/delete-individual.png)
 
-## Tips for Accurate Results
+## 获取准确结果的技巧
 
-- Always paste at least 3–5 valid cURL commands
-- Ensure your Live URL is active and responsive
-- Use OpenAPI schemas for better request/response modeling
-- Include real production-like inputs wherever possible
+- 始终粘贴至少3-5个有效的cURL命令
+- 确保您的实时URL处于活动状态且可响应
+- 使用OpenAPI模式以获得更好的请求/响应建模
+- 尽可能包含类似生产环境的真实输入
 
-## Frequently Asked Questions(FAQs)
+## 常见问题(FAQs)
 
-**1. What types of API tests can Keploy generate?**
-Keploy automatically creates:
+**1. Keploy可以生成哪些类型的API测试？**
+Keploy自动创建：
 
-- **Functional Tests**: CRUD operations, endpoint validation
-- **Edge Case Tests**: Invalid payloads, error responses
-- **Performance Tests**: Response time benchmarks
-- **Security Tests**: Input sanitization, auth validation
-- **Dependency Tests**: Mocked external service calls
+- **功能测试**：CRUD操作、端点验证
+- **边界测试**：无效负载、错误响应
+- **性能测试**：响应时间基准
+- **安全测试**：输入净化、认证验证
+- **依赖测试**：模拟外部服务调用
 
-**2. How does Keploy handle authentication in API tests?**
-Keploy supports:
+**2. Keploy如何处理API测试中的认证？**
+Keploy支持：
 
-- **Auth Types**: JWT, OAuth2, API Keys, Basic Auth
-- **Auto-Renewal**: Token refresh flows
-- **Test Isolation**: Separate auth contexts per test
-- **Security**: Never stores raw credentials (uses env variables)
+- **认证类型**：JWT、OAuth2、API密钥、基础认证
+- **自动续订**：令牌刷新流程
+- **测试隔离**：每个测试独立的认证上下文
+- **安全性**：从不存储原始凭据（使用环境变量）
 
-**3. What protocols and formats does Keploy support?**
-| Protocol | Formats | Features |
+**3. Keploy支持哪些协议和格式？**
+| 协议 | 格式 | 特性 |
 |----------|---------|----------|
-| HTTP/HTTPS | JSON, XML | Full support |
-| gRPC | Protocol Buffers | Code generation |
-| WebSockets | JSON, Binary | Session testing |
-| GraphQL | Query/Mutation | Schema validation |
+| HTTP/HTTPS | JSON, XML | 完全支持 |
+| gRPC | Protocol Buffers | 代码生成 |
+| WebSockets | JSON, Binary | 会话测试 |
+| GraphQL | Query/Mutation | 模式验证 |
 
-**4. How does test generation work for stateful APIs?**
-Keploy handles stateful workflows by:
+**4. 对有状态API的测试生成如何工作？**
+Keploy通过以下方式处理有状态工作流：
 
-1. Recording session cookies/headers
-2. Detecting data dependencies between calls
-3. Generating cleanup teardown sequences
-4. Creating isolated test contexts
+1. 记录会话cookies/headers
+2. 检测调用间的数据依赖
+3. 生成清理拆除序列
+4. 创建隔离的测试上下文
 
-**Example Order Flow:**
+**示例订单流程：**
 
 ```text
 POST /cart → GET /cart → POST /checkout → GET /order/{id}

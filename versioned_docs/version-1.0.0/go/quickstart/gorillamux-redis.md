@@ -1,7 +1,7 @@
 ---
 id: gorillamux-redis
-title: Contact Keeper with Gorilla/Mux-Redis (v1.0.0)
-sidebar_label: Gorilla/Mux-Redis Sample
+title: Gorilla/Mux-Redis 联系人管理示例 (v1.0.0)
+sidebar_label: Gorilla/Mux-Redis 示例
 tags:
   - hello-world
   - go
@@ -14,47 +14,47 @@ keywords:
   - Redis
 ---
 
-# Contact Keeper Sample App
+# 联系人管理示例应用
 
-A sample contact keeper app to test Keploy integration capabilities using [Gorilla Mux](https://pkg.go.dev/github.com/gorilla/mux) and Redis.
+这是一个使用 [Gorilla Mux](https://pkg.go.dev/github.com/gorilla/mux) 和 Redis 测试 Keploy 集成能力的示例联系人管理应用。
 
-## Installation Setup
+## 安装设置
 
-> Note that Testcases are exported as files in the local repository by default
+> 注意：测试用例默认会导出为本地仓库中的文件
 
-You can refer to the [installation guide](https://docs.keploy.io/docs/server/server-installation) to install Keploy on your machine.
+您可以参考[安装指南](https://docs.keploy.io/docs/server/server-installation)在您的机器上安装 Keploy。
 
-### Prerequisites
+### 先决条件
 
-1. Install Redis
+1. 安装 Redis
 
-### Setup Contact Keeper App
+### 设置联系人管理应用
 
 ```bash
 git clone https://github.com/keploy/samples-go && cd samples-go/gorillamux-redis
 ```
 
-### Start Redis
+### 启动 Redis
 
 ```bash
 redis-server
 ```
 
-### Start Keploy Record Mode and run the application
+### 启动 Keploy 记录模式并运行应用
 
 ```
 export KEPLOY_MODE=record && go run main.go
 ```
 
-### Skip above steps with Gitpod
+### 使用 Gitpod 跳过上述步骤
 
-Open in Gitpod
+在 Gitpod 中打开
 
-## Generate testcases
+## 生成测试用例
 
-To generate testcases we just need to make some API calls. You can use [Postman](https://www.postman.com/), or simply `curl`
+要生成测试用例，我们只需要进行一些 API 调用。您可以使用 [Postman](https://www.postman.com/)，或者简单的 `curl` 命令。
 
-### Store the contact details
+### 存储联系人详情
 
 ```bash
 curl --request POST \
@@ -66,7 +66,7 @@ curl --request POST \
 }'
 ```
 
-this will return the data that is inserted.
+这将返回插入的数据。
 
 ```
 {
@@ -75,11 +75,11 @@ this will return the data that is inserted.
 }
 ```
 
-Also, you can add any id (a numeric value) to the endpoint to insert the data. Here we have used 1.
+此外，您可以在端点中使用任何数字 ID 来插入数据。这里我们使用了 1。
 
-### Get back the stored data using the id
+### 使用 ID 获取存储的数据
 
-1. By using Curl Command
+1. 使用 Curl 命令
 
 ```bash
 curl --request GET \
@@ -87,11 +87,11 @@ curl --request GET \
 
 ```
 
-2. Or by querying through the browser `http://localhost:8080/data/1'
+2. 或者通过浏览器访问 `http://localhost:8080/data/1'
 
-![Gorilla-Mux-Test-Capture](/img/GorillaMux-Redis.png)
+![Gorilla-Mux-测试捕获](/img/GorillaMux-Redis.png)
 
-Now both these API calls were captured as **editable** testcases and written to `keploy/tests` folder. The keploy directory would also have `mocks` folder that contains all the outputs of redis operations. Here's what the folder structure look like:
+现在，这两个 API 调用都被捕获为**可编辑**的测试用例，并写入 `keploy/tests` 文件夹。keploy 目录还会有一个 `mocks` 文件夹，其中包含所有 Redis 操作的输出。文件夹结构如下：
 
 ```
 .
@@ -110,7 +110,7 @@ Now both these API calls were captured as **editable** testcases and written to 
 
 ```
 
-The test files should look like the sample below and the format is common for both **_http tests_** and **_mocks_**.
+测试文件应如下所示，格式对于 **_http 测试_** 和 **_mocks_** 都是通用的。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -154,30 +154,30 @@ spec:
   created: 1675929915
 ```
 
-Now, let's see the magic! ✨💫
+现在，让我们见证奇迹！✨💫
 
-## Test mode
+## 测试模式
 
-Now that we have our testcase captured, run the test file (in the gomux-redis directory, not the Keploy directory).
+现在我们已经捕获了测试用例，运行测试文件（在 gomux-redis 目录中，而不是 Keploy 目录）。
 
 ```shell
  go test -coverpkg=./... -covermode=atomic  ./...
 ```
 
-output should look like
+输出应如下所示：
 
 ```shell
 ok  	sample-app	5.032s	coverage: 71.4% of statements in ./...
 ```
 
-> **We got 71.4% without writing any e2e testcases or mocks for Redis!**
+> **我们无需编写任何端到端测试用例或 Redis 的模拟，就获得了 71.4% 的覆盖率！**
 
-So no need to setup fake database/apis like Redis or write mocks for them. Keploy automatically mocks them and, **The application thinks it's talking to Redis 😄**
+因此，无需设置像 Redis 这样的虚假数据库/API 或为其编写模拟。Keploy 会自动模拟它们，**应用程序以为它在与 Redis 对话 😄**
 
-Go to the `Keploy Console` to get deeper insights on what testcases ran, what failed.
+前往 `Keploy 控制台` 获取更深入的测试用例运行情况和失败原因。
 
 <details>
-<summary>𝗜𝗻𝘀𝗶𝗴𝗵𝘁𝘀 𝗼𝗻 𝗞𝗲𝗽𝗹𝗼𝘆 𝗖𝗼𝗻𝘀𝗼𝗹𝗲</summary>
+<summary>𝗞𝗲𝗽𝗹𝗼𝘆 控制台洞察</summary>
 
 ```shell
  <=========================================>
@@ -209,9 +209,9 @@ Testrun passed for testcase with id: "test-1"
 
 ---
 
-### Make a code change
+### 进行代码更改
 
-Now try changing something like commenting line numbers 115 and 116 and uncommenting line 119 in `main.go` and running ` go test -coverpkg=./... -covermode=atomic ./...` again
+现在尝试更改一些内容，比如注释掉 `main.go` 中的第 115 和 116 行，并取消注释第 119 行，然后再次运行 ` go test -coverpkg=./... -covermode=atomic ./...`
 
 ```shell
 starting test execution	{"id": "5ae0c256-f54d-4126-a794-5d5f50d3db76", "total tests": 2}
@@ -230,10 +230,10 @@ FAIL
 
 ```
 
-To deep dive the problem you can look at the keploy logs
+要深入分析问题，您可以查看 keploy 日志。
 
 <details>
-<summary>𝗞𝗲𝗽𝗹𝗼𝘆 𝗟𝗼𝗴𝘀</summary>
+<summary>𝗞𝗲𝗽𝗹𝗼𝘆 日志</summary>
 
 ```shell
  <=========================================>
@@ -321,7 +321,7 @@ DIFF:
 
 ```
 
-This is how the bug will look like in the Keploy Terminal:
+这就是 Keploy 终端中显示的 bug：
 
 ![GorillaMux-Redis-test-diff](/img/GorillaMux-Redis-test-diff.png)
 ![GorillaMux-Redis-test-diff2](/img/GorillaMux-Redis-test-diff2.png)

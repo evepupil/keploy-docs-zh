@@ -1,8 +1,8 @@
----
+﻿---
 id: express-postgresql-prisma
-title: Express + PostgreSQL + Prisma Sample Application
+title: Express + PostgreSQL + Prisma 示例应用
 sidebar_label: Express + PostgreSQL + Prisma
-description: The following sample app showcases how to use Express framework, PostgreSQL and Prisma ORM and the Keploy Platform.
+description: 以下示例应用展示了如何使用 Express 框架、PostgreSQL 数据库、Prisma ORM 以及 Keploy 平台。
 tags:
   - javascript
   - quickstart
@@ -11,68 +11,68 @@ tags:
   - tutorial
   - nodejs
 keyword:
-  - Express Framework
+  - Express 框架
   - PostgreSQL
   - Prisma ORM
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-A sample Task Management application and see how seamlessly Keploy integrates with Express, [PostgreSQL](https://www.postgresql.org/) and Prisma ORM. Buckle up, it's gonna be a fun ride! 🎢
+这是一个任务管理示例应用，展示了 Keploy 如何无缝集成 Express、[PostgreSQL](https://www.postgresql.org/) 和 Prisma ORM。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始使用！🎬
 
-### Prerequisites
+### 先决条件
 
-Ensure you have the following installed:
+确保已安装以下组件：
 
 - Docker
-- Node.js and npm
+- Node.js 和 npm
 - Keploy CLI
 
-Clone the repository and move to express-postgresql-prisma folder
+克隆仓库并进入 express-postgresql-prisma 文件夹
 
 ```bash
 git clone https://github.com/keploy/samples-typescript.git
 cd samples-typescript/express-postgresql-prisma
 ```
 
-### Running App Locally on Linux/WSL
+### 在 Linux/WSL 本地运行应用
 
-#### Install the dependencies
+#### 安装依赖
 
 ```bash
 npm install
 ```
 
-#### Set up environment variables:
+#### 设置环境变量：
 
 ```bash
 cp .env.example .env
 ```
 
-#### Start PostgreSQL Container
+#### 启动 PostgreSQL 容器
 
 ```bash
 docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
 ```
 
-> Note: PostgreSQL Password is `mysecretpassword`
+> 注意：PostgreSQL 密码为 `mysecretpassword`
 
-#### Update the `.env` file with your PostgreSQL connection string:
+#### 更新 `.env` 文件中的 PostgreSQL 连接字符串：
 
 ```bash
 PORT=3000
 DATABASE_URL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
 ```
 
-#### Migrate the database:
+#### 迁移数据库：
 
 ```bash
 npm run generate
@@ -114,7 +114,7 @@ nt in 50ms
 └─────────────────────────────────────────────────────────┘
 ```
 
-#### Start the application:
+#### 启动应用：
 
 ```bash
 npm run dev
@@ -127,13 +127,13 @@ Server is listening at PORT 3000
     API Docs: http://localhost:3000/api/docs
 ```
 
-> Note: The application will run on `http://localhost:3000`.
+> 注意：应用将运行在 `http://localhost:3000`。
 
-Now we walkthrough how to leverage Keploy to automatically generate test cases for the application, and later test the application using Keploy.
+现在我们将演示如何利用 Keploy 为应用自动生成测试用例，并使用 Keploy 测试应用。
 
-#### Generate Test Cases
+#### 生成测试用例
 
-> Note: Build the application first using `npm run build`
+> 注意：首先使用 `npm run build` 构建应用
 
 ```bash
 keploy record -c "npm start"
@@ -171,37 +171,37 @@ Server is listening at PORT 3000
     API Docs: http://localhost:3000/api/docs
 ```
 
-The above command will start recording the API calls made to the application and will generate a test case in the `testcases/` directory.
+以上命令将开始记录对应用的 API 调用，并在 `testcases/` 目录中生成测试用例。
 
-> 💡 You can use Postman or any other API testing tool to test the API calls. Additionally, the application will run a swagger UI on `http://localhost:3000/api/docs` to visualize the API calls.
+> 💡 您可以使用 Postman 或其他 API 测试工具测试 API 调用。此外，应用将在 `http://localhost:3000/api/docs` 上运行 swagger UI 以可视化 API 调用。
 
-### Running App using Docker Compose 🐳
+### 使用 Docker Compose 运行应用 🐳
 
-We will be using Docker compose to run the application as well as PostreSql on Docker container.
+我们将使用 Docker compose 运行应用以及 Docker 容器中的 PostreSql。
 
-Lights, Camera, Record! 🎥
-Fire up the application and mongoDB instance with Keploy. Keep an eye on the two key flags: -c: Command to run the app (e.g., docker compose up).
+灯光、相机、开始录制！🎥
+启动应用和 mongoDB 实例与 Keploy。注意两个关键标志：-c：运行应用的命令（例如 docker compose up）。
 
---container-name: The container name in the docker-compose.yml for traffic interception.
+--container-name：docker-compose.yml 中用于流量拦截的容器名称。
 
 ```bash
 keploy record -c "docker compose up" --container-name "express-postgresql-prisma-app" --build-delay 50
 ```
 
-**🔥 Challenge time!** Generate some test cases. How? Just make some API calls. Postman, Hoppscotch or even curl - take your pick!
+**🔥 挑战时间！** 生成一些测试用例。怎么做？只需进行一些 API 调用。可以使用 Postman、Hoppscotch 甚至 curl - 随您选择！
 
-### Interact with Application
+### 与应用交互
 
-Make API Calls using [Postman](https://www.postman.com/) or [cURL](https://curl.se/) command. Keploy with capture those calls to generate the test-suites containing testcases and data mocks.
+使用 [Postman](https://www.postman.com/) 或 [cURL](https://curl.se/) 命令进行 API 调用。Keploy 将捕获这些调用以生成包含测试用例和数据模拟的测试套件。
 
-### API Routes
+### API 路由
 
-#### Add Task
+#### 添加任务
 
 - **URL:** `/api/v1/task/add`
-- **Method:** `POST`
-- **Description:** Add a new task.
-- **Request Body:**
+- **方法:** `POST`
+- **描述:** 添加新任务。
+- **请求体:**
   ```json
   {
     "author": "John Doe",
@@ -213,7 +213,7 @@ Make API Calls using [Postman](https://www.postman.com/) or [cURL](https://curl.
   }
   ```
 
-Using `curl`
+使用 `curl`
 
 ```bash
 curl -X 'POST' \
@@ -230,9 +230,9 @@ curl -X 'POST' \
 }'
 ```
 
-#### View All Tasks
+#### 查看所有任务
 
-Using `curl`
+使用 `curl`
 
 ```bash
 curl -X 'GET' \
@@ -240,14 +240,14 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-#### View Task by ID
+#### 按 ID 查看任务
 
 - **URL:** `/api/v1/task/view/:id`
-- **Method:** `GET`
-- **Description:** Retrieve a specific task by its ID.
-- **Request Params:** `id` (task ID)
+- **方法:** `GET`
+- **描述:** 按 ID 检索特定任务。
+- **请求参数:** `id` (任务 ID)
 
-Using `curl`
+使用 `curl`
 
 ```bash
 curl -X 'GET' \
@@ -255,20 +255,20 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-#### Change Task Priority
+#### 更改任务优先级
 
 - **URL:** `/api/v1/task/change-priority/:id`
-- **Method:** `PUT`
-- **Description:** Update the priority of a specific task.
-- **Request Params:** `id` (task ID)
-- **Request Body:**
+- **方法:** `PUT`
+- **描述:** 更新特定任务的优先级。
+- **请求参数:** `id` (任务 ID)
+- **请求体:**
   ```json
   {
     "priority": 3
   }
   ```
 
-Using `curl`
+使用 `curl`
 
 ```bash
 curl -X 'PUT' \
@@ -280,13 +280,13 @@ curl -X 'PUT' \
 }'
 ```
 
-#### Update Task
+#### 更新任务
 
 - **URL:** `/api/v1/task/update/:id`
-- **Method:** `PUT`
-- **Description:** Update details of a specific task.
-- **Request Params:** `id` (task ID)
-- **Request Body:**
+- **方法:** `PUT`
+- **描述:** 更新特定任务的详细信息。
+- **请求参数:** `id` (任务 ID)
+- **请求体:**
   ```json
   {
     "author": "John Doe",
@@ -298,7 +298,7 @@ curl -X 'PUT' \
   }
   ```
 
-Using `curl`
+使用 `curl`
 
 ```bash
 curl -X 'PUT' \
@@ -315,14 +315,14 @@ curl -X 'PUT' \
 }'
 ```
 
-#### Delete Task
+#### 删除任务
 
 - **URL:** `/api/v1/task/delete/:id`
-- **Method:** `DELETE`
-- **Description:** Delete a specific task.
-- **Request Params:** `id` (task ID)
+- **方法:** `DELETE`
+- **描述:** 删除特定任务。
+- **请求参数:** `id` (任务 ID)
 
-Using `curl`
+使用 `curl`
 
 ```bash
 curl -X 'DELETE' \
@@ -330,25 +330,25 @@ curl -X 'DELETE' \
   -H 'accept: application/json'
 ```
 
-> 🐰 Test Data and Configuration: After recording the interactions, a `keploy` folder will be created containing the recorded test data. Additionally, a `keploy.yml` file will be created as the configuration file.
+> 🐰 测试数据和配置：记录交互后，将创建一个包含记录的测试数据的 `keploy` 文件夹。此外，将创建一个 `keploy.yml` 文件作为配置文件。
 
-### Test the Application using Keploy
+### 使用 Keploy 测试应用
 
-#### on Linux/WSL
+#### 在 Linux/WSL 上
 
 ```bash
 keploy test -c "npm start"
 ```
 
-#### On Docker Compose 🐳
+#### 在 Docker Compose 上 🐳
 
 ```bash
 keploy test -c "docker compose up" --container-name "nodeMongoApp" --build-delay 50 --delay 10
 ```
 
-> The **--delay** flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> **--delay** 标志？哦，这只是给您的应用一点喘息时间（以秒为单位），然后测试用例才会开始。
 
-Keploy will replay the recorded interactions and validate the responses against the expected results.
+Keploy 将重放记录的交互并根据预期结果验证响应。
 
 ```bash
 Node.js v22.7.0
@@ -373,4 +373,4 @@ Node.js v22.7.0
 🐰 Keploy: 2024-08-28T10:14:17+05:30    INFO    eBPF resources released successfully...
 ```
 
-Voila! 🎉 You have successfully tested the application using Keploy. Keploy also generates coverage reports for the test-suites.
+瞧！🎉 您已成功使用 Keploy 测试了应用。Keploy 还会为测试套件生成覆盖率报告。

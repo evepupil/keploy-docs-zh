@@ -1,72 +1,72 @@
 ---
 id: custom-mocks
-title: Adding a custom Mock to the Keploy Mock File
-sidebar_label: Custom HTTP Mocks
-description: This section documents how to use custom http mocks with keploy test cases
+title: 向Keploy Mock文件添加自定义Mock
+sidebar_label: 自定义HTTP Mocks
+description: 本文档介绍如何在Keploy测试用例中使用自定义HTTP mocks
 tags:
   - mocks
-  - custom mocks
-  - self written mocks
-  - mock with test
+  - 自定义mocks
+  - 手动编写mocks
+  - 测试用mock
 keywords:
   - mocks
-  - custom mocks
-  - self written mocks
-  - mock with test
+  - 自定义mocks
+  - 手动编写mocks
+  - 测试用mock
 ---
 
-If you can't run a dependency service and want to mock it, keploy supports adding manually written mocks.
+如果您无法运行依赖服务并希望模拟它，keploy支持添加手动编写的mocks。
 
-When adding a mock to the Keploy mock file, it's crucial to ensure that all fields are accurately filled out and that the **timestamps align with the request and response timestamps** of the mock's respective test case.
-This document provides a schema and guidelines to assist you in this process.
+向Keploy mock文件添加mock时，必须确保所有字段都准确填写，并且**时间戳与mock对应测试用例的请求和响应时间戳对齐**。
+本文档提供了模式和相关指南来帮助您完成此过程。
 
-## Mocks Schema
+## Mocks模式
 
 ```yaml
 - version: api.keploy.io/v1beta1
   kind: Http
-  name: <mock_name>
+  name: <mock名称>
   spec:
       request:
-          method: <HTTP_method>
+          method: <HTTP方法>
           proto_major: 1
           proto_minor: 1
-          url: <request_url>
-          header: <request_headers>
-          body: <request_body>
-          timestamp: <request_timestamp>
+          url: <请求URL>
+          header: <请求头>
+          body: <请求体>
+          timestamp: <请求时间戳>
       response:
-          status_code: <response_status_code>
-          header: <response_headers>
-          body: <response_body>
-          timestamp: <response_timestamp>
+          status_code: <响应状态码>
+          header: <响应头>
+          body: <响应体>
+          timestamp: <响应时间戳>
 ___
 ```
 
-### Field Descriptions
+### 字段说明
 
 - `version`: `api.keploy.io/v1beta1`
-- `kind`: Since custom mocks are HTTP mocks, the kind is `Http`.
-- `name`: The name of the mock needs to be **unique**.
-- `request`: The request details.
-  - `method`: The HTTP method (e.g., GET, POST).
-  - `url`: The URL of the request.
-  - `header`: The array of request headers.
-  - `body`: The request body.
-  - `timestamp`: The timestamp of the request, which must match the timestamp of the request in the associated test case.
-- `response`: The response details.
-  - `status_code`: The HTTP status code of the response.
-  - `header`: The response headers.
-  - `body`: The response body.
-  - `timestamp`: The timestamp of the response, which must match the timestamp of the response in the associated test case.
+- `kind`: 由于自定义mocks是HTTP mocks，类型为`Http`。
+- `name`: mock名称必须**唯一**。
+- `request`: 请求详情。
+  - `method`: HTTP方法（如GET、POST）。
+  - `url`: 请求URL。
+  - `header`: 请求头数组。
+  - `body`: 请求体。
+  - `timestamp`: 请求时间戳，必须与关联测试用例中的请求时间戳匹配。
+- `response`: 响应详情。
+  - `status_code`: 响应的HTTP状态码。
+  - `header`: 响应头。
+  - `body`: 响应体。
+  - `timestamp`: 响应时间戳，必须与关联测试用例中的响应时间戳匹配。
 
-## Guidelines for Adding a Mock
+## 添加Mock的指南
 
-1. **Ensure Unique Name**: Each mock must have a unique `name` to avoid conflicts.
-2. **Match Timestamps**: The `timestamp` fields in both the request and response sections must be within the associated testcase timestamps. This ensures that the mock is accurately linked to the correct point in the test case's execution.
-3. **Provide Accurate Details**: Ensure that the method, URL, headers, and body accurately reflect the request and response you intend to mock.
+1. **确保名称唯一**：每个mock必须具有唯一的`name`以避免冲突。
+2. **匹配时间戳**：请求和响应部分中的`timestamp`字段必须在关联测试用例的时间戳范围内。这确保mock准确链接到测试用例执行的正确点。
+3. **提供准确详情**：确保方法、URL、头和体准确反映您要模拟的请求和响应。
 
-## Example
+## 示例
 
 ```yaml
 ---

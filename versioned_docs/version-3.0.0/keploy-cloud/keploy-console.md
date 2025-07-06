@@ -1,81 +1,81 @@
 ---
 id: keploy-console
-title: Keploy Console 📘
-sidebar_label: Keploy Console 🛠️
+title: Keploy 控制台 📘
+sidebar_label: Keploy 控制台 🛠️
 tags:
-  - explanation
-  - feature guide
-  - keploy console
-  - installation
+  - 说明文档
+  - 功能指南
+  - keploy 控制台
+  - 安装指南
 keywords:
-  - keploy console
-  - installation
-  - API key
+  - keploy 控制台
+  - 安装指南
+  - API密钥
 ---
 
-### Pre-requisite 📝
+### 前提条件 📝
 
-Ensure you have [installed keploy enterprise](/docs/keploy-cloud/cloud-installation/#installation-%EF%B8%8F).
+确保已[安装 keploy 企业版](/docs/keploy-cloud/cloud-installation/#installation-%EF%B8%8F)。
 
-### Run Tests Locally ⌛️
+### 本地运行测试 ⌛️
 
-Before starting the console, run test cases locally.
+在启动控制台前，请先在本地运行测试用例。
 
 ```bash
-keploy test -c "<CMD_TO_RUN_APP>"
+keploy test -c "<运行应用的命令>"
 ```
 
-<img src="/docs/img/keploy-cloud/console-test-run.png?raw=true" alt="Keploy TestRun"/>
+<img src="/docs/img/keploy-cloud/console-test-run.png?raw=true" alt="Keploy 测试运行"/>
 
-Let's see what broke and fix it.
+让我们看看哪些测试失败了并进行修复。
 
-### Start Keploy Console 📈
+### 启动 Keploy 控制台 📈
 
-- To visualise and edit test-cases basis on test-results, start the console.
+- 要基于测试结果可视化并编辑测试用例，请启动控制台。
   <br/>
   ```bash
   keploy console
   ```
     <br/>
-    <img src="/docs/img/keploy-cloud/keploy-console-cmd.png?raw=true" alt="Keploy Console"/>
+    <img src="/docs/img/keploy-cloud/keploy-console-cmd.png?raw=true" alt="Keploy 控制台"/>
 
 <br/>
 
-- Select your application on [keploy cloud](https://app.keploy.io) and navigate to the **latest** test-report.
+- 在 [keploy 云平台](https://app.keploy.io) 上选择您的应用，并导航至 **最新** 的测试报告。
 
     <br/>
-    <img src="/docs/img/keploy-cloud/test-reports.png?raw=true" alt="Keploy UI Console"/>
+    <img src="/docs/img/keploy-cloud/test-reports.png?raw=true" alt="Keploy UI 控制台"/>
 
-- Select the **latest** test report to make edits.
+- 选择 **最新** 的测试报告进行编辑。
 
-## Test Report Operations 🛠️
+## 测试报告操作 🛠️
 
-Edit test-cases locally using keploy console.
+使用 keploy 控制台在本地编辑测试用例。
 
-- 🎧 Mark Noise Fields
-- 📝 Update Expected Test-Results
-- 🚫 Ignore Tests
-- ♻️ Re-Record Test Suite
-- 🗑️ Delete Test Report
+- 🎧 标记噪声字段
+- 📝 更新预期测试结果
+- 🚫 忽略测试
+- ♻️ 重新录制测试套件
+- 🗑️ 删除测试报告
 
-<img src="/docs/img/keploy-cloud/test-operations.png?raw=true" alt="Keploy Test Menu Dialog"/>
+<img src="/docs/img/keploy-cloud/test-operations.png?raw=true" alt="Keploy 测试菜单对话框"/>
 
-> ✍️ Note that the changes can be made by editing the latest test report only.
+> ✍️ 注意：只能通过编辑最新的测试报告来进行更改。
 
-### Add/Remove Noisy Fields
+### 添加/移除噪声字段
 
-Noisy fields are ignored for assertion when the test-cases runs. Say, `Date` and `Content-Length` are two headers that are not static and can change with each request. We can mark these fields as noisy.
+噪声字段在测试用例运行时会被忽略断言。例如，`Date` 和 `Content-Length` 是两个可能随每次请求变化的头部字段。我们可以将这些字段标记为噪声。
 
-<img src="/docs/img/keploy-cloud/noise.png?raw=true" alt="Noise"/>
+<img src="/docs/img/keploy-cloud/noise.png?raw=true" alt="噪声"/>
 
-You'd see the changes in the test-case file locally, new noisy fields are added under noise param in the test case.
+您将在本地的测试用例文件中看到更改，新的噪声字段会被添加到测试用例的 noise 参数下。
 
-<img src="/docs/img/keploy-cloud/denoise.png?raw=true" alt="De-noise"/>
+<img src="/docs/img/keploy-cloud/denoise.png?raw=true" alt="去噪"/>
 
-### Normalise Test Report or Test Case
+### 标准化测试报告或测试用例
 
-Similarly, if the test case result is the new expected response, we can normalise the test report or a particular test case. This will update the expected result of the test case locally.
+同样，如果测试用例的结果是新的预期响应，我们可以标准化整个测试报告或特定的测试用例。这将更新本地测试用例的预期结果。
 
-## Need Help?
+## 需要帮助？
 
-If you have any questions or need assistance, our support team is here to help. You can reach out to us through our support portal, Slack or by emailing us.
+如果您有任何问题或需要协助，我们的支持团队随时为您服务。您可以通过我们的支持门户、Slack 或发送邮件联系我们。

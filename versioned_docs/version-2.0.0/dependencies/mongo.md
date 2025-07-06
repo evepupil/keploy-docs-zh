@@ -1,61 +1,61 @@
 ---
 id: mongo
-title: MongoDB Support
-sidebar_label: MongoDB Support
+title: MongoDB 支持
+sidebar_label: MongoDB 支持
 ---
 
-## Introduction
+## 简介
 
-The MongoDB Wire Protocol is a simple socket-based, request-response style protocol. Clients communicate with the database server through a regular TCP/IP socket. Clients should connect to the database with a regular TCP/IP socket.
+MongoDB 有线协议是一种基于简单套接字的请求-响应式协议。客户端通过常规 TCP/IP 套接字与数据库服务器通信。客户端应使用常规 TCP/IP 套接字连接数据库。
 
-**Port :** The default port number for `mongod` and `mongos` instances is 27017. The port number for `mongod` and `mongos` is configurable and may vary.
+**端口：** `mongod` 和 `mongos` 实例的默认端口号为 27017。`mongod` 和 `mongos` 的端口号可配置，可能有所不同。
 
-**Byte Ordering :** All integers in the MongoDB wire protocol use little-endian byte order: that is, least-significant byte first.
+**字节序：** MongoDB 有线协议中的所有整数均采用小端字节序：即最低有效字节优先。
 
-**Message Types :** MongoDB uses the `OP_MSG` opcode for both client requests and database replies. There are several message formats used in older versions of MongoDB which have been deprecated in favor of `OP_MSG`.
+**消息类型：** MongoDB 使用 `OP_MSG` 操作码处理客户端请求和数据库响应。旧版 MongoDB 中使用的几种消息格式已被弃用，改用 `OP_MSG`。
 
-For more information, check out mongodb-wire-protocol/#standard-message-header section.
+更多信息请查看 mongodb-wire-protocol/#standard-message-header 部分。
 
-## How it works ?
+## 工作原理
 
-When the application sends requests to MongoDB, those requests/responses are in the form of "wiremessages," which are low-level data packets. These wiremessages are intercepted by the Keploy proxy before reaching the actual MongoDB instance.
+当应用程序向 MongoDB 发送请求时，这些请求/响应以"有线消息"的形式存在，即底层数据包。这些有线消息在到达实际 MongoDB 实例前会被 Keploy 代理拦截。
 
-Once intercepted, the proxy's functionality includes parsing these wiremessages, which involves extracting the relevant data and metadata from the packets. After parsing, the extracted information is transformed into a human-readable and editable format. This format could be more user-friendly and easy to understand, making it convenient for developers and administrators to analyze and manipulate the data if necessary. Hence, this proxy serves as an intermediary that captures and mocks the traffic calls.
+拦截后，代理的功能包括解析这些有线消息，即从数据包中提取相关数据和元数据。解析完成后，提取的信息会被转换为人类可读且可编辑的格式。这种格式更加用户友好且易于理解，便于开发人员和管理员在必要时分析和操作数据。因此，该代理作为中间件捕获并模拟流量调用。
 
-The system is built to support wiremessage `MongoDB version => 5.1.X`, which refers to the specific version of the communication protocol used between the application and the MongoDB server. This version indicates the specific structure and rules governing the wiremessages exchanged between the two components.
+系统设计支持 `MongoDB 版本 => 5.1.X` 的有线消息，这是应用程序与 MongoDB 服务器间使用的特定通信协议版本。该版本规定了双方交换有线消息的具体结构和规则。
 
-## Example of message queries
+## 消息查询示例
 
-In general, each message consists of a standard message header followed by request-specific data. The standard message header is structured as follows:
+通常，每条消息由标准消息头后跟特定请求数据组成。标准消息头结构如下：
 
 ```go
 struct MsgHeader {
-    int32 messageLength;  // total message size, including this
-    int32 requestID;  // identifier for this message
-    int32 responseTo;  // requestID from the original request (used in responses from the database)
-    int32 opCode;  // message type
+    int32 messageLength;  // 消息总长度（包含本字段）
+    int32 requestID;  // 本消息标识符
+    int32 responseTo;  // 原始请求的 requestID（用于数据库响应）
+    int32 opCode;  // 消息类型
 }
 ```
 
-`OP_MSG` is an extensible message format used to encode both client requests and server replies on the wire.
-`OP_MSG` has the following format:
+`OP_MSG` 是一种可扩展的消息格式，用于在网络上编码客户端请求和服务器响应。
+`OP_MSG` 格式如下：
 
 ```shell
 OP_MSG {
-    MsgHeader header;   // standard message header
-    uint32 flagBits;    // message flags
-    Sections[] sections;    // data sections
-    optional<uint32> checksum;  // optional CRC-32C checksum
+    MsgHeader header;   // 标准消息头
+    uint32 flagBits;    // 消息标志位
+    Sections[] sections;    // 数据段
+    optional<uint32> checksum;  // 可选的 CRC-32C 校验和
 }
 ```
 
-**Note**
+**注意事项**
 
-- MongoDB 5.1 removes support for both `OP_QUERY` find operations and `OP_QUERY` commands. As an exception, `OP_QUERY` is still supported for running the `hello` and `isMaster` commands as part of the connection handshake.
+- MongoDB 5.1 移除了对 `OP_QUERY` 查询操作和 `OP_QUERY` 命令的支持。作为例外，连接握手过程中仍支持使用 `OP_QUERY` 运行 `hello` 和 `isMaster` 命令。
 
-- In version 4.2, MongoDB removes the deprecated internal `OP_COMMAND` and `OP_COMMANDREPLY` protocol.
+- 在 4.2 版本中，MongoDB 移除了已弃用的内部协议 `OP_COMMAND` 和 `OP_COMMANDREPLY`。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这些信息对您有所帮助，如仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

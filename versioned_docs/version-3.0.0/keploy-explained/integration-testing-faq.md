@@ -1,68 +1,68 @@
 ---
 id: integration-testing-faq
-title: Frequently Asked Questions
-sidebar_label: FAQs
+title: 常见问题解答
+sidebar_label: 常见问题
 tags:
-  - explanation
-  - faq
+  - 说明
+  - 常见问题
 ---
 
-# Got Questions? We’ve Got Answers! 🚀
+# 有问题？我们有答案！🚀
 
-Let's get to the heart of Keploy with some fun Q&A!
+让我们通过趣味问答深入了解Keploy！
 
-### 1. What is Keploy?
+### 1. 什么是Keploy？
 
-Keploy is an open-source testing platform designed to automatically generate test cases from existing API traffic. It allows users to record, replay, and compare API interactions, making it easier to write and maintain test suites.
+Keploy是一个开源的测试平台，旨在从现有API流量中自动生成测试用例。它允许用户记录、回放和比较API交互，从而更轻松地编写和维护测试套件。
 
-### 2. How does Keploy work?
+### 2. Keploy如何工作？
 
-Keploy works by recording incoming API calls during normal operations. It then replays these interactions in a test environment and compares the results to the initial responses to detect regressions or unexpected behavior in the code.
+Keploy通过记录正常操作期间的传入API调用来工作。然后在测试环境中回放这些交互，并将结果与初始响应进行比较，以检测代码中的回归或意外行为。
 
-### 3. Does Keploy support mocking?
+### 3. Keploy支持模拟(mocking)吗？
 
-Yes, Keploy allows mocking external dependencies like databases and third-party services during test execution to ensure that tests run in isolation without relying on external systems.
+是的，Keploy允许在测试执行期间模拟外部依赖项（如数据库和第三方服务），以确保测试在隔离环境中运行，不依赖外部系统。
 
-### 4. What are the prerequisites for using Keploy?
+### 4. 使用Keploy有哪些先决条件？
 
-To use Keploy, you need:
+使用Keploy需要：
 
-- A service or application that exposes APIs (e.g., REST or GraphQL).
-- Keploy supports programming languages like Go, Node.js, Python, and Java, so the appropriate SDK for your environment should be installed.
+- 一个暴露API的服务或应用程序（例如REST或GraphQL）。
+- Keploy支持Go、Node.js、Python和Java等编程语言，因此需要为您的环境安装相应的SDK。
 
-### 5. Is Keploy suitable for microservices architecture?
+### 5. Keploy适合微服务架构吗？
 
-Yes, Keploy is designed to work in microservices-based environments. It can record and replay API calls across services, making it ideal for testing distributed systems.
+是的，Keploy专为基于微服务的环境设计。它可以跨服务记录和回放API调用，非常适合测试分布式系统。
 
-### 6. Does Keploy require code changes to integrate?
+### 6. Keploy集成是否需要代码更改？
 
-Keploy can be integrated without any changes to the application code. However, adding Keploy SDKs may offer more fine-grained control for specific use cases.
+Keploy可以在不更改应用程序代码的情况下集成。但添加Keploy SDK可以为特定用例提供更精细的控制。
 
-### 7. Can Keploy help with CI/CD pipelines?
+### 7. Keploy可以帮助CI/CD流水线吗？
 
-Yes, Keploy integrates with CI/CD pipelines to run automated tests on every commit or code change. This ensures that any regressions are detected early in the development process.
+是的，Keploy与CI/CD流水线集成，可以在每次提交或代码更改时运行自动化测试。这确保在开发过程中尽早发现回归问题。
 
-### 8. Is Keploy scalable for large projects?
+### 8. Keploy适用于大型项目吗？
 
-Keploy is designed to be scalable. It can handle high traffic volumes and complex services in large-scale distributed systems. It is efficient for generating and managing test cases across services.
+Keploy设计为可扩展。它可以处理大规模分布式系统中的高流量和复杂服务，并能高效生成和管理跨服务的测试用例。
 
-### 9. Does Keploy support testing legacy applications?
+### 9. Keploy支持测试遗留应用程序吗？
 
-Yes, Keploy can be used to test legacy systems, especially if they expose APIs. It can record traffic and replay calls without needing to modify the legacy codebase.
+是的，Keploy可用于测试遗留系统，尤其是那些暴露API的系统。它可以记录流量并回放调用，而无需修改遗留代码库。
 
-### 10. Can Keploy be used with databases?
+### 10. Keploy可以与数据库一起使用吗？
 
-Yes, Keploy can mock database responses during test replay. This helps isolate tests and ensures consistency during test execution.
+是的，Keploy可以在测试回放期间模拟数据库响应。这有助于隔离测试并确保测试执行的一致性。
 
-### 11. Is Keploy free to use?
+### 11. Keploy是免费的吗？
 
-Yes, Keploy is open-source and free to use under the Apache 2.0 license. You can also contribute to its development on GitHub.
+是的，Keploy是开源的，根据Apache 2.0许可证免费使用。您还可以在GitHub上为其开发做出贡献。
 
-### 12. Can I customize Keploy's behavior for specific APIs?
+### 12. 我可以为特定API自定义Keploy的行为吗？
 
-Yes, Keploy provides configuration options to customize recording, replay, and comparison logic for specific APIs, giving users control over how their APIs are tested.
+是的，Keploy提供配置选项，可以为特定API自定义记录、回放和比较逻辑，让用户控制API的测试方式。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这些解答对您有所帮助，如果还有其他问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

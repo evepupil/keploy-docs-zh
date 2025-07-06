@@ -8,7 +8,7 @@ export default function ApplicationDevelopment() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      title="Keploy application development"
+      title="Keploy应用开发"
       permalink="/application-development"
     >
       <div className="mx-auto mb-12 max-w-screen-lg p-6 md:p-10">

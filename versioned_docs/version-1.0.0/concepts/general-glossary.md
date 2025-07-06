@@ -1,32 +1,32 @@
 ---
 id: general-glossary
-title: Simplified User Glossary (v1.0.0)
-sidebar_label: Glossary
-description: This glossary simplifies complex terminologies, making it easy for beginners to grasp essential concepts.
+title: 简易用户术语表 (v1.0.0)
+sidebar_label: 术语表
+description: 本术语表简化复杂术语，帮助初学者快速掌握核心概念。
 tags:
-  - explanation
+  - 解释
 keywords:
   - API
 ---
 
-### 1. **API data mocking**
+### 1. **API数据模拟**
 
-API mocking is a simulation of real APIs and is performed when the production API is not ready. You may come across a situation where you cannot send an API request to the server because it is not prepared. In such cases, you can mock a chunk of data from the response and eventually, when you make requests the mocked data will be returned.
+API模拟是对真实API的仿真，通常在生产环境API未就绪时使用。当服务器尚未准备好导致无法发送API请求时，您可以模拟部分响应数据。后续发起请求时，系统将返回这些模拟数据。
 
-### 2. **Idempotency**
+### 2. **幂等性**
 
-An API is idempotent when the outcome of a successful request remains unchanged on making the same request frequently.
+当API在频繁发送相同请求时，成功请求的结果始终保持不变，则该API具有幂等性。
 
-### 3. **Noisy field**
+### 3. **噪声字段**
 
-Noisy field refers to the random data whose value changes each time you make a request.
+噪声字段指每次请求时值会变化的随机数据。
 
-For example, a Timestamp is one such property that returns the time when the request is made. Its value is not fed manually but is automatically recorded therefore, at every call it differs.
+例如时间戳属性：该值并非手动输入而是自动记录请求时间，因此每次调用时都会不同。
 
-### 4. **Interoperability**
+### 4. **互操作性**
 
-Interoperability refers to the situation when the behavior of the data is in its original (native) format when transferred from one platform to other. It reduces the dependency of files by replacing them with optimized code giving the same result.
+互操作性指数据在不同平台间传输时，仍能保持其原始（原生）格式行为。通过用优化代码替代文件依赖来实现相同结果。
 
-### 5. **Deduplication Algorithm**
+### 5. **去重算法**
 
-Deduplication is a data compression technique wherein redundant copies of the same data are identified and eliminated. This process involves hash functions or similarity analysis to compare data chunks, enabling the storage system to store only one instance of each unique data segment, thereby optimizing storage efficiency and reducing redundancy.
+去重是一种数据压缩技术，通过识别并消除相同数据的冗余副本实现。该过程采用哈希函数或相似性分析来比对数据块，使得存储系统仅保留每个唯一数据段的一个实例，从而优化存储效率并减少冗余。

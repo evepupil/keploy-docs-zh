@@ -1,7 +1,7 @@
 ---
 id: index
-title: Supported Dependencies
-sidebar_label: Supported Dependencies
+title: 支持的依赖项
+sidebar_label: 支持的依赖项
 ---
 
 - [MongoDB](/dependencies/mongo/)

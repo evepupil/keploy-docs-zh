@@ -1,36 +1,36 @@
 ---
 id: agile-unit-testing
-title: Agile Unit Testing (v1.0.0)
-sidebar_label: Agile Unit Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 敏捷单元测试 (v1.0.0)
+sidebar_label: 敏捷单元测试
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-Agile unit testing is a software testing process that is used in agile development teams. It involves writing small, self-contained tests that verify the behavior of individual units of code. These tests are typically written by the developers themselves, and they are run frequently throughout the development process.
+敏捷单元测试是敏捷开发团队中使用的一种软件测试流程。它涉及编写小型、独立的测试用例，用于验证代码中各个独立单元的行为。这些测试通常由开发人员自己编写，并在整个开发过程中频繁运行。
 
-### Why is agile unit testing important?
+### 为什么敏捷单元测试很重要？
 
-Agile unit testing is important because it can help to improve the quality of software applications. By finding and fixing defects early, agile unit testing can help to prevent bugs from reaching production, which can save time and money.
+敏捷单元测试之所以重要，是因为它有助于提高软件应用程序的质量。通过早期发现和修复缺陷，敏捷单元测试可以防止错误进入生产环境，从而节省时间和成本。
 
-### How does agile unit testing work?
+### 敏捷单元测试如何工作？
 
-Agile unit testing is typically done by developers. Developers write unit tests that verify the behavior of individual units of code. These unit tests are then run automatically as part of the development process.
+敏捷单元测试通常由开发人员完成。开发人员编写单元测试来验证代码中各个独立单元的行为。这些单元测试随后会作为开发流程的一部分自动运行。
 
-### What are the benefits of agile unit testing?
+### 敏捷单元测试有哪些好处？
 
-1. It helps to ensure the quality of the code by catching bugs early in the development process.
-2. It can help to improve the maintainability of the code by making it easier to track changes and to identify regressions.
-3. It can help to speed up the development process by reducing the amount of time that is spent debugging.
+1. 通过在开发早期捕获错误，有助于确保代码质量
+2. 通过更轻松地跟踪变更和识别回归问题，可以提高代码的可维护性
+3. 通过减少调试时间，可以加快开发进程
 
-### Key Principles of agile unit testing:
+### 敏捷单元测试的关键原则：
 
-1. **Test-driven development (TDD)**: TDD is a development methodology that involves writing unit tests before writing the code. This helps to ensure that the code is designed with testing in mind, and it can help to improve the quality of the code.
-2. **Continuous integration (CI)**: CI is a process that involves automating the build and testing of software. This helps to ensure that the code is always in a releasable state, and it can help to catch bugs early in the development process.
-3. **Continuous delivery (CD)**: CD is a process that involves automating the deployment of software. This helps to ensure that the software is always available to users, and it can help to improve the speed of deployment.
+1. **测试驱动开发(TDD)**：TDD是一种开发方法，要求在编写代码之前先编写单元测试。这有助于确保代码在设计时就考虑了测试需求，并能提高代码质量。
+2. **持续集成(CI)**：CI是自动化构建和测试软件的过程。这有助于确保代码始终处于可发布状态，并能在开发早期发现错误。
+3. **持续交付(CD)**：CD是自动化部署软件的过程。这有助于确保软件始终对用户可用，并能提高部署速度。
 
-### Conclusion
+### 结论
 
-Agile unit testing is a valuable tool for improving the quality of software applications. By following the best practices for agile unit testing, developers can help to ensure that their applications are free of defects and meet the needs of their users.
+敏捷单元测试是提高软件应用程序质量的宝贵工具。通过遵循敏捷单元测试的最佳实践，开发人员可以确保他们的应用程序没有缺陷并满足用户需求。

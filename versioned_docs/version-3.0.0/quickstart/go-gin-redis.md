@@ -1,8 +1,8 @@
 ---
 id: samples-redis
-title: Sample User Authentication App (Golang)
+title: 用户认证应用示例（Golang）
 sidebar_label: Gin + Redis
-description: The following sample app showcases how to use Gin framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用Gin框架和Keploy平台。
 tags:
   - go
   - quickstart
@@ -12,74 +12,74 @@ tags:
   - redis
   - gin-framework
 keyword:
-  - Gin Framework
+  - Gin框架
   - Redis
   - Golang
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-🪄 Dive into the world of User Authentication apps and see how seamlessly Keploy integrates with Gin and Redis. Buckle up, it's gonna be a fun ride! 🎢
+🪄 深入用户认证应用的世界，看看Keploy如何与Gin和Redis无缝集成。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始吧！🎬
 
-## Clone a sample user authentication app 🧪
+## 克隆示例用户认证应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-go.git && cd samples-go/gin-redis
 go mod download
 ```
 
-## Installation 📥
+## 安装 📥
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用。
 
-- [Using Docker compose : running application as well as Postgres on Docker container](#using-docker-compose-)
-- [Using Docker container for Postgres and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用Docker compose：在Docker容器中运行应用及Postgres](#使用docker-compose-)
+- [使用Docker容器运行Postgres并在本地运行应用](#在linuxwsl上本地运行应用-)
 
-## Using Docker Compose 🐳
+## 使用Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as Postgres on Docker container.
+我们将使用Docker compose在Docker容器中运行应用及Postgres。
 
-### Lights, Camera, Record! 🎥
+### 灯光，摄像，开始录制！🎥
 
-#### Setup the Redis Database 📦
+#### 设置Redis数据库 📦
 
-Start the Redis instance using the `docker-compose` file-
+使用`docker-compose`文件启动Redis实例：
 
 ```bash
 docker compose up redis
 ```
 
-Now, we will create the docker image of our application:-
+现在，我们将创建应用的Docker镜像：
 
 ```bash
 docker build -t gin-app:1.0 .
 ```
 
-### Capture the test-cases-
+### 捕获测试用例
 
 ```shell
 keploy record -c "docker run -p 3001:3001 --network <networkName> --name ginRedisApp gin-app:1.0"
 ```
 
-🔥**Make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥**发起一些API调用**。Postman、Hoppscotch甚至curl——任你选择！
 
-Let's make URLs short and sweet:
+让我们简化URL：
 
-#### 1. Request OTP
+#### 1. 请求OTP
 
 ```bash
 curl --location 'localhost:3001/api/getVerificationCode?email=something@gmail.com&username=shivamsourav'
 ```
 
-This will return the OTP response:
+这将返回OTP响应：
 
 ```
 {
@@ -89,7 +89,7 @@ This will return the OTP response:
 }
 ```
 
-**2. Verify OTP**
+**2. 验证OTP**
 
 ```bash
 curl --location 'localhost:3001/api/verifyCode' \
@@ -100,7 +100,7 @@ curl --location 'localhost:3001/api/verifyCode' \
 }'
 ```
 
-This will return the OTP verification response:
+这将返回OTP验证响应：
 
 ```bash
 {
@@ -111,7 +111,7 @@ This will return the OTP verification response:
 }
 ```
 
-🎉 Woohoo! With a simple API call, you've crafted a test case with a mock! Dive into the Keploy directory and feast your eyes on the newly minted `test-1.yml` and `mocks.yml`
+🎉 哇哦！通过简单的API调用，你已经创建了一个带有模拟的测试用例！进入Keploy目录，查看新生成的`test-1.yml`和`mocks.yml`
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -164,7 +164,7 @@ curl: |
   --header 'Postman-Token: 2db91281-a5bf-49e0-be0d-c6293c833910' \
 ```
 
-This is how `mocks.yml` generated would look like:-
+这是生成的`mocks.yml`示例：
 
 ```yaml
   version: api.keploy.io/v1beta2
@@ -216,65 +216,65 @@ This is how `mocks.yml` generated would look like:-
               data: "$38\r\n{\"otp\":5486,\"username\":\"shivamsourav\"}\r\n"
 ```
 
-Want to see if everything works as expected?
+想看看一切是否如预期般工作吗？
 
-### Run Tests
+### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 keploy test -c "sudo docker run -p 3001:3001 --rm --network <networkName> --name ginRedisApp gin-app:1.0" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`标志？哦，这只是让你的应用在测试用例到来之前稍作休息（以秒为单位）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后想法？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或者修改`test-x.yml`中的请求或响应。再次运行测试，看看魔法如何展开！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜你完成这段旅程！你已经见识了Keploy的强大，锻炼了编码肌肉，还玩得很开心！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！✨👩‍💻👨‍💻✨
 
 **\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***
 
-## Running App Locally on Linux/WSL 🐧
+## 在Linux/WSL上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (Redis) chill on Docker. Ready? Let's get the party started!🎉
+我们将在Linux上直接运行示例应用，但为了让事情更有趣，我们将让数据库（Redis）在Docker上运行。准备好了吗？让我们开始派对吧！🎉
 
-### 📼 Roll the Tape - Recording Time!
+### 📼 开始录制 - 录制时间！
 
-Start the Redis database using docker-compose:
+使用docker-compose启动Redis数据库：
 
 ```bash
 docker compose up redis
 ```
 
-We'll create a binary of our application:
+我们将创建应用的二进制文件：
 
 ```bash
 go build -o gin-redis
 ```
 
-Ready, set, record! Here's how:
+准备，设置，开始录制！方法如下：
 
 ```bash
 sudo -E PATH=$PATH keploy record -c "./gin-redis"
 ```
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+好了，魔术师！应用已经启动并运行，让我们编织一些测试用例。咒语是什么？发起一些API调用！Postman、Hoppscotch或经典的curl——选择你的魔法棒。
 
-#### Generate testcases
+#### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+要生成测试用例，我们只需要**发起一些API调用**。
 
-**1. Request OTP**
+**1. 请求OTP**
 
 ```bash
 curl --location 'localhost:3001/api/getVerificationCode?email=something@gmail.com&username=shivamsourav'
 ```
 
-This will return the OTP response:
+这将返回OTP响应：
 
 ```json
 {
@@ -284,7 +284,7 @@ This will return the OTP response:
 }
 ```
 
-**2. Verify OTP**
+**2. 验证OTP**
 
 ```bash
 curl --location 'localhost:3001/api/verifyCode' \
@@ -296,7 +296,7 @@ curl --location 'localhost:3001/api/verifyCode' \
 
 ```
 
-This will return the OTP verification response:
+这将返回OTP验证响应：
 
 ```json
 {
@@ -307,7 +307,7 @@ This will return the OTP verification response:
 }
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+给自己一个鼓励！通过这个简单的咒语，你已经召唤出了一个带有模拟的测试用例！探索**Keploy目录**，你会在`test-1.yml`和`mocks.yml`中发现你的杰作。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -360,7 +360,7 @@ curl: |
   --header 'Postman-Token: 2db91281-a5bf-49e0-be0d-c6293c833910' \
 ```
 
-This is how `mocks.yml` generated would look like:-
+这是生成的`mocks.yml`示例：
 
 ```yaml
   version: api.keploy.io/v1beta2
@@ -412,25 +412,25 @@ This is how `mocks.yml` generated would look like:-
               data: "$38\r\n{\"otp\":5486,\"username\":\"shivamsourav\"}\r\n"
 ```
 
-Want to see if everything works as expected?
+想看看一切是否如预期般工作吗？
 
-### Run Tests
+### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 sudo -E keploy test -c "./gin-redis" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`标志？哦，这只是让你的应用在测试用例到来之前稍作休息（以秒为单位）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后想法？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或者修改`test-x.yml`中的请求或响应。再次运行测试，看看魔法如何展开！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜你完成这段旅程！你已经见识了Keploy的强大，锻炼了编码肌肉，还玩得很开心！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。 😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对你有所帮助，如果还有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

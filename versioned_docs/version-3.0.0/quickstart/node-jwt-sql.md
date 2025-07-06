@@ -1,8 +1,8 @@
 ---
 id: samples-node-jwt
-title: NodeJS - JWT Sample Application
+title: NodeJS - JWT 示例应用
 sidebar_label: NodeJS - JWT + Postgres
-description: The following sample app showcases how to use NodeJS framework with JWT and the Keploy Platform.
+description: 以下示例应用展示了如何将 NodeJS 框架与 JWT 和 Keploy 平台结合使用。
 tags:
   - javascript
   - quickstart
@@ -10,69 +10,69 @@ tags:
   - examples
   - tutorial
 keyword:
-  - NodeJS Framework
+  - NodeJS 框架
   - Postgres
   - NodeJS
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-A simple sample CRUD application to test using Keploy build with Node, JWT and Postgres. Buckle up, it's gonna be a fun ride! 🎢
+这是一个使用 Node、JWT 和 Postgres 构建的简单 CRUD 示例应用，用于测试 Keploy。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始使用！🎬
 
-## Setup application
+## 设置应用
 
-Clone the repository and move to express-mongo folder
+克隆仓库并进入 express-mongo 文件夹
 
 ```bash
 git clone https://github.com/keploy/samples-typescript && cd samples-typescript/node-jwt
 
-# Install the dependencies
+# 安装依赖
 npm install
 ```
 
-## Installation 📥
+## 安装 📥
 
-Depending on your OS, choose your adventure:
-There are 2 ways you can run this sample application.
+根据您的操作系统，选择安装方式：
+有两种方式可以运行此示例应用。
 
-- [Using Docker container for Postgres and running application locally](#running-app-locally-on-linuxwsl-)
-- [Using Docker compose : running application as well as Postgres on Docker container](#using-docker-compose-)
+- [使用 Postgres 的 Docker 容器并在本地运行应用](#在-linuxwsl-上本地运行应用-)
+- [使用 Docker compose：在 Docker 容器中运行应用和 Postgres](#使用-docker-compose-)
 
-## Running App Locally on Linux/WSL 🐧
+## 在 Linux/WSL 上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (postgres) chill on Docker. Ready? Let's get the party started!🎉
+我们将在 Linux 上直接运行示例应用，但为了让事情更有趣，我们将把数据库（postgres）放在 Docker 上运行。准备好了吗？让我们开始派对吧！🎉
 
-If you are using WSL on windows then use below to start wsl in the user's home directory:
+如果您在 Windows 上使用 WSL，请使用以下命令在用户主目录中启动 WSL：
 
 ```bash
 wsl ~
 ```
 
-### Let's start the Postgres Instance
+### 启动 Postgres 实例
 
 ```zsh
 docker-compose up -d
 ```
 
-## Capture the testcases
+## 捕获测试用例
 
 ```bash
 sudo -E env PATH=$PATH keploy record -c 'node app.js'
 ```
 
-### Let's Generate the testcases.
+### 生成测试用例
 
-Make API Calls using [Postman](https://postman.com) or cURL command. Keploy with capture those calls to generate the test-suites containing testcases and data mocks.
+使用 [Postman](https://postman.com) 或 cURL 命令发起 API 调用。Keploy 将捕获这些调用以生成包含测试用例和数据模拟的测试套件。
 
-1. Create User
+1. 创建用户
 
 ```bash
 curl --location 'http://localhost:8080/api/auth/signup' \
@@ -84,19 +84,19 @@ curl --location 'http://localhost:8080/api/auth/signup' \
 }'
 ```
 
-we will get the output:
+我们将得到输出：
 
 ```json
 {"message": "User was registered successfully!"}
 ```
 
-We will get the following output in our terminal
+我们将在终端中看到以下输出
 
-<img src="/docs/img/jwt-record.png" alt="Sample Keploy Test Result Node JWT" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/jwt-record.png" alt="Node JWT 示例 Keploy 测试结果" width="100%" style={{ borderRadius: '5px' }} />
 
-Let's go ahead create few more testcases for different endpoints!
+让我们继续为不同的端点创建更多测试用例！
 
-2. Create Admin User
+2. 创建管理员用户
 
 ```bash
 curl --location 'http://localhost:8080/api/auth/signup' \
@@ -109,13 +109,13 @@ curl --location 'http://localhost:8080/api/auth/signup' \
 }'
 ```
 
-we will get the output:
+我们将得到输出：
 
 ```json
 {"message": "User was registered successfully!"}
 ```
 
-3. User Signin
+3. 用户登录
 
 ```bash
 curl --location 'http://localhost:8080/api/auth/signin' \
@@ -127,7 +127,7 @@ curl --location 'http://localhost:8080/api/auth/signin' \
 }'
 ```
 
-We will get access token once the user has signed in:
+用户登录后，我们将获得访问令牌：
 
 ```json
 {
@@ -139,44 +139,44 @@ We will get access token once the user has signed in:
 }
 ```
 
-4. Access user Content
+4. 访问用户内容
 
 ```sh
 curl --location 'http://localhost:8080/api/test/all'
 ```
 
-We will get:
+我们将得到：
 
 ```
 Public Content
 ```
 
-5. Access user Content
+5. 访问用户内容
 
 ```sh
 curl --location 'http://localhost:8080/api/test/user' \
 --header 'x-access-token: <TOKEN>'
 ```
 
-We will get
+我们将得到
 
 ```
 User Content
 ```
 
-## Running the testcases
+## 运行测试用例
 
 ```bash
 sudo -E env PATH=$PATH keploy test -c 'npm run app.js' --delay 10
 ```
 
-Our testcases will fail as the token would expire and new Token will generated again when we are using testmode. To make sure that testcases do not fail, we have use [timeFreezing](https://keploy.io/docs/keploy-cloud/time-freezing/).
-Our testcases will fail as the token would expire and new Token will generated again when we are using testmode. To make sure that testcases do not fail, we have use [timeFreezing](https://keploy.io/docs/keploy-cloud/time-freezing/).
+由于令牌会过期，当我们在测试模式下使用时，新的令牌会重新生成，我们的测试用例将失败。为了确保测试用例不失败，我们需要使用 [timeFreezing](https://keploy.io/docs/keploy-cloud/time-freezing/)。
+由于令牌会过期，当我们在测试模式下使用时，新的令牌会重新生成，我们的测试用例将失败。为了确保测试用例不失败，我们需要使用 [timeFreezing](https://keploy.io/docs/keploy-cloud/time-freezing/)。
 
-<img src="/docs/img/jwt-test-fail.png" alt="Sample Keploy Test Result Node JWT" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/jwt-test-fail.png" alt="Node JWT 示例 Keploy 测试结果" width="100%" style={{ borderRadius: '5px' }} />
 
-But for this application, the Token expiration is 10 mins so let's go ahead and test the application within 10 mins. Let's add the `Etag` and `accessToken` as the noise in the `test-3.yml` on line 45 under `header.Date`. The file would look like:-
-But for this application, the Token expiration is 10 mins so let's go ahead and test the application within 10 mins. Let's add the `Etag` and `accessToken` as the noise in the `test-3.yml` on line 45 under `header.Date`. The file would look like:-
+但对于此应用，令牌过期时间为 10 分钟，因此让我们在 10 分钟内测试应用。让我们在 `test-3.yml` 的第 45 行 `header.Date` 下添加 `Etag` 和 `accessToken` 作为噪声。文件将如下所示：-
+但对于此应用，令牌过期时间为 10 分钟，因此让我们在 10 分钟内测试应用。让我们在 `test-3.yml` 的第 45 行 `header.Date` 下添加 `Etag` 和 `accessToken` 作为噪声。文件将如下所示：-
 
 ```
         noise:
@@ -185,39 +185,39 @@ But for this application, the Token expiration is 10 mins so let's go ahead and 
         |   - body.accessToken
 ```
 
-Now, let's run the keploy in test mode again:-
+现在，让我们再次在测试模式下运行 keploy：-
 
-<img src="/docs/img/jwt-test-pass.png" alt="Sample Keploy Test Result Node JWT" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/jwt-test-pass.png" alt="Node JWT 示例 Keploy 测试结果" width="100%" style={{ borderRadius: '5px' }} />
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜您完成这段旅程！您已经见识了 Keploy 的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+祝您编码愉快！✨👩‍💻👨‍💻✨
 
 **\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***
 
 ---
 
-## Using Docker Compose 🐳
+## 使用 Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as Postgres on Docker container.
+我们将使用 Docker compose 在 Docker 容器中运行应用和 Postgres。
 
-Since we have setup our sample-app using docker, we need to update the postgres host on line 2, in `config/db.config.js`, from `localhost` to `postgres`.
+由于我们使用 docker 设置了示例应用，我们需要在 `config/db.config.js` 的第 2 行将 postgres 主机从 `localhost` 更新为 `postgres`。
 
-## Capture the testcases
+## 捕获测试用例
 
-We will run the keploy in record mode with docker-compose to start our application:-
+我们将使用 docker-compose 在记录模式下运行 keploy 以启动我们的应用：-
 
 ```bash
 keploy record -c "docker-compose up" --container-name "jwtSqlApp"
 ```
 
-#### Let's generate the testcases.
+#### 生成测试用例
 
-Make API Calls using [Postman](https://postman.com) or cURL command. Keploy with capture those calls to generate the test-suites containing testcases and data mocks.
+使用 [Postman](https://postman.com) 或 cURL 命令发起 API 调用。Keploy 将捕获这些调用以生成包含测试用例和数据模拟的测试套件。
 
-1. Create User
+1. 创建用户
 
 ```bash
 curl --location 'http://localhost:8080/api/auth/signup' \
@@ -229,19 +229,19 @@ curl --location 'http://localhost:8080/api/auth/signup' \
 }'
 ```
 
-we will get the output:
+我们将得到输出：
 
 ```json
 {"message": "User was registered successfully!"}
 ```
 
-We will get the following output in our terminal
+我们将在终端中看到以下输出
 
-<img src="/docs/img/jwt-record.png" alt="Sample Keploy Test Result Node JWT" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/jwt-record.png" alt="Node JWT 示例 Keploy 测试结果" width="100%" style={{ borderRadius: '5px' }} />
 
-Let's go ahead create few more testcases for different endpoints!
+让我们继续为不同的端点创建更多测试用例！
 
-2. Create Admin User
+2. 创建管理员用户
 
 ```bash
 curl --location 'http://localhost:8080/api/auth/signup' \
@@ -254,13 +254,13 @@ curl --location 'http://localhost:8080/api/auth/signup' \
 }'
 ```
 
-we will get the output:
+我们将得到输出：
 
 ```json
 {"message": "User was registered successfully!"}
 ```
 
-3. User Signin
+3. 用户登录
 
 ```bash
 curl --location 'http://localhost:8080/api/auth/signin' \
@@ -272,7 +272,7 @@ curl --location 'http://localhost:8080/api/auth/signin' \
 }'
 ```
 
-We will get access token once the user has signed in:
+用户登录后，我们将获得访问令牌：
 
 ```json
 {
@@ -284,42 +284,42 @@ We will get access token once the user has signed in:
 }
 ```
 
-4. Access user Content
+4. 访问用户内容
 
 ```sh
 curl --location 'http://localhost:8080/api/test/all'
 ```
 
-We will get:
+我们将得到：
 
 ```
 Public Content
 ```
 
-5. Access user Content
+5. 访问用户内容
 
 ```sh
 curl --location 'http://localhost:8080/api/test/user' \
 --header 'x-access-token: <TOKEN>'
 ```
 
-We will get
+我们将得到
 
 ```
 User Content
 ```
 
-## Running the testcases
+## 运行测试用例
 
 ```bash
 keploy test -c 'sudo docker-compose up'  --container-name "jwtSqlApp" --delay 10
 ```
 
-Our testcases will fail as the token would expire and new Token will generated again when we are using testmode. To make sure that testcases do not fail, we have use [timeFreezing](https://keploy.io/docs/keploy-cloud/time-freezing/).
+由于令牌会过期，当我们在测试模式下使用时，新的令牌会重新生成，我们的测试用例将失败。为了确保测试用例不失败，我们需要使用 [timeFreezing](https://keploy.io/docs/keploy-cloud/time-freezing/)。
 
-<img src="/docs/img/jwt-test-fail.png" alt="Sample Keploy Test Result Node JWT" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/jwt-test-fail.png" alt="Node JWT 示例 Keploy 测试结果" width="100%" style={{ borderRadius: '5px' }} />
 
-But for this application, the Token expiration is 10 mins so let's go ahead and test the application within 10 mins. Let's add the `Etag` and `accessToken` as the noise in the `test-3.yml` on line 45 under `header.Date`. The file would look like:-
+但对于此应用，令牌过期时间为 10 分钟，因此让我们在 10 分钟内测试应用。让我们在 `test-3.yml` 的第 45 行 `header.Date` 下添加 `Etag` 和 `accessToken` 作为噪声。文件将如下所示：-
 
 ```
         noise:
@@ -328,15 +328,15 @@ But for this application, the Token expiration is 10 mins so let's go ahead and 
         |   - body.accessToken
 ```
 
-Now, let's run the keploy in test mode again:-
+现在，让我们再次在测试模式下运行 keploy：-
 
-<img src="/docs/img/jwt-test-pass.png" alt="Sample Keploy Test Result Node JWT" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/jwt-test-pass.png" alt="Node JWT 示例 Keploy 测试结果" width="100%" style={{ borderRadius: '5px' }} />
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜您完成这段旅程！您已经见识了 Keploy 的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果您还有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

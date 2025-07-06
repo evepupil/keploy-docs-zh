@@ -1,41 +1,41 @@
 ---
 id: jenkins
-title: Integrating with Jenkins
-description: Guide into Keploy Jenkins Pipeline
-sidebar_label: Jenkins Pipeline
+title: 与 Jenkins 集成
+description: Keploy Jenkins 流水线指南
+sidebar_label: Jenkins 流水线
 keywords:
-  - ci testing
+  - 持续集成测试
   - ci/cd
   - jenkins
-  - ci pipeline
+  - 持续集成流水线
 tags:
-  - ci
-  - cd
-  - plugin
+  - 持续集成
+  - 持续交付
+  - 插件
 ---
 
-Keploy can integrated with Jenkins to ensure continuous testing as part of your CI/CD pipeline.
+Keploy 可以与 Jenkins 集成，作为 CI/CD 流水线的一部分实现持续测试。
 
-## Prerequisites
+## 先决条件
 
-- Jenkins installed and running
-- Sudo access with `"NOPASSWORD"` via `jenkins ALL=(ALL) NOPASSWD: ALL`.
+- 已安装并运行 Jenkins
+- 通过 `jenkins ALL=(ALL) NOPASSWD: ALL` 配置无需密码的 sudo 权限
 
-Open terminal and run`sudo visudo` command to open the sudoers file and add the below line at the end of the file.
+打开终端运行 `sudo visudo` 命令编辑 sudoers 文件，在文件末尾添加以下内容：
 
 ```sh
 jenkins ALL=(ALL) NOPASSWD: ALL
 ```
 
-## Create a Pipeline
+## 创建流水线
 
-Use the template below to install Keploy in your Jenkins pipeline using a script : -
+使用以下模板通过脚本在 Jenkins 流水线中安装 Keploy：
 
 ```sh
 pipeline {
     agent any
     stages {
-        stage('Install Keploy') {
+        stage('安装 Keploy') {
             steps {
                 sh '''
                 curl --silent -O -L https://keploy.io/install.sh && bash install.sh
@@ -44,27 +44,26 @@ pipeline {
         }
     }
 }
-
 ```
 
-> **Note: if you are using `arm_64` as runner use below to download keploy binary**
+> **注意：如果使用 `arm_64` 作为运行器，请使用以下命令下载 Keploy 二进制文件**
 
 `curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz" | tar xz --overwrite -C /tmp`
 
-### Example
+### 示例
 
-Now that we have Keploy installed, and all ready, we need switch to path where `keploy` folder is present in our application and install all the application related dependencies. Since we are using [gin-mongo](https://github.com/keploy/samples-go/tree/main/gin-mongo) sample-application, steps in our `script` would look like below:-
+现在我们已经安装了 Keploy，接下来需要切换到应用程序中包含 `keploy` 文件夹的路径，并安装所有应用程序相关依赖。由于我们使用 [gin-mongo](https://github.com/keploy/samples-go/tree/main/gin-mongo) 示例应用，`script` 中的步骤应如下所示：
 
 ```sh
 pipeline {
     agent any
     stages {
-        stage('Install Dependencies') {
+        stage('安装依赖') {
             steps {
                 sh 'sudo apt-get update && sudo apt-get install -y curl kmod linux-headers-generic bpfcc-tools git golang-go'
             }
         }
-        stage('Clone and Setup App') {
+        stage('克隆并设置应用') {
             steps {
                 sh '''
                 rm -rf samples-go
@@ -74,14 +73,14 @@ pipeline {
                 '''
             }
         }
-        stage('Install Keploy') {
+        stage('安装 Keploy') {
             steps {
                 sh '''
                 curl --silent -O -L https://keploy.io/install.sh && bash install.sh
                 '''
             }
         }
-        stage('Prepare eBPF Hooks') {
+        stage('准备 eBPF 钩子') {
             steps {
                 sh '''
                 sudo mkdir -p /sys/kernel/debug
@@ -91,7 +90,7 @@ pipeline {
                 '''
             }
         }
-        stage('Run Keploy Tests') {
+        stage('运行 Keploy 测试') {
             steps {
                 sh '''
                 cd gin-mongo
@@ -101,25 +100,24 @@ pipeline {
         }
     }
 }
-
 ```
 
-### 📝 Note
+### 📝 注意
 
-Did you notice some weird stuff in the pipeline? Like `kmod`, `linux-headers`, `/sys/kernel/debug`...and thought, _"Wait, am I hacking the kernel or something?"_ 😅
+你是否在流水线中注意到一些奇怪的东西？比如 `kmod`、`linux-headers`、`/sys/kernel/debug`...然后心想："等等，我是在黑内核吗？" 😅
 
-Don’t worry — these are just there because **Keploy uses eBPF** (a cool Linux feature) to trace your app’s behavior.
+别担心 —— 这些只是因为 **Keploy 使用 eBPF**（一个很酷的 Linux 特性）来追踪你的应用行为。
 
-So we install `kmod`, `linux-headers-generic`, and `bpfcc-tools` to make that tracing possible.
+所以我们安装 `kmod`、`linux-headers-generic` 和 `bpfcc-tools` 来实现这种追踪。
 
-Some CI systems don’t have `/sys/kernel/debug` and `/sys/kernel/tracing` by default, so we create them and mount `debugfs` and `tracefs` — it’s like giving Keploy the **backstage pass** it needs to watch your app in action.
+一些 CI 系统默认没有 `/sys/kernel/debug` 和 `/sys/kernel/tracing`，所以我们创建它们并挂载 `debugfs` 和 `tracefs` —— 这就像是给 Keploy 一张**后台通行证**，让它能观察你的应用运行。
 
-No black magic. Just some low-level Linux stuff helping your tests run like magic! 🪄✨
+没有黑魔法。只是一些底层 Linux 机制帮助你的测试像魔法一样运行！ 🪄✨
 
-We would output something like below:-
+我们会得到类似下面的输出：
 
 ```sh
-Started by `user admin`
+由用户 admin 启动
 
 ...
 
@@ -135,44 +133,44 @@ sudo -E keploy test -c go run main.go handler.go --disableANSI
        ▓▌                           ▐█▌                   █▌
         ▓
 
-version: 2.5.2
+版本: 2.5.2
 
-2025-04-18T04:06:50.413Z	INFO	provider/cmd.go:504	Color encoding is disabled
-2025-04-18T04:06:50.413Z	WARN	provider/cmd.go:726	Delay is set to 5 seconds, incase your app takes more time to start use --delay to set custom delay
-2025-04-18T04:06:50.413Z	INFO	provider/cmd.go:730	Example usage: keploy test -c "/path/to/user/app" --delay 6
-2025-04-18T04:06:50.413Z	WARN	replay/replay.go:140	go language detected. please use --language to manually set the language if needed
-2025-04-18T04:06:50.413Z	WARN	golang/utils.go:28	cover flag not found in command, skipping coverage calculation
-2025-04-18T04:06:51.104Z	INFO	hooks/hooks.go:436	keploy initialized and probes added to the kernel.
+2025-04-18T04:06:50.413Z	INFO	provider/cmd.go:504	颜色编码已禁用
+2025-04-18T04:06:50.413Z	WARN	provider/cmd.go:726	延迟设置为5秒，如果你的应用启动需要更长时间，请使用--delay设置自定义延迟
+2025-04-18T04:06:50.413Z	INFO	provider/cmd.go:730	示例用法: keploy test -c "/path/to/user/app" --delay 6
+2025-04-18T04:06:50.413Z	WARN	replay/replay.go:140	检测到go语言，如需手动设置语言请使用--language
+2025-04-18T04:06:50.413Z	WARN	golang/utils.go:28	命令中未找到cover标志，跳过覆盖率计算
+2025-04-18T04:06:51.104Z	INFO	hooks/hooks.go:436	keploy已初始化并将探针添加到内核
 
 [GIN-debug] GET    /:param                   --> main.GetURL (3 handlers)
 [GIN-debug] POST   /url                      --> main.PutURL (3 handlers)
-2025-04-18T04:06:57.585Z	INFO	pkg/util.go:123	starting test for of	{"test case": "[test-1]", "test set": "[test-set-0]"}
+2025-04-18T04:06:57.585Z	INFO	pkg/util.go:123	开始测试	{"测试用例": "[test-1]", "测试集": "[test-set-0]"}
 [GIN] 2025/04/18 - 04:06:57 | 200 |    2.109927ms |             ::1 | POST     "/url"
-Testrun passed for testcase with id: "test-1"
+测试用例 "test-1" 通过
 
 --------------------------------------------------------------------
 
-2025-04-18T04:06:57.588Z	INFO	replay/replay.go:717	result	{"testcase id": "[test-1]", "testset id": "[test-set-0]", "passed": "[true]"}
-2025-04-18T04:06:57.593Z	INFO	pkg/util.go:123	starting test for of	{"test case": "[test-2]", "test set": "[test-set-0]"}
+2025-04-18T04:06:57.588Z	INFO	replay/replay.go:717	结果	{"测试用例ID": "[test-1]", "测试集ID": "[test-set-0]", "通过": "[true]"}
+2025-04-18T04:06:57.593Z	INFO	pkg/util.go:123	开始测试	{"测试用例": "[test-2]", "测试集": "[test-set-0]"}
 [GIN] 2025/04/18 - 04:06:57 | 303 |     852.601µs |             ::1 | GET      "/Lhr4BWAi"
-Testrun passed for testcase with id: "test-2"
+测试用例 "test-2" 通过
 
 --------------------------------------------------------------------
 
-2025-04-18T04:06:57.597Z	INFO	replay/replay.go:717	result	{"testcase id": "[test-2]", "testset id": "[test-set-0]", "passed": "[true]"}
+2025-04-18T04:06:57.597Z	INFO	replay/replay.go:717	结果	{"测试用例ID": "[test-2]", "测试集ID": "[test-set-0]", "通过": "[true]"}
 
  <=========================================>
-  TESTRUN SUMMARY. For test-set: "test-set-0"
-	Total tests: 2
-	Total test passed: 2
-	Total test failed: 0
-	Time Taken: "5.02 s"
+  测试集 "test-set-0" 摘要
+	总测试数: 2
+	通过测试数: 2
+	失败测试数: 0
+	耗时: "5.02 s"
  <=========================================>
 ```
 
-_And... voila! You have successfully integrated keploy in Jenkins CI/CD pipeline 🌟_
+_瞧！你已成功在 Jenkins CI/CD 流水线中集成 keploy 🌟_
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对你有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

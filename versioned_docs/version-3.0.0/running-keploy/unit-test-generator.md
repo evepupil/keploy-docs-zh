@@ -1,36 +1,35 @@
 ---
 id: unit-test-generator
-title: Keploy Unit Test Generator
-sidebar_label: Introduction
-description: This section documents usecase of Keploy's Unit Test Generator
+title: Keploy 单元测试生成器
+sidebar_label: 简介
+description: 本文档介绍 Keploy 单元测试生成器的使用场景
 tags:
   - utg
-  - unit test generator
-  - generate unit test
-  - unit test
+  - 单元测试生成器
+  - 生成单元测试
+  - 单元测试
 keywords:
-  - unit test generator
-  - unit testing
-  - unit tests
-  - documentation
-  - testcases
-  - AI testing
+  - 单元测试生成器
+  - 单元测试
+  - 测试用例
+  - 文档
+  - AI测试
   - Gemini
   - OpenAI
 ---
 
-Keploy's Unit Test Generator (UTG) simplifies testing by generating high-quality, maintainable unit tests with minimal manual effort. Inspired by Meta’s LLM research, it uses code semantics and Large Language Models (LLMs) to produce meaningful test cases.
+Keploy 单元测试生成器 (UTG) 通过自动生成高质量、可维护的单元测试，显著减少手动工作量。该工具借鉴了 Meta 的 LLM 研究成果，结合代码语义和大语言模型 (LLMs) 来生成有意义的测试用例。
 
-To fit into modern development workflows, Keploy now supports multiple methods for unit test generation - ranging from automated pull request comments to a one-click VS Code extension
+为适配现代开发流程，Keploy 现支持多种单元测试生成方式——从自动化的 PR 评论到一键式 VS Code 插件。
 
-Keploy's UTG aims to:
+Keploy UTG 致力于：
 
-- **Automate unit test generation:** Reduce manual effort by generating tests automatically.
-- **Improve edge case coverage:** Catch complex scenarios often missed manually.
-- **Boost test coverage:** Make comprehensive coverage achievable as your codebase grows.
+- **自动化单元测试生成**：通过自动生成测试减少人工操作
+- **提升边界条件覆盖率**：捕捉人工测试容易遗漏的复杂场景
+- **提高测试覆盖率**：随代码库增长仍能保持全面覆盖
 
-### Try the Unit Test Generator in two ways:
+### 两种使用单元测试生成器的方式：
 
-1. **PR Agent**: Install a GitHub App on your repo to automatically generate tests when you create a pull request.
+1. **PR 助手**：在代码仓库安装 GitHub 应用，创建拉取请求时自动生成测试
 
-2. **VS Code Extension**: Generate test files with a single click directly from your IDE.
+2. **VS Code 扩展**：在 IDE 中一键生成测试文件

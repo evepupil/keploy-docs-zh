@@ -1,110 +1,110 @@
 ---
 id: api-test-generator
-title: API Test Generator
-sidebar_label: How it Works?
-description: Generate stable, complete API test suites using AI — with zero manual scripting.
+title: API测试生成器
+sidebar_label: 工作原理
+description: 使用AI生成稳定、完整的API测试套件——无需手动编写脚本。
 tags:
-  - API testing
-  - test generation
-  - edge cases
-  - ai testing
-  - test automation
-  - QA tools
-  - Record and Replay API Tests
+  - API测试
+  - 测试生成
+  - 边界案例
+  - AI测试
+  - 测试自动化
+  - QA工具
+  - 录制回放API测试
 keywords:
-  - api test generation
+  - API测试生成
   - keploy
-  - openapi testing
-  - curl to test
-  - postman test suite
-  - no code testing
+  - openapi测试
+  - curl转测试
+  - postman测试套件
+  - 无代码测试
 ---
 
-## 🤖 Why AI for API Testing?
+## 🤖 为什么选择AI进行API测试？
 
-| API Testing Challenge                           | ROI & Impact                                                                                  |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Edge-case, bugs, coverage flows gets missed     | Higher test coverage across CRUD and failure scenarios                                        |
-| APIs change frequently, leading to broken tests | Self-healing keeps tests even when APIs evolves                                               |
-| 30–50% of time spent writing tests              | 50–80% reduction in test creation <br/> Covers more edge cases within limited resources, time |
+| API测试挑战                                | 投资回报与影响                                                                                  |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| 边界案例、错误和覆盖率流程容易被遗漏        | 提高CRUD和故障场景的测试覆盖率                                                                  |
+| API频繁变更导致测试中断                     | 自愈功能在API演进时仍保持测试有效性                                                             |
+| 30–50%时间耗费在编写测试上                  | 减少50–80%的测试创建时间<br/>在有限资源和时间内覆盖更多边界案例                                 |
 
-## 💥 Why Keploy? Not Other AI Testing Tools
+## 💥 为什么选择Keploy？而非其他AI测试工具
 
-| Capability                                             | Keploy                                                           | Most AI Tools                                 |
-| ------------------------------------------------------ | ---------------------------------------------------------------- | --------------------------------------------- |
-| Validated test execution                               | ✅ Runs and verifies each test before saving                     | ❌ Often generates unverified or broken tests |
-| Full API flow coverage<br/> (Create → Update → Delete) | ✅ Supports complete multi-step flows                            | ❌ Focuses on isolated requests               |
-| Edge case & negative test generation                   | ✅ Auto-detects and generates edge cases                         | ⚠️ Limited or requires manual prompting       |
-| Replay across environments                             | ✅ Runs tests in dev, staging, CI with environment switching     | ⚠️ Often environment-specific or hard-coded   |
-| Self-healing on API changes                            | ✅ Updates tests if API schema changes                           | ❌ No maintenance support                     |
-| Flaky test detection                                   | ✅ Re-runs tests to detect instability                           | ❌ Not supported                              |
-| Collaboration & governance features                    | ✅ RBAC, audit trails, tagging, Git sync                         | ❌ Basic or missing                           |
-| Works from real traffic or browser flows               | ✅ Converts real traffic or frontend API interactions into tests | ⚠️ Most rely only on static specs             |
+| 功能                                                     | Keploy                                                           | 多数AI工具                                 |
+| -------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------ |
+| 已验证的测试执行                                         | ✅ 保存前运行并验证每个测试                                       | ❌ 常生成未验证或损坏的测试                |
+| 完整API流程覆盖<br/>（创建→更新→删除）                   | ✅ 支持完整多步骤流程                                             | ❌ 仅关注独立请求                          |
+| 边界案例和负面测试生成                                   | ✅ 自动检测并生成边界案例                                         | ⚠️ 有限或需手动触发                        |
+| 跨环境回放                                               | ✅ 支持开发、预发布、CI环境切换运行                               | ⚠️ 通常环境特定或硬编码                    |
+| API变更时的自愈                                          | ✅ API模式变更时自动更新测试                                      | ❌ 无维护支持                              |
+| 不稳定测试检测                                           | ✅ 重新运行测试以检测不稳定性                                     | ❌ 不支持                                  |
+| 协作与治理功能                                           | ✅ RBAC、审计追踪、标签、Git同步                                  | ❌ 基础功能缺失                            |
+| 支持真实流量或浏览器流程                                 | ✅ 将真实流量或前端API交互转为测试                                | ⚠️ 多数仅依赖静态规范                      |
 
-## 🚀 Keploy's API Test Generator
+## 🚀 Keploy的API测试生成器
 
-AI-powered testing engine that turns your API specs or traffic into stable, end-to-end test suites — no scripts, mocks, or manual setup required.
+AI驱动的测试引擎，将API规范或流量转化为稳定的端到端测试套件——无需脚本、模拟或手动配置。
 
-It supports:
+支持功能：
 
-- Generate tests from OpenAPI, Postman, or curl commands
-- Run tests in any environment (dev, staging, CI)
-- Edit, group, or delete test cases in the UI
-- Share test reports or integrate them into CI pipelines
-- Detect flaky tests and self-heal them using AI
-- Record API flows via Keploy’s Chrome extension
+- 从OpenAPI、Postman或curl命令生成测试
+- 在任何环境（开发、预发布、CI）运行测试
+- 在UI中编辑、分组或删除测试用例
+- 分享测试报告或集成到CI流水线
+- 检测不稳定测试并用AI自愈
+- 通过Keploy Chrome扩展录制API流程
 
-Every test includes:
+每个测试包含：
 
-- Accurate assertions based on real responses
-- Full lifecycle coverage (create → mutate → delete)
-- Deduplication and flaky test detection
-- Self-healing for minor API changes
+- 基于真实响应的精确断言
+- 完整生命周期覆盖（创建→变更→删除）
+- 去重和不稳定测试检测
+- 针对API微小变更的自愈功能
 
-Whether you're a developer, SDET, or QA manager — Keploy helps you increase test coverage, reduce test debt, and ensure reliable releases across environments.
+无论您是开发者、SDET还是QA经理——Keploy都能帮助您提高测试覆盖率、减少测试债务，并确保跨环境的可靠发布。
 
-## 🛠️ How It Works
+## 🛠️ 工作原理
 
-Keploy supports multiple ways to generate test cases depending on the API access method and input format. Choose the one that fits your workflow:
+Keploy支持多种测试用例生成方式，根据API访问方法和输入格式选择适合您工作流的方案：
 
-| Integration Method                                                                                                      | When to Use                                                                               | How Keploy Works?                                                                                                                                |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Paste API Curls, Postman Collection, Schema/Swagger**<br/>[Try Now](/docs/running-keploy/generate-api-tests-using-ai) | You have OpenAPI/Swagger (YAML/JSON), Postman collection/curl, and a live public endpoint | Keploy hits multiple API cases to given endpoint and generate stable, validated tests with assertions.                                           |
-| **Record via Keploy Chrome Extension**<br/>                                                                             | You don’t have specs but can interact with a web app for recording                        | Keploy captures real API calls made during UI actions and generates test cases with assertions. Adds edge cases and flow coverage automatically. |
-| **Use Keploy Local Agent** <br/>[Try Now](/docs/running-keploy/generate-api-tests-using-ai)                             | Your APIs are private or behind a firewall                                                | Install the agent locally to securely test internal APIs without exposing them. No code changes required.                                        |
+| 集成方式                                                                                                      | 适用场景                                                                               | Keploy工作原理                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **粘贴API Curls、Postman集合、Schema/Swagger**<br/>[立即尝试](/docs/running-keploy/generate-api-tests-using-ai) | 拥有OpenAPI/Swagger(YAML/JSON)、Postman集合/curl，且存在公开端点                       | Keploy向给定端点发起多API用例请求，生成带断言的稳定已验证测试。                                                                               |
+| **通过Keploy Chrome扩展录制**<br/>                                                                           | 无规范文档但可通过网页应用交互录制                                                    | Keploy捕获UI操作期间的真实API调用，生成带断言的测试用例。自动添加边界案例和流程覆盖。                                                        |
+| **使用Keploy本地代理** <br/>[立即尝试](/docs/running-keploy/generate-api-tests-using-ai)                      | API为私有或位于防火墙后                                                               | 本地安装代理安全测试内部API，无需暴露网络。零代码改动。                                                                                       |
 
-## ✨ Key Features
+## ✨ 核心功能
 
-- **Self-healing tests**: Keploy auto-updates tests on minor API changes
-- **Flaky test detection**: Validates each test over multiple runs
-- **No redundant tests**: Automatically deduplicates similar flows
-- **Environment reuse**: Change the base URL to run the same test suite elsewhere
-- **One-click fix**: Use AI to repair failing tests
+- **自愈测试**：Keploy在API微小变更时自动更新测试
+- **不稳定测试检测**：通过多次运行验证每个测试
+- **无冗余测试**：自动去重相似流程
+- **环境复用**：更改基础URL即可在其他环境运行相同测试套件
+- **一键修复**：使用AI修复失败测试
 
-## ✅ Best Practices
+## ✅ 最佳实践
 
-- Start with 5+ valid curl commands or a full spec
-- Use the dashboard to clean, tag, or group test cases
-- Validate flows in staging before pushing to CI
-- Use assertions to cover both happy paths and edge cases
+- 从5+有效curl命令或完整规范开始
+- 使用仪表板清理、标记或分组测试用例
+- 在推送到CI前于预发布环境验证流程
+- 使用断言覆盖正常路径和边界案例
 
-## 🚀 Try It Out
+## 🚀 立即体验
 
-- Go to [keploy console](https://app.keploy.io/api-testing/generate) API Test Generator
+- 访问[keploy控制台](https://app.keploy.io/api-testing/generate) API测试生成器
 
-- Add your API input or select a sample application (**try demo**)
+- 添加API输入或选择示例应用（**试用演示**）
 
-- Generate and review your test suite
+- 生成并查看测试套件
 
-- You can run tests instantly, or export them into your pipeline.
+- 可立即运行测试，或导出到您的流水线
 
-## 🔒 Security & Compliance
+## 🔒 安全与合规
 
-Keploy is built with security-first principles and is compliant with major industry standards:
+Keploy采用安全优先原则构建，符合主要行业标准：
 
 - ✅ **SOC 2**
 - ✅ **ISO 27001**
 - ✅ **GDPR**
 - ✅ **HIPAA**
 
-Your data and test traffic are handled securely, with the option to run Keploy entirely within your network using our self-hosted agent or BYOLLM infrastructure. Learn more on our [security page](https://keploy.io/security).
+您的数据和测试流量均安全处理，可选择通过自托管代理或BYOLLM基础设施完全在内部网络运行Keploy。详见[安全页面](https://keploy.io/security)。

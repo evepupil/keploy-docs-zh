@@ -1,7 +1,7 @@
 ---
 id: gin-mongo
-title: Sample Gin-Mongo Application with the Go (v1.0.0)
-sidebar_label: Gin-Mongo Sample
+title: Gin-Mongo 示例应用 (Go v1.0.0)
+sidebar_label: Gin-Mongo 示例
 tags:
   - hello-world
   - go
@@ -14,44 +14,44 @@ keywords:
   - golang gin
 ---
 
-# URL Shortener Sample App
+# 短链接示例应用
 
-A sample url shortener app to test Keploy integration capabilities using Gin and mongoDB .
+这是一个使用 Gin 框架和 MongoDB 测试 Keploy 集成能力的短链接示例应用。
 
-## Installation
+## 安装
 
-Navigate to [Installation guide](../../server/server-installation.md) to quickly install and run the keploy server.
+前往[安装指南](../../server/server-installation.md)快速安装并运行 Keploy 服务。
 
-### Setup URL shortener
+### 设置短链接应用
 
 ```bash
 git clone https://github.com/keploy/samples-go.git && cd samples-go/gin-mongo
 go mod download
 ```
 
-### Start Keploy Record Mode
+### 启动 Keploy 录制模式
 
 ```bash
 export KEPLOY_MODE=record
 ```
 
-### Start the MongoDB server
+### 启动 MongoDB 服务
 
 ```bash
 docker container run -it -p27017:27017 mongo
 ```
 
-### Run the application
+### 运行应用
 
 ```shell
 go run handler.go main.go
 ```
 
-## Generate testcases
+## 生成测试用例
 
-To generate testcases we just need to **make some API calls.** You can use [Postman](https://www.postman.com/), or simply `curl`
+生成测试用例只需**发起一些 API 调用**。你可以使用 [Postman](https://www.postman.com/) 或直接使用 `curl`。
 
-### 1. Generate shortened url
+### 1. 生成短链接
 
 ```bash
 curl --request POST \
@@ -62,7 +62,7 @@ curl --request POST \
 }'
 ```
 
-this will return the shortened url. The ts would automatically be ignored during testing because it'll always be different.
+这将返回生成的短链接。其中的时间戳(ts)在测试时会自动忽略，因为它每次都会不同。
 
 ```
 {
@@ -71,36 +71,36 @@ this will return the shortened url. The ts would automatically be ignored during
 }
 ```
 
-### 2. Redirect to original url from shortened url
+### 2. 通过短链接重定向到原网址
 
 ```bash
 curl --request GET \
   --url http://localhost:8080/Lhr4BWAi
 ```
 
-or by querying through the browser `http://localhost:8080/Lhr4BWAi`
+或者直接在浏览器访问 `http://localhost:8080/Lhr4BWAi`
 
-You'll be able to see new test file and mock file generated in your project codebase locally.
-If you're using Keploy cloud, open [this](https://app.keploy.io/) to see captured test-cases visually.
+你将在本地代码库中看到新生成的测试文件和模拟文件。
+如果使用 Keploy 云服务，可以访问[这里](https://app.keploy.io/)查看可视化捕获的测试用例。
 
-You should be seeing an app named `sample-url-shortener` with the test cases we just captured.
+你应该能看到一个名为 `sample-url-shortener` 的应用，其中包含我们刚捕获的测试用例。
 
-![Gin-Mongo-test-cases](/img/Gin-Mongo-test-cases.png)
+![Gin-Mongo测试用例](/img/Gin-Mongo-test-cases.png)
 
-Now, let's see the magic! 🪄💫
+现在，让我们见证奇迹时刻！🪄💫
 
-## Test mode
+## 测试模式
 
-There are 2 ways to test the application with Keploy.
+有两种方式使用 Keploy 测试应用：
 
-1. [Unit Test File](/docs/1.0.0/go/quickstart/gin-mongo#testing-using-unit-test-file)
-2. [KEPLOY_MODE environment variable](/docs/1.0.0/go/quickstart/gin-mongo#testing-using-keploy_mode-env-variable)
+1. [单元测试文件](/docs/1.0.0/go/quickstart/gin-mongo#使用单元测试文件测试)
+2. [KEPLOY_MODE环境变量](/docs/1.0.0/go/quickstart/gin-mongo#使用keploy_mode环境变量测试)
 
-### Testing using Unit Test File
+### 使用单元测试文件测试
 
-Now that we have our testcase captured, run the unit test file (`main_test.go`) already present in the sample app repo.
+现在我们已经捕获了测试用例，运行示例应用中已有的单元测试文件(`main_test.go`)。
 
-If not present, you can add `main_test.go` in the root of your sample application.
+如果不存在，你可以在示例应用的根目录下添加 `main_test.go` 文件。
 
 ```go
   package main
@@ -117,49 +117,49 @@ If not present, you can add `main_test.go` in the root of your sample applicatio
 }
 ```
 
-To automatically download and run the captured test-cases. Let's run the test-file.
+自动下载并运行捕获的测试用例。现在运行测试文件：
 
 ```shell
  go test -coverpkg=./... -covermode=atomic  ./...
 ```
 
-output should look like -
+输出应该类似：
 
 ```shell
 ok      test-app-url-shortener  6.557s  coverage: 80.3% of statements in ./...
 ```
 
-**We got 80.3% without writing any testcases or mocks for mongo db. 🎉 **
+**我们无需编写任何测试用例或 MongoDB 模拟就获得了80.3%的覆盖率。🎉 **
 
-> **Note** : You didn't need to setup mongoDB locally or write mocks for your testing.
+> **注意**：你不需要本地搭建 MongoDB 或为测试编写模拟。
 
-**The application thought it's talking to mongoDB 😄**
+**应用程序以为自己真的在连接 MongoDB 😄**
 
-Go to the Keploy Console TestRuns Page to get deeper insights on what testcases ran, what failed.
+前往 Keploy 控制台的测试运行页面，获取更深入的测试运行分析。
 
-![Gin-Mongo-test-diff](/img/Gin-Mongo-test-runs.png)
+![Gin-Mongo测试差异](/img/Gin-Mongo-test-runs.png)
 
-### Testing using `KEPLOY_MODE` Env Variable
+### 使用 `KEPLOY_MODE` 环境变量测试
 
-To test using `KEPLOY_MODE` env variable, set the same to `test` mode.
+要使用 `KEPLOY_MODE` 环境变量测试，将其设置为 `test` 模式。
 
 ```
 export KEPLOY_MODE="test"
 ```
 
-Now simply run the application.
+然后直接运行应用：
 
 ```shell
 go run handler.go main.go
 ```
 
-Keploy will run all the captures test-cases, compare and show the results on the console.
+Keploy 将运行所有捕获的测试用例，比较并在控制台显示结果。
 
-> **Note** : With this method coverage will not be calculated.
+> **注意**：此方法不会计算覆盖率。
 
-## Let's add a Bug in the App
+## 在应用中引入一个 Bug
 
-Now let's introduce a bug! Let's try changing something like renaming `url` to `urls` in handler.go `./handler.go` on line 96
+现在让我们故意引入一个 bug！比如在 handler.go 第96行将 `url` 改为 `urls`：
 
 ```go
     ...
@@ -170,24 +170,24 @@ Now let's introduce a bug! Let's try changing something like renaming `url` to `
 	...
 ```
 
-Let's run the test-file to see if Keploy catches the regression introduced.
+运行测试文件看看 Keploy 是否能捕获这个回归问题：
 
 ` go test -coverpkg=./... -covermode=atomic ./...`
 
-You'll notice the failed test-case in the output.
+你会在输出中看到失败的测试用例。
 
 ```shell
 result  {"testcase id": "fd502338-b04d-4f96-a21e-38bd81edd9ee", "passed": false}
 result  {"testcase id": "e8fb1ab0-2f39-48e1-b2ab-6142bc4e9515", "passed": true}
 test run completed      {"run id": "a48f2fdf-7873-4879-bc81-5d280ee169fb", "passed overall": false}
 --- FAIL: TestKeploy (7.01s)
-    keploy.go:77: Keploy test suite failed
+    keploy.go:77: Keploy 测试套件失败
 FAIL
 coverage: 80.3% of statements in ./...
 FAIL    test-app-url-shortener  7.022s
 FAIL
 ```
 
-To deep dive the problem go to [test runs](http://localhost:6789/testruns)
+要深入分析问题，请访问[测试运行](http://localhost:6789/testruns)页面。
 
-![Gin-Mongo-test-diff](/img/Gin-Mongo-test-diff.png)
+![Gin-Mongo测试差异](/img/Gin-Mongo-test-diff.png)

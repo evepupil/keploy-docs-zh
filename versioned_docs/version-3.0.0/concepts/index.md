@@ -1,10 +1,10 @@
 ---
 id: index
-title: Concepts
-description: The following concepts have specific definitions within the context of the Keploy Platform.
+title: 核心概念
+description: 以下概念在Keploy平台的上下文中具有特定定义。
 tags:
-  - references
+  - 参考资料
 ---
 
-- [How Keploy Works](/keploy-explained/how-keploy-works/)
-- [Why Keploy](/keploy-explained/why-keploy/)
+- [Keploy工作原理](/keploy-explained/how-keploy-works/)
+- [为什么选择Keploy](/keploy-explained/why-keploy/)

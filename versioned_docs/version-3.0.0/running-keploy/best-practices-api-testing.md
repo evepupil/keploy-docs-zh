@@ -1,84 +1,84 @@
 ---
 id: best-practices-api-testing
-title: Best Practices for API testing
-sidebar_label: Best Practices
-description: This section documents what best practices can be followed while performing API testing
+title: API测试最佳实践
+sidebar_label: 最佳实践
+description: 本文档记录执行API测试时可遵循的最佳实践
 tags:
-  - API testing
-  - API mocks
-  - generate test cases
-  - test automation
-  - Best Practices
+  - API测试
+  - API模拟
+  - 生成测试用例
+  - 测试自动化
+  - 最佳实践
 keywords:
-  - api testing
-  - api mocks
-  - automated testing
-  - ai testing
+  - api测试
+  - api模拟
+  - 自动化测试
+  - 人工智能测试
   - keploy
   - Gemini
   - OpenAI
 ---
 
-## 🛠️ Best Practices in API Testing
+## 🛠️ API测试最佳实践
 
-API testing ensures the reliability, security, and performance of your application's backend services. To build robust, scalable test suites, here are the best practices you should follow:
+API测试确保应用程序后端服务的可靠性、安全性和性能。要构建健壮、可扩展的测试套件，请遵循以下最佳实践：
 
-### ✅ 1. Define Clear Test Objectives
+### ✅ 1. 明确测试目标
 
-- Understand what you're testing — functionality, security, performance, or error handling.
-- Align tests with business logic and expected user workflows.
+- 确定测试内容——功能、安全、性能或错误处理
+- 测试需符合业务逻辑和预期用户流程
 
-### 🧪 2. Cover Both Positive and Negative Scenarios
+### 🧪 2. 覆盖正向和负向场景
 
-- Validate how the API responds to correct input.
-- Intentionally send malformed, missing, or unauthorized requests to verify error handling and status codes.
+- 验证API对正确输入的响应
+- 故意发送格式错误、缺失或未授权的请求以验证错误处理和状态码
 
-### 🔄 3. Automate Repetitive Tests
+### 🔄 3. 自动化重复测试
 
-- Integrate API tests into your CI/CD pipeline.
-- Automate regression tests for each deployment or commit.
+- 将API测试集成到CI/CD流水线中
+- 为每次部署或提交自动运行回归测试
 
-## 🗃️ 4. Use Data-Driven Testing
+## 🗃️ 4. 采用数据驱动测试
 
-- Store request and response data externally (e.g., JSON files or CSV).
-- This keeps test logic clean and improves reusability.
+- 将请求和响应数据外部存储（如JSON文件或CSV）
+- 保持测试逻辑简洁并提高可复用性
 
-## 🔐 5. Test Authentication and Authorization
+## 🔐 5. 测试认证与授权
 
-- Validate token generation, expiration, and refresh flows.
-- Confirm users cannot access resources outside their scope.
+- 验证令牌生成、过期和刷新流程
+- 确认用户无法访问超出其权限范围的资源
 
-### 🕒 6. Measure Performance and Response Times
+### 🕒 6. 测量性能和响应时间
 
-- Ensure APIs meet SLAs under normal and load conditions.
-- Monitor response time, throughput, and error rates.
+- 确保API在正常和负载条件下满足SLA
+- 监控响应时间、吞吐量和错误率
 
-## 🧩 7. Validate Response Structure and Schema
+## 🧩 7. 验证响应结构和模式
 
-- Check if all fields exist and are in the correct format (JSON schema validation).
-- Flag any unexpected keys or missing data.
+- 检查所有字段是否存在且格式正确（JSON模式验证）
+- 标记任何意外键或缺失数据
 
-### 🌍 8. Handle Environment Configurations
+### 🌍 8. 处理环境配置
 
-- Avoid hardcoding endpoints and credentials.
-- Use environment variables or configuration files for flexibility across dev, staging, and prod.
+- 避免硬编码端点和凭证
+- 使用环境变量或配置文件实现开发/预发/生产环境的灵活切换
 
-### 📦 9. Use Mocks and Stubs When Needed
+### 📦 9. 适时使用模拟桩
 
-- Isolate APIs under test from third-party dependencies.
-- Simulate edge cases or failure scenarios not easily reproducible in production.
+- 将被测API与第三方依赖隔离
+- 模拟生产环境中难以复现的边界情况或故障场景
 
-### 📈 10. Track and Version API Tests
+### 📈 10. 跟踪和版本化API测试
 
-- Keep your API test suite in version control (e.g., Git).
-- Ensure tests are updated as the API evolves (versioning, deprecations).
+- 将API测试套件纳入版本控制（如Git）
+- 确保测试随API演进同步更新（版本控制、弃用处理）
 
-### 🔁 11. Chain Requests for Workflow Validation
+### 🔁 11. 链式请求验证工作流
 
-- Simulate real-world flows (e.g., user signup → login → perform action).
-- Maintain session or token data across calls.
+- 模拟真实场景（如用户注册→登录→执行操作）
+- 在多个调用间维护会话或令牌数据
 
-### 📊 12. Add Clear Logging and Reporting
+### 📊 12. 添加清晰的日志和报告
 
-- Output test name, request payload, status code, and failure reason.
-- Use structured reports for better traceability in CI/CD tools.
+- 输出测试名称、请求负载、状态码和失败原因
+- 使用结构化报告提升CI/CD工具中的可追溯性

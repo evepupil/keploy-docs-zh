@@ -1,19 +1,19 @@
 ---
 id: Stubs
-title: Stubs (v1.0.0)
-sidebar_label: Stubs
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 桩代码 (v1.0.0)
+sidebar_label: 桩代码
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-A stub is a piece of code that stands in for some other programming functionality. It can simulate the behavior of existing code (such as a procedure on a remote machine) or be a temporary substitute for yet-to-be-developed code. Stubs are most useful in porting, distributed computing, and general software development and testing.
+桩代码是指用于替代某些其他编程功能的代码片段。它可以模拟现有代码的行为（如远程机器上的程序），或作为尚未开发代码的临时替代品。桩代码在移植、分布式计算以及通用软件开发和测试中最为有用。
 
-In software testing, stubs are used to simulate the behavior of external systems or modules that are not yet implemented. This allows the developer to test the calling module without having to wait for the external system to be ready. Stubs can also be used to test the calling module in isolation, without having to worry about the side effects of calling the external system.
+在软件测试中，桩代码用于模拟尚未实现的外部系统或模块的行为。这使得开发者无需等待外部系统就绪即可测试调用模块。桩代码还可用于隔离测试调用模块，无需考虑调用外部系统带来的副作用。
 
-Here is an example of a stub in Java:
+以下是一个Java语言中的桩代码示例：
 
 ```java
 public class Stub {
@@ -24,20 +24,20 @@ public class Stub {
 }
 ```
 
-This stub simulates the behavior of a real-world thermometer. It always returns the temperature of 72 degrees Fahrenheit. This stub could be used to test a program that reads the temperature from a thermometer.
+这个桩代码模拟了真实温度计的行为，始终返回华氏72度的温度值。该桩代码可用于测试从温度计读取温度的程序。
 
-Stubs are a valuable tool for software development and testing. They can help to speed up the development process and ensure that the code is working correctly.
+桩代码是软件开发和测试中的重要工具，能够加速开发流程并确保代码正确运行。
 
-### Benefits of using stubs:
+### 使用桩代码的优势：
 
-- They can help to speed up the development process by allowing the developer to test the calling module without having to wait for the external system to be ready.
-- They can help to ensure that the code is working correctly by isolating the calling module from the external system.
-- They can help to identify problems with the calling module by providing a simplified interface to the external system.
+- 通过允许开发者在外部系统就绪前测试调用模块，加速开发流程
+- 通过将调用模块与外部系统隔离，确保代码正确运行
+- 通过提供简化的外部系统接口，帮助识别调用模块的问题
 
-### Limitations of using stubs:
+### 使用桩代码的局限：
 
-- They can be difficult to create, especially if the external system is complex.
-- They may not always be accurate representations of the real-world system.
-- They may not be able to handle all of the possible scenarios that the real-world system can handle.
+- 当外部系统复杂时，创建桩代码可能较为困难
+- 可能无法完全准确反映真实系统的行为
+- 可能无法处理真实系统能应对的所有场景
 
-Overall, stubs are a valuable tool for software development and testing. They can help to speed up the development process, ensure that the code is working correctly, and identify problems with the calling module.
+总体而言，桩代码是软件开发和测试中的宝贵工具，能够加速开发流程、确保代码正确性并帮助识别调用模块的问题。

@@ -1,7 +1,7 @@
 ---
 id: installation
-title: Keploy Installation
-sidebar_label: Installation
+title: Keploy 安装指南
+sidebar_label: 安装
 tags:
   - hello-world
   - linux
@@ -11,42 +11,42 @@ tags:
 keywords:
   - hello-world
   - ebpf
-  - installation
-  - install
+  - 安装指南
+  - 安装
   - ubuntu
   - linux
-  - API Test generator
-  - Auto Testcase generation
-  - installation-guide
-  - server-setup
+  - API 测试生成器
+  - 自动化测试用例生成
+  - 安装指南
+  - 服务器配置
 ---
 
-Keploy uses eBPF to intercept API calls on network layer and generates test cases and mocks/stubs.
+Keploy 使用 eBPF 技术拦截网络层的 API 调用，自动生成测试用例和模拟桩。
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## 🎬 Capturing Testcases
+## 🎬 捕获测试用例
 
-To initiate the recording of API calls, execute this command in your terminal:
+要开始记录 API 调用，请在终端执行以下命令：
 
 ```bash
 keploy record -c "CMD_TO_RUN_APP"
 ```
 
-For example, if you're using a simple Golang program, the **CMD_TO_RUN_APP** would resemble:
+例如，如果您使用简单的 Golang 程序，**CMD_TO_RUN_APP** 可能类似于：
 
 ```bash
 keploy record -c "go run main.go"
 ```
 
-## 🏃 Running Testcases
+## 🏃 运行测试用例
 
-To run the testcases and see if there are any regressions introduced, use this terminal command:
+要运行测试用例并检查是否存在回归问题，请使用以下终端命令：
 
 ```bash
 keploy test -c "CMD_TO_RUN_APP" --delay 10
 ```
 
-Explore the [Test Coverage Generation Guide](https://keploy.io/docs/server/sdk-installation/go/) for seeing test-coverage with your unit testing library and [Keploy Running Guide](https://keploy.io/docs/running-keploy/configuration-file/) for additional options and tips on customizing your Keploy setup to perfection.
+查看[测试覆盖率生成指南](https://keploy.io/docs/server/sdk-installation/go/)了解如何与单元测试库结合查看测试覆盖率，以及[Keploy 运行指南](https://keploy.io/docs/running-keploy/configuration-file/)获取更多配置选项和优化建议。

@@ -1,49 +1,49 @@
 ---
 id: code-coverage
-title: How to increase Code Coverage with Keploy
-sidebar_label: Code Coverage
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 如何使用 Keploy 提升代码覆盖率
+sidebar_label: 代码覆盖率
+description: 本术语表解释了初学者乍看难以理解的所有专业术语。
 tags:
-  - explanation
-  - Glossary
+  - 解释
+  - 术语表
 keywords:
   - API
 ---
 
-Code coverage is a metric that measures the extent to which the code in a program has been executed during testing. It is a valuable tool for software testers because it can help them to identify areas of the code that have not been tested and to ensure that the entire program has been adequately tested.
+代码覆盖率是衡量程序代码在测试过程中被执行程度的指标。它是软件测试人员的宝贵工具，可以帮助他们识别未经测试的代码区域，并确保整个程序得到充分测试。
 
-## What is Code Coverage?
+## 什么是代码覆盖率？
 
-Code coverage is a metric used in software testing to measure the extent to which the source code of a program has been executed during automated testing. It quantifies the percentage of lines of code, branches, statements, or conditions that have been exercised by a test suite.
+代码覆盖率是软件测试中用于衡量程序源代码在自动化测试期间被执行程度的指标。它量化了测试套件执行代码行、分支、语句或条件的百分比。
 
-Code coverage refers to the extent to which your source code is tested by your test suite. It is a measure of how much of your code is executed when your tests are run. Code coverage is typically expressed as a percentage, with 100% code coverage meaning that every line of code in your program has been executed at least once during testing.
+代码覆盖率指的是测试套件对源代码的测试覆盖程度。它衡量的是测试运行时有多少代码被执行。代码覆盖率通常以百分比表示，100%的代码覆盖率意味着程序中的每一行代码在测试期间至少被执行过一次。
 
-There are several types of code coverage metrics:
+有几种类型的代码覆盖率指标：
 
-- **Line Coverage**: Measures the percentage of executable lines of code that have been executed by the test suite.
-- **Branch Coverage**: Measures the percentage of decision points (branches) in the code that have been taken during testing. It ensures that both branches of every decision point (if-else statements, loops, etc.) have been executed.
-- **Statement Coverage**: Similar to line coverage, but measures the percentage of individual statements that have been executed.
-- **Condition Coverage**: Measures the percentage of Boolean expressions (conditions) that have been evaluated to both true and false during testing.
+- **行覆盖率**：衡量测试套件执行的可执行代码行百分比。
+- **分支覆盖率**：衡量代码中决策点（分支）在测试期间被执行的百分比。它确保每个决策点（if-else语句、循环等）的两个分支都被执行。
+- **语句覆盖率**：类似于行覆盖率，但衡量的是单个语句被执行的百分比。
+- **条件覆盖率**：衡量布尔表达式（条件）在测试期间被评估为真和假的百分比。
 
-## What is the need to perform Code Coverage?
+## 为什么需要进行代码覆盖率分析？
 
-Performing code coverage analysis is important because it provides insights into the effectiveness of testing efforts. Higher code coverage generally indicates a more comprehensive testing suite, which in turn can lead to greater confidence in the reliability and stability of the software.
+进行代码覆盖率分析很重要，因为它可以深入了解测试工作的有效性。较高的代码覆盖率通常表示测试套件更全面，从而可以增强对软件可靠性和稳定性的信心。
 
-It's analysis provides several benefits:
+其分析提供了几个好处：
 
-- **Quality Assessment**: Code coverage serves as a quantitative measure of the effectiveness of your testing efforts. It indicates how much of your codebase is being exercised by your test suite.
-- **Identifying Untested Code**: Low code coverage highlights areas of the codebase that have not been adequately tested. Uncovered code may contain bugs or vulnerabilities that could go undetected in production.
-- \*\*Debugging Aid: Code coverage can help pinpoint areas of code that are not functioning as expected. If a test fails to cover a particular code segment, it may indicate a potential problem area that requires further investigation.
-- **Improving Test Suites**: By identifying areas of low coverage, developers can focus their testing efforts on writing additional tests to increase coverage. This iterative process helps improve the overall quality and reliability of the software.
-- **Regulatory Compliance**: In some industries, code coverage requirements may be mandated by regulatory standards or best practices. Achieving and maintaining adequate code coverage demonstrates a commitment to quality and compliance.
+- **质量评估**：代码覆盖率是测试工作有效性的定量衡量标准。它表明测试套件覆盖了多少代码库。
+- **识别未测试代码**：低代码覆盖率突出显示代码库中未充分测试的区域。未覆盖的代码可能包含在生产中未被发现的错误或漏洞。
+- **调试辅助**：代码覆盖率可以帮助精确定位未按预期运行的代码区域。如果测试未能覆盖特定代码段，则可能表明需要进一步调查的潜在问题区域。
+- **改进测试套件**：通过识别低覆盖率区域，开发人员可以集中精力编写额外的测试以提高覆盖率。这种迭代过程有助于提高软件的整体质量和可靠性。
+- **法规遵从性**：在某些行业中，法规标准或最佳实践可能要求代码覆盖率。达到并保持足够的代码覆盖率展示了对质量和合规性的承诺。
 
-## Get higher Code Coverage
+## 获取更高的代码覆盖率
 
-Keploy has native integrations with your unit-testing libraries like go-test, jUnit, jest, pyTest. Keploy gives combined test-coverage and can also be integrated in existing CI pipelines easily within go-test, jUnit, jest, pyTest workflows.
+Keploy 与您的单元测试库（如 go-test、jUnit、jest、pyTest）有原生集成。Keploy 提供组合测试覆盖率，并且可以轻松集成到现有的 CI 管道中，与 go-test、jUnit、jest、pyTest 工作流无缝结合。
 
 <img scr="https://keploy.io/docs/gif/replay-tc.gif?raw=true"/>
 
-By generating additional tests that exercise different parts of your codebase, you can increase the percentage of code that is covered by your tests. For example, in case of NodeJS application you can use Jest. Jest provides a built-in code coverage tool that can help you measure the effectiveness of your tests and identify areas of the code that need additional testing. By adding Keploy SDK with Jest, you can easily generate test cases and increase your code coverage. Let's create a `Keploy.test.js`
+通过生成执行代码库不同部分的额外测试，您可以增加测试覆盖的代码百分比。例如，在 NodeJS 应用程序中，您可以使用 Jest。Jest 提供了一个内置的代码覆盖率工具，可以帮助您衡量测试的有效性并识别需要额外测试的代码区域。通过将 Keploy SDK 与 Jest 结合使用，您可以轻松生成测试用例并提高代码覆盖率。让我们创建一个 `Keploy.test.js`
 
 ```javascript
 const {expect} = require("@jest/globals");
@@ -74,7 +74,7 @@ describe(
 );
 ```
 
-Once last step is to add the `jest` configuration in `package.json` file.
+最后一步是在 `package.json` 文件中添加 `jest` 配置。
 
 ```json
 scripts: {
@@ -85,12 +85,12 @@ scripts: {
 }
 ```
 
-Now when let's the test cases with Jest, you can see the code coverage report generated by Jest.
+现在，让我们用 Jest 运行测试用例，您可以看到 Jest 生成的代码覆盖率报告。
 
 ```bash
 npm test
 ```
 
-We can see below that the code coverage is 94.44% for the our application.
+我们可以看到，我们的应用程序的代码覆盖率为 94.44%。
 
 <img src='https://raw.githubusercontent.com/priyankarpal/samples-typescript/ppal/express-mongo-priyank/images/jestcoverage.png?raw=true'/>

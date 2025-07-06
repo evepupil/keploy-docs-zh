@@ -1,14 +1,14 @@
 ---
 id: integration
-title: Integration for Java (v1.0.0)
-description: Add the Keploy Java SDK to your application.
+title: Java集成指南 (v1.0.0)
+description: 为您的应用添加Keploy Java SDK
 tags:
-  - developer-guide
+  - 开发者指南
   - java
 ---
 
 {'<'}details{'>'}{'<'}summary{'>'}
-Pre-requisites
+前置条件
 
 {'<'}/summary{'>'}
 
@@ -18,42 +18,41 @@ Pre-requisites
 
 {'<'}/details{'>'}
 
-## Build configuration
+## 构建配置
 
-1.  [Find the latest release](https://search.maven.org/artifact/io.keploy/keploy-sdk) of the Keploy Java SDK at maven
-    central and add _keploy-sdk_ as a dependency to your `pom.xml` :
+1. 在[Maven中央仓库](https://search.maven.org/artifact/io.keploy/keploy-sdk)查找最新版Keploy Java SDK，并将_keploy-sdk_添加为`pom.xml`依赖项：
 
         {'<'}dependency{'>'}
           {'<'}groupId{'>'}io.keploy{'<'}/groupId{'>'}
           {'<'}artifactId{'>'}keploy-sdk{'<'}/artifactId{'>'}
-          {'<'}version{'>'}1.0.13{'<'}/version{'>'}          {'<'}!--  use latest release --{'>'}
+          {'<'}version{'>'}1.0.13{'<'}/version{'>'}          {'<'}!--  使用最新版本 --{'>'}
         {'<'}/dependency{'>'}
 
-Sync dependencies or to _build.gradle_:
+同步依赖或添加到_build.gradle_:
 
     compile 'io.keploy:keploy-sdk:1.0.13'
 
-2. Install Keploy Jar
+2. 安装Keploy Jar包
 
-   - Download the latest jar from [here](https://search.maven.org/artifact/io.keploy/keploy-sdk/1.2.6/jar) (eg: 1.2.6) to mock external/internal dependency calls like DB queries, GMaps, S3 etc..
+   - 从[此处](https://search.maven.org/artifact/io.keploy/keploy-sdk/1.2.6/jar)下载最新jar包(例如：1.2.6)，用于模拟外部/内部依赖调用，如数据库查询、谷歌地图、S3等..
 
-     - Add the jar into the `main` directory
+     - 将jar包放入`main`目录
 
-       - Add `-javaagent:` prefix with absolute classpath of Keploy jar downloaded above
+       - 添加`-javaagent:`前缀并指定下载的Keploy jar包的绝对路径
 
-         (For example: `-javaagent:/Users/jhon/project/src/main/agent-1.2.5.jar`)
+         (例如：`-javaagent:/Users/jhon/project/src/main/agent-1.2.5.jar`)
 
-         You can set this through 3 ways:-
+         可通过三种方式设置：
 
          1. {'<'}details{'>'}{'<'}summary{'>'}
-            Using Intellij
+            使用Intellij
             {'<'}/summary{'>'}
 
-            Go to `Edit Configuration`-{'>'} `add VM options` -{'>'} paste `-javaagent:/Users/jhon/project/src/main/agent-1.2.5.jar` -{'>'} `OK`.
+            进入`编辑配置`-{'>'} `添加VM选项` -{'>'} 粘贴`-javaagent:/Users/jhon/project/src/main/agent-1.2.5.jar` -{'>'} `确定`。
             {'<'}/details{'>'}
 
          2. {'<'}details{'>'}{'<'}summary{'>'}
-            Using Command Line
+            使用命令行
             {'<'}/summary{'>'}
 
             ```
@@ -63,7 +62,7 @@ Sync dependencies or to _build.gradle_:
             {'<'}/details{'>'}
 
          3. {'<'}details{'>'}{'<'}summary{'>'}
-            Running via Tomcat Server
+            通过Tomcat服务器运行
             {'<'}/summary{'>'}
 
             ```
@@ -72,11 +71,11 @@ Sync dependencies or to _build.gradle_:
 
          {'<'}/details{'>'}
 
-## Supported Frameworks
+## 支持的框架
 
-- **For Spring based application**
+- **基于Spring的应用**
 
-  - Add `@Import(KeployMiddleware.class)` below `@SpringBootApplication` in your main class.
+  - 在主类的`@SpringBootApplication`下方添加`@Import(KeployMiddleware.class)`。
 
     ```java
       ...
@@ -92,9 +91,9 @@ Sync dependencies or to _build.gradle_:
      }
     ```
 
-- **For Java EE application**
+- **Java EE应用**
 
-  - Specify the below filter above all other filters and servlets in the **web.xml** file.
+  - 在**web.xml**文件中所有其他filter和servlet之前添加以下filter配置。
 
     ```xml
       {'<'}filter{'>'}
@@ -108,12 +107,12 @@ Sync dependencies or to _build.gradle_:
       {'<'}/filter-mapping{'>'}
     ```
 
-- **Configure Environment Variables** (optional)
+- **环境变量配置** (可选)
 
-  - `APP_NAME` (default APP_NAME = myApp)
-  - `APP_PORT` (default APP_PORT = 6789)
-  - `KEPLOY_URL` (default KEPLOY_URL = http://localhost:6789/api)
-  - `KEPLOY_MODE` (default KEPLOY_MODE = record/test)
-  - `KTESTS_PATH` (default test directory of your application)
-  - `DENOISE` (default DENOISE = false)
-    **Note:** By enabling denoise, it will filter out noisy fields for that testcases.
+  - `APP_NAME` (默认值 APP_NAME = myApp)
+  - `APP_PORT` (默认值 APP_PORT = 6789)
+  - `KEPLOY_URL` (默认值 KEPLOY_URL = http://localhost:6789/api)
+  - `KEPLOY_MODE` (默认值 KEPLOY_MODE = record/test)
+  - `KTESTS_PATH` (默认使用应用的test目录)
+  - `DENOISE` (默认值 DENOISE = false)
+    **注意：** 启用降噪功能将过滤测试用例中的噪声字段。

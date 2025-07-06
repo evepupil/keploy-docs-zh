@@ -1,8 +1,8 @@
 ---
 id: samples-bunjs
-title: BunJS Sample Application
+title: BunJS 示例应用
 sidebar_label: BunJS + Mongo
-description: The following sample app showcases how to use BunJS framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用 BunJS 框架和 Keploy 平台。
 tags:
   - javascript
   - quickstart
@@ -12,95 +12,95 @@ tags:
   - bun-js-framework
   - mongodb
 keyword:
-  - BunJS Framework
+  - BunJS 框架
   - MongoDB
   - BunJS
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
   - javascript
   - typescript
 ---
 
-# Introduction
+# 简介
 
-This is a sample app to test Keploy integration capabilities using Bun.js and MongoDB.
+这是一个使用 Bun.js 和 MongoDB 测试 Keploy 集成能力的示例应用。
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始使用！🎬
 
-## Clone a sample user data CRUD app 🧪
+## 克隆用户数据 CRUD 示例应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-typescript && cd samples-typescript/bun-mongo
 
-# First Install bun and then its dependencies using the command below:
+# 首先安装 bun，然后使用以下命令安装依赖：
 
 bun install
 ```
 
-## Installation Keploy
+## 安装 Keploy
 
-Depending on your OS, choose your adventure:
+根据您的操作系统选择安装方式：
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用。
 
-- [Using Docker container for Postgres and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用 Docker 容器运行 Postgres 并在本地运行应用](#在-linuxwsl-上本地运行应用)
 
-## Running App Locally on Linux/WSL 🐧
+## 在 Linux/WSL 上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (MongoDB) chill on Docker. Ready? Let's get the party started!🎉
+我们将在 Linux 上直接运行示例应用，但为了让事情更有趣，我们将把数据库（MongoDB）放在 Docker 中运行。准备好了吗？让我们开始吧！🎉
 
-### 📼 Roll the Tape - Recording Time!
+### 📼 开始录制 - 记录时间！
 
-Install the dependencies. Note: using this command directly without installing bun might give an error like `zsh: command not found: bun`
+安装依赖。注意：直接使用此命令而不安装 bun 可能会报错，如 `zsh: command not found: bun`
 
 ```bash
 bun install
 ```
 
-This command will essentailly make a fresh docker-network named as `keploy-network `
+此命令将创建一个名为 `keploy-network` 的新 docker 网络：
 
 ```bash
 docker network create keploy-network
 ```
 
-Using the docker-compose file we will start our Postgres instance:-
+使用 docker-compose 文件启动 Postgres 实例：
 
 ```bash
 docker-compose up -d mongo
 ```
 
-Ready, set, record! Here's how:
+准备就绪，开始录制！方法如下：
 
 ```bash
 sudo -E env PATH=$PATH Keploy record -c 'bun run supabun.ts'
 ```
 
-Keep an eye out for the `-c `flag! It's the command charm to run the app.
+注意 `-c` 标志！这是运行应用的命令。
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+好了，魔术师！应用已经启动并运行，让我们生成一些测试用例。方法是什么？发送一些 API 请求！可以使用 Postman、Hoppscotch 或经典的 curl。
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+要生成测试用例，我们只需要**发送一些 API 请求**。
 
-**1. Make a POST request**
+**1. 发送 POST 请求**
 
 ```bash
 curl --request POST localhost:4200/save
 
 ```
 
-**2. Make a GET request**
+**2. 发送 GET 请求**
 
 ```bash
 curl --request GET localhost:4200/fetch
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+给自己一个鼓励！通过这个简单的操作，您已经生成了一个带有模拟数据的测试用例！查看 **Keploy 目录**，您会在 `test-1.yml` 和 `mocks.yml` 中找到您的工作成果。
 
 ````yaml
 version: api.keploy.io/v1beta1
@@ -363,25 +363,25 @@ spec:
 
 ````
 
-Want to see if everything works as expected?
+想看看一切是否按预期工作吗？
 
-#### Run Tests
+#### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 sudo -E env PATH=$PATH keploy test -c 'bun run supabun.ts'
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay` 标志？哦，这只是让您的应用在测试用例运行前稍作休息（以秒为单位）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后有什么想法？深入探索！尝试不同的 API 调用，在 `mocks.yml` 中调整数据库响应，或者在 `test-x.yml` 中修改请求或响应。再次运行测试，看看会发生什么！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜您完成了这段旅程！您已经见识了 Keploy 的强大功能，锻炼了编码能力，还玩得开心！现在，继续探索、创新和创造吧！记住，只要有合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果还有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

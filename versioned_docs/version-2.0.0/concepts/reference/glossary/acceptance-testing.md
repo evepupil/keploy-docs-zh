@@ -1,92 +1,92 @@
 ---
 id: acceptance-testing
-title: Comprehensive Guide to Software Acceptance Testing
-sidebar_label: Acceptance Testing
-description: Learn about Software Acceptance Testing, its types, benefits, and best practices. Discover how this final phase in the testing lifecycle ensures your software meets all user requirements before release.
+title: 软件验收测试全面指南
+sidebar_label: 验收测试
+description: 了解软件验收测试的类型、优势及最佳实践。探索这个测试生命周期最后阶段如何确保软件在发布前满足所有用户需求。
 tags:
-  - explanation
-  - glossary
+  - 说明
+  - 术语表
 keywords:
   - API
-  - software testing
+  - 软件测试
   - UAT
-  - user acceptance testing
-  - software acceptance testing
+  - 用户验收测试
+  - 软件验收测试
 ---
 
-## What is Acceptance Testing?
+## 什么是验收测试？
 
-Acceptance testing (AT) is the final phase in the software testing life cycle, where the software is tested in a real-world environment by the customer or end user. The main objective is to ensure that the system meets all specified requirements and is ready for deployment. This stage is critical as it validates that the software is not only functional but also aligns with the user's needs and expectations.
+验收测试（AT）是软件测试生命周期的最后阶段，由客户或终端用户在真实环境中对软件进行测试。主要目标是确保系统满足所有规定要求并已准备好部署。这个阶段至关重要，因为它不仅验证软件功能正常，还确认其符合用户需求和预期。
 
-## Why is it important?
+## 为什么验收测试很重要？
 
-Acceptance testing serves as a safety net before the software reaches the end users, minimizing the risk of post-release defects that could lead to costly fixes and user dissatisfaction.
+验收测试是软件到达终端用户前的最后保障，能最大限度降低发布后缺陷风险，避免导致高昂修复成本和用户不满。
 
-## What Types of Acceptance Testing are there ?
+## 验收测试有哪些类型？
 
-There are several types of acceptance testing, each serving a unique purpose:
+验收测试有多种类型，每种都有独特用途：
 
-### User Acceptance Testing (UAT):
+### 用户验收测试（UAT）：
 
-UAT is the most common form of acceptance testing, where real users test the software in an environment that mimics the production environment. The goal is to validate the software's functionality and usability from the end user's perspective.
+UAT是最常见的验收测试形式，由真实用户在模拟生产环境的环境中测试软件。目标是从终端用户角度验证软件功能和可用性。
 
-Example: A financial institution might perform UAT on a new online banking system to ensure it meets user expectations before going live.
+示例：金融机构可能对新上线的网上银行系统进行UAT，确保其满足用户预期后再正式发布。
 
-### Systematic Acceptance Testing:
+### 系统化验收测试：
 
-This type involves using predefined test cases that cover all aspects of the system. It ensures that the software behaves as expected under various conditions.
+这类测试使用预定义的测试用例覆盖系统所有方面，确保软件在各种条件下表现符合预期。
 
-Example: Systematic testing might involve running a series of transactions through an e-commerce platform to ensure it can handle different payment methods.
+示例：系统化测试可能涉及在电商平台运行一系列交易，验证其能否处理不同支付方式。
 
-### Acceptance Test-Driven Development (ATDD):
+### 验收测试驱动开发（ATDD）：
 
-ATDD combines acceptance testing with test-driven development (TDD). It involves writing acceptance tests before the actual development begins, ensuring that the final product meets the predefined acceptance criteria.
+ATDD将验收测试与测试驱动开发（TDD）结合，在开发开始前编写验收测试，确保最终产品符合预定义的验收标准。
 
-Example: A team developing a new feature for a mobile app might write acceptance tests first to ensure the feature will function correctly when completed.
+示例：开发移动应用新功能的团队可能先编写验收测试，确保功能完成后能正确运行。
 
-## What are the Benefits of Acceptance Testing?
+## 验收测试有哪些优势？
 
-Acceptance testing offers numerous benefits that contribute to the overall success of a software project:
+验收测试为软件项目整体成功带来诸多益处：
 
-- Validates Requirements: Ensures that the software meets the agreed-upon requirements and expectations.
-- Identifies Issues Early: Helps uncover defects that may have been missed during earlier testing phases, reducing the risk of post-release problems.
-- Enhances Quality: Improves the overall quality of the software by ensuring it functions as intended.
-- Reduces Risks: Minimizes the risk of releasing a flawed product, which can save time, money, and resources.
-- Ensures Readiness: Confirms that the software is ready for deployment and will perform well in a production environment.
-- Real-World Example: A major retailer might perform acceptance testing on its new inventory management system to ensure it can handle peak shopping seasons without issues.
+- 验证需求：确保软件满足约定要求和预期
+- 及早发现问题：帮助发现早期测试阶段遗漏的缺陷，降低发布后问题风险
+- 提升质量：通过确保软件按预期运行来提高整体质量
+- 降低风险：最大限度减少发布缺陷产品的风险，节省时间、资金和资源
+- 确保就绪：确认软件已准备好部署，在生产环境中表现良好
+- 真实案例：某大型零售商可能对新库存管理系统进行验收测试，确保其能在购物旺季无故障运行
 
-## What are the Best Practices for Effective Testing ?
+## 有效验收测试的最佳实践是什么？
 
-To ensure the effectiveness of acceptance testing, consider the following best practices:
+为确保验收测试效果，请考虑以下最佳实践：
 
-- Involve Stakeholders Early: Engage key stakeholders early in the process to ensure their requirements are clearly understood and documented.
-- Define Clear Acceptance Criteria: Establish clear and measurable acceptance criteria before testing begins to avoid ambiguity.
-- Use Realistic Test Data: Use data that closely resembles real-world scenarios to better assess the software's performance.
-- Automate Where Possible: While manual testing is crucial, automating repetitive tasks can save time and reduce human error.
-- Iterate and Refine: Continuously refine the acceptance testing process based on feedback and testing outcomes.
+- 尽早让利益相关方参与：在流程早期就让关键利益相关方参与，确保清楚理解并记录其需求
+- 定义明确验收标准：在测试开始前建立清晰可衡量的验收标准，避免歧义
+- 使用真实测试数据：使用接近真实场景的数据，更好评估软件性能
+- 适当自动化：虽然手动测试很重要，但自动化重复任务可以节省时间并减少人为错误
+- 迭代改进：根据反馈和测试结果持续改进验收测试流程
 
-## Conclusion
+## 结论
 
-Acceptance testing is a critical step in the software development process, ensuring that the product is ready for deployment and meets the user's needs. By following best practices and involving key stakeholders, organizations can deliver high-quality software that satisfies customer expectations.
+验收测试是软件开发过程中的关键步骤，确保产品已准备好部署并满足用户需求。通过遵循最佳实践并让关键利益相关方参与，组织可以交付满足客户预期的高质量软件。
 
-## FAQs
+## 常见问题
 
-### What is the difference between UAT and Systematic Testing?
+### UAT和系统化测试有什么区别？
 
-UAT focuses on testing the software from the end user's perspective, while systematic testing involves using predefined test cases to validate the software's functionality.
+UAT侧重从终端用户角度测试软件，而系统化测试使用预定义测试用例验证软件功能。
 
-### Can acceptance testing be automated?
+### 验收测试可以自动化吗？
 
-Yes, certain aspects of acceptance testing, such as repetitive test cases, can be automated to improve efficiency. However, manual testing is often necessary for user-centric tests.
+可以，验收测试的某些方面（如重复性测试用例）可以自动化以提高效率，但以用户为中心的测试通常需要手动进行。
 
-### How does ATDD differ from traditional testing methods?
+### ATDD与传统测试方法有何不同？
 
-ATDD involves writing acceptance tests before development begins, ensuring that the software is built to meet specific acceptance criteria from the start.
+ATDD要求在开发开始前编写验收测试，确保软件从一开始就构建为满足特定验收标准。
 
-### What role do stakeholders play in acceptance testing?
+### 利益相关方在验收测试中扮演什么角色？
 
-Stakeholders are involved in defining acceptance criteria and often participate in UAT to validate that the software meets their needs.
+利益相关方参与定义验收标准，并经常参与UAT以验证软件是否满足其需求。
 
-### How does acceptance testing fit into the overall testing process?
+### 验收测试在整个测试过程中处于什么位置？
 
-Acceptance testing is the final phase in the testing process, occurring after unit, integration, and system testing have been completed.
+验收测试是测试过程的最后阶段，在单元测试、集成测试和系统测试完成后进行。

@@ -1,93 +1,91 @@
 ---
 id: samples-sse
-title: Sample Real-Time App (Svelte)
+title: 实时应用示例（Svelte）
 sidebar_label: SSE + Svelte + MongoDB
-description: The following sample app tests Keploy integration capabilities with realtime subscriptions such as SSE
+description: 以下示例应用测试Keploy与SSE等实时订阅功能的集成能力
 tags:
   - go
-  - quickstart
-  - samples
-  - examples
-  - tutorial
+  - 快速入门
+  - 示例
+  - 教程
   - svelte
   - SSE
 keyword:
   - Svelte
-  - Server-Sent Events
-  - MongoDB Mock
-  - API Test generator
-  - Auto Testcase generation
+  - 服务器发送事件
+  - MongoDB模拟
+  - API测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-🪄 Dive into the world of realtime subscriptions and see how seamlessly Keploy integrates with SSE and MongoDB Buckle up, it's gonna be a fun ride! 🎢
+🪄 深入实时订阅的世界，看看Keploy如何与SSE和MongoDB无缝集成。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Installation 📥
+## 安装 📥
 
-Ways you can run this sample application.
+运行此示例应用的方式。
 
-- [Using Docker container for MongoDB and running application locally](#installation-setup)
+- [使用MongoDB的Docker容器并在本地运行应用](#installation-setup)
 
-## Installation Setup
+## 安装设置
 
-#### Server
+#### 服务端
 
 ```bash
 git clone https://github.com/keploy/samples-go.git && cd samples-go/sse-svelte
 go mod download
 ```
 
-### Start MongoDB Instance
+### 启动MongoDB实例
 
-Using the docker-compose file we will start our mongodb instance:-
+使用docker-compose文件启动mongodb实例：
 
 ```bash
-# Start Postgres
+# 启动Postgres
 docker-compose up mongo
 ```
 
-### Build Application Binary
+### 构建应用二进制文件
 
-Now, we will create the binary of our application:-
+现在，我们将创建应用的二进制文件：
 
 ```bash
 go build -cover
 ```
 
-Once we have our applicaiton binary ready, we will start the application with keploy to start capturing the testcases.
+准备好应用二进制文件后，我们将使用keploy启动应用以开始捕获测试用例。
 
-## Capture the test cases
+## 捕获测试用例
 
 ```bash
 sudo -E keploy record "./sse-mongo"
 ```
 
-### Start the UI
+### 启动UI
 
-We will capture our test from the UI written in Svelte.js
+我们将从使用Svelte.js编写的UI中捕获测试：
 
 ```bash
 cd svelte-app && npm install && npm run dev
 ```
 
-Now let's click on `GetTime` button to trigger the event. We would notice that keploy will capture those calls : -
-![Testcases](https://github.com/keploy/samples-go/raw/main/sse-svelte/img/testcase.png?raw=true)
+现在点击`GetTime`按钮触发事件。我们会注意到keploy将捕获这些调用：
+![测试用例](https://github.com/keploy/samples-go/raw/main/sse-svelte/img/testcase.png?raw=true)
 
-## Run the Testcases
+## 运行测试用例
 
-Now let's run the test mode :-
+现在让我们运行测试模式：
 
 ```shell
 keploy test -c "./sse-mongo" --delay 10 --goCoverage
 ```
 
-Output should look like : -
+输出应如下所示：
+![测试运行](https://github.com/keploy/samples-go/raw/main/sse-svelte/img/testrun.png?raw=true)
 
-![Testrun](https://github.com/keploy/samples-go/raw/main/sse-svelte/img/testrun.png?raw=true)
-
-So no need to setup fake database/apis like Postgres or write mocks for them. Keploy automatically mocks them and, **The application thinks it's talking to MongoDb 😄**. And with just few clicks we were able to get 42% code coverage of our go backend application.
+因此，无需设置像Postgres这样的假数据库/API或为它们编写模拟。Keploy会自动模拟它们，**应用以为它在与MongoDb对话😄**。仅需几次点击，我们就能够获得Go后端应用42%的代码覆盖率。

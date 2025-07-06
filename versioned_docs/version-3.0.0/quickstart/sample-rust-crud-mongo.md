@@ -1,8 +1,8 @@
 ---
 id: sample-rust-crud-mongo
-title: Rust CRUD REST API with MongoDB
+title: 使用MongoDB的Rust CRUD REST API
 sidebar_label: Rust + MongoDB (REST)
-description: A sample CRUD REST API application to test Keploy integration capabilities using Rust and MongoDB.
+description: 一个示例CRUD REST API应用程序，用于测试Keploy与Rust和MongoDB的集成能力。
 tags:
   - Rust
   - MongoDB
@@ -10,102 +10,102 @@ tags:
 keyword:
   - Rust
   - MongoDB
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动测试用例生成
   - CRUD
   - REST
 ---
 
-## Introduction
+## 简介
 
-This is a sample CRUD REST API application to showcase Keploy integration capabilities using Rust and MongoDB. Let's get started! 🚀
+这是一个示例CRUD REST API应用程序，展示Keploy与Rust和MongoDB的集成能力。让我们开始吧！🚀
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 快速开始 🎬
 
-### Setup app
+### 设置应用
 
-Now that we have Keploy installed, let's set up our application.
+现在我们已经安装了Keploy，让我们来设置应用程序。
 
 ```bash
 git clone https://github.com/keploy/samples-rust
 cd samples-rust/CRUD-rust-mongo
 ```
 
-## Running App Locally on Linux/WSL 🐧
+## 在Linux/WSL上本地运行应用 🐧
 
-We will be using Docker compose to run Mongo on Docker container.
+我们将使用Docker compose在Docker容器中运行Mongo。
 
-### Let's start the MongoDB Instance
+### 启动MongoDB实例
 
-Open the root directory path in your terminal and then execute the following command:
+在终端中打开根目录路径，然后执行以下命令：
 
 ```bash
 docker-compose up -d
 ```
 
-### Run the app
+### 运行应用
 
 ```bash
 cargo r -r
 ```
 
-The app will be running on port 8000.
+应用将在8000端口运行。
 
-#### Capture testcase
+#### 捕获测试用例
 
-On same terminal execute the following command:
+在同一终端执行以下命令：
 
 ```bash
 keploy record -c 'cargo r -r'
 ```
 
-The output will be as follows:
+输出如下：
 ![RecordRun](/img/rust-mongo-rest-test-run.png?raw=true)
 
-### Generate testcase
+### 生成测试用例
 
-Open Postman or any other tool, or utilize the Postman VSCode extension. Click on the import icon (shown below):
+打开Postman或任何其他工具，或使用Postman VSCode扩展。点击导入图标（如下所示）：
 
 ![TestRun](/img/rust-mongo-postman-collection-import-button.png?raw=true)
 
-Import the file named: `Note App.postman_collection.json`
+导入名为`Note App.postman_collection.json`的文件。
 
-After that, Postman will display a similar window:
+之后，Postman将显示类似窗口：
 
 ![TestRun](/img/rust-mongo-rest-postman-collection.png?raw=true)
 
-Hit the Create Note Request with the available data and you will get the following output in your terminal:
+使用可用数据点击Create Note请求，您将在终端中看到以下输出：
 
 ```bash
 🐰 Keploy: 2024-08-27T21:06:57+05:30 t 8INFO
-🟠 Keploy has captured test cases for the user's application.   {"path": "/root/samples-rust/CRUD-rust-mongo/keploy/test-set-3/tests", "testcase name": "test-1"}
+🟠 Keploy已为用户应用程序捕获测试用例。   {"path": "/root/samples-rust/CRUD-rust-mongo/keploy/test-set-3/tests", "testcase name": "test-1"}
 ```
 
 ![TestRun](/img/rust-mongo-rest-postman-create-success.png?raw=true)
 
-Afterward, create a GET all request, and you will get the following output in your terminal:
+然后，创建一个GET all请求，您将在终端中看到以下输出：
 
 ```bash
-🐰 Keploy: 2024-08-27T21:13:41+05:30    INFO    🟠 Keploy has captured test cases for the user's application.   {"path": "/root/samples-rust/CRUD-rust-mongo/keploy/test-set-3/tests", "testcase name": "test-3"}
+🐰 Keploy: 2024-08-27T21:13:41+05:30    INFO    🟠 Keploy已为用户应用程序捕获测试用例。   {"path": "/root/samples-rust/CRUD-rust-mongo/keploy/test-set-3/tests", "testcase name": "test-3"}
 ```
 
 ![Test-case](/img/rust-mongo-rest-postman-get-all-success.png?raw=true)
 
-We peformed two requests, one to create a note and one to get all notes. These requests are captured as testcases by Keploy.
+我们执行了两个请求，一个是创建笔记，一个是获取所有笔记。这些请求被Keploy捕获为测试用例。
 
-### Run the testcases
+### 运行测试用例
 
-Now, let's start keploy in test mode to run our test cases :
+现在，让我们在测试模式下启动keploy来运行我们的测试用例：
 
 ```bash
 keploy test -c 'cargo r -r'
 ```
 
-We get the following output in the terminal -
+我们在终端中得到以下输出 -
 
 ![TestRun](/img/rust-mongo-rest-test-run-2.png?raw=true)
-_Voila!! Our testcases has passed 🌟_
+_太棒了！！我们的测试用例通过了 🌟_

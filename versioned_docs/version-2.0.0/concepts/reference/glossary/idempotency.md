@@ -1,131 +1,131 @@
 ---
 id: idempotency
-title: How Idempotent REST APIs Boost Reliability and Error Handling
-sidebar_label: Idempotency
-description: Learn how idempotent REST APIs ensure reliability, error recovery, and fault tolerance in distributed systems. Discover best practices and testing strategies for idempotent methods.
+title: 幂等性REST API如何提升可靠性与错误处理
+sidebar_label: 幂等性
+description: 了解幂等性REST API如何确保分布式系统中的可靠性、错误恢复和容错能力。探索幂等方法的最佳实践与测试策略。
 tags:
-  - explanation
-  - glossary
+  - 解释
+  - 术语表
 keywords:
   - API
-  - idempotent HTTP method
-  - white box testing techniques
-  - REST idempotent methods
-  - idempotent methods in REST API
+  - 幂等HTTP方法
+  - 白盒测试技术
+  - REST幂等方法
+  - REST API中的幂等方法
 ---
 
-## What is Idempotency in the Context of REST APIs?
+## 什么是REST API中的幂等性？
 
-**Idempotency** means that making multiple identical requests has the same effect as making a single request. In REST APIs, this property ensures consistent and reliable interactions—even when the same request is repeated due to network issues or client retries.
+**幂等性**意味着多次相同的请求与单次请求具有相同效果。在REST API中，这一特性确保了交互的一致性和可靠性——即使由于网络问题或客户端重试导致请求被重复发送。
 
-Idempotent operations are essential for maintaining data integrity, simplifying error recovery, and enhancing fault tolerance in distributed systems.
+幂等操作对于维护数据完整性、简化错误恢复以及增强分布式系统的容错能力至关重要。
 
-### Examples of Idempotent HTTP Methods
+### 幂等HTTP方法示例
 
-Certain HTTP methods are inherently idempotent:
+某些HTTP方法天生具有幂等性：
 
-- **GET:** Retrieving a resource with GET is idempotent since multiple requests return the same data.
-- **PUT:** Updating a resource with PUT is idempotent because sending the same update multiple times results in the same resource state.
-- **DELETE:** Deleting a resource with DELETE is idempotent because attempting to delete an already deleted or non-existent resource does not change the system state.
+- **GET:** 使用GET获取资源是幂等的，因为多次请求返回相同数据
+- **PUT:** 使用PUT更新资源是幂等的，因为多次发送相同更新会导致相同的资源状态
+- **DELETE:** 使用DELETE删除资源是幂等的，因为尝试删除已删除或不存在的资源不会改变系统状态
 
-![Methods](https://www.hubspot.com/hs-fs/hubfs/Google%20Drive%20Integration/Idempotent%20Api%20Draft-1.png?width=650&name=Idempotent%20Api%20Draft-1.png)
+![方法](https://www.hubspot.com/hs-fs/hubfs/Google%20Drive%20Integration/Idempotent%20Api%20Draft-1.png?width=650&name=Idempotent%20Api%20Draft-1.png)
 
-## Key Benefits of Idempotent APIs
+## 幂等API的核心优势
 
-In distributed systems, achieving consistency can be challenging due to network failures, latency, and message duplication. **Idempotent** operations offer several benefits:
+在分布式系统中，由于网络故障、延迟和消息重复，实现一致性可能具有挑战性。**幂等**操作提供以下优势：
 
-- **Preventing Duplicate Effects:** Even if a request is duplicated, the system state remains unchanged after the initial operation.
-- **Simplifying Error Recovery:** Clients can safely retry failed requests without risking additional modifications or inconsistencies.
-- **Enhancing Concurrency:** Idempotency supports parallel processing by avoiding race conditions, as multiple identical operations yield the same result.
-- **Optimizing Caching:** Since the result of an idempotent request remains constant, caching can be used effectively to improve performance.
-- **Simplifying Client Logic:** Developers can implement straightforward retry mechanisms without complex logic to manage state changes.
+- **防止重复影响**：即使请求被重复，系统状态在初始操作后保持不变
+- **简化错误恢复**：客户端可以安全重试失败请求，而不会产生额外修改或不一致风险
+- **增强并发性**：幂等性通过避免竞态条件支持并行处理，因为多次相同操作产生相同结果
+- **优化缓存**：由于幂等请求结果保持不变，可有效利用缓存提高性能
+- **简化客户端逻辑**：开发者可实现简单的重试机制，无需复杂的状态变更管理逻辑
 
-## Why Idempotency is Important
+## 为什么幂等性很重要
 
-Idempotency is particularly critical in distributed systems where network issues, message duplication, and out-of-order message delivery are common. By ensuring that operations can be safely retried, idempotency helps maintain data integrity and supports robust error handling, making systems more resilient overall.
+幂等性在分布式系统中尤为重要，因为网络问题、消息重复和乱序传递很常见。通过确保操作可安全重试，幂等性有助于保持数据完整性并支持健壮的错误处理，从而提高系统整体弹性。
 
-### Detailed Benefits
+### 详细优势
 
-1. **Error Recovery and Fault Tolerance:**  
-   Idempotent APIs enhance fault tolerance by allowing safe retries. If a request is repeated due to transient failures, the system state remains consistent with the initial operation.
+1. **错误恢复与容错能力**：  
+   幂等API通过允许安全重试增强容错能力。如果因临时故障重复请求，系统状态仍与初始操作保持一致
 
-2. **Consistent State and Data Integrity:**  
-   With idempotency, repeated operations yield identical results, preventing unintended side effects and preserving data consistency.
+2. **一致状态与数据完整性**：  
+   幂等性确保重复操作产生相同结果，防止意外副作用并保持数据一致性
 
-3. **Safe Retry Mechanisms:**  
-   Idempotent APIs enable developers to confidently retry failed requests, streamlining error handling and minimizing the risk of data corruption.
+3. **安全重试机制**：  
+   幂等API使开发者能自信地重试失败请求，简化错误处理并最小化数据损坏风险
 
-4. **Support for Concurrency:**  
-   Idempotent operations prevent conflicts when multiple components handle the same request simultaneously, ensuring consistent outcomes.
+4. **并发支持**：  
+   幂等操作防止多个组件同时处理相同请求时产生冲突，确保结果一致
 
-5. **Improved Caching:**  
-   Consistent responses to identical requests allow caching mechanisms to be used effectively, reducing backend load and improving performance.
+5. **改进缓存**：  
+   对相同请求的一致响应使得缓存机制可有效使用，降低后端负载并提高性能
 
-6. **Auditability and Logging:**  
-   With unique request identifiers, idempotency makes it easier to trace, log, and audit operations—valuable for debugging and compliance.
+6. **可审计性与日志记录**：  
+   通过唯一请求标识符，幂等性使操作更易追踪、记录和审计——这对调试和合规很有价值
 
-## Idempotent vs. Safe Methods
+## 幂等方法 vs 安全方法
 
-While **idempotent** methods guarantee the same outcome when repeated, **safe** methods are those that do not alter the system state at all. All safe methods (such as GET) are idempotent, but not all idempotent methods are safe (e.g., PUT and DELETE change the state, but in a controlled, repeatable manner).
+虽然**幂等**方法保证重复时结果相同，但**安全**方法是指完全不改变系统状态的方法。所有安全方法（如GET）都是幂等的，但并非所有幂等方法都是安全的（例如PUT和DELETE会以可控、可重复的方式改变状态）。
 
-![Idempotent vs Safe](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNpJRr8DjkwYCknq1yp0PNVbGQ9Gy0rcBwtg&s)
+![幂等 vs 安全](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNpJRr8DjkwYCknq1yp0PNVbGQ9Gy0rcBwtg&s)
 
-## Leveraging Keploy for Idempotency in API Testing
+## 利用Keploy进行API幂等性测试
 
-[Keploy](https://keploy.io) is a robust testing tool that plays a crucial role in ensuring the idempotency of your APIs during development and testing.
+[Keploy](https://keploy.io)是一个强大的测试工具，在开发和测试阶段对确保API幂等性起关键作用。
 
-### How Keploy Ensures Idempotency
+### Keploy如何确保幂等性
 
-- **Automated Test Cases for Idempotent Operations:**  
-   Keploy lets you create tests that simulate repeated API requests under various conditions—such as network failures, timeouts, or duplicate submissions—to confirm that operations like **PUT**, **DELETE**, and **GET** remain consistent.
+- **幂等操作的自动化测试用例**：  
+   Keploy允许创建模拟重复API请求的测试，验证在各类条件（如网络故障、超时或重复提交）下**PUT**、**DELETE**和**GET**等操作是否保持一致性
 
-- **Simulating Failures and Retrying Requests:**  
-   By simulating transient network issues or service unavailability, Keploy verifies that retry logic does not cause multiple, unintended modifications to the system.
+- **模拟故障与请求重试**：  
+   通过模拟临时网络问题或服务不可用，Keploy验证重试逻辑不会导致系统多次意外修改
 
-- **Request and Response Pairing:**  
-   Keploy tracks request-response pairs to ensure that each repeated request produces an identical outcome, validating the correct handling of idempotent tokens (like UUIDs).
+- **请求-响应配对**：  
+   Keploy追踪请求-响应对，确保每个重复请求产生相同结果，验证幂等令牌（如UUID）的正确处理
 
-- **Advanced Mocking and Stubbing:**  
-   With Keploy’s capabilities, you can simulate external service interactions, allowing you to test the idempotency of your APIs in isolation and under specific failure conditions.
+- **高级模拟与桩模块**：  
+   利用Keploy功能可模拟外部服务交互，允许在隔离环境和特定故障条件下测试API幂等性
 
-### Example Use Case
+### 示例用例
 
-Imagine an API that updates a user's profile using the **PUT** method. Automated tests in Keploy can verify that:
+假设某API使用**PUT**方法更新用户资料。Keploy中的自动化测试可验证：
 
-1. Multiple **PUT** requests with the same data result in the same updated profile without introducing duplicates.
-2. Simulated network failures do not trigger unintended multiple updates.
-3. Caching behaviors ensure that repeated requests yield identical responses without extra load.
+1. 多次相同数据的**PUT**请求不会产生重复项，而是得到相同更新结果
+2. 模拟网络故障不会触发意外多次更新
+3. 缓存行为确保重复请求产生相同响应而不会增加额外负载
 
-## Conclusion
+## 结论
 
-Idempotency is a foundational principle in designing reliable, scalable RESTful APIs. By ensuring that operations can be retried safely without adverse effects, idempotent APIs contribute to system consistency, error recovery, and overall performance. Implementing idempotent methods involves careful design of HTTP methods, data handling, and error recovery mechanisms. Tools like Keploy simplify this process by providing robust testing frameworks that simulate real-world conditions, ensuring that your APIs maintain their idempotency under all circumstances.
+幂等性是设计可靠、可扩展RESTful API的基本原则。通过确保操作可安全重试而不会产生负面影响，幂等API有助于系统一致性、错误恢复和整体性能。实现幂等方法需要精心设计HTTP方法、数据处理和错误恢复机制。Keploy等工具通过提供模拟真实场景的健壮测试框架简化这一过程，确保您的API在所有情况下保持幂等性。
 
-## FAQ
+## 常见问题
 
-### What does it mean for an HTTP method to be idempotent?
+### HTTP方法的幂等性是什么意思？
 
-An HTTP method is idempotent if making multiple identical requests yields the same result as making a single request—ensuring no additional side effects occur.
+如果多次相同请求与单次请求产生相同结果（确保不会发生额外副作用），则该HTTP方法具有幂等性。
 
-### Why is idempotency important in RESTful API design?
+### 为什么幂等性在RESTful API设计中很重要？
 
-Idempotency allows clients to safely retry requests without causing unintended modifications, thereby preserving data integrity and simplifying error recovery in distributed systems.
+幂等性允许客户端安全重试请求而不会导致意外修改，从而在分布式系统中维护数据完整性并简化错误恢复。
 
-### What are some examples of idempotent HTTP methods?
+### 哪些是幂等HTTP方法的例子？
 
-- **GET:** Always returns the same resource state.
-- **PUT:** Updates a resource to the same state regardless of repetitions.
-- **DELETE:** Removes a resource, with repeated calls having no extra effect.
+- **GET:** 始终返回相同资源状态
+- **PUT:** 无论重复多少次都将资源更新至相同状态
+- **DELETE:** 删除资源，重复调用不会产生额外效果
 
-### How does idempotency improve error handling in distributed systems?
+### 幂等性如何改进分布式系统中的错误处理？
 
-It allows clients to safely retry operations without risk of causing further state changes, making error recovery straightforward and ensuring system stability.
+它允许客户端安全重试操作而不会引发进一步状态变更，使错误恢复变得简单并确保系统稳定性。
 
-### What practices should developers follow to ensure idempotency in API implementations?
+### 开发人员应遵循哪些实践来确保API实现的幂等性？
 
-- Use appropriate HTTP methods (e.g., PUT, DELETE) for operations that modify resources.
-- Design operations to avoid additional changes if repeated.
-- Utilize unique request identifiers or tokens to prevent duplicate processing.
+- 对修改资源的操作使用适当HTTP方法（如PUT、DELETE）
+- 设计操作时避免重复时产生额外变更
+- 使用唯一请求标识符或令牌防止重复处理
 
-### How can you test idempotent APIs?
+### 如何测试幂等API？
 
-Create test cases that simulate retries, network failures, and duplicate requests. Validate that repeated calls result in the same response and do not introduce unintended modifications to the system state.
+创建模拟重试、网络故障和重复请求的测试用例。验证重复调用是否产生相同响应且不会对系统状态引入意外修改。

@@ -1,13 +1,13 @@
 ---
 id: supported-frameworks
-title: Supported Frameworks for Ts (v1.0.0)
-description: Supported Frameworks
+title: Ts (v1.0.0) 支持的框架
+description: 支持的框架
 tags:
-  - developer-guide
+  - 开发者指南
   - typescript
 ---
 
-## Supported Routers
+## 支持的路由器
 
 ### 1. Express
 
@@ -15,9 +15,9 @@ tags:
 require("typescript-sdk/dist/integrations/express/register");
 ```
 
-The require statement should be at the top of your main file (server.js).
+require 语句应放在主文件（server.js）的顶部。
 
-#### Example
+#### 示例
 
 ```js
 require("typescript-sdk/dist/integrations/express/register");
@@ -28,17 +28,17 @@ const port = process.env.PORT || 5050;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({field: "App is healthy", opacity: Math.random()});
+  res.json({field: "应用运行正常", opacity: Math.random()});
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+  console.log(`服务器运行在端口: ${port}`);
 });
 ```
 
-Note:- Import statements can't be used. Use require instead of import.
+注意：不能使用 import 语句。请使用 require 替代 import。
 
-## Supported Dependencies
+## 支持的依赖项
 
 ### 1. Octokit
 
@@ -46,19 +46,19 @@ Note:- Import statements can't be used. Use require instead of import.
 require("typescript-sdk/dist/integrations/octokit/require");
 ```
 
-This statement should be at the top of your main file (server.js).
+该语句应放在主文件（server.js）的顶部。
 
-Note:- Import statements can't be used. Only CommonJs support is currently provided.
+注意：不能使用 import 语句。目前仅支持 CommonJs。
 
-## Development Setup
+## 开发环境设置
 
-- This project uses [Yarn](https://yarnpkg.com/) for package management. To install yarn, please make sure [Node](https://nodejs.org/en/) is installed and then:
+- 本项目使用 [Yarn](https://yarnpkg.com/) 进行包管理。安装 yarn 前请确保已安装 [Node](https://nodejs.org/en/)，然后执行：
 
 ```sh
 npm i -g yarn
 ```
 
-- To install local dependencies, assuming you are at root of the project:
+- 假设您位于项目根目录，安装本地依赖项请执行：
 
 ```sh
 yarn install

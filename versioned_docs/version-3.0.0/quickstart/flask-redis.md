@@ -1,71 +1,70 @@
 ---
 id: flask-redis
-title: Sample Library App (Flask + Redis)
+title: 示例图书馆应用（Flask + Redis）
 sidebar_label: Flask + Redis
-description: This application is a simple Library API built using Flask and Redis for data storage. It allows you to perform basic CRUD (Create, Read, Update, Delete) operations on Movie records.
+description: 该应用是一个使用Flask框架和Redis数据库构建的简单图书馆API，支持对图书记录进行基础的CRUD（创建、读取、更新、删除）操作。
 
 tags:
   - flask
-  - quickstart
-  - samples
-  - examples
-  - tutorial
-  - python-framework
+  - 快速入门
+  - 示例
+  - 教程
+  - python框架
   - redis
 keyword:
-  - FastAPI Framework
+  - FastAPI框架
   - Flask
   - Redis
   - Python
-  - API Test generator
-  - Auto case generation
+  - API测试生成器
+  - 自动化用例生成
 ---
 
-## Introduction
+## 简介
 
-🪄 Dive into the world of Student CRUD Apps and see how seamlessly Keploy integrated with Flask and Redis. Buckle up, it's gonna be a fun ride! 🎢
+🪄 探索学生CRUD应用的世界，见证Keploy如何无缝集成Flask与Redis。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 快速开始 🎬
 
-## Clone the application 🧪
+## 克隆应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-python.git && cd samples-python/flask-redis
 ```
 
-## Installation Keploy
+## 安装Keploy
 
-Depending on your OS, choose your adventure:
+根据操作系统选择安装方式：
 
-We are going to run the application the following way
+我们将通过以下方式运行应用：
 
-- [Using Docker compose : running application as well as Mongo on Docker container](#using-docker-compose-)
+- [使用Docker compose：在容器中运行应用及MongoDB](#使用docker-compose-)
 
-## Using Docker Compose 🐳
+## 使用Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as Mongo on Docker container.
+我们将使用Docker compose在容器中运行应用及Redis数据库。
 
-### Lights, Camera, Record! 🎥
+### 准备录制！🎥
 
-Capture the test-cases-
+捕获测试用例：
 
 ```shell
 keploy record -c "docker compose up" --container-name "flask-web" --buildDelay 50
 ```
 
-🔥**Make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥**发起一些API请求**。可以使用Postman、Hoppscotch或curl工具。
 
-Let's make URLs short and sweet:
+简化URL示例：
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+只需**发起API调用**即可生成测试用例：
 
-1. **Make a POST request:**
+1. **发起POST请求：**
 
 ```bash
 curl -X POST http://localhost:5000/books/ \
@@ -73,13 +72,13 @@ curl -X POST http://localhost:5000/books/ \
 -d '{"title": "1984", "author": "George Orwell"}'
 ```
 
-2. **Make a GET request:**
+2. **发起GET请求：**
 
 ```bash
 curl -X GET "http://localhost:5000/books/?page=1&limit=10"
 ```
 
-3. **Make a PUT request:**
+3. **发起PUT请求：**
 
 ```bash
 curl -X PUT http://localhost:5000/books/1 \
@@ -87,13 +86,13 @@ curl -X PUT http://localhost:5000/books/1 \
 -d '{"title": "1984 - Updated", "author": "George Orwell"}'
 ```
 
-4. **Make a DELETE request:**
+4. **发起DELETE请求：**
 
 ```bash
 curl -X DELETE http://localhost:5000/books/1
 ```
 
-And once you are done, you can stop the recording and give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **keploy** directory and you'll discover your handiwork in `tests` directory and `mocks.yml`.
+完成后停止录制。此时您已在`tests`目录和`mocks.yml`中生成测试用例与模拟数据。
 
 ```yaml
 version: api.keploy.io/v1beta1
@@ -117,47 +116,47 @@ spec:
 ---
 ```
 
-### **Time to run the testcases**
+### **运行测试用例**
 
 ```bash
 keploy test -c 'sudo docker compose up' --containerName "flask-web" --delay 10
 ```
 
-You can also check the test summary from your cli
+可通过CLI查看测试摘要：
 
 ```bash
 <=========================================>
-  COMPLETE TESTRUN SUMMARY.
-        Total tests: 11
-        Total test passed: 10
-        Total test failed: 1
-        Total time taken: "15.13 s"
+  测试运行总览
+        总测试数: 11
+        通过数: 10
+        失败数: 1
+        总耗时: "15.13秒"
 
-        Test Suite Name         Total Test      Passed          Failed          Time Taken
+        测试集名称         总数       通过       失败       耗时
 
-        "test-set-0"            6               6               0               "5.06 s"
-        "test-set-1"            1               1               0               "5.02 s"
-        "test-set-2"            4               3               1               "5.04 s"
+        "test-set-0"      6         6         0       "5.06秒"
+        "test-set-1"      1         1         0       "5.02秒"
+        "test-set-2"      4         3         1       "5.04秒"
 <=========================================>
 ```
 
-## Some errors you may run into ?
+## 可能遇到的错误？
 
-1. While running the application you might have some ports up and running that you are trying to access again. This would throw a EBPF error
+1. 运行应用时若端口被占用，会抛出EBPF错误
 
-You can check the ports from the below command and
+查看端口占用情况：
 
 ```bash
 sudo lsof -p
 ```
 
-If you want to check which process is using a specific port (e.g., port 5000), use:
+检查指定端口（如5000）的进程：
 
 ```bash
 sudo lsof -i :5000
 ```
 
-Once you have identified the PID of the process using the port you need, you can terminate the process with the kill command:
+终止占用端口的进程：
 
 ```bash
 sudo kill -9 <PID>
@@ -165,19 +164,19 @@ sudo kill -9 <PID>
 
 2. ERROR: for redis 'ContainerConfig'
 
-The KeyError: 'ContainerConfig' issue you're encountering with Docker Compose is indicative of a problem with the Docker Compose file or its version compatibility.
+此错误通常由Docker Compose文件版本兼容性问题导致。
 
-Here’s how you can address and troubleshoot this error:
+解决方案：
 
 ```bash
 sudo apt-get update
 sudo apt-get install docker-compose
 ```
 
-Check your compose file's permissions
+检查compose文件权限：
 
 ```bash
 ls -l docker-compose.yml
 ```
 
-Re-run the record or test command from above
+重新运行上述录制或测试命令

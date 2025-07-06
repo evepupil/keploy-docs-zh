@@ -1,41 +1,41 @@
 ---
 id: go
-title: Merge Unit Test Coverage Data
+title: 合并单元测试覆盖率数据
 sidebar_label: Go
 tags:
   - go
   - coverage
 keyword:
-  - coverage
-  - Echo Framework
-  - Gorilla/Mux Framework
-  - Gin Framework
+  - 覆盖率
+  - Echo框架
+  - Gorilla/Mux框架
+  - Gin框架
   - Postgres
   - SQL
   - Golang
-  - API Test generator
-  - Auto Testcase generation
-  - Go Test
+  - API测试生成器
+  - 自动测试用例生成
+  - Go测试
 ---
 
 import WhatAreKeployFeatures from './index.md'
 
 <WhatAreKeployFeatures/>
 
-## 🛠️ Language Specific Requirements
+## 🛠️ 语言特定要求
 
-| Programming Language | Prerequisites                                                                                                                                                                                                                                                       |
-| :------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|          go          | 1. The application should have a graceful shutdown to stop the API server on `SIGTERM` or `SIGINT` signals. Refer [appendix](#graceful-shutdown) for basic implementation of graceful shutdown function. <br/> 2. The go binary should be built with `-cover` flag. |
+| 编程语言       | 前提条件                                                                                                                                                                                                                                                       |
+| :------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|       go       | 1. 应用程序应实现优雅关闭功能，在收到`SIGTERM`或`SIGINT`信号时停止API服务器。参考[附录](#graceful-shutdown)获取优雅关闭函数的基础实现。<br/> 2. go二进制文件需要使用`-cover`标志编译。 |
 
-## Graceful Shutdown
+## 优雅关闭
 
-It is important that the application is shutdown gracefully. In case of Golang, function for graceful shutdown:
+应用程序必须能够优雅关闭。在Golang中，优雅关闭函数实现如下：
 
 ```go
 func GracefulShutdown() {
 	stopper := make(chan os.Signal, 1)
-	// listens for interrupt and SIGTERM signal
+	// 监听中断和SIGTERM信号
 	signal.Notify(stopper, os.Interrupt, os.Kill, syscall.SIGKILL, syscall.SIGTERM)
 	go func() {
 		select {
@@ -53,34 +53,34 @@ func main() {
 
 	r.GET("/:param", getURL)
 	r.POST("/url", putURL)
-	// should be called before starting the API server from main()
+	// 必须在main()启动API服务器前调用
 	GracefulShutdown()
 
 	r.Run()
 }
 ```
 
-## Usage
+## 使用方法
 
-For keploy test coverage the binary must built with `-cover` flag:
+使用keploy测试覆盖率时，必须使用`-cover`标志编译二进制文件：
 
 ```go
 go build -cover
 ```
 
-To get the coverage data for unit tests :
+获取单元测试覆盖率数据：
 
 ```go
-go test -cover ./... -args -test.gocoverdir="PATH_TO_UNIT_COVERAGE_FILES"
+go test -cover ./... -args -test.gocoverdir="单元测试覆盖率文件路径"
 ```
 
-To merge coverage data of unit tests with Keploy provided coverage :
+合并单元测试与Keploy提供的覆盖率数据：
 
 ```go
-go tool covdata textfmt -i="PATH_TO_UNIT_COVERAGE_FILES","./coverage-reports" -o combined-coverage.txt
+go tool covdata textfmt -i="单元测试覆盖率文件路径","./coverage-reports" -o combined-coverage.txt
 ```
 
-To get the coverage related information for merged coverage data :
+获取合并后覆盖率数据的相关信息：
 
 ```go
 go tool cover -func combined-coverage.txt

@@ -1,30 +1,29 @@
 ---
 id: contribution-guide
-title: Keploy Hacktoberfest Contribution (v1.0.0)
+title: Keploy Hacktoberfest 贡献指南 (v1.0.0)
 label: Hacktoberfest
 ---
 
-# About the Event
+# 关于活动
 
-## Celebrate Open Source with Hacktoberfest
+## 用 Hacktoberfest 庆祝开源
 
-Hacktoberfest is a month-long celebration of open-source software run by DigitalOcean. Hacktoberfest is open to everyone, from first-time contributors to seasoned open-source developers. Your open-source journey begins with a pull request.
+Hacktoberfest 是由 DigitalOcean 举办的为期一个月的开源软件庆祝活动。Hacktoberfest 向所有人开放，无论是首次贡献者还是经验丰富的开源开发者。您的开源之旅将从提交一个拉取请求开始。
 
 <img src="https://user-images.githubusercontent.com/53110238/193503992-c839beeb-53fd-46d7-9214-a88bfff6475a.png"/>
 
-## Hacktoberfest Journey with Keploy
+## 与 Keploy 共度 Hacktoberfest 之旅
 
-If you’ve ever wanted to contribute to open source, now is your chance! You can contribute to several Keploy projects participating this year’s Hacktoberfest.
+如果您曾想为开源做贡献，现在就是机会！您可以参与今年 Hacktoberfest 中 Keploy 的多个项目。
 
-Anyone around the globe who desires to help drive the growth of open source and make positive contributions to an ever-growing community. All backgrounds and skill levels are encouraged to participate.
+全球任何希望推动开源发展并为这个不断壮大的社区做出积极贡献的人都可以参与。我们鼓励所有背景和技能水平的人参加。
 
-- Code Contributribution to Keploy Projects includes:
+- 对 Keploy 项目的代码贡献包括：
+  - 错误修复
+  - 新功能
+  - 设计
 
-  - Bug fixes
-  - New features
-  - Design
-
-- Non-code contributions include:
-  - Documentation
-  - Translation
-  - Blog writing
+- 非代码贡献包括：
+  - 文档编写
+  - 翻译
+  - 博客撰写

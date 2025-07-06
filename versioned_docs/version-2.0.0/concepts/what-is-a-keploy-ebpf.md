@@ -1,32 +1,32 @@
 ---
 id: what-is-keploy-ebpf
-title: What is Keploy eBPF
+title: 什么是Keploy eBPF
 sidebar_label: Keploy eBPF
-description: Keploy eBPF is a language-agnostic library that captures and replays API calls and subsequent network interactions.
+description: Keploy eBPF是一个与语言无关的库，用于捕获和重放API调用及后续网络交互。
 tags:
   - explanation
   - ebpf
 keywords:
   - ebpf
-  - Testing API
+  - API测试
 ---
 
-A Keploy eBPF is a language-agnostic library that offers APIs to do the following:
+Keploy eBPF是一个与语言无关的库，提供以下功能的API：
 
-1. Capture all the network calls like
+1. 捕获所有网络调用，例如：
 
-   - API Request
-   - Dependency calls
-   - API Response
+   - API请求
+   - 依赖调用
+   - API响应
 
-2. Replay the API request with captured dependency mocks to identify noisy fields.
-3. Replay all the test-cases captured and mock the dependencies for the application
+2. 使用捕获的依赖模拟重放API请求，以识别噪声字段。
+3. 重放所有捕获的测试用例，并为应用程序模拟依赖项
 
-Comparing the expected and actual responses for an API call happens at the Keploy Server.
+API调用的预期响应与实际响应的比较在Keploy服务器上进行。
 
-A Keploy eBPF mocks the external dependencies while testing APIs, eliminating the need to setup test-environment. This allows the application to isolate itself from external dependencies.
+Keploy eBPF在测试API时模拟外部依赖项，无需设置测试环境。这使得应用程序能够与外部依赖项隔离。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

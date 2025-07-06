@@ -1,17 +1,17 @@
 ---
 id: no-code-contribution
-title: No-Code Contribution
+title: 非代码贡献
 label: Hacktoberfest
 ---
 
-# Non-Code Contributions to Keploy
+# 为Keploy做出非代码贡献
 
-There are many ways to contribute to Keploy projects without writing a single line of code. You can help with:
+有许多方式可以为Keploy项目做出贡献，而无需编写一行代码。您可以通过以下方式提供帮助：
 
-- <img src="https://www.svgrepo.com/show/10712/pencil.svg" width='20px'/> Used Keploy:- Tell the community about it in an awesome blog post.
+- <img src="https://www.svgrepo.com/show/10712/pencil.svg" width='20px'/> 使用Keploy:- 在精彩的博客文章中向社区分享您的使用体验。
 
-- <img src="https://www.svgrepo.com/show/157174/document.svg" width='20px'/> Improve Documentation:- As the more detailed the documentation is, better it will be for people who are looking for help.
+- <img src="https://www.svgrepo.com/show/157174/document.svg" width='20px'/> 改进文档:- 文档越详细，对寻求帮助的人就越有用。
 
-- <img src="https://www.svgrepo.com/show/294283/youtube.svg" width='20px'/> Create a tutorial:- They provide instructions on how to use a tool or service in a step-by-step manner.
+- <img src="https://www.svgrepo.com/show/294283/youtube.svg" width='20px'/> 创建教程:- 以逐步指导的方式提供关于如何使用工具或服务的说明。
 
-- <img src="https://www.svgrepo.com/show/450193/language.svg" width='20px'/> Translation:- Add a new translation to for our README.md
+- <img src="https://www.svgrepo.com/show/450193/language.svg" width='20px'/> 翻译:- 为我们的README.md添加新的翻译。

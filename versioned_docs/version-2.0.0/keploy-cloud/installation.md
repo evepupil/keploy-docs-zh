@@ -1,62 +1,62 @@
 ---
 id: cloud-installation
-title: Keploy Cloud Installation
-sidebar_label: Installation 🛠️
+title: Keploy Cloud 安装指南
+sidebar_label: 安装指南 🛠️
 tags:
-  - explanation
-  - feature guide
+  - 说明文档
+  - 功能指南
   - keploy cloud
-  - installation
+  - 安装
 keywords:
   - keploy cloud
-  - installation
-  - API key
+  - 安装
+  - API密钥
 ---
 
-## Introduction 📘
+## 介绍 📘
 
-#### Welcome to the Keploy Cloud Guide!
+#### 欢迎使用 Keploy Cloud 指南！
 
-In this guide, you will find information about Keploy Cloud, onboarding, features, and how to use them.
+本指南将为您提供关于 Keploy Cloud 的注册流程、功能特性及使用方法的详细信息。
 
-#### Requesting a Keploy Cloud Account
+#### 申请 Keploy Cloud 账户
 
-To request a Keploy Cloud account, please complete the request form [here](https://forms.gle/jGBbyRyh9H7AKXZX6). Our team will review your request and get back to you as soon as possible.
+请填写[申请表](https://forms.gle/jGBbyRyh9H7AKXZX6)申请 Keploy Cloud 账户。我们的团队将在审核后尽快与您联系。
 
-#### Getting Started with Keploy Cloud
+#### 开始使用 Keploy Cloud
 
-Once your account is set up, you can start exploring features of Keploy Cloud. Here are some key features to can get started with:
+账户开通后，您可以立即体验 Keploy Cloud 的核心功能：
 
-- **Time Freezing** ❄️: Keploy Cloud allows you to freeze/rollback the time in every test run, back to when the test case was recorded. This allows developers to ensure time-sensitive objects don’t expire or change, making tests consistent and more reliable.
+- **时间冻结** ❄️：允许在每次测试运行时将时间回滚至测试用例录制时刻，确保时间敏感对象不会过期或改变，使测试结果保持一致性。
 
-- **AI-Driven Test Generation** 🧠: Keploy will automatically uncover your API's edge cases and generate test cases to expose more code paths, thereby increasing code coverage.
+- **AI驱动测试生成** 🧠：自动发现API边界条件并生成测试用例，覆盖更多代码路径，提升测试覆盖率。
 
-- **Test Deduplication** 📊 : Keploy detects duplicate/redundant tests automatically, which will be particularly useful if you plan to record numerous scenarios from a live environment and wish to retain only unique scenario tests.
+- **测试去重** 📊：自动检测重复/冗余测试，特别适用于从生产环境录制大量场景时保留唯一性测试。
 
-- **Keploy Console** 📈: We are ensuring a smooth experience of visualising bugs found with Keploy and sharing reports with your team.
+- **控制台面板** 📈：提供可视化错误追踪功能，支持团队报告共享。
 
-- **Asynchronous Processes Support** ⏱ : Keploy V2 captures and replays asynchronous tasks effectively. We're also incorporating support for adding custom user-defined behaviours or assertions.
+- **异步流程支持** ⏱：V2版本有效捕获和回放异步任务，同时支持自定义断言行为。
 
-- **Mock Registry** 📂: The Mock Registry is a system designed to handle large mock files by uploading them to cloud storage, preventing these sizable files from being committed to Git repositories. This approach optimizes repository size and performance while maintaining an efficient and streamlined development workflow.
+- **模拟注册表** 📂：通过云存储管理大型模拟文件，避免大文件提交至Git仓库，优化存储性能与开发流程。
 
-To get started with Keploy Cloud, you will need to install the Keploy Cloud Agent and authenticate your account.
+开始使用前，您需要安装 Keploy Cloud 代理并完成账户认证。
 
 import PlatformRequirements from '../concepts/platform-requirements.md'
 
 <PlatformRequirements/>
 
-## Installation 🛠️
+## 安装指南 🛠️
 
-Install and Validate the Keploy Cloud Agent by following the steps below:
+按以下步骤安装并验证 Keploy Cloud 代理：
 
 ```bash
 curl --silent -O -L https://keploy.io/ent/install.sh && source install.sh
 ```
 
-Enter your **API Key** when prompted, ask your org Admin to re-regenerate the API key in case you lose it.
+出现提示时输入**API密钥**，如密钥遗失请联系组织管理员重新生成。
 
-Once validated, you can start using Keploy Cloud to record-test.
+验证通过后，即可开始使用 Keploy Cloud 进行测试录制。
 
-### Need Help?
+### 获取帮助
 
-If you have any questions or need assistance, our support team is here to help. You can reach out to us through our support portal, Slack or by emailing us at hello[at]keploy.io.
+如有疑问或需要技术支持，您可以通过支持门户、Slack或发送邮件至hello[at]keploy.io联系我们的支持团队。

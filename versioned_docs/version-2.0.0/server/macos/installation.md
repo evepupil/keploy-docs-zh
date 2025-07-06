@@ -1,6 +1,6 @@
 ---
 id: installation
-title: MacOS Installation
+title: MacOS 安装指南
 sidebar_label: MacOS
 tags:
   - hello-world
@@ -21,110 +21,97 @@ keywords:
   - docker
 ---
 
-As of now there are two ways to use Keploy eBPF in MacOS, i.e. [using Colima](#using-colima)
-and [using Docker Desktop](#using-docker-desktop).
+目前有两种方式在 MacOS 上使用 Keploy eBPF：[使用 Colima](#使用-colima) 和 [使用 Docker Desktop](#使用-docker-desktop)。
 
-There are two ways to install Keploy eBPF in MacOS, you can use either use:
+在 MacOS 上安装 Keploy eBPF 有两种方法，您可以选择：
 
-1. [One-Click Install](#one-click-install-keploy).
-2. [Manual Setup](#using-docker-desktop).
+1. [一键安装](#一键安装-keploy)
+2. [手动设置](#使用-docker-desktop)
 
-## One click install Keploy.
+## 一键安装 Keploy
 
 ```shell
  curl --silent -O -L https://keploy.io/install.sh && source install.sh
 ```
 
-## Using Docker Desktop
+## 使用 Docker Desktop
 
-Note: To run Keploy on MacOS through [Docker](https://docs.docker.com/desktop/release-notes/#4252) the version must
-be `4.25.2` or above.
+注意：要通过 [Docker](https://docs.docker.com/desktop/release-notes/#4252) 在 MacOS 上运行 Keploy，版本必须为 `4.25.2` 或更高。
 
-### Creating Docker Volume & Network
+### 创建 Docker 卷和网络
 
-We need to create debug volume to run Keploy using Docker-Desktop:
+我们需要创建 debug 卷来使用 Docker-Desktop 运行 Keploy：
 
 ```shell
 docker volume create --driver local --opt type=debugfs --opt device=debugfs debugfs
 ```
 
-We need to create a custom network for Keploy since we are using the Docker, therefore application container would
-require `docker network` to act as the bridge between them.
+由于我们使用 Docker，需要为 Keploy 创建一个自定义网络，因此应用容器需要 `docker network` 作为它们之间的桥梁。
 
-If you're using a **docker-compose network**, replace `keploy-network` with your app's `docker_compose_network_name`
-below.
+如果您使用 **docker-compose 网络**，请将下面的 `keploy-network` 替换为您的应用的 `docker_compose_network_name`。
 
 ```shell
 docker network create keploy-network
 ```
 
-## Using Colima
+## 使用 Colima
 
-### Install Colima
+### 安装 Colima
 
-You need to have the latest version of `brew` installed on your system and then run this command from a terminal:
+您需要在系统上安装最新版本的 `brew`，然后在终端中运行以下命令：
 
 ```shell
 brew install colima
 ```
 
-Start Colima with defaults
+以默认配置启动 Colima
 
 ```shell
 colima start
 ```
 
-### Creating Alias
+### 创建别名
 
-We need to create a custom network for Keploy since we are using the Docker, therefore application container would
-require `docker network` to act as the bridge between them.
+由于我们使用 Docker，需要为 Keploy 创建一个自定义网络，因此应用容器需要 `docker network` 作为它们之间的桥梁。
 
-If you're using a **docker-compose network**, replace `keploy-network` with your app's `docker_compose_network_name`
-below.
+如果您使用 **docker-compose 网络**，请将下面的 `keploy-network` 替换为您的应用的 `docker_compose_network_name`。
 
 ```shell
 docker network create keploy-network
 ```
 
-### Recording Testcases and Data Mocks
+### 记录测试用例和数据模拟
 
-Here are few points to consider before recording!
+在开始记录前，请注意以下几点：
 
-- If you're running via **docker compose**, ensure to include the `<CONTAINER_NAME>` under your application service in
-  the docker-compose.yaml
-  file [like this](https://github.com/keploy/samples-python/blob/9d6cf40da2eb75f6e035bedfb30e54564785d5c9/flask-mongo/docker-compose.yml#L14)
-  .
+- 如果您通过 **docker compose** 运行，请确保在 docker-compose.yaml 文件中将 `<CONTAINER_NAME>` 包含在您的应用服务下，[参考示例](https://github.com/keploy/samples-python/blob/9d6cf40da2eb75f6e035bedfb30e54564785d5c9/flask-mongo/docker-compose.yml#L14)。
+- 如果您修改了网络名称，请将 `--network` 标志从 `keploy-network` 改为您的自定义网络名称。
+- `Docker_CMD_to_run_user_container` 指的是启动应用的 Docker **命令**。
 
-- Change the **network name** (`--network` flag) from `keploy-network` to your custom network if you changed it above.
-- `Docker_CMD_to_run_user_container` refers to the Docker **command for launching** the application.
-
-Utilize keploy to capture testcases. **Execute** the following command within your application's **root directory**.
+使用 keploy 捕获测试用例。在应用的**根目录**下**执行**以下命令。
 
 ```shell
 keploy record -c "docker run -p <appPort>:<hostPort> --name <containerName> --network keploy-network --rm <applicationImage>" --containerName "<containerName>" --delay 10
 ```
 
-Make API Calls using [Postman](https://www.postman.com/), or cURL commands.
+使用 [Postman](https://www.postman.com/) 或 cURL 命令发起 API 调用。
 
-Keploy will capture the API calls you've conducted, generating test suites comprising **testcases (KTests) and data
-mocks (KMocks)** in `YAML` format.
+Keploy 将捕获您进行的 API 调用，并生成包含**测试用例 (KTests) 和数据模拟 (KMocks)** 的测试套件，格式为 `YAML`。
 
-### Running Testcases
+### 运行测试用例
 
-Now, execute the testcases. Follow these steps in the **root directory** of your application.
+现在，执行测试用例。在应用的**根目录**下按照以下步骤操作。
 
-When using **docker-compose** to start the application, it's important to ensure that the `--containerName` parameter
-matches the container name in your `docker-compose.yaml` file.
+当使用 **docker-compose** 启动应用时，请确保 `--containerName` 参数与 `docker-compose.yaml` 文件中的容器名称匹配。
 
 ```shell
 keploy test -c "docker run -p <appPort>:<hostPort> --name <containerName> --network keploy-network --rm <applicationImage>" --containerName "<containerName>" --delay 20
 ```
 
-Voilà! 🧑🏻‍💻 We have the tests with data mocks running! 🐰🎉
+恭喜！ 🧑🏻‍💻 我们已经成功运行了包含数据模拟的测试！ 🐰🎉
 
-You'll be able to see the test-cases that ran with the results report on the console as well locally in the `testReport`
-directory.
+您可以在控制台以及本地的 `testReport` 目录中看到运行的测试用例及其结果报告。
 
-1. `delay` is required while using Test Mode.
-2. containerName is optional if you are using `Docker run` command, as the Container name would be present within the
-   command itself.
+注意事项：
+1. 使用测试模式时，必须设置 `delay` 参数。
+2. 如果使用 `Docker run` 命令，`containerName` 是可选的，因为容器名称会包含在命令中。

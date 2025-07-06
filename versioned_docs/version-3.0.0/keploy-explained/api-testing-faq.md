@@ -1,58 +1,58 @@
 ---
 id: api-testing-faq
-title: API Testing – Frequently Asked Questions
-sidebar_label: FAQs
-description: Answers to the most common questions about API testing with Keploy.
+title: API 测试 – 常见问题解答
+sidebar_label: 常见问题
+description: 关于使用 Keploy 进行 API 测试的最常见问题解答。
 tags:
-  - explanation
-  - faq
+  - 说明
+  - 常见问题
 ---
 
-# Got Questions? We’ve Got Answers! 🚀
+# 有问题？我们有答案！🚀
 
-Everything you want to know about API testing with Keploy—straightforward and no fluff.
+关于使用 Keploy 进行 API 测试的一切疑问——简洁明了，不绕弯子。
 
-### 1. What types of API tests can Keploy generate?
+### 1. Keploy 能生成哪些类型的 API 测试？
 
-Keploy automatically creates:
+Keploy 自动创建：
 
-- **Functional Tests:** CRUD operations, endpoint validation
-- **Edge Case Tests:** Invalid payloads, error responses
-- **Performance Tests:** Response time checks
-- **Security Tests:** Input sanitization, auth validation
-- **Dependency Tests:** Mocked external service calls
+- **功能测试：** CRUD 操作、端点验证
+- **边界情况测试：** 无效负载、错误响应
+- **性能测试：** 响应时间检查
+- **安全测试：** 输入清理、认证验证
+- **依赖测试：** 模拟外部服务调用
 
-### 2. How does Keploy handle authentication in API tests?
+### 2. Keploy 如何处理 API 测试中的认证？
 
-Keploy supports:
+Keploy 支持：
 
-- **Auth Types:** JWT, OAuth2, API Keys, Basic Auth
-- **Auto-Renewal:** Token refresh flows
-- **Test Isolation:** Separate auth contexts per test
-- **Security:** No raw credentials stored—uses environment variables
+- **认证类型：** JWT、OAuth2、API 密钥、基础认证
+- **自动续期：** 令牌刷新流程
+- **测试隔离：** 每个测试独立的认证上下文
+- **安全性：** 不存储原始凭证——使用环境变量
 
-### 3. What protocols and formats does Keploy support?
+### 3. Keploy 支持哪些协议和格式？
 
-| Protocol   | Formats          | Features          |
-| ---------- | ---------------- | ----------------- |
-| HTTP/HTTPS | JSON, XML        | Full support      |
-| gRPC       | Protocol Buffers | Code generation   |
-| WebSockets | JSON, Binary     | Session testing   |
-| GraphQL    | Query/Mutation   | Schema validation |
+| 协议       | 格式              | 特性               |
+| ---------- | ----------------- | ------------------ |
+| HTTP/HTTPS | JSON, XML         | 完全支持           |
+| gRPC       | Protocol Buffers  | 代码生成           |
+| WebSockets | JSON, 二进制      | 会话测试           |
+| GraphQL    | 查询/变更         | 模式验证           |
 
-### 4. How does test generation work for stateful APIs?
+### 4. 对有状态 API 的测试生成是如何工作的？
 
-Keploy handles stateful workflows by:
+Keploy 通过以下方式处理有状态工作流：
 
-1. Recording session cookies/headers
-2. Detecting data dependencies between calls
-3. Generating cleanup steps (teardown)
-4. Creating isolated test contexts
+1. 记录会话 cookies/headers
+2. 检测调用间的数据依赖
+3. 生成清理步骤（teardown）
+4. 创建隔离的测试上下文
 
-**Example:**  
+**示例：**  
 `POST /cart → GET /cart → POST /checkout → GET /order/{id}`
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这些能帮到你，如果还有其他问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

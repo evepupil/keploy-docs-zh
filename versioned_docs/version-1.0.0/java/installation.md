@@ -1,12 +1,12 @@
 ---
 id: installation
-title: Installation for Java (v1.0.0)
-description: Add the Keploy Server locally using Java.
+title: Java版安装指南 (v1.0.0)
+description: 使用Java在本地添加Keploy服务器。
 tags:
-  - developer-guide
+  - 开发者指南
   - java
-  - installation-guide
-  - server-setup
+  - 安装指南
+  - 服务器设置
 ---
 
 import ServerInstallation from '../server/server-installation.md'

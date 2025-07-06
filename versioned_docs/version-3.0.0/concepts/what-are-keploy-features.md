@@ -1,97 +1,80 @@
 ---
 id: what-are-keploy-features
-title: Keploy Features
-sidebar_label: Keploy Features
-description: Keploy platform automatically mocks application dependencies and safely replay writes. It does accurate noise detection and statistical de-duplication.
+title: Keploy 功能特性
+sidebar_label: Keploy 功能特性
+description: Keploy 平台能自动模拟应用依赖项并安全回放写入操作，具备精确的噪声检测和统计去重能力。
 tags:
-  - explanation
-  - keploy features
-  - features
-  - record replay test
-  - mock mutations
+  - 功能说明
+  - Keploy 特性
+  - 功能
+  - 记录回放测试
+  - 模拟变异
 keywords:
-  - test cases
-  - data dumps
-  - keploy features
-  - features
-  - record replay test
-  - mock mutations
+  - 测试用例
+  - 数据转储
+  - Keploy 特性
+  - 功能
+  - 记录回放测试
+  - 模拟变异
 ---
 
-## Key Features
+## 核心特性
 
-Keploy is built for a wide variety of use-cases, however, to kick things off, let's dive into some key features that
-make Keploy stand out from the rest of the testing platforms out there.
+Keploy 设计用于多样化场景，以下是使其在测试平台中脱颖而出的关键特性：
 
-## 🧩 Combined Test Coverage in CI/CD:
+## 🧩 CI/CD 中的组合测试覆盖率：
 
-#### Run Tests with Mocks Anywhere You Like
+#### 在任意环境运行带模拟的测试
 
-Keploy has [native integrations](/concepts/general-glossary.md#4-interoperability) with your unit-testing libraries
-like `go-test`, `jUnit`, `jest`, `pyTest`. Keploy gives combined test-coverage and can also be integrated in existing CI
-pipelines easily within `go-test`, `jUnit`, `jest`, `pyTest` workflows.
+Keploy 与单元测试库（如 `go-test`、`jUnit`、`jest`、`pyTest`）具有[原生集成](/concepts/general-glossary.md#4-interoperability），可提供组合测试覆盖率，并能轻松集成到现有 CI 流水线中。
 
-<img src="/docs/gif/replay-tc.gif?raw=true" alt="Keploy Integration with Testing Libraries"  width="80%"/>
+<img src="/docs/gif/replay-tc.gif?raw=true" alt="Keploy 与测试库集成" width="80%"/>
 
-Run tests with mocks anywhere you like—**locally on the CLI**, in your **CI pipeline**, or even across a **Kubernetes
-cluster**. It's testing wherever you want it! 🌍
+支持在**本地 CLI**、**CI 流水线**或**Kubernetes 集群**中运行带模拟的测试，真正实现随处测试！🌍
 
-## 📽️ Works for Complex API Flows
+## 📽️ 支持复杂 API 流程
 
-#### Can easily record complex API flows and replay them as tests and stubs.
+#### 轻松记录复杂 API 流程并回放为测试桩
 
-With Keploy, you can effortlessly record and replay intricate, distributed API flows as mocks and stubs. It's like
-having a time machine for your tests! ⏳
+Keploy 能无缝记录分布式 API 流程，并将其作为模拟桩回放，犹如为测试配备时间机器！⏳
 
-Keploy will record all API calls and their subsequent network traffic served by the application. You can utilize your
-favorite API management tools like [Postman](https://www.postman.com/) or
-even [Curl](https://curl.se/) to generate test cases.
+它会记录应用处理的所有 API 调用及后续网络流量。您可以使用 [Postman](https://www.postman.com/) 或 [Curl](https://curl.se/) 等工具生成测试用例。
 
-Keploy automatically [mocks](/concepts/general-glossary.md#1-api-data-mocking) network/external dependencies for **all
-CRUD operations** with correct responses.
+Keploy 自动为**所有 CRUD 操作**[模拟](/concepts/general-glossary.md#1-api-data-mocking)网络/外部依赖的正确响应。
 
-<img src="/docs/gif/record-replay.gif?raw=true" width="80%" alt="API Tools"/>
+<img src="/docs/gif/record-replay.gif?raw=true" width="80%" alt="API 工具"/>
 
-Once recorded, you have the flexibility to replay and simulate the same flow with mutations/write calls locally or
-within your CI environment without needing to connect to external services/dependencies.
+记录后，您可在本地或 CI 环境中回放带变异/写入调用的流程，无需连接外部服务。
 
-No more data dumps, stubs, or mocks for dependencies like DBs, internal services, or third-party services like twilio,
-shopify, or stripe are required anymore. 💡
+从此不再需要为数据库、内部服务或第三方服务（如 twilio、shopify、stripe）准备数据转储或模拟桩。💡
 
-<img src="/docs/img/mock-dependencies.png?raw=true" width="50%" alt="Mock Application Dependencies" style={{backgroundColor: '#EDEDED'}}/>
+<img src="/docs/img/mock-dependencies.png?raw=true" width="50%" alt="模拟应用依赖" style={{backgroundColor: '#EDEDED'}}/>
 
-[Idempotency](/concepts/general-glossary.md#2-idempotency) guarantees are also **not required** in the application.
-Multiple Reads after write operations can be replicated automatically too. 🔄
+应用中也**无需**[幂等性](/concepts/general-glossary.md#2-idempotency)保证，写入后的多次读取操作可自动复现。🔄
 
-[//]: # '<img src="/docs/img/record-api.gif?raw=true" width="80%" alt="API Tools"/>'
+## ♻️ 多用途模拟桩
 
-## ♻️ Multi-Purpose Mocks
+#### 复用模拟桩测试服务端
 
-#### Re-Use Mocks for Testing Servers
+Keploy 生成的依赖模拟桩也可作为服务端测试用例，适用于混沌测试、端到端测试、集成测试、API 及回归测试等场景。🌟
 
-Keploy generated dependency mocks can also be used as test case for the server. These tests can be used for use-cases
-like chaos testing, e2e testing, integration testing, api and regression testing. 🌟
+## 🌐 无代码 EBPF 插桩
 
-## 🌐 Code-less EBPF Instrumentation
+#### 网络层集成实现轻量化
 
-#### Network Layer Integration makes it Light-Weight
+Keploy 使用 EBPF 技术实现无代码、语言无关的轻量级集成。🍲
 
-Keploy uses EBPF like a secret sauce to make integration code-less, language agnostic, and oh-so-lightweight. 🍲
+## 🔍 精确噪声检测
 
-## 🔍 Accurate Noise Detection
+#### 消除断言中的随机字段
 
-#### Eliminates random fields for Assertion
+Keploy 能准确识别响应中的[噪声字段](/concepts/general-glossary.md#3-noisy-field)（如时间戳、随机值），确保测试高质量。
 
-Keploy identifies [noisy fields](/concepts/general-glossary.md#3-noisy-field) in the responses accurately like (
-timestamps, random values) to ensure high quality tests.
+当应用响应 API 时，Keploy 会用捕获的依赖模拟重新运行该请求。
 
-As the application serves the API, Keploy re-run that API request with the captured dependency mocks.
+它会标记 API 响应中的差异字段为随机/噪声字段。🧐✅
 
-[//]: # '<img src="/img/noise-filtration.png?raw=true" alt="Keploy noise filtration"/>'
-
-Keploy identifies differences in API responses, marking them as random/noisy fields. 🧐✅
-
-Hope this helps you out, if you still have any questions, reach out to us .
+如有其他问题，欢迎联系我们。
 
 import GetSupport from '../concepts/support.md'
 

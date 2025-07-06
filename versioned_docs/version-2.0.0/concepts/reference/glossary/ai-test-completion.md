@@ -1,101 +1,100 @@
 ---
 id: ai-test-completion
-title: AI Test Completion Explained
-sidebar_label: AI Test Completion
-description: Learn about AI-driven test completion, its advantages, disadvantages, and FAQs that address common queries.
+title: AI测试补全详解
+sidebar_label: AI测试补全
+description: 了解AI驱动的测试补全技术，包括其优势、劣势及常见问题解答。
 tags:
-  - AI
-  - testing
+  - 人工智能
+  - 测试
 keywords:
-  - AI test completion
-  - artificial intelligence testing
-  - machine learning in testing
-  - AI-driven testing
+  - AI测试补全
+  - 人工智能测试
+  - 机器学习测试
+  - AI驱动测试
 ---
 
-AI Test Completion refers to leveraging LLM's, and GenAI to either automate and assist in the creation or execution and maintenance of test cases.
-It is used to enhance testing efficiency, coverage, and accuracy by leveraging AI to predict and generate tests which can help in increasing code coverage.
+AI测试补全是指利用大语言模型(LLM)和生成式AI(GENAI)来自动化辅助创建、执行和维护测试用例的技术。该技术通过AI预测和生成测试用例来提升测试效率、覆盖率和准确性，从而帮助提高代码覆盖率。
 
-## How does testing with AI works ?
+## AI测试如何工作？
 
-Typically using AI for test involves the multiple steps, such as:
+典型的AI测试流程包含以下步骤：
 
-1. **Training Phase**: AI models are trained on historical test data including past test cases, outcomes, and behavior of application.
+1. **训练阶段**：AI模型基于历史测试数据进行训练，包括过往测试用例、测试结果和应用程序行为。
 
-2. **Prediction**: The AI analyze patterns in the source codebase to predict potential test scenarios as well as edge scenarios and then generate test cases automatically.
+2. **预测阶段**：AI分析源代码库中的模式，预测潜在测试场景及边界情况，自动生成测试用例。
 
-3. **Feedback**: Generated test cases are validated against the system under test and feedback from these executions is used to refine and improve the AI models.
+3. **反馈阶段**：生成的测试用例在被测系统中验证执行，执行反馈用于优化和改进AI模型。
 
-## What are Advantages of AI Tests ?
+## AI测试的优势
 
-- **Increased Efficiency**: Automates test case generation and execution, reducing manual effort and time spent on repetitive tasks.
-- **Enhanced Coverage**: AI can identify edge cases and scenarios that may be overlooked by human testers, improving test coverage.
-- **Improved Accuracy**: Reduces human error in testing by applying consistent and objective criteria to test case creation and execution.
-- **Cost-Effective**: Saves costs associated with manual testing efforts and allows testers to focus on more complex and critical tasks.
-- **Scalability**: It can easily scales to handle large and complex software systems, accommodating rapid changes and updates.
+- **效率提升**：自动化生成和执行测试用例，减少重复性工作的手动操作时间
+- **覆盖增强**：能发现人工测试可能遗漏的边界场景，提高测试覆盖率
+- **精度提高**：通过统一客观的标准创建和执行测试，减少人为错误
+- **成本效益**：节省人工测试成本，让测试人员专注更复杂的关键任务
+- **扩展性强**：可轻松扩展至大型复杂系统，适应快速变更和更新
 
-## What are disadvantages of AI Tests ?
+## AI测试的劣势
 
-- **Dependency on Data Quality**: AI models heavily rely on the quality and relevance of training data. Poor data quality can lead to inaccurate predictions and test cases.
-- **Initial Setup Complexity**: Setting up AI models and integrating them into existing testing frameworks can be complex and time-consuming.
-- **Maintenance Overhead**: Requires ongoing maintenance and updates to AI models as software systems evolve and new test scenarios emerge.
-- **Lack of Human Judgment**: AI may struggle with subjective aspects of testing that require human judgment and intuition.
-- **Security Concerns**: Introducing AI into testing processes may raise security concerns related to data privacy and integrity.
-- **Integration Challenges**: Integrating AI-driven testing tools with existing CI/CD pipelines and workflows can present integration challenges.
+- **数据质量依赖**：模型效果高度依赖训练数据的质量和相关性，劣质数据会导致预测失准
+- **初始配置复杂**：AI模型设置及与现有测试框架集成过程复杂耗时
+- **维护成本高**：需持续维护更新模型以适应系统演进和新测试场景
+- **缺乏人类判断**：难以处理需要主观判断的测试场景
+- **安全隐患**：可能引发数据隐私和完整性方面的安全问题
+- **集成挑战**：与现有CI/CD管道和工作流集成存在技术难度
 
-## Why Keploy AI based test cases are superior?
+## Keploy AI测试用例的优越性
 
-Keploy's unit test generation feature leverages the power of LLMs to propose test cases that cover various code paths and edge cases. The generated tests are then validated and integrated into the existing test suite, aiming to increase code coverage and ensure the correctness of the code. Keploy's UTGen is designed in such a way which can reduce the manual effort required in writing unit tests, providing developers with a powerful tool to enhance their testing workflows.
+Keploy的单元测试生成功能利用LLM的强大能力，提出覆盖多代码路径和边界场景的测试用例。生成的测试经验证后集成到现有测试套件中，旨在提高代码覆盖率并确保代码正确性。Keploy UTGen的设计能显著减少编写单元测试的手动工作量，为开发者提供增强测试流程的强力工具。
 
-### Benefits of using Keploy's AI-based testing
+### Keploy AI测试的优势
 
-By using Keploy’s AI-based testing :
+使用Keploy AI测试可带来：
 
-- Developers: Save time and reduce the effort required for writing unit and integration tests.
-- QA Teams: Achieve higher test coverage and more accurate testing results.
-- Organizations: Improve overall software quality and reduce time-to-market.
+- **开发者**：节省编写单元/集成测试的时间和精力
+- **QA团队**：获得更高测试覆盖率和更精准的测试结果
+- **企业**：提升整体软件质量，缩短上市时间
 
-## Conclusion
+## 结论
 
-AI Test Completion represents a significant advancement in software testing, leveraging AI and ML to automate and improve the testing process. By automating test case generation, predicting potential scenarios, and enhancing test coverage, AI Test Completion enables teams to achieve higher efficiency, accuracy, and scalability in their testing efforts. However, challenges such as data quality, setup complexity, and integration issues must be addressed to fully leverage the benefits of AI-driven testing. Integrating AI Test Completion into testing workflows can empower teams to deliver robust software solutions that meet user expectations and business requirements effectively.
+AI测试补全代表了软件测试领域的重大进步，通过AI和ML技术实现测试流程的自动化改进。该技术能自动生成测试用例、预测潜在场景并增强测试覆盖率，帮助团队实现更高效、精准和可扩展的测试。但要充分发挥AI驱动测试的优势，仍需解决数据质量、配置复杂性和集成问题等挑战。将AI测试补全融入测试工作流，能使团队更有效地交付符合用户期望和业务需求的稳健软件解决方案。
 
-## FAQ
+## 常见问题
 
-### How does AI test completion work?
+### AI测试补全如何工作？
 
-By analyzing the application's code, user behavior, and existing test cases to predict potential issues and generate new test cases. It uses large language models to identify patterns and optimize the testing process.
+通过分析应用程序代码、用户行为和现有测试用例，预测潜在问题并生成新测试用例。利用大语言模型识别模式并优化测试流程。
 
-### What are the benefits of AI test completion?\*\*
+### AI测试补全有哪些优势？
 
-The user usually have increased test coverage, faster test execution, reduced human error, improved defect detection, and more efficient use of testing resources. With AI, tests can also adapt to changes in the application, ensuring continuous quality assurance.
+通常包括：提高测试覆盖率、加速测试执行、减少人为错误、改进缺陷检测、优化测试资源利用。AI测试还能自适应应用变更，确保持续质量保障。
 
-### Can AI test completion replace manual testing?
+### AI测试能取代人工测试吗？
 
-AI test completion is not a replacement for manual testing but a complementary tool. It can handle repetitive and complex tasks, allowing human testers to focus on exploratory testing, critical thinking, and understanding user experience.
+AI测试是人工测试的补充而非替代。它可以处理重复复杂任务，让测试人员专注于探索性测试、关键思维和用户体验分析。
 
-### What are the limitations of AI test completion?\*\*
+### AI测试补全的局限性？
 
-Limitations include the need for high-quality data, the potential for false positives or negatives, the complexity of integrating AI tools with existing systems, and the requirement for skilled personnel to manage and interpret AI outputs.
+包括：需要高质量数据、可能存在误报/漏报、与现有系统集成复杂、需要专业人员管理和解读AI输出。
 
-### How is AI test completion different from traditional testing methods?\*\*
+### AI测试与传统测试的区别？
 
-Traditional testing methods rely heavily on human effort to create and execute test cases, whereas AI test completion automates these processes using algorithms. AI can analyze vast amounts of data quickly, adapt to changes, and continuously learn from new information.
+传统测试主要依赖人工创建执行用例，而AI测试通过算法自动化这些流程。AI能快速分析海量数据，适应变更并持续学习新信息。
 
-### What are some popular AI testing tools?
+### 主流AI测试工具有哪些？
 
-Popular tools include Testim, Applitools, Functionize, TestCraft, and mabl. These tools offer features like autonomous test case generation, visual validation, integration with CI/CD pipelines, and AI-driven test maintenance.
+包括Testim、Applitools、Functionize、TestCraft和mabl等。这些工具提供自动测试生成、可视化验证、CI/CD集成和AI驱动测试维护等功能。
 
-### What is Keploy's unit test generation (UTGen) feature?
+### Keploy的单元测试生成(UTGen)功能？
 
-Keploy's UTGen uses Large Language Models (LLMs) to automatically generate unit test cases. These test cases cover various code paths and edge cases, significantly reducing the manual effort required in writing unit tests.
+Keploy UTGen利用大语言模型(LLM)自动生成单元测试用例，覆盖多代码路径和边界场景，大幅减少编写单元测试的手动工作量。
 
-### How are the generated tests validated and integrated?
+### 生成测试如何验证和集成？
 
-The proposed test cases are validated to ensure they accurately test the intended functionality. Once validated, these tests are integrated into the existing test suite, enhancing the overall testing process.
+生成的测试用例需经验证确保功能覆盖准确，验证通过后集成到现有测试套件中增强整体测试流程。
 
-### What are the benefits of using Keploy's AI-based testing?
+### 使用Keploy AI测试的好处？
 
-- _Increased Code Coverage_: By generating tests that cover a wide range of scenarios, Keploy ensures higher code coverage.
-- _Reduced Manual Effort_: Automating the test generation process saves significant time and effort for developers.
-- _Enhanced Accuracy_: AI-generated tests can detect edge cases and potential issues that might be missed by manual testing.
-- _Continuous Improvement_: Keploy continuously learns from new data and improves its test generation capabilities.
+- _提高代码覆盖率_：生成覆盖广泛场景的测试用例
+- _减少手动工作_：自动化生成节省大量开发时间
+- _增强准确性_：能发现人工测试可能遗漏的边界问题
+- _持续优化_：通过新数据不断学习改进测试生成能力

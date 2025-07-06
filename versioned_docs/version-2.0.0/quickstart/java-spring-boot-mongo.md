@@ -1,56 +1,55 @@
 ---
 id: java-spring-boot-mongo
-title: Sample Rest API with Spring-Boot and MongoDB
-sidebar_label: Potion App (MongoDb)
-description: This CRUD Application is about managing the data of Magical Potions in the Keploy inventory.
+title: 使用Spring-Boot和MongoDB构建的示例REST API
+sidebar_label: 魔药应用(MongoDb)
+description: 这个CRUD应用用于管理Keploy库存中魔法药水的数据。
 tags:
   - java
   - spring-jpa
-  - java-framework
-  - quickstart
-  - samples
-  - examples
-  - tutorial
+  - java框架
+  - 快速入门
+  - 示例
+  - 教程
   - mongodb
 keyword:
   - MongoDB
   - Maven
-  - Springboot Framework
+  - Springboot框架
   - Postgres
   - SQL
   - Java
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
   - Junit
 ---
 
-## Introduction
+## 简介
 
-🪄 Dive into the world of REST API and see how seamlessly Keploy integrates with [Spring-Boot](https://github.com/spring-projects/spring-boot) and MongoDB Buckle up, it's gonna be a fun ride! 🎢
+🪄 深入REST API的世界，看看Keploy如何无缝集成[Spring-Boot](https://github.com/spring-projects/spring-boot)和MongoDB。系好安全带，这将是一段有趣的旅程！🎢
 
-## Pre-Requisite 🛠️
+## 先决条件 🛠️
 
-- Install JDK and add JAVA_HOME in environment variable.
-- Install [Maven](https://maven.apache.org/install.html)
-- Install [Docker](https://docs.docker.com/engine/install/)
+- 安装JDK并设置JAVA_HOME环境变量
+- 安装[Maven](https://maven.apache.org/install.html)
+- 安装[Docker](https://docs.docker.com/engine/install/)
 
-## Get Started! 🎬
+## 开始吧！🎬
 
-### Set up the Mongo database
+### 设置Mongo数据库
 
-Create a docker network -
+创建docker网络 -
 
 ```bash
 docker network create backend
 ```
 
-Start the MongoDB instance -
+启动MongoDB实例 -
 
 ```bash
 docker run -p 27017:27017 --name spring-boot-mongo --network backend mongo
 ```
 
-### Clone the sample REST API CRUD app 🧪
+### 克隆示例REST API CRUD应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-java.git && cd samples-java/spring-boot-mongo
@@ -58,17 +57,17 @@ mvn wrapper:wrapper
 ./mvnw clean install
 ```
 
-> **Note**: For Windows, use `mvnw.cmd clean install`
+> **注意**：Windows用户请使用`mvnw.cmd clean install`
 
-## Install Keploy 📥
+## 安装Keploy 📥
 
-First things first, If you are using WSL on windows then use below to start wsl in the user's home directory:
+首先，如果您在Windows上使用WSL，请使用以下命令在用户主目录启动wsl：
 
 ```bash
 wsl ~
 ```
 
-Alright, let's equip ourselves with the **latest Keploy binary**:
+好了，让我们获取**最新版Keploy二进制文件**：
 
 ```bash
 curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz -C /tmp
@@ -76,95 +75,95 @@ curl --silent --location "https://github.com/keploy/keploy/releases/latest/downl
 sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin && keploy
 ```
 
-If everything goes right, your screen should look a bit like this:
+如果一切顺利，您的屏幕应该会显示类似这样的内容：
 
-<img src="/docs/img/code-snippets/install-keploy-logs.png" alt="Test Case Generator" width="50%" />
+<img src="/docs/img/code-snippets/install-keploy-logs.png" alt="测试用例生成器" width="50%" />
 
-## Run Application
+## 运行应用
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (mongoDB) chill on Docker. Ready? Let's get the party started!🎉
+我们将在Linux上直接运行示例应用，但为了让事情更有趣，我们会让数据库(MongoDB)运行在Docker上。准备好了吗？让我们开始吧！🎉
 
-### 📼 Roll the Tape - Recording Time!
+### 📼 开始录制！
 
-Ready, set, record! Here's how:
+准备开始录制：
 
 ```bash
 keploy record -c "./mvnw spring-boot:run"
 ```
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+好了，魔法师！应用已经启动运行，让我们创建一些测试用例。魔法咒语？就是发送一些API请求！可以使用Postman、Hoppscotch或经典的curl - 选择您的魔法杖吧。
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+要生成测试用例，我们只需要**发送一些API请求**。
 
-**1. Make a POST request**
+**1. 发送POST请求**
 
 ```bash
 curl --location 'http://localhost:8080/potions' \
 --header 'Content-Type: application/json' \
 --data '    {
-      "name": "Strength Potion v2",
-      "description": "Enhances the drinker'\''s physical strength temporarily.",
+      "name": "力量药水 v2",
+      "description": "暂时增强饮用者的体力。",
       "bottle": 3,
       "quantity": 150
   }'
 ```
 
-**2. Make a GET request**
+**2. 发送GET请求**
 
 ```bash
 curl --location --request GET 'http://localhost:8080/potions'
 ```
 
-> Take a note of the `id` and replace the `UUID_OF_POTION` with the `id` in the upcoming API requests!
+> 记下`id`并在后续API请求中用这个`id`替换`UUID_OF_POTION`！
 
-**3. Make a PUT request**
+**3. 发送PUT请求**
 
 ```bash
   curl --location --request PUT 'http://localhost:8080/potions/UUID_OF_POTION' \
   --header 'Content-Type: application/json' \
   --data '    {
-        "name": "Strength Potion",
-        "description": "Enhances the drinker'\''s physical strength temporarily.",
+        "name": "力量药水",
+        "description": "暂时增强饮用者的体力。",
         "bottle": 5,
         "quantity": 200
     }'
 ```
 
-**4. Make a GET request**
+**4. 发送GET请求**
 
 ```bash
 curl --location --request GET 'http://localhost:8080/potions/UUID_OF_POTION'
 ```
 
-**5. Make a DELETE request**
+**5. 发送DELETE请求**
 
 ```bash
 curl --location --request DELETE 'http://localhost:8080/potions/UUID_OF_POTION'
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-x.yml` and `mocks.yml`.
+给自己一个鼓励！通过这个简单的魔法，您已经创建了带有模拟数据的测试用例！查看**Keploy目录**，您会在`test-x.yml`和`mocks.yml`中找到您的工作成果。
 
-Want to see if everything works as expected?
+想看看一切是否如预期般工作吗？
 
-### Run Tests 🏁
+### 运行测试 🏁
 
-Ready to put your spells to the test?
+准备好测试您的魔法了吗？
 
 ```bash
 keploy test -c "./mvnw spring-boot:run" --delay 15
 ```
 
-This will run the tests and generate the report in the `Keploy/reports` directory in the CWD.
+这将在当前工作目录的`Keploy/reports`目录中运行测试并生成报告。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. We provided you with some data in [potions.json](https://github.com/keploy/samples-java/blob/main/spring-boot-mongo/potions.json). Run the tests again and see the magic unfold! ✨👩‍💻👨‍💻✨
+最后想说的是？深入探索！尝试不同的API调用，修改`mocks.yml`中的数据库响应，或者调整`test-x.yml`中的请求或响应。我们在[potions.json](https://github.com/keploy/samples-java/blob/main/spring-boot-mongo/potions.json)中提供了一些数据。再次运行测试，见证魔法发生！✨👩‍💻👨‍💻✨
 
-## Wrapping it up 🎉
+## 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜您完成这段旅程！您已经见识了Keploy的强大功能，锻炼了编码能力，还获得了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果还有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

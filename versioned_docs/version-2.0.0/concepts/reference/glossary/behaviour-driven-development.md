@@ -1,204 +1,193 @@
 ---
 id: behaviour-driven-development
-title: "Behavior Driven Development: Beginner's Guide to Collaboration"
-sidebar_label: Behaviour Driven Development
-description: Learn how BDD bridges the gap between developers, testers, and business stakeholders with practical examples, tools, and techniques.
-seoTitle: "Behavior Driven Development: Beginner's Guide to Collaboration"
-seoDescription: Learn how BDD bridges the gap between developers, testers, and business stakeholders with practical examples, tools, and techniques.
+title: "行为驱动开发：协作入门指南"
+sidebar_label: 行为驱动开发
+description: 通过实际案例、工具和技术，了解BDD如何弥合开发者、测试人员和业务干系人之间的鸿沟。
+seoTitle: "行为驱动开发：协作入门指南"
+seoDescription: 通过实际案例、工具和技术，了解BDD如何弥合开发者、测试人员和业务干系人之间的鸿沟。
 tags:
-  - explanation
-  - Glossary
+  - 概念解析
+  - 术语表
 keywords:
   - API
   - BDD
-  - Behavior Driven Development
-  - Behavior Driven Development Tools
-  - BDD Testing Tools
-  - Behavior Driven Testing
-  - Test Automation
-  - Software Testing
-  - Software Testing Best Practices
+  - 行为驱动开发
+  - 行为驱动开发工具
+  - BDD测试工具
+  - 行为驱动测试
+  - 测试自动化
+  - 软件测试
+  - 软件测试最佳实践
 ---
 
-## What is Behavior Driven Development (BDD)?
+## 什么是行为驱动开发(BDD)？
 
-Behavior Driven Development (BDD) is an Agile methodology that emphasizes collaboration among developers, testers, and business stakeholders. It ensures that software meets users' needs by writing tests that describe the desired behavior in plain language. This approach encourages clear communication and shared understanding of software requirements, ultimately leading to better quality and more maintainable code.
+行为驱动开发(BDD)是一种敏捷方法论，强调开发者、测试人员和业务干系人之间的协作。它通过用自然语言编写描述预期行为的测试，确保软件满足用户需求。这种方法促进了清晰的沟通和对软件需求的共同理解，最终产出更高质量、更易维护的代码。
 
-![Behavior Driven Development (BDD)](https://images.spiceworks.com/wp-content/uploads/2022/09/29100419/BDD-Development-Process.png)
+![行为驱动开发(BDD)](https://images.spiceworks.com/wp-content/uploads/2022/09/29100419/BDD-Development-Process.png)
 
-## BDD Fundamentals
+## BDD基础要素
 
-1. **Collaboration and Communication:**
+1. **协作与沟通：**
+   - BDD促进开发者、测试人员和业务干系人的紧密协作
+   - 开放的沟通确保所有人对需求和预期行为有共同理解
 
-   - BDD fosters close collaboration among developers, testers, and business stakeholders.
-   - Open communication ensures that everyone has a shared understanding of the requirements and desired behavior.
+2. **用户故事：**
+   - BDD从最终用户视角编写的用户故事开始，典型格式为：  
+     "作为[角色]，我想要[功能]，以便[获得价值]"
 
-2. **User Stories:**
+3. **场景与示例：**
+   - 详细场景使用Given-When-Then格式说明软件的特定行为
+   - 这些场景作为明确的验收标准，定义用户故事何时完成
 
-   - BDD starts with user stories written from the perspective of the end user, typically formatted as:  
-     "As a [role], I want [feature] so that [benefit]."
+4. **Gherkin语言：**
+   - BDD采用Gherkin这种简单、人类可读的语法，使用Given/When/Then/And/But等关键词构建场景
 
-3. **Scenarios and Examples:**
+5. **验收标准：**
+   - 场景同时作为验收标准，确保所有功能需求都可测试且定义明确
 
-   - Detailed scenarios illustrate specific behaviors of the software using the Given-When-Then format.
-   - These scenarios serve as clear acceptance criteria that define when a user story is complete.
+6. **自动化测试：**
+   - BDD场景的自动化提供对软件行为的快速反馈，确保开发周期中的持续验证
 
-4. **Gherkin Language:**
+## BDD技术方法
 
-   - BDD employs Gherkin, a simple, human-readable syntax that uses keywords like Given, When, Then, And, and But to structure scenarios.
+1. **三友会会议：**
+   - 开发者、测试人员和业务分析师共同参与的协作会议，讨论和完善用户故事与场景，确保团队对齐
 
-5. **Acceptance Criteria:**
+2. **示例映射：**
+   - 将用户故事分解为具体示例的技术，帮助识别边界情况并澄清需求
 
-   - Scenarios double as acceptance criteria, ensuring all functional requirements are testable and clearly defined.
-
-6. **Automated Testing:**
-   - Automation of BDD scenarios provides rapid feedback on software behavior and ensures continuous validation throughout the development cycle.
-
-## Techniques of BDD
-
-1. **Three Amigos Meetings:**
-
-   - A collaborative session involving a developer, tester, and business analyst to discuss and refine user stories and scenarios, ensuring alignment across teams.
-
-2. **Example Mapping:**
-
-   - A technique to break down user stories into concrete examples, helping to identify edge cases and clarify requirements.
-
-3. **Writing Gherkin Scenarios:**
-
-   - Scenarios are written in Gherkin syntax. For example:
+3. **编写Gherkin场景：**
+   - 用Gherkin语法编写场景。例如：
      ```gherkin
-     Scenario: User logs in successfully
-       Given the user is on the login page
-       When the user enters valid credentials
-       Then the user should be redirected to the dashboard
+     Scenario: 用户成功登录
+       Given 用户位于登录页面
+       When 用户输入有效凭证
+       Then 用户应被重定向到仪表盘
      ```
 
-4. **Automating Scenarios with BDD Tools:**
-
-   - Tools like Cucumber, SpecFlow, Behave, JBehave, Gauge, and Reqnroll parse Gherkin syntax and link it to executable test code. For example, using Cucumber with Java:
+4. **使用BDD工具自动化场景：**
+   - Cucumber/SpecFlow/Behave等工具解析Gherkin语法并关联到可执行测试代码。例如使用Cucumber+Java：
 
      ```java
-     @Given("the user is on the login page")
+     @Given("用户位于登录页面")
      public void userIsOnLoginPage() {
-         // Navigate to login page
+         // 导航到登录页
      }
 
-     @When("the user enters valid credentials")
+     @When("用户输入有效凭证")
      public void userEntersValidCredentials() {
-         // Enter credentials
+         // 输入凭证
      }
 
-     @Then("the user should be redirected to the dashboard")
+     @Then("用户应被重定向到仪表盘")
      public void userIsRedirectedToDashboard() {
-         // Verify dashboard redirection
+         // 验证重定向
      }
      ```
 
-5. **Continuous Integration (CI) and Continuous Delivery (CD):**
+5. **持续集成与交付：**
+   - 将BDD场景集成到CI/CD流水线，每次构建时运行自动化测试，确保新变更不破坏现有功能
 
-   - BDD scenarios are integrated into CI/CD pipelines to run automated tests with every build, ensuring that new changes do not break existing functionality.
+6. **活文档：**
+   - BDD场景作为随系统演进的实时文档，对技术和非技术干系人都易于理解
 
-6. **Living Documentation:**
+7. **重构：**
+   - 定期审查和重构场景及测试代码，保持清晰度并减少冗余，同时让测试聚焦行为而非实现细节
 
-   - BDD scenarios act as up-to-date documentation that evolves with the system, making it accessible and understandable to both technical and non-technical stakeholders.
+## BDD优势
 
-7. **Refactoring:**
-   - Regular review and refactoring of scenarios and test code help maintain clarity and reduce redundancy while keeping tests focused on behavior rather than implementation details.
+- **提升沟通效率：**  
+  促进团队成员共识，确保软件符合用户预期
+- **加强协作：**  
+  鼓励跨职能协作，使开发与业务目标对齐
+- **增强可测试性：**  
+  自然语言编写的场景更易理解、维护和自动化
+- **建立信心：**  
+  确保软件行为符合预期，减少缺陷并提升整体质量
 
-## Benefits of BDD
+## BDD测试工具
 
-- **Improved Communication:**  
-  Facilitates a shared understanding among all team members, ensuring the software meets user expectations.
-- **Increased Collaboration:**  
-  Encourages cross-functional teamwork, aligning development with business goals.
-- **Enhanced Testability:**  
-  Scenarios written in plain language are easier to understand, maintain, and automate.
-- **Increased Confidence:**  
-  Provides assurance that the software behaves as expected, reducing defects and enhancing overall quality.
+主流BDD工具包括：
 
-## BDD Testing Tools
+- **Cucumber：**  
+  开源工具，使用Gherkin语法，支持Java/Ruby/JavaScript等多语言
 
-Popular BDD tools include:
+- **Behave：**  
+  基于Python的BDD工具，利用Gherkin语法创建测试场景
 
-- **Cucumber:**  
-  An open-source tool that uses Gherkin syntax, supporting multiple programming languages such as Java, Ruby, and JavaScript.
+- **JBehave：**  
+  Java工具，可与JUnit/TestNG等框架集成
 
-- **Behave:**  
-  A Python-based BDD tool that leverages Gherkin syntax to create test scenarios.
+- **SpecFlow：**  
+  .NET平台的BDD工具，集成Microsoft Studio
 
-- **JBehave:**  
-  A Java-based tool that integrates with frameworks like JUnit and TestNG.
+- **Gauge：**  
+  开源工具，使用Markdown语法，支持多语言
 
-- **SpecFlow:**  
-  A BDD tool for .NET that uses Gherkin syntax and integrates with Microsoft Studio.
+- **Reqnroll：**  
+  .NET平台的Cucumber风格框架
 
-- **Gauge:**  
-  An open-source tool that uses a markdown-based syntax and supports multiple languages.
+## BDD实践要点
 
-- **Reqnroll:**  
-  A Cucumber-style framework for .NET that facilitates BDD testing.
+1. **非银弹方案：**  
+   BDD虽能改善沟通和可测试性，但并非万能解药
 
-## Points to Remember When Using BDD
+2. **团队共识至关重要：**  
+   从开发者到业务分析师的全员投入是成功关键
 
-1. **BDD is Not a Silver Bullet:**  
-   While BDD improves communication and testability, it is not a one-size-fits-all solution.
+3. **存在学习曲线：**  
+   采用BDD需要时间投入和培训，但长期收益显著
 
-2. **Team Buy-In is Essential:**  
-   BDD works best when all stakeholders—from developers to business analysts—are fully engaged.
+4. **互补而非替代：**  
+   应结合单元测试/集成测试等其他方法确保软件质量
 
-3. **Learning Curve:**  
-   Adopting BDD requires time and training, but the long-term benefits make the investment worthwhile.
+## TDD与BDD对比表
 
-4. **Complementary, Not a Replacement:**  
-   BDD should be used alongside other testing methods such as unit and integration testing to ensure comprehensive software quality.
-
-## TDD vs. BDD Comparison Table
-
-| Aspect               | Test Driven Development (TDD)           | Behavior Driven Development (BDD)                                   |
-| -------------------- | --------------------------------------- | ------------------------------------------------------------------- |
-| **Primary Focus**    | Unit testing and code correctness       | Collaboration and end-user behavior                                 |
-| **Tests Written By** | Developers                              | Developers, testers, and business stakeholders                      |
-| **Test Language**    | Programming language of the application | Natural language (Gherkin syntax)                                   |
-| **Testing Levels**   | Primarily unit testing                  | Acceptance, integration, and system testing                         |
-| **Tools**            | JUnit, pytest, NUnit                    | Cucumber, SpecFlow, Behave                                          |
-| **Documentation**    | Code-focused tests                      | Plain language scenarios accessible to non-technical stakeholders   |
-| **Target Audience**  | Primarily developers                    | Both technical and non-technical team members                       |
-| **Workflow Cycle**   | Write tests, implement code, refactor   | Define behavior, write scenarios, automate tests, validate behavior |
-| **Emphasis**         | Code correctness                        | Meeting user expectations and business goals                        |
-| **Collaboration**    | Within the development team             | Across all stakeholders                                             |
+| 维度                | 测试驱动开发(TDD)               | 行为驱动开发(BDD)                                   |
+| ------------------- | ------------------------------ | ------------------------------------------------- |
+| **主要焦点**        | 单元测试与代码正确性           | 协作与最终用户行为                                |
+| **测试编写者**      | 开发者                         | 开发者/测试人员/业务干系人                       |
+| **测试语言**        | 应用编程语言                   | 自然语言(Gherkin语法)                            |
+| **测试层级**        | 主要是单元测试                 | 验收/集成/系统测试                               |
+| **工具**            | JUnit/pytest/NUnit             | Cucumber/SpecFlow/Behave                         |
+| **文档**            | 代码导向的测试                 | 非技术人员也可理解的场景描述                     |
+| **目标受众**        | 主要是开发者                   | 技术与非技术成员                                 |
+| **工作流周期**      | 写测试→写代码→重构              | 定义行为→写场景→自动化→验证                       |
+| **核心强调**        | 代码正确性                     | 满足用户预期和业务目标                           |
+| **协作范围**        | 开发团队内部                   | 跨所有干系人                                     |
 
 ![BDD vs. TDD](https://images.ctfassets.net/vrc8wif0t20g/6YGzPeOoQlewSQ07sX7a9P/6815d8dffd1523e43040b17e78a39f73/BDD_vs._TDD__Differences_Explained.png)
 
-## Conclusion
+## 总结
 
-Behavior Driven Development (BDD) is a collaborative Agile methodology that improves communication among developers, testers, and business stakeholders. By focusing on user stories and scenarios written in plain language, BDD ensures that software meets real user needs and business objectives. With the support of BDD tools like Cucumber, Behave, and SpecFlow, teams can automate tests, integrate them into CI/CD pipelines, and maintain living documentation of system behavior. Although BDD requires commitment and may involve a learning curve, its benefits in improving collaboration, testability, and software quality make it a valuable addition to modern development practices.
+行为驱动开发(BDD)是一种促进开发者、测试人员和业务干系人协作的敏捷方法。通过聚焦自然语言编写的用户故事和场景，BDD确保软件满足真实用户需求和业务目标。借助Cucumber/Behave/SpecFlow等工具，团队可以自动化测试、集成到CI/CD流水线，并维护系统行为的活文档。虽然BDD需要团队投入且存在学习曲线，但其在提升协作效率、可测试性和软件质量方面的优势，使其成为现代开发实践中的重要组成部分。
 
-## FAQs about Behavior Driven Development (BDD)
+## 关于行为驱动开发(BDD)的常见问题
 
-### 1. What is Behavior Driven Development (BDD)?
+### 1. 什么是行为驱动开发(BDD)？
 
-BDD is an Agile methodology that uses plain language to describe the desired behavior of software, promoting collaboration among developers, testers, and business stakeholders.
+BDD是一种使用自然语言描述软件预期行为的敏捷方法，促进开发者、测试人员和业务干系人之间的协作。
 
-### 2. What are the key principles of BDD?
+### 2. BDD的核心原则是什么？
 
-- **Collaboration:** Engaging all stakeholders.
-- **User Stories and Scenarios:** Defining requirements from the user’s perspective.
-- **Gherkin Language:** Using simple syntax to structure scenarios.
-- **Automated Testing:** Validating behavior continuously.
+- **协作：** 所有干系人参与
+- **用户故事与场景：** 从用户视角定义需求
+- **Gherkin语言：** 用简单语法构建场景
+- **自动化测试：** 持续验证行为
 
-### 3. What are the benefits of BDD?
+### 3. BDD有哪些优势？
 
-BDD enhances communication, increases collaboration, improves testability, and builds confidence in software quality by ensuring it meets user needs.
+BDD能提升沟通效率、加强协作、改善可测试性，并通过确保软件符合用户需求来建立质量信心。
 
-### 4. Which tools are popular for BDD?
+### 4. 主流的BDD工具有哪些？
 
-Popular tools include Cucumber, Behave, JBehave, SpecFlow, Gauge, and Reqnroll.
+常用工具包括Cucumber、Behave、JBehave、SpecFlow、Gauge和Reqnroll。
 
-### 5. How does BDD differ from TDD?
+### 5. BDD与TDD有何区别？
 
-While TDD focuses on writing unit tests for code correctness, BDD emphasizes defining behavior in natural language and fostering collaboration to ensure the software aligns with business goals.
+TDD侧重通过单元测试保证代码正确性，而BDD强调用自然语言定义行为，并通过协作确保软件符合业务目标。
 
-### 6. Is BDD a replacement for other testing methods?
+### 6. BDD能否替代其他测试方法？
 
-No, BDD complements methods like unit and integration testing to enhance overall software quality.
+不能，BDD需要与单元测试/集成测试等方法互补使用，共同保障软件质量。

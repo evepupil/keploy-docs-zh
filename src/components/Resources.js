@@ -5,32 +5,32 @@ import Link from "@docusaurus/Link";
 const links = [
   {
     type: "article",
-    title: "What's Keploy?",
-    length: "3-20 min reads",
+    title: "什么是Keploy？",
+    length: "阅读时间3-20分钟",
     url: "/keploy-explained/introduction",
   },
   {
     type: "article",
-    title: "Installation Guide",
-    length: "10 min read",
+    title: "安装指南",
+    length: "阅读时间10分钟",
     url: "/server/installation/",
   },
   {
     type: "article",
-    title: "QuickStart with Go Sample App",
-    length: "10 min read",
+    title: "Go示例应用快速入门",
+    length: "阅读时间10分钟",
     url: "/quickstart/samples-gin",
   },
   {
     type: "article",
-    title: "Why Keploy?",
-    length: "1 min read",
+    title: "为什么选择Keploy？",
+    length: "阅读时间1分钟",
     url: "/keploy-explained/why-keploy",
   },
   {
     type: "video",
-    title: "Demo Video of Keploy",
-    length: "2 min watch",
+    title: "Keploy演示视频",
+    length: "观看时间2分钟",
     url: "https://www.youtube.com/watch?v=23yQaY81Zho",
   },
 ];
@@ -39,13 +39,13 @@ export const Resources = () => {
   return (
     <section className="mb-4 mt-12">
       <h2 className="mb-4 text-2xl font-semibold tracking-wide md:text-3xl">
-        Quick Links
+        快速链接
       </h2>
       <ul className="mt-5 flex flex-col space-y-3 text-lg">
         {links.map((link, i) => (
           <li key={i} className="flex items-center space-x-3 hover:underline">
             {link.type === "article" ? (
-              // Article Link Icon
+              // 文章链接图标
               <svg
                 className="h-7 w-7 text-[color:var(--ifm-color-primary-dark)]"
                 fill="currentColor"
@@ -59,7 +59,7 @@ export const Resources = () => {
                 />
               </svg>
             ) : (
-              // Other Link Icon (e.g., video, documentation)
+              // 其他链接图标（如视频、文档）
               <svg
                 className="h-7 w-7 text-[color:var(--ifm-color-primary-dark)]"
                 fill="currentColor"
@@ -74,7 +74,7 @@ export const Resources = () => {
               </svg>
             )}
 
-            {/* Link Text */}
+            {/* 链接文本 */}
             <Link className="flex-1" to={useBaseUrl(link.url)}>
               {link.title}{" "}
               <span className="text-xs uppercase opacity-80">

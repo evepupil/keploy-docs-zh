@@ -1,104 +1,104 @@
 ---
 id: regression-testing
-title: Using Keploy for Regression Testing
-sidebar_label: Regression Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 使用Keploy进行回归测试
+sidebar_label: 回归测试
+description: 本术语表解释了初学者乍看难以理解的所有专业术语。
 tags:
-  - explanation
-  - Glossary
+  - 解释说明
+  - 术语表
 keywords:
   - API
 ---
 
-## What is regression testing?
+## 什么是回归测试？
 
-Regression testing is a type of software testing that ensures that changes made to a software application do not negatively impact existing functionality. It is typically performed after a new feature is added, a bug is fixed, or a configuration change is made.
+回归测试是一种软件测试方法，用于确保对软件应用程序的更改不会对现有功能产生负面影响。通常在添加新功能、修复错误或进行配置更改后执行。
 
-Regression testing can be performed manually or using automated tools. Manual regression testing involves re-running a subset of test cases that have been previously executed to ensure that they still pass. Automated regression testing uses software to execute test cases automatically, which can save time and resources.
+回归测试可以手动执行，也可以使用自动化工具。手动回归测试需要重新运行先前执行过的部分测试用例，以确保它们仍然通过。自动化回归测试则使用软件自动执行测试用例，可以节省时间和资源。
 
-## Different Types of regression testing:
+## 回归测试的不同类型：
 
-**Full regression testing**: This involves re-running all of the test cases in a test suite. This is the most comprehensive approach, but it can be time-consuming and resource-intensive.
-**Partial regression testing**: This involves re-running a subset of test cases that are likely to be affected by the changes made to the software. This approach is more efficient than full regression testing, but it may not catch all of the potential regressions.
-**Risk-based regression testing**: This approach prioritizes the test cases that are most likely to be affected by the changes made to the software. This approach can help to ensure that the most important test cases are re-run, while also minimizing the amount of time and resources that are spent on regression testing.
+**完全回归测试**：重新运行测试套件中的所有测试用例。这是最全面的方法，但可能耗时且资源密集。
+**部分回归测试**：仅重新运行可能受软件更改影响的测试用例子集。这种方法比完全回归测试更高效，但可能无法发现所有潜在的回归问题。
+**基于风险的回归测试**：优先处理最可能受软件更改影响的测试用例。这种方法可以确保最重要的测试用例被重新运行，同时最大限度地减少回归测试所花费的时间和资源。
 
-Regression testing is an important part of the software testing process. It helps to ensure that the software is stable and reliable, and that it continues to meet the requirements of the users.
+回归测试是软件测试过程中的重要环节。它有助于确保软件的稳定性和可靠性，并持续满足用户需求。
 
-## Benefits of perform regression testing using Keploy:
+## 使用Keploy进行回归测试的优势：
 
-- It helps to ensure that the software is stable and reliable.
-- It helps to prevent regressions, which are defects that are introduced into the software when changes are made.
-- It helps to identify potential problems with the software before they are released to users.
-- It helps to save time and resources by preventing the need to fix regressions after the software is released.
+- 有助于确保软件的稳定性和可靠性
+- 防止在软件变更时引入回归缺陷
+- 在软件发布前识别潜在问题
+- 通过避免发布后修复回归问题来节省时间和资源
 
-## How to perform Regression Testing using Keploy?
+## 如何使用Keploy进行回归测试？
 
-Regression testing involves re-running previously executed test cases to ensure that recent changes to the codebase have not introduced new bugs or regressions. Keploy provides several features that facilitate regression testing:
+回归测试需要重新运行先前执行的测试用例，以确保最近的代码变更没有引入新的错误或回归问题。Keploy提供了以下促进回归测试的功能：
 
-- Test Case Management: Keploy allows you to organize and manage test cases effectively. You can categorize test cases based on their purpose, severity, or functionality, making it easier to identify and execute relevant regression tests.
-- Test Automation: Keploy supports test automation with various testing frameworks such as GoTest, JUnit, and NUnit. You can automate the execution of regression test suites, ensuring that they are consistently executed whenever changes are made to the codebase.
-- Continuous Integration (CI): Keploy integrates with CI pipelines such as Jenkins, Travis CI, and CircleCI. You can configure Keploy to automatically trigger regression tests whenever new code is pushed to the repository, ensuring that regression testing is performed as part of the CI process.
-- Capture and Replay Tests: Keploy allows you to capture and replay tests and mocks resembling real traffic. This feature enables you to simulate user interactions and test scenarios, making it easier to identify regressions caused by recent code changes.
-- Code Coverage Analysis: Keploy provides built-in tools for measuring code coverage, including line coverage, branch coverage, and statement coverage. By monitoring code coverage metrics during regression testing, you can ensure that all relevant code paths are exercised and regression bugs are detected.
+- 测试用例管理：有效组织和分类测试用例
+- 测试自动化：支持GoTest、JUnit和NUnit等测试框架
+- 持续集成(CI)：与Jenkins、Travis CI和CircleCI等CI管道集成
+- 捕获和回放测试：模拟真实用户交互场景
+- 代码覆盖率分析：提供行覆盖率、分支覆盖率和语句覆盖率等指标
 
-Overall, by leveraging Keploy's testing capabilities and integrating it into your regression testing process, you can ensure the stability and reliability of your software by detecting and preventing regression bugs effectively.
+通过利用Keploy的测试能力并将其集成到回归测试流程中，您可以有效检测和预防回归问题，确保软件的稳定性和可靠性。
 
-## Key differences between manual regression testing and automated regression testing:
+## 手动回归测试与自动化回归测试的关键区别：
 
-| Feature                  | Manual Regression Testing                                 | Automated Regression Testing                                                     |
-| ------------------------ | --------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| **Execution Method**     | Test cases are executed manually by testers.              | Test cases are executed automatically by software tools.                         |
-| **Human Involvement**    | High human involvement in executing and verifying tests.  | Minimal human involvement once tests are set up.                                 |
-| **Speed**                | Relatively slow due to manual execution.                  | Faster due to automated execution, especially for large test suites.             |
-| **Efficiency**           | Prone to human error and inconsistencies in execution.    | Consistent and reliable execution once tests are automated.                      |
-| **Resource Requirement** | Requires more human resources (testers).                  | Requires initial setup time but reduces ongoing resource needs.                  |
-| **Scalability**          | Limited scalability for large test suites.                | Highly scalable for large and complex applications.                              |
-| **Repeatability**        | Execution depends on tester skills and availability.      | Tests can be repeated reliably and consistently.                                 |
-| **Maintenance**          | Tests may need frequent updates and maintenance.          | Tests require updates as software evolves but are easier to maintain.            |
-| **Cost**                 | Higher ongoing costs due to human resource needs.         | Lower ongoing costs once initial automation is set up.                           |
-| **Suitability**          | Suitable for smaller projects or specific test scenarios. | Ideal for continuous integration and larger projects requiring frequent testing. |
-| **Complexity Handling**  | Limited ability to handle complex test scenarios.         | Can handle complex scenarios, including data-driven and UI testing.              |
+| 特性                  | 手动回归测试                                   | 自动化回归测试                                                   |
+| --------------------- | --------------------------------------------- | ---------------------------------------------------------------- |
+| **执行方式**          | 由测试人员手动执行测试用例                    | 通过软件工具自动执行测试用例                                     |
+| **人工参与度**        | 执行和验证测试需要高度人工参与                | 测试设置完成后只需最少人工干预                                   |
+| **速度**              | 由于手动执行，速度相对较慢                    | 自动化执行速度更快，尤其适合大型测试套件                         |
+| **效率**              | 容易因人为因素导致执行不一致                  | 一旦自动化后，执行具有一致性和可靠性                             |
+| **资源需求**          | 需要更多人力资源(测试人员)                    | 需要初始设置时间，但减少持续资源需求                             |
+| **可扩展性**          | 对大型测试套件可扩展性有限                    | 高度可扩展，适合大型复杂应用程序                                 |
+| **可重复性**          | 执行依赖测试人员技能和可用性                  | 测试可以可靠且一致地重复执行                                     |
+| **维护成本**          | 测试可能需要频繁更新和维护                    | 随着软件演进需要更新，但更易于维护                               |
+| **成本**              | 由于人力资源需求，持续成本较高                | 初始自动化设置完成后，持续成本较低                               |
+| **适用场景**          | 适合小型项目或特定测试场景                    | 适合需要频繁测试的持续集成和大型项目                             |
+| **处理复杂度**        | 处理复杂测试场景能力有限                      | 能够处理复杂场景，包括数据驱动测试和UI测试                       |
 
-## Conclusion
+## 结论
 
-Manual regression testing offers flexibility and can be suitable for smaller projects or specific scenarios where human judgment and exploration are crucial. However, it can be time-consuming, prone to errors, and less scalable for large test suites.
+手动回归测试提供了灵活性，适合小型项目或需要人工判断和探索的特定场景。但它可能耗时、容易出错，且对大型测试套件的扩展性较差。
 
-On the other hand, automated regression testing provides consistent, repeatable, and efficient test execution. It is ideal for larger projects, continuous integration pipelines, and scenarios requiring frequent testing. While it requires initial setup and ongoing maintenance of test scripts, automated testing ultimately reduces costs and resource requirements over time.
+自动化回归测试则提供一致、可重复且高效的测试执行，适合大型项目、持续集成管道和需要频繁测试的场景。虽然需要初始设置和持续的测试脚本维护，但从长远来看可以降低成本和资源需求。
 
-Ultimately, the decision should consider the specific needs of the project, balancing the benefits of human judgment in manual testing with the efficiency and scalability offered by automation. Many teams opt for a hybrid approach, combining both methods to maximize test coverage and effectiveness throughout the software development lifecycle.
+最终决策应基于项目具体需求，在手动测试的人工判断优势与自动化测试的效率和可扩展性之间取得平衡。许多团队选择混合方法，结合两种方式在软件开发生命周期中最大化测试覆盖率和有效性。
 
-## Frequently Asked Questions
+## 常见问题解答
 
-### What is regression testing and why is it important?
+### 什么是回归测试？为什么它很重要？
 
-Regression testing ensures that recent changes to software do not unintentionally disrupt existing functionality. It's crucial because it helps maintain software stability and reliability by catching regressions early, before they reach users.
+回归测试确保对软件的最近更改不会无意中破坏现有功能。它很重要，因为它通过早期发现回归问题来维护软件的稳定性和可靠性，避免问题影响最终用户。
 
-### What are the different types of regression testing?
+### 回归测试有哪些不同类型？
 
-There are several types:
+主要类型包括：
 
-- **Full regression testing:** Re-running all test cases in the suite.
-- **Partial regression testing:** Re-running only selected test cases.
-- **Risk-based regression testing:** Prioritizing test cases based on potential impact.
+- **完全回归测试**：重新运行套件中的所有测试用例
+- **部分回归测试**：仅重新运行选定的测试用例
+- **基于风险的回归测试**：根据潜在影响优先处理测试用例
 
-### How does automated regression testing differ from manual regression testing?
+### 自动化回归测试与手动回归测试有何不同？
 
-Automated regression testing uses software tools to execute test cases automatically, saving time and effort compared to manual testing, which relies on human execution. Automation is beneficial for repetitive tasks and frequent testing needs.
+自动化回归测试使用软件工具自动执行测试用例，相比依赖人工执行的手动测试节省时间和精力。自动化特别适合重复性任务和频繁测试需求。
 
-### What are the benefits of using regression testing in software development?
+### 回归测试在软件开发中有哪些好处？
 
-Regression testing helps ensure software stability, prevents new bugs from being introduced inadvertently, identifies potential issues early in the development cycle, and ultimately saves time and resources by reducing the need for extensive bug fixing after deployment.
+回归测试有助于确保软件稳定性，防止无意引入新错误，在开发周期早期识别潜在问题，最终通过减少部署后大量修复工作来节省时间和资源。
 
-### How can Keploy facilitate regression testing?
+### Keploy如何促进回归测试？
 
-Keploy supports regression testing by providing:
+Keploy通过以下方式支持回归测试：
 
-- Test case management for organizing and executing tests efficiently.
-- Test automation capabilities with various frameworks.
-- Integration with CI pipelines for continuous testing.
-- Capture and replay tests to simulate user interactions.
-- Code coverage analysis tools to ensure comprehensive testing.
+- 测试用例管理，高效组织和执行测试
+- 支持多种框架的测试自动化能力
+- 与CI管道集成实现持续测试
+- 捕获和回放测试以模拟用户交互
+- 代码覆盖率分析工具确保全面测试
 
-### When should regression testing be performed in the software development lifecycle?
+### 在软件开发生命周期中何时应进行回归测试？
 
-Regression testing should ideally be performed after every code change, especially significant ones such as new feature additions, bug fixes, or infrastructure updates. Integrating regression testing into CI/CD pipelines ensures that tests are run consistently with each new code deployment.
+理想情况下，每次代码变更后都应进行回归测试，特别是重大变更如新功能添加、错误修复或基础设施更新。将回归测试集成到CI/CD管道中可确保每次新代码部署时都能一致地运行测试。

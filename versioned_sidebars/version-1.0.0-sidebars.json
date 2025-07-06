@@ -2,7 +2,7 @@
   "sidebarInstallation": [
     {
       "type": "category",
-      "label": "Explanation",
+      "label": "说明",
       "collapsible": true,
       "collapsed": false,
       "items": [
@@ -12,7 +12,7 @@
     },
     {
       "type": "category",
-      "label": "Installation",
+      "label": "安装",
       "collapsible": true,
       "collapsed": false,
       "items": [
@@ -22,7 +22,7 @@
     },
     {
       "type": "category",
-      "label": "Concepts",
+      "label": "概念",
       "collapsible": true,
       "collapsed": false,
       "items": [
@@ -34,7 +34,7 @@
     },
     {
       "type": "category",
-      "label": "Operations",
+      "label": "操作指南",
       "collapsible": true,
       "collapsed": false,
       "link": {
@@ -59,28 +59,27 @@
       "items": [
         {
           "type": "doc",
-          "label": "Installation",
+          "label": "安装指南",
           "id": "go/installation"
         },
         {
           "type": "doc",
-          "label": "Integration",
+          "label": "集成方法",
           "id": "go/integration"
         },
         {
           "type": "doc",
-          "label": "Record Test",
+          "label": "录制测试",
           "id": "go/record"
         },
         {
           "type": "doc",
-          "label": "Replay Test ",
+          "label": "回放测试",
           "id": "go/replay"
         },
-
         {
           "type": "category",
-          "label": "Sample Quickstarts",
+          "label": "示例快速入门",
           "collapsible": true,
           "collapsed": true,
           "link": {
@@ -96,7 +95,7 @@
         },
         {
           "type": "link",
-          "label": "Go Pkg Reference",
+          "label": "Go包参考文档",
           "href": "https://pkg.go.dev/github.com/keploy/go-sdk"
         }
       ]
@@ -113,27 +112,27 @@
       "items": [
         {
           "type": "doc",
-          "label": "Installation",
+          "label": "安装指南",
           "id": "java/installation"
         },
         {
           "type": "doc",
-          "label": "Integration",
+          "label": "集成方法",
           "id": "java/integration"
         },
         {
           "type": "doc",
-          "label": "Record Test",
+          "label": "录制测试",
           "id": "java/record"
         },
         {
           "type": "doc",
-          "label": "Replay Test ",
+          "label": "回放测试",
           "id": "java/replay"
         },
         {
           "type": "category",
-          "label": "Sample Quickstarts",
+          "label": "示例快速入门",
           "collapsible": true,
           "collapsed": true,
           "link": {
@@ -146,7 +145,7 @@
         },
         {
           "type": "link",
-          "label": "Maven Reference",
+          "label": "Maven参考文档",
           "href": "https://search.maven.org/artifact/io.keploy/keploy-sdk"
         }
       ]

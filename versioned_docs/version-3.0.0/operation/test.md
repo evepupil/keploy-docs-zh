@@ -1,20 +1,20 @@
 ---
 id: test-operations
-title: Test Mode Operations
-description: Guide into Keploy Test Mode
-sidebar_label: Test
+title: 测试模式操作指南
+description: Keploy 测试模式使用指南
+sidebar_label: 测试
 tags:
-  - operation-guide
-  - test
-  - replay-tests
+  - 操作指南
+  - 测试
+  - 回放测试
 ---
 
-To run KTests and KMocks you can follow any one of these methods:
+运行 KTests 和 KMocks 可采用以下任一方法：
 
-### Method 1
+### 方法一
 
 <details><summary>
-Set Environment Variable `KEPLOY_MODE`
+设置环境变量 `KEPLOY_MODE`
 
 </summary>
 
@@ -22,9 +22,8 @@ Set Environment Variable `KEPLOY_MODE`
 export KEPLOY_MODE="test"
 ```
 
-Run application and find test report summary on the Keploy Server Logs and detailed test report in directory where
-Keploy Server is running.
+运行应用程序后，测试报告摘要将显示在 Keploy 服务器日志中，详细测试报告会生成在 Keploy 服务器运行目录下。
 
-![Test report summary](/gif/replay-tc.gif)
+![测试报告摘要](/gif/replay-tc.gif)
 
 </details>

@@ -1,34 +1,34 @@
 ---
 id: why-keploy
-title: Why Keploy?
-sidebar_label: Why Keploy?
+title: 为什么选择Keploy？
+sidebar_label: 为什么选择Keploy？
 tags:
-  - explanation
-  - why keploy
-  - automated testing
-  - test scripts
-  - manual testing
-  - record replay test
+  - 说明
+  - 为什么选择keploy
+  - 自动化测试
+  - 测试脚本
+  - 手动测试
+  - 录制回放测试
 ---
 
-| **Feature**                                | **Automated Test-Scripting Tools**                      | **Record-Replay Traffic Tools**                                       | **Keploy**                                                              |
-| ------------------------------------------ | ------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| **Test Scripting**                         | Manual test script creation.                            | Record user traffic as tests scripts.                                 | Automatic user traffic recording as test scripts.                       |
-| **Mocking Dependencies**                   | Manual mock/stub writing.                               | Setup test environments for dependencies.                             | Automatic mocking of dependencies CRUD operations.                      |
-| **Test Coverage**                          | Coverage reliant on script quality.                     | Coverage based on recorded traffic.                                   | Line coverage derived from code quality.                                |
-| **Code-Less Integration**                  | Requires scripting for integration.                     | Relies on traffic replication pipelines and mock scripts.             | Uses EBPF for no-code, language-agnostic integration.                   |
-| **Noise Detection**                        | Manual noise and data noise identification.             | Limited capability to filter noisy parameters.                        | Accurate noise detection, flagging random/noisy fields.                 |
-| **Ease of Use**                            | Moderate learning curve for scripting.                  | Difficulty in recording interactions and test environment management. | User-friendly with quick adoption.                                      |
-| **CI/CD Integration**                      | Integration via unit test libraries in CI/CD pipelines. | Limited CI/CD integration, specific environments required.            | Easy integration using unit test libraries in CI/CD.                    |
-| **Flexibility**                            | Scripting offers flexibility but is time-consuming.     | Limited flexibility tied to recorded traffic.                         | Highly flexible for various API flows, versatile mocks, and test cases. |
-| **Effort Required for 100% Test Coverage** | Requires 50% of development time.                       | Requires 100% of development time.                                    | Requires only 1% of development time.                                   |
-| **Community/Support**                      | Support varies based on tool popularity.                | May have limited support.                                             | Active community and documentation.                                     |
+| **功能特性**                              | **自动化测试脚本工具**                  | **流量录制回放工具**                          | **Keploy**                                                          |
+| ---------------------------------------- | --------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------- |
+| **测试脚本生成**                         | 需手动编写测试脚本                      | 将用户流量录制为测试脚本                      | 自动将用户流量录制为测试脚本                                        |
+| **依赖模拟**                             | 需手动编写模拟桩                        | 需为依赖项搭建测试环境                        | 自动模拟依赖项的CRUD操作                                            |
+| **测试覆盖率**                           | 依赖脚本质量                            | 基于录制流量的覆盖率                          | 从代码质量推导出行覆盖率                                            |
+| **无代码集成**                           | 需要编写集成脚本                        | 依赖流量复制管道和模拟脚本                    | 使用EBPF实现无代码、语言无关的集成                                  |
+| **噪声检测**                             | 需手动识别数据和参数噪声                | 过滤噪声参数能力有限                          | 精确检测噪声，标记随机/干扰字段                                     |
+| **易用性**                               | 中等学习成本                            | 录制交互和管理测试环境较困难                  | 用户友好，快速上手                                                  |
+| **CI/CD集成**                            | 通过单元测试库集成到CI/CD管道           | 集成有限，需要特定环境                        | 使用单元测试库轻松集成到CI/CD                                       |
+| **灵活性**                               | 脚本灵活但耗时                          | 受限于录制流量                                | 高度灵活，支持多种API流程、多样化模拟和测试用例                     |
+| **实现100%覆盖率所需工作量**             | 需要50%开发时间                         | 需要100%开发时间                              | 仅需1%开发时间                                                      |
+| **社区/支持**                            | 支持力度因工具流行度而异                | 支持可能有限                                  | 活跃社区和完善文档                                                  |
 
-### Join the Keploy adventure!
+### 加入Keploy的探索之旅！
 
-⭐ If you're excited about what's coming, show some love by [starring Keploy on GitHub](https://github.com/keploy/keploy)
+⭐ 如果您对我们的发展感到兴奋，请为[Keploy在GitHub上点赞](https://github.com/keploy/keploy)
 
-🤙 We're happy to hear from you in-case you want to deep-dive. [Schedule a demo](https://calendar.app.google/3mHeyaoKg3A2qkqF6) – because the best tests are yet to come! 🚀🎉
+🤙 欢迎随时联系我们进行深度交流。[预约演示](https://calendar.app.google/3mHeyaoKg3A2qkqF6) —— 因为最精彩的测试即将到来！🚀🎉
 
 import GetSupport from '../concepts/support.md'
 

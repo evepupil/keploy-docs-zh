@@ -7,23 +7,23 @@ export const KeployCloud = () => {
       className="mb-12 mt-24 flex max-w-7xl items-center space-x-5 rounded-lg bg-[color:var(--ifm-card-background-color)] p-5"
     >
       <div className="prose prose-orange mx-auto max-w-3xl">
-        <h1> Question? 🤔💭</h1>
+        <h1> 有问题？🤔💭</h1>
         <p className="my-3 block">
-          For any support please{" "}
+          如需任何支持，请{" "}
           <a
             href="https://join.slack.com/t/keploy/shared_invite/zt-357qqm9b5-PbZRVu3Yt2rJIa6ofrwWNg"
             className="text-orange-500 underline hover:text-orange-400"
           >
-            join keploy slack community
+            加入Keploy Slack社区
           </a>{" "}
-          to get help from fellow users, or{" "}
+          获取其他用户的帮助，或{" "}
           <a
             href="https://calendar.app.google/cXVaj6hbMUjvmrnt9"
             className="text-orange-500 underline hover:text-orange-400"
           >
-            book a demo
+            预约演示
           </a>{" "}
-          if you're exploring enterprise use cases.
+          如果您正在探索企业用例。
         </p>
       </div>
     </section>

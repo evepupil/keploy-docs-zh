@@ -18,12 +18,12 @@ function Glossary() {
     );
   };
 
-  // Reset filter
+  // 重置筛选
   const handleResetFilter = () => {
     setselectedletter([]);
   };
 
-  // Memoize the filtered entries to avoid re calculating on every render
+  // 使用useMemo缓存筛选结果避免重复计算
   const filteredEntrie = useMemo(() => {
     if (selectedletter.length === 0) {
       return Object.values(glossaryEntries).flat();
@@ -36,24 +36,24 @@ function Glossary() {
 
   return (
     <Layout
-      title="Glossary"
+      title="术语表"
       permalink="/reference/glossary"
-      description="A glossary of terms related to software testing and development."
+      description="软件测试与开发相关术语表"
     >
       <main className="container mx-auto my-12 px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Glossary
+            术语表
           </h1>
           <p className="mt-4 text-lg text-[var(--ifm-color-emphasis-700)]">
-            Your guide to modern software testing and development terminology.
+            现代软件测试与开发术语指南
           </p>
         </div>
 
         <div
           className="mb-8 flex flex-wrap justify-center gap-2"
           role="navigation"
-          aria-label="Alphabetical Glossary Navigation"
+          aria-label="字母导航"
         >
           {allLetters.map((letter) => {
             const isAvailable = availableLetters.includes(letter);
@@ -87,7 +87,7 @@ function Glossary() {
               onClick={handleResetFilter}
               className="rounded-full border-2 border-[var(--ifm-color-primary)] bg-transparent px-6 py-2 font-semibold text-[var(--ifm-color-primary)] transition-colors hover:bg-[var(--ifm-color-primary)] hover:text-white"
             >
-              Reset Filter
+              重置筛选
             </button>
           </div>
         )}
@@ -119,10 +119,10 @@ function Glossary() {
           {filteredEntrie.length === 0 && selectedletter.length > 0 && (
             <div className="py-16 text-center">
               <p className="text-2xl font-semibold text-[var(--ifm-color-emphasis-800)]">
-                No terms found.
+                未找到相关术语
               </p>
               <p className="mt-2 text-[var(--ifm-color-emphasis-600)]">
-                Try selecting a different letter or resetting the filter.
+                请尝试选择其他字母或重置筛选条件
               </p>
             </div>
           )}

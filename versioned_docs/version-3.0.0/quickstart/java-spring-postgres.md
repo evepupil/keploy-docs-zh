@@ -1,31 +1,30 @@
 ---
 id: pet-clinic
-title: Keploy with PetClinic
+title: Keploy与PetClinic集成
 sidebar_label: PetClinic (PostgresDb)
-description: The following sample app showcases how to use Keploy and create test cases and mocks for popular spring-boot java application.
+description: 本示例应用展示了如何为流行的Spring Boot Java应用使用Keploy创建测试用例和模拟数据。
 tags:
   - java
   - spring-jpa
   - springboot
-  - java-framework
+  - java框架
   - postgres
   - petclinic
-  - quickstart
-  - samples
-  - examples
-  - tutorial
+  - 快速入门
+  - 示例
+  - 教程
 keyword:
   - Jacoco
   - Maven
-  - Springboot Framework
+  - Springboot框架
   - Postgres
   - SQL
   - Java
-  - Test PetClinic
+  - 测试PetClinic
   - Junit
 ---
 
-This is a petclinic app where you can record testcases and mocks by interacting with the UI, and then test them using Keploy.
+这是一个宠物诊所应用，您可以通过与UI交互来记录测试用例和模拟数据，然后使用Keploy进行测试。
 
 import Link from '@docusaurus/Link'
 
@@ -33,13 +32,13 @@ import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-This project has two parts - the frontend and backend, since Keploy is a backend testing platform, we need to start the backend part of the project using Keploy and run the frontend as it is.
+该项目分为前端和后端两部分，由于Keploy是后端测试平台，我们需要使用Keploy启动项目的后端部分，并正常运行前端。
 
-## Setup the frontend
+## 前端设置
 
-### Prerequisites For Frontend:
+### 前端先决条件：
 
-1. Node version 16.x and above
+1. Node版本16.x及以上
 
 ```bash
 git clone https://github.com/keploy/samples-java.git
@@ -47,59 +46,59 @@ cd samples-java/spring-petclinic/spring-petclinic-angular
 npm i --legacy-peer-deps
 ```
 
-## Start the frontend
+## 启动前端
 
 ```bash
 npm run start
 ```
 
-Now it's time to setup the backend of our application. Let's move to the backend directory and get started.
+现在开始设置应用的后端。让我们进入后端目录开始操作。
 
 ```bash
 cd samples-java/spring-petclinic/spring-petclinic-rest
 ```
 
-You can start the backend using Keploy in 2 ways:
+您可以通过两种方式使用Keploy启动后端：
 
-- [Using Keploy's binary](#instructions-for-starting-using-binary)
-- [Using Keploy's docker image](#instructions-for-starting-using-docker)
+- [使用Keploy二进制文件](#instructions-for-starting-using-binary)
+- [使用Keploy的Docker镜像](#instructions-for-starting-using-docker)
 
-# Instructions For Starting Using API backend Binary
+# 使用API后端二进制文件启动指南
 
-Prerequisites For API backend Binary:
+API后端二进制文件先决条件：
 
 1. OpenJDK 17+
-2. MVN version 3.6+
+2. MVN版本3.6+
 
-## Setup the backend
+## 后端设置
 
-You need to update the postgresql properties, go to
+您需要更新postgresql属性，前往
 `spring-petclinic/spring-petclinic-rest/src/main/resources/application-postgresql.properties`
-and change
+将
 
 ```bash
 spring.datasource.url=jdbc:postgresql://mypostgres:5432/petclinic
 ```
 
-to
+修改为
 
 ```bash
 spring.datasource.url=jdbc:postgresql://localhost:5432/petclinic
 ```
 
-and then build the jar using:
+然后使用以下命令构建jar：
 
 ```bash
 mvn clean install -Dmaven.test.skip=true
 ```
 
-## Spin up the database
+## 启动数据库
 
 ```bash
 docker run -e POSTGRES_USER=petclinic -e POSTGRES_PASSWORD=petclinic -e POSTGRES_DB=petclinic -p 5432:5432 --name mypostgres postgres:15.2
 ```
 
-## Recording the testcases with Keploy
+## 使用Keploy记录测试用例
 
 ```bash
 keploy record -c "java -jar target/spring-petclinic-rest-3.0.2.jar"
@@ -107,25 +106,25 @@ keploy record -c "java -jar target/spring-petclinic-rest-3.0.2.jar"
 
 <img src="/docs/img/pet-record.png" alt="Sample Keploy Test Result Node JWT" width="100%" style={{ borderRadius: '5px' }} />
 
-Now you can start interacting with the UI and Keploy will automatically create the testcases and mocks for it in a folder named 'keploy'.
+现在您可以开始与UI交互，Keploy会自动在名为'keploy'的文件夹中创建测试用例和模拟数据。
 
-## Running the testcases using Keploy
+## 使用Keploy运行测试用例
 
 ```bash
 keploy test -c "java -jar target/spring-petclinic-rest-3.0.2.jar" --delay 20
 ```
 
-🎉 Hooray! You've made it to the end of the binary section! 🎉
+🎉 恭喜！您已完成二进制文件部分！🎉
 
-Next we move on to the instructions to start the application using docker.
+接下来我们继续介绍使用Docker启动应用的指南。
 
-# Instructions For Starting Using Docker
+# 使用Docker启动指南
 
-Prerequisites For Docker:
+Docker先决条件：
 
-1.  Docker Desktop 4.25.2 and above
+1. Docker Desktop 4.25.2及以上
 
-Here we just need to change the command used to start the application.
+这里我们只需要更改启动应用的命令。
 
 ```bash
 keploy record -c "docker compose up" --container-name javaApp --build-delay 100
@@ -133,22 +132,22 @@ keploy record -c "docker compose up" --container-name javaApp --build-delay 100
 
 <img src="/docs/img/pet-record.png" alt="Sample Keploy Record Java" width="100%" style={{ borderRadius: '5px' }} />
 
-## Running the testcases using Keploy
+## 使用Keploy运行测试用例
 
 ```bash
 keploy test -c "docker compose up" --container-name javaApp --build-delay 50 --delay 20
 ```
 
-Your CLI should look something like this
+您的CLI应该会显示类似这样的内容
 <img src="/docs/img/pet-test1.png" alt="Sample Keploy Test Java" width="100%" style={{ borderRadius: '5px' }} />
 
-This is a summary of the test cases recorded
+这是记录的测试用例摘要
 <img src="/docs/img/pet-test2.png" alt="Sample Keploy Test Summary Java" width="100%" style={{ borderRadius: '5px' }} />
 
-Here `delay` is the time it takes for your application to get started, after which Keploy will start running the testcases. If your application takes longer than 10s to get started, you can change the `delay` accordingly.
-`buildDelay` is the time that it takes for the image to get built. This is useful when you are building the docker image from your docker compose file itself.
+这里的`delay`是应用启动所需的时间，之后Keploy将开始运行测试用例。如果您的应用启动时间超过10秒，可以相应调整`delay`。
+`buildDelay`是构建镜像所需的时间。当您直接从docker compose文件构建Docker镜像时，这很有用。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

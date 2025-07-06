@@ -1,8 +1,8 @@
 ---
 id: samples-csharp
-title: Sample CRUD App (CSharp)
+title: 示例CRUD应用(CSharp版)
 sidebar_label: .Net + Postgres
-description: The following sample app showcases how to use .Net framework and the Keploy Platform.
+description: 本示例应用展示如何结合.Net框架与Keploy平台进行开发。
 tags:
   - csharp
   - quickstart
@@ -12,68 +12,68 @@ tags:
   - postgrs
   - dotnet-framework
 keyword:
-  - DotNet Framework
+  - DotNet框架
   - Postgres
   - CSharp
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-🪄 Dive into the world of User Authentication apps and see how seamlessly Keploy integrates with [.Net](https://dotnet.microsoft.com/en-us/) and [Postgres](https://www.postgresql.org/). Buckle up, it's gonna be a fun ride! 🎢
+🪄 探索用户认证应用的世界，了解Keploy如何无缝集成[.Net](https://dotnet.microsoft.com/en-us/)和[Postgres](https://www.postgresql.org/)。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 快速开始！🎬
 
-## Clone a sample user authentication app 🧪
+## 克隆用户认证示例应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-csharp.git && cd samples-csharp
 
-# start the database instance
+# 启动数据库实例
 docker-compose up
 ```
 
-## Installation 📥
+## 安装指南 📥
 
-- [Using Docker container for Postgres and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用Docker容器运行Postgres并在本地运行应用](#在linuxwsl-本地运行应用)
 
-## Running App Locally on Linux/WSL 🐧
+## 在Linux/WSL本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (Redis) chill on Docker. Ready? Let's get the party started!🎉
+我们将在Linux上直接运行示例应用，但为了让事情更有趣，数据库(Redis)会在Docker中运行。准备好了吗？让我们开始派对吧！🎉
 
-### 📼 Roll the Tape - Recording Time!
+### 📼 开始录制！
 
-We need to run the migration command before starting our application:
+启动应用前需要先运行迁移命令：
 
 ```bash
 dotnet ef migrations add InitialMigration
 dotnet ef database update
 ```
 
-Ready, set, record! Here's how:
+准备就绪，开始录制：
 
 ```bash
 keploy record -c "dotnet run"
 ```
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+好了，魔法师！应用已经启动运行，现在让我们生成一些测试用例。魔法咒语是什么？就是发起一些API调用！可以使用Postman、Hoppscotch或经典的curl工具。
 
-#### Generate testcases
+#### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+只需**发起一些API调用**就能生成测试用例。
 
-**1. Create User**
+**1. 创建用户**
 
 ```bash
 curl -k -X POST -H "Content-Type: application/json" -d '{"name":"Sarthak Shnygle","age":23}' http://localhost:5249/api/user
 ```
 
-This will return the response:
+返回响应：
 
 ```json
 {
@@ -83,13 +83,13 @@ This will return the response:
 }
 ```
 
-**2. Get the User**
+**2. 获取用户**
 
 ```bash
 curl -k http://localhost:5249/api/user
 ```
 
-This will return the OTP verification response:
+返回OTP验证响应：
 
 ```json
 [
@@ -101,7 +101,7 @@ This will return the OTP verification response:
 ]
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+给自己鼓个掌！通过这个简单的咒语，你已经创建了带模拟数据的测试用例。查看**Keploy目录**，你会在`test-1.yml`和`mocks.yml`中发现你的成果。
 
 ```yaml
 version: api.keploy.io/v1beta1
@@ -153,27 +153,27 @@ curl: |-
     --data '{"age":"23","name":"Sarthak Shnygle"}'
 ```
 
-Want to see if everything works as expected?
+想验证一切是否如预期工作？
 
-### Run Tests
+### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 keploy test -c "dotnet run" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`参数？哦，这只是为了让你的应用在测试用例到来前有个小憩（单位：秒）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后建议？深入探索！尝试不同的API调用，修改`mocks.yml`中的数据库响应，或者调整`test-x.yml`中的请求或响应。再次运行测试，见证魔法发生！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜你完成这段旅程！你已经见识了Keploy的强大，锻炼了编码能力，还享受了一些乐趣！现在，继续去探索、创新和创造吧！记住，只要有合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编程愉快！✨👩‍💻👨‍💻✨
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

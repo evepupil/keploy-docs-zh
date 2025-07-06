@@ -1,7 +1,7 @@
 ---
 id: installation
-title: Keploy Installation
-sidebar_label: Installation
+title: Keploy 安装指南
+sidebar_label: 安装
 tags:
   - linux
   - ebpf
@@ -14,27 +14,27 @@ keywords:
   - ubuntu
   - linux
   - windows
-  - API Test generator
-  - Auto Testcase generation
-  - installation-guide
-  - server-setup
+  - API 测试生成器
+  - 自动化测试用例生成
+  - 安装指南
+  - 服务器配置
 ---
 
 import PlatformRequirements from '../concepts/platform-requirements.md'
 
 <PlatformRequirements/>
 
-# Keploy Installation
+# Keploy 安装指南
 
-## Quick Installation Using CLI
+## 通过 CLI 快速安装
 
-Let's get started by setting up the Keploy alias with this command:
+首先通过以下命令设置 Keploy 别名：
 
 ```bash
  curl --silent -O -L https://keploy.io/install.sh && source install.sh
 ```
 
-You should see something like this:
+您将看到类似输出：
 
 ```bash
        ▓██▓▄
@@ -49,43 +49,43 @@ You should see something like this:
 
 Keploy CLI
 
-Available Commands:
-  example           Example to record and test via keploy
-  config --generate generate the keploy configuration file
-  record            record the keploy testcases from the API calls
-  test              run the recorded testcases and execute assertions
-  update            Update Keploy
+可用命令：
+  example           通过keploy记录和测试的示例
+  config --generate 生成keploy配置文件
+  record            记录API调用的测试用例
+  test              运行记录的测试用例并执行断言
+  update            更新Keploy
 
-Flags:
-      --debug     Run in debug mode
-  -h, --help      help for keploy
-  -v, --version   version for keploy
+标志：
+      --debug     调试模式运行
+  -h, --help      显示帮助信息
+  -v, --version   显示版本信息
 
-Use "keploy [command] --help" for more information about a command.
+使用 "keploy [命令] --help" 获取命令详情。
 ```
 
-🎉 Wohoo! You are all set to use Keploy.
+🎉 恭喜！您已成功安装Keploy。
 
-## Other Installation Methods
+## 其他安装方式
 
 <details>
-<summary>Install using Docker</summary>
+<summary>使用Docker安装</summary>
 
-### Downloading and running Keploy in Docker
+### 通过Docker运行Keploy
 
-#### On macOS
+#### macOS系统
 
-Note : Keploy is not supported natively on MacOS, so you can follow the below method to run with docker
+注意：Keploy不原生支持MacOS，可通过以下方式使用Docker运行
 
-1. Open up a terminal window.
+1. 打开终端窗口
 
-2. Create a bridge network in Docker using the following docker network create command:
+2. 创建Docker桥接网络：
 
 ```bash
 docker network create keploy-network
 ```
 
-3. Run the following command to start the Keploy container:
+3. 运行以下命令启动Keploy容器：
 
 ```bash
 alias keploy="docker run --name keploy-v2 -p 16789:16789 --network keploy-network --privileged --pid=host -v $(pwd):$(pwd) -w $(pwd) -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/kernel/debug:/sys/kernel/debug -v /sys/fs/bpf:/sys/fs/bpf -v /var/run/docker.sock:/var/run/docker.sock --rm ghcr.io/keploy/keploy"
@@ -94,32 +94,32 @@ alias keploy="docker run --name keploy-v2 -p 16789:16789 --network keploy-networ
 </details>
 
 <details>
-<summary>Downloading and running Keploy in Native</summary>
+<summary>原生环境安装</summary>
 
-### Downloading and running Keploy in Native
+### 原生环境安装指南
 
-**Prequisites:**
+**系统要求：**
 
-- Linux Kernel version 5.15 or higher
-- Run `uname -a` to verify the system architecture.
-- In case of Windows, use WSL with Ubuntu 20.04 LTS or higher.
+- Linux内核版本5.15或更高
+- 运行`uname -a`验证系统架构
+- Windows系统需使用Ubuntu 20.04 LTS或更高版本的WSL
 
-<summary>Downloading and running Keploy On WSL/Linux AMD</summary>
+<summary>WSL/Linux AMD系统安装</summary>
 
-#### On WSL/Linux AMD
+#### WSL/Linux AMD系统
 
-1. Open the terminal Session.
-2. Run the following command to download and install Keploy:
+1. 打开终端会话
+2. 运行以下命令下载安装：
 
 ```bash
 curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz --overwrite -C /tmp
 sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin/keploy
 ```
 
-#### On WSL/Linux ARM
+#### WSL/Linux ARM系统
 
-1. Open the terminal Session
-2. Run the following command to download and install Keploy:
+1. 打开终端会话
+2. 运行以下命令下载安装：
 
 ```bash
 curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz" | tar xz --overwrite -C /tmp
@@ -127,17 +127,17 @@ sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin/keploy
 
 ```
 
-> Note: Keploy is not supported on MacOS natively.
+> 注意：Keploy不原生支持MacOS系统
 
-### Setting up the Docker Desktop for WSL 2
+### WSL 2的Docker Desktop配置
 
-1. Install Docker Desktop for Windows from [here](https://docs.docker.com/desktop/windows/install/).
+1. 从[官网](https://docs.docker.com/desktop/windows/install/)安装Docker Desktop
 
-When developing on Windows with Docker Desktop and WSL 2, it's crucial to configure Docker Desktop to allow WSL 2 distributions to access the Docker daemon. This setup enables seamless integration between your Windows environment, WSL 2 Linux distros, and Docker.
+在Windows系统使用Docker Desktop和WSL 2时，必须配置Docker Desktop允许WSL 2分发版访问Docker守护进程。这种配置能实现Windows环境、WSL 2 Linux分发版和Docker之间的无缝集成。
 
-By default, Docker Desktop may not be configured to work with all WSL 2 distros out of the box. Proper configuration ensures that you can run Docker commands from within your WSL 2 environment, allowing for a more native Linux development experience while leveraging the power of Windows.
+默认情况下，Docker Desktop可能不会自动配置支持所有WSL 2分发版。正确配置后，您可以直接在WSL 2环境中运行Docker命令，获得更接近原生Linux的开发体验。
 
-> This setup is essential for Keploy to function correctly in a WSL 2 environment, as it needs to interact with the Docker daemon to manage containers and networks effectively.
-> For detailed instructions on how to configure `Docker Desktop` for WSL 2, please refer to the [official Docker documentation](https://docs.docker.com/desktop/wsl/).
+> 此配置对Keploy在WSL 2环境中正常运行至关重要，因为它需要与Docker守护进程交互来有效管理容器和网络。
+> 详细配置指南请参考[官方文档](https://docs.docker.com/desktop/wsl/)。
 
 </details>

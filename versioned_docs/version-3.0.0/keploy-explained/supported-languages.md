@@ -1,50 +1,50 @@
 ---
 id: supported-languages
-title: Supported Languages for Unit Testing
-sidebar_label: Supported Languages for Unit Testing
-description: Which languages Keploy supports for AI-powered unit test generation.
+title: 单元测试支持的语言
+sidebar_label: 单元测试支持的语言
+description: Keploy支持哪些语言进行AI驱动的单元测试生成。
 tags:
-  - unit testing
-  - supported languages
+  - 单元测试
+  - 支持的语言
   - go
   - java
 ---
 
-# 🌍 Supported Languages for Unit Testing
+# 🌍 单元测试支持的语言
 
-Keploy is a vertical AI testing agent—built to deliver real, valuable tests (not just code snippets!) for your codebase.
+Keploy是一款垂直AI测试代理——专为您的代码库提供真实、有价值的测试（而不仅仅是代码片段！）而构建。
 
-Here’s where we are today, and what makes us different:
+以下是当前进展以及我们的独特之处：
 
-## ✅ Currently Supported
+## ✅ 目前已支持
 
-**Go (Golang):** Our most mature integration.
+**Go (Golang):** 我们最成熟的集成方案。
 
-Keploy generates _and runs_ AI-powered unit tests for your Go projects.
+Keploy为您的Go项目生成_并运行_AI驱动的单元测试。
 
-**Only the tests that actually increase code coverage and pass reliably are kept anything else is filtered out.**
+**仅保留真正提高代码覆盖率且可靠通过的测试，其余均会被过滤掉。**
 
-## 🚀 Coming Soon
+## 🚀 即将支持
 
 **Java:**  
- Java support is on the way!
+Java支持即将到来！
 
-We’ll bring the same AI-driven, high-quality test generation and validation workflow to Java soon.
+我们将很快为Java带来同样的AI驱动、高质量的测试生成与验证工作流。
 
-## 🧩 Why Only a Few Languages (for now)?
+## 🧩 为何目前仅支持少量语言？
 
-**We don’t just create test code—we validate every AI-generated test:**
+**我们不仅生成测试代码——还会验证每一条AI生成的测试：**
 
-- Each test is executed against your actual codebase.
-- If a test builds, runs, and increases coverage, it’s included.
-- If it doesn’t add value, it’s automatically discarded.
+- 每条测试都会在您的实际代码库上执行
+- 只有能成功构建、运行且提高覆盖率的测试才会被保留
+- 无法提供价值的测试会被自动丢弃
 
-This rigorous, quality-first approach means we focus on fewer languages, but deliver _real_, _useful_ tests—not noisy, irrelevant code.
+这种严格的质量优先策略意味着我们专注于少数语言，但提供_真实有效_的测试——而非冗余无关的代码。
 
-## 💬 Want More Languages?
+## 💬 需要更多语言支持？
 
-We’re expanding—tell us what language you need next!  
-[Let us know!](mailto:support@keploy.io)
+我们正在扩展——告诉我们您需要的下一门语言！  
+[立即反馈](mailto:support@keploy.io)
 
-**Our Promise:**  
-No matter the language, Keploy helps you create _meaningful_, _maintainable_ tests that genuinely improve your code—not just sample outputs.
+**我们的承诺：**  
+无论何种语言，Keploy都能帮助您创建_有意义_、_可维护_的测试，真正提升代码质量——而非仅提供示例输出。

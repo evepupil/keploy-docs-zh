@@ -1,37 +1,37 @@
 ---
 id: keploy-templatize
-title: Keploy Templatize
-sidebar_label: Keploy Templatize
-description: This section documents how to templatize a testset
+title: Keploy 模板化功能
+sidebar_label: Keploy 模板化功能
+description: 本文档介绍如何将测试集模板化
 tags:
   - keploy
-  - keploy templatize
+  - keploy 模板化
 keywords:
   - keploy
-  - documentation
-  - running-guide
+  - 文档
+  - 运行指南
 ---
 
-Sometimes keploy test and keploy rerecord fail because there are fields which are noisy but they are used in requests so when their values change, the subsequent requests also fail.
+有时 keploy 测试和 keploy 重新录制会失败，因为存在一些干扰字段，但这些字段被用于请求中，当它们的值发生变化时，后续请求也会失败。
 
-eg: If an application is returning a JWT token in the response of a testcase and that token is being used in the request of another testcase, then that testcase will also fail when a new token is issued and the test is still using the old one that has been expired.
+例如：如果应用程序在某个测试用例的响应中返回了一个 JWT 令牌，而该令牌被用于另一个测试用例的请求中，那么当新令牌被签发且测试仍在使用已过期的旧令牌时，该测试用例也会失败。
 
-Templatize, as its name suggests, templatizes the testcases, so now the JWT token's original value will be replaced by a template in both the response of one testcase and the request of the other testcase and a config file will be created which will contain a map of the template key mapped to its value. Now in the test mode or rerecord mode, whenever a new token is issued where the template is placed, it will update the template value in the map and use that value in the subequent testcases where the template is placed.
+模板化功能，顾名思义，会将测试用例模板化。现在 JWT 令牌的原始值将被替换为模板，既出现在一个测试用例的响应中，也出现在另一个测试用例的请求中。同时会创建一个配置文件，其中包含模板键与其值的映射。在测试模式或重新录制模式下，每当在模板位置签发新令牌时，它会更新映射中的模板值，并在后续出现模板的测试用例中使用该值。
 
-## Keploy Templatize Example
+## Keploy 模板化示例
 
-You can use the following command to templatize your testsets.
+您可以使用以下命令将测试集模板化：
 
 ```zsh
 sudo -E env 'PATH=$PATH' keploy templatize
 ```
 
-By default, it templatizes all the testsets in the keploy folder. If you want to templatize a particular testset, you can pass the testset flag like
+默认情况下，它会模板化 keploy 文件夹中的所有测试集。如果您想模板化特定的测试集，可以传递测试集标志，例如：
 
 ```zsh
 sudo -E env 'PATH=$PATH' keploy templatize -t="test-set-1"
 ```
 
-> **Note**
+> **注意**
 >
-> Even though you can use templatize multiple times, even on testsets that have already been templatized, but it is not reversible. So make sure you create a copy of your keploy folder before trying it out.
+> 尽管您可以多次使用模板化功能，甚至可以对已经模板化的测试集再次使用，但该过程不可逆。因此请确保在尝试前先创建 keploy 文件夹的备份。

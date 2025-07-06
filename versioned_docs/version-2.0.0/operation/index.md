@@ -1,8 +1,8 @@
 ---
 id: index
-title: Keploy operation guides
+title: Keploy 操作指南
 ---
 
-- [How to Record](/operation/record-operations)
-- [How to Test](/operation/test-operations)
-- [Web UI](/operation/web-ui-operations)
+- [如何录制](/operation/record-operations)
+- [如何测试](/operation/test-operations)
+- [Web 界面](/operation/web-ui-operations)

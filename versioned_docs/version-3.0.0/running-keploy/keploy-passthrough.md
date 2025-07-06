@@ -1,32 +1,32 @@
 ---
 id: keploy-passthrough
-title: Keploy Passthrough
-sidebar_label: Keploy Passthrough
-description: This section documents how to rename testset
+title: Keploy 透传模式
+sidebar_label: Keploy 透传模式
+description: 本文档介绍如何重命名测试集
 tags:
   - keploy
   - keploy passthrough
 keywords:
   - keploy
-  - documentation
-  - running-guide
+  - 文档
+  - 运行指南
 ---
 
-The generic dependency support is unable to mock the certain config requests because the server sends the request buffers for initial handshake instead of client libraries. Due to which the test fails due to different flow in generic dependency support.
+通用依赖支持无法模拟某些配置请求，因为服务器会发送初始握手的请求缓冲区而非客户端库。这导致测试因依赖支持的流程差异而失败。
 
-This is why, user can provide the server port to pass the external requests without mocking them.
+因此，用户可以指定服务器端口来透传外部请求而不进行模拟。
 
-## Keploy Passthrough Example
+## Keploy 透传示例
 
-You can add `--passThroughPorts` flag to pass the outgoing calls at the given ports and pass them in the keploy proxy without mocking.
+您可以使用 `--passThroughPorts` 参数来透传指定端口的出站调用，使其通过 keploy 代理而不进行模拟。
 
-### Record cmd
+### 录制命令
 
 ```zsh
 sudo -E env 'PATH=$PATH' main.go record -c "java -jar path/to/user/jar" --passThroughPorts 5672,5432
 ```
 
-### Test cmd
+### 测试命令
 
 ```zsh
 sudo -E env 'PATH=$PATH' main.go test -c "java -jar path/to/user/jar" --delay 25  --passThroughPorts 5672,5432

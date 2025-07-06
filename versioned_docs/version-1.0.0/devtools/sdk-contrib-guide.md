@@ -1,26 +1,26 @@
 ---
 id: sdk-contrib-guide
-title: Contribute to Keploy SDK (v1.0.0)
-label: SDK Contribution Guide
-description: This contribution guide is for developers for setting up Keploy backend server with SDKs locally.
+title: Keploy SDK 贡献指南 (v1.0.0)
+label: SDK 贡献指南
+description: 本指南为开发者提供在本地搭建 Keploy 后端服务与 SDK 的详细说明。
 keywords:
   - SDK
   - Java
 ---
 
-### HLD for Java SDK
+### Java SDK 高层设计文档
 
-The following contains the HLD for Java SDK demonstrating all important components:
+以下内容展示了 Java SDK 的高层设计，包含所有重要组件：
 
-## Record Mode
+## 录制模式
 
-![Record Mode](https://user-images.githubusercontent.com/50234097/222137527-73115265-57ab-4387-bb4c-5cfb7285e894.png)
+![录制模式](https://user-images.githubusercontent.com/50234097/222137527-73115265-57ab-4387-bb4c-5cfb7285e894.png)
 
-## Test Mode
+## 测试模式
 
-![Test Mode](https://user-images.githubusercontent.com/50234097/222137583-d6eda9fa-3903-4222-9a23-faf24a089e06.png)
+![测试模式](https://user-images.githubusercontent.com/50234097/222137583-d6eda9fa-3903-4222-9a23-faf24a089e06.png)
 
-We held a session explaining every core-concept of Keploy-SDK
+我们举办了一场讲解 Keploy-SDK 所有核心概念的研讨会
 
 import { ResponsivePlayer } from '../../../src/components'
 

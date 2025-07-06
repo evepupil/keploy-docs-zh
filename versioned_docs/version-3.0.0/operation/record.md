@@ -1,26 +1,25 @@
 ---
 id: record-operations
-title: Record Mode Operations
-description: Guide into Keploy Record Mode
-sidebar_label: Record
+title: 记录模式操作
+description: Keploy 记录模式指南
+sidebar_label: 记录模式
 tags:
-  - operation-guide
-  - record
+  - 操作指南
+  - 记录模式
 ---
 
-> Note that Testcases are exported as files in the project directory by default
+> 注意：测试用例默认会导出为项目目录中的文件
 
-To record API calls as test cases set `KEPLOY_MODE` environment variable to `record`.
+要将 API 调用记录为测试用例，请将环境变量 `KEPLOY_MODE` 设置为 `record`。
 
 ```shell
 export KEPLOY_MODE="record"
 ```
 
-That's it! 🔥 As you make API calls to your application, new test-cases are being generated locally in `keploy-tests`
-directory.
+就这样！🔥 当您向应用程序发起 API 调用时，新的测试用例将在 `keploy-tests` 目录中本地生成。
 
-> > KTest directory path (`KEPLOY_TEST_PATH`) is configurable.
+> > 测试目录路径 (`KEPLOY_TEST_PATH`) 是可配置的。
 
-![Record Tests and Mocks](/gif/record-tc.gif "Record Tests and Mocks")
+![记录测试和模拟](/gif/record-tc.gif "记录测试和模拟")
 
-> > KMock directory path (`KEPLOY_MOCK_PATH`) is configurable.
+> > 模拟目录路径 (`KEPLOY_MOCK_PATH`) 是可配置的。

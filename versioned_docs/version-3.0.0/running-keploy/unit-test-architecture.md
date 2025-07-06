@@ -1,38 +1,38 @@
 ---
 id: unit-test-architecture
-title: Behind the Scenes
-sidebar_label: Behind the Scenes
-description: How Keploy's AI-powered unit testing architecture works.
+title: 幕后揭秘
+sidebar_label: 幕后揭秘
+description: Keploy基于AI的单元测试架构工作原理
 tags:
-  - unit testing
-  - architecture
-  - AI
-  - workflow
+  - 单元测试
+  - 架构
+  - 人工智能
+  - 工作流
 ---
 
-# 🏗️ Unit Testing Architecture
+# 🏗️ 单元测试架构
 
-Unit testing at scale isn’t just about writing individual test cases—it's about building a workflow that can generate, filter, and review tests with minimal manual effort.  
-Here’s how Keploy leverages AI (LLM) to automate and streamline the unit testing process:
+规模化单元测试不仅仅是编写独立测试用例——它需要构建一个能够以最少人工生成、筛选和审查测试的工作流。  
+以下是Keploy如何利用AI（大语言模型）实现单元测试流程自动化与优化：
 
-![Keploy Unit Testing Architecture](https://res.cloudinary.com/dfhtr1rwo/image/upload/v1748780535/keploy-utg-arch_rv2rhz.png)
+![Keploy单元测试架构](https://res.cloudinary.com/dfhtr1rwo/image/upload/v1748780535/keploy-utg-arch_rv2rhz.png)
 
-> _This diagram shows the end-to-end workflow of Keploy’s AI-powered unit testing architecture._
-
----
-
-## How it Works (at a Glance)
-
-- **CI Issues as Input:** The process starts with issues detected by your CI pipeline.
-- **LLM Generates Faults:** The system uses AI to create possible faults based on your code and current issues.
-- **Build & Test:** It checks if these faults build and whether they pass or fail.
-- **Filter & Deduplicate:** Syntactically identical or equivalent faults are removed automatically.
-- **Test Generation:** For unique faults, the LLM creates tests specifically designed to catch those faults.
-- **Automated Review:** Tests are auto-validated—discarding unstable or irrelevant ones.
-- **Diff Summary & Test Plan:** The final tests and summaries are generated automatically, then passed to your PR Agent for CI review.
+> _该图表展示了Keploy基于AI的单元测试架构端到端工作流_
 
 ---
 
-## In Short
+## 核心工作原理
 
-Keploy’s AI-driven architecture turns CI feedback and your codebase into a robust, scalable set of unit tests—saving you hours and catching regressions before they hit production.
+- **CI问题作为输入：** 流程始于CI管道检测到的问题
+- **LLM生成缺陷：** 系统基于代码和当前问题，使用AI生成潜在缺陷
+- **构建与测试：** 验证这些缺陷能否构建并通过/失败测试
+- **筛选与去重：** 自动移除语法相同或等价的缺陷
+- **测试生成：** 针对独特缺陷，LLM创建专门设计的捕获测试
+- **自动审查：** 测试自动验证——剔除不稳定或无关项
+- **差异摘要与测试计划：** 自动生成最终测试和摘要，交由PR Agent进行CI审查
+
+---
+
+## 核心价值
+
+Keploy的AI驱动架构将CI反馈和代码库转化为健壮、可扩展的单元测试集——为您节省大量时间，并在回归问题影响生产环境前及时捕获。

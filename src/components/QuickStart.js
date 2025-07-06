@@ -6,60 +6,28 @@ export const QuickStart = () => {
   return (
     <section className="mt-1">
       <h1 className="mb-4 text-4xl font-semibold tracking-wide md:text-4xl">
-        Welcome to Keploy Documentation! 🚀
+        欢迎来到Keploy文档！🚀
       </h1>
       <p className="text-l max-w-3xl">
-        This documentation will help you get the most out of Keploy—whether
-        you’re building your first project or leveling up your testing workflow.
+        本文档将帮助您充分利用Keploy——无论您是构建第一个项目还是升级测试工作流。
       </p>
 
       <h2 className="mb-4 mt-8 text-2xl font-semibold tracking-wide md:text-3xl">
-        What is Keploy? 🤔
+        Keploy是什么？🤔
       </h2>
       <p className="text-l max-w-4xl">
-        Keploy is your open-source, developer-centric backend testing tool. It
-        makes backend testing easy and productive for engineering teams. Plus,
-        it's easy-to-use, powerful and extensible..🛠️ Keploy also has AI-powered
-        tools that help you generate unit and api tests quickly, helping
-        developers focus on writing code rather than writing tests.
+        Keploy是面向开发者的开源后端测试工具。它使工程团队的后端测试变得简单高效，具备易用性、强大功能和可扩展性。🛠️ Keploy还提供AI驱动的工具，帮助快速生成单元测试和API测试，让开发者专注于编写代码而非测试用例。
       </p>
 
       <p className="text-l mt-4 max-w-4xl">
-        Keploy creates test cases and data mocks/stubs from user-traffic by
-        recording API calls and DB queries, significantly speeding up releases
-        and enhancing reliability. 📈
+        Keploy通过记录API调用和数据库查询，从用户流量自动生成测试用例和数据模拟/桩，显著加速发布周期并提升可靠性。📈
       </p>
 
-      {/*<h2 className="mt-8 text-2xl font-semibold tracking-wide md:text-3xl">*/}
-      {/*  Contribute through Hacktoberfest ✅*/}
-      {/*</h2>*/}
-      {/*<p className="text-l mb-8 mt-4 max-w-4xl">*/}
-      {/*  DigitalOcean's Hacktoberfest is a month-long celebration of open-source*/}
-      {/*  contributions. Everyone is welcome to participate, regardless of their*/}
-      {/*  experience level. Simply make a pull request to an open-source project*/}
-      {/*  to get started.*/}
-      {/*  <br /> <br />*/}
-      {/*  You can contribute to{" "}*/}
-      {/*  <a href="https://github.com/orgs/keploy/repositories">*/}
-      {/*    several Keploy projects*/}
-      {/*  </a>{" "}*/}
-      {/*  participating this year, If you’ve ever wanted to contribute to open*/}
-      {/*  source , now is your chance!*/}
-      {/*  <br /> <br />*/}
-      {/*  Anyone around the globe who desires to help drive the growth of open*/}
-      {/*  source and make positive contributions to an ever-growing community. All*/}
-      {/*  backgrounds and skill levels are encouraged to participate.{" "}*/}
-      {/*  <a href="https://opensource.guide/how-to-contribute">*/}
-      {/*    Learn How to Contribute?*/}
-      {/*  </a>*/}
-      {/*</p>*/}
-
       <h2 className="mt-8 text-2xl font-semibold tracking-wide md:text-3xl">
-        Installation Guide 📗
+        安装指南 📗
       </h2>
       <p className="text-l mb-8 mt-4 max-w-4xl">
-        Let's get Keploy up and running on your Windows, Linux, or macOS
-        machine, so you can start crafting test cases in minutes. ⏱️
+        让我们在您的Windows、Linux或macOS设备上快速安装Keploy，几分钟即可开始创建测试用例。⏱️
       </p>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
@@ -98,9 +66,7 @@ export const QuickStart = () => {
         </Link>
       </div>
       <p className=" text-l mt-6 text-gray-500">
-        ⚠️ Please note that Keploy v2 is currently in development, with the best
-        experience on Linux. Docker support is experimental and may have some
-        limitations for certain use cases.
+        ⚠️ 请注意Keploy v2目前处于开发阶段，Linux系统体验最佳。Docker支持尚属实验性质，某些使用场景可能存在限制。
       </p>
     </section>
   );

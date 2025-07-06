@@ -1,36 +1,36 @@
 ---
 id: Integration-testing
-title: Integration Testing (v1.0.0)
-sidebar_label: Integration Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 集成测试 (v1.0.0)
+sidebar_label: 集成测试
+description: 本术语表对初学者难以一眼理解的术语进行了详细解释。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-Integration testing is a software testing process that combines individual software modules into larger subsystems or components to evaluate the interaction between them. It is typically performed after unit testing and before system testing. The goal of integration testing is to identify any defects that arise when different modules are combined and interact with each other.
+集成测试是一种软件测试过程，它将独立的软件模块组合成更大的子系统或组件，以评估它们之间的交互。通常在单元测试之后、系统测试之前进行。集成测试的目标是发现不同模块组合和交互时产生的缺陷。
 
-### Types of Integration Testing
+### 集成测试的类型
 
-There are two main types of integration testing:
+集成测试主要有两种类型：
 
-1. Top-down integration testing: This type of integration testing starts with the highest-level modules and then works down to the lower-level modules.
-2. Bottom-up integration testing: This type of integration testing starts with the lowest-level modules and then works up to the higher-level modules.
+1. 自顶向下集成测试：这种集成测试从最高层模块开始，然后逐步向下测试较低层模块。
+2. 自底向上集成测试：这种集成测试从最底层模块开始，然后逐步向上测试较高层模块。
 
-### How to perform Integration Testing ?
+### 如何执行集成测试？
 
-Integration testing can be performed using a variety of techniques, including:
+集成测试可以通过多种技术来执行，包括：
 
-1. Stubs: Stubs are dummy modules that are used to simulate the behavior of other modules that are not yet ready.
-2. Drivers: Drivers are modules that are used to control the execution of other modules.
-3. Test harnesses: Test harnesses are frameworks that automate the execution of integration tests.
+1. 桩模块（Stubs）：用于模拟尚未准备好的其他模块行为的虚拟模块。
+2. 驱动模块（Drivers）：用于控制其他模块执行的模块。
+3. 测试框架（Test harnesses）：自动化执行集成测试的框架。
 
-### Benefits of Integration Testing
+### 集成测试的优势
 
-Here are some of the benefits of integration testing:
+以下是集成测试的一些优势：
 
-- It helps to identify defects early in the development lifecycle.
-- It helps to ensure that the different modules of a software application work together as expected.
-- It helps to improve the quality of the software application.
-- It helps to reduce the risk of defects being found in the later stages of the development lifecycle.
+- 有助于在开发生命周期早期发现缺陷。
+- 确保软件应用的不同模块按预期协同工作。
+- 有助于提高软件应用的质量。
+- 降低在开发生命周期后期发现缺陷的风险。

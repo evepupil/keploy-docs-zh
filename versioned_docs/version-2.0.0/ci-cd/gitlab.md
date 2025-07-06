@@ -1,35 +1,35 @@
 ---
 id: gitlab
-title: Integrating with GitLab CI
-description: Guide into Keploy GitLab CI Pipeline
+title: 与 GitLab CI 集成
+description: Keploy GitLab CI 流水线指南
 sidebar_label: GitLab Runner
 keywords:
-  - ci testing
+  - 持续集成测试
   - ci/cd
   - github
   - gitlab
 tags:
-  - ci
-  - cd
-  - plugin
+  - 持续集成
+  - 持续交付
+  - 插件
 ---
 
-Keploy can integrated with GitLab CI to streamline your testing process and ensure continuous testing as part of your CI/CD pipeline.
+Keploy 可以与 GitLab CI 集成，以简化您的测试流程，并确保作为 CI/CD 流水线的一部分进行持续测试。
 
-## Create pipeline
+## 创建流水线
 
-To integrate the Keploy in `GitLab`, we first need to install and setup by adding the following steps to our `.gitlab-ci.yml` : -
+要将 Keploy 集成到 `GitLab` 中，我们首先需要通过以下步骤在 `.gitlab-ci.yml` 中进行安装和设置：
 
 ```yaml
 ---
 stages:
   - test
 
-keploy-test-job: # This job runs in the test stage.
+keploy-test-job: # 此任务在测试阶段运行。
   image: ubuntu:22.04
   stage: test
   before_script:
-    ## Add the dependencies
+    ## 添加依赖项
     - apt-get update && apt-get install -y curl python3 python3-pip git kmod linux-headers-generic bpfcc-tools sudo
     - git clone https://github.com/keploy/samples-python
     - cd flask-mongo
@@ -37,46 +37,46 @@ keploy-test-job: # This job runs in the test stage.
     - mkdir -p /sys/kernel/tracing
 
   script:
-    ## Steps to install Keploy and run application
+    ## 安装 Keploy 并运行应用程序的步骤
     ...
 ```
 
-> **Note: if you are using `arm_64` as runner use below to download keploy binary**
+> **注意：如果使用 `arm_64` 作为运行器，请使用以下命令下载 Keploy 二进制文件**
 
 `curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz" | tar xz --overwrite -C /tmp`
 
-Now that we have Keploy installed, and all ready, we need switch to path where `keploy` folder is present in our application and install all the application related dependencies. Since we are using [flask-mongo](https://github.com/keploy/samples-python) sample-application, steps in our `script:` would look like below:-
+现在我们已经安装了 Keploy，一切准备就绪，我们需要切换到应用程序中存在 `keploy` 文件夹的路径，并安装所有应用程序相关的依赖项。由于我们使用的是 [flask-mongo](https://github.com/keploy/samples-python) 示例应用程序，`script:` 中的步骤将如下所示：
 
 ```yaml
 script:
-  ## Steps to install Keploy and run application
-  # Install Keploy
+  ## 安装 Keploy 并运行应用程序的步骤
+  # 安装 Keploy
   - curl --silent -O -L https://keploy.io/install.sh && source install.sh
 
-  # Mount required filesystems
+  # 挂载所需的文件系统
   - mount -t debugfs nodev /sys/kernel/debug || true
   - mount -t tracefs nodev /sys/kernel/tracing || true
 
-  # Run Keploy tests
+  # 运行 Keploy 测试
   - pip3 install -r requirements.txt
   - keploy test -c "python3 app.py"  --delay 50
 ```
 
-In your `.gitlab-ci.yml file`, in last step we have `keploy test` command to run your keploy generated test suite, this sets up Keploy to replay the interactions it has generated and perform CI Testing.
+在您的 `.gitlab-ci.yml` 文件中，最后一步是使用 `keploy test` 命令运行 Keploy 生成的测试套件，这将设置 Keploy 以重放其生成的交互并执行 CI 测试。
 
-### 📝 Note
+### 📝 注意
 
-Did you notice some weird stuff in the pipeline? Like `kmod`, `linux-headers`, `/sys/kernel/debug`...and thought, _"Wait, am I hacking the kernel or something?"_ 😅
+您是否在流水线中注意到一些奇怪的东西？比如 `kmod`、`linux-headers`、`/sys/kernel/debug`...然后想，“等等，我是在黑内核还是什么？” 😅
 
-Don’t worry — these are just there because **Keploy uses eBPF** (a cool Linux feature) to trace your app’s behavior.
+别担心——这些只是因为 **Keploy 使用 eBPF**（一个很酷的 Linux 功能）来跟踪您的应用程序行为。
 
-So we install `kmod`, `linux-headers-generic`, and `bpfcc-tools` to make that tracing possible.
+所以我们安装了 `kmod`、`linux-headers-generic` 和 `bpfcc-tools` 来实现这种跟踪。
 
-Some CI systems don’t have `/sys/kernel/debug` and `/sys/kernel/tracing` by default, so we create them and mount `debugfs` and `tracefs` — it’s like giving Keploy the **backstage pass** it needs to watch your app in action.
+一些 CI 系统默认没有 `/sys/kernel/debug` 和 `/sys/kernel/tracing`，所以我们创建它们并挂载 `debugfs` 和 `tracefs` —— 这就像是给 Keploy 一张**后台通行证**，让它能够观察您的应用程序运行。
 
-No black magic. Just some low-level Linux stuff helping your tests run like magic! 🪄✨
+没有黑魔法。只是一些底层的 Linux 东西帮助您的测试像魔法一样运行！ 🪄✨
 
-We will get to see output : -
+我们将看到以下输出：
 
 ```sh
 $ keploy test -c "python3 app.py"  --delay 50
@@ -139,15 +139,15 @@ Job succeeded
 
 ```
 
-_And... voila! You have successfully integrated keploy in GitLab CI/CD pipeline 🌟_
+_然后...瞧！您已成功将 Keploy 集成到 GitLab CI/CD 流水线中 🌟_
 
-Integrating Keploy with GitLab CI automates the testing process, ensuring that tests are run with every commit and merge request. And by running tests automatically in CI pipeline, you can catch issues early and ensure that your application remains stable and reliable.
+将 Keploy 与 GitLab CI 集成可以自动化测试流程，确保每次提交和合并请求时都运行测试。通过在 CI 流水线中自动运行测试，您可以及早发现问题，并确保应用程序保持稳定和可靠。
 
-### 📦 Need the Full Pipeline?
+### 📦 需要完整的流水线吗？
 
-If you’re thinking, “This pipeline looks cool, but I need the _whole thing_ to integrate with your application!” — well, you're in luck! Check it out [here](https://github.com/keploy/samples-python) and get ready to copy-paste your way to success! ✨🚀
+如果您在想，“这个流水线看起来很酷，但我需要_完整的_流水线来与您的应用程序集成！” —— 那么您很幸运！在这里查看[完整流水线](https://github.com/keploy/samples-python)，准备好复制粘贴，走向成功！ ✨🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果您还有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

@@ -1,36 +1,36 @@
 ---
 id: about-unit-testing
-title: What is Unit Testing?
-sidebar_label: What is Unit Testing?
-description: Understand the basics of unit testing—why it matters, what we test, and common challenges.
+title: 什么是单元测试？
+sidebar_label: 什么是单元测试？
+description: 了解单元测试的基础知识——它的重要性、测试内容以及常见挑战。
 tags:
-  - unit testing
-  - basics
-  - testing
+  - 单元测试
+  - 基础知识
+  - 测试
 ---
 
-# 🧩 What is Unit Testing?
+# 🧩 什么是单元测试？
 
-Unit testing is a software testing method where you test individual pieces of your code (usually functions or methods) to make sure they work as expected—all on their own.  
-Think of it as checking each LEGO brick before building the whole castle.
+单元测试是一种软件测试方法，通过单独测试代码中的各个部分（通常是函数或方法）来确保它们按预期独立工作。  
+可以把它想象成在搭建整座城堡前，先检查每一块乐高积木。
 
-## ✅ Why Do We Need Unit Testing?
+## ✅ 为什么需要单元测试？
 
-- **Catch Bugs Early:** Find problems before they snowball into bigger issues.
-- **Safe Refactoring:** Confidently change code, knowing tests have your back.
-- **Documentation:** Good unit tests show how functions are _supposed_ to behave.
-- **Speeds Up Development:** Less time debugging, more time building features.
+- **及早发现缺陷**：在问题演变成更大故障前将其捕获
+- **安全重构**：在测试保障下放心修改代码
+- **活文档**：优秀的单元测试能展示函数应有的行为方式
+- **加速开发**：减少调试时间，增加功能开发时间
 
-## 🧪 What Do We Test in Unit Testing?
+## 🧪 单元测试测什么？
 
-- **Functions & Methods:** Core logic, business rules, calculations, etc.
-- **Edge Cases:** Unusual inputs, invalid data, or unexpected conditions.
-- **Return Values:** Are we getting the results we expect?
-- **Error Handling:** Does the code handle failures gracefully?
+- **函数与方法**：核心逻辑、业务规则、计算过程等
+- **边界情况**：异常输入、无效数据或意外条件
+- **返回值**：是否得到预期结果？
+- **错误处理**：代码是否能优雅处理失败情况？
 
-## ⚠️ Common Challenges in Unit Testing
+## ⚠️ 单元测试常见挑战
 
-- **Mocking Dependencies:** Sometimes hard to isolate code if it calls databases, APIs, etc.
-- **Flaky Tests:** Unstable tests that sometimes pass, sometimes fail (super annoying).
-- **Coverage Gaps:** Missing tests for edge cases or tricky logic.
-- **Maintenance:** Keeping tests up to date as code evolves.
+- **模拟依赖项**：当代码调用数据库、API等时，隔离测试可能困难
+- **不稳定测试**：时而过时而不通过的测试（极其恼人）
+- **覆盖缺口**：遗漏边界情况或复杂逻辑的测试
+- **维护成本**：随着代码演进需要持续更新测试

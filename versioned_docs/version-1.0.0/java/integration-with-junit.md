@@ -1,10 +1,10 @@
 ---
 id: integration-with-Junit
-title: Integrate with Junit (v1.0.0)
-sidebar_label: Integrate with Junit
+title: 与Junit集成 (v1.0.0)
+sidebar_label: 与Junit集成
 ---
 
-- Add below code in your unit testfile, say, `Sample_Test.java` in `test/java` directory.
+- 在单元测试文件中添加以下代码，例如在`test/java`目录下的`Sample_Test.java`文件中。
 
 ```java
           @Test
@@ -21,4 +21,4 @@ sidebar_label: Integrate with Junit
           }
 ```
 
-- Run `mvn test`
+- 运行`mvn test`命令

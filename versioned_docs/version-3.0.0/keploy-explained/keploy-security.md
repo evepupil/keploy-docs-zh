@@ -1,40 +1,40 @@
 ---
 id: keploy-security
-title: Security & Compliance at Keploy
-sidebar_label: Security & Compliance at Keploy
-description: Learn about Keploy's secure, compliant, and resilient approach to platform security.
+title: Keploy 安全与合规
+sidebar_label: Keploy 安全与合规
+description: 了解 Keploy 在平台安全方面采用的安全、合规且高可用的方法。
 tags:
-  - security
-  - compliance
-  - reliability
+  - 安全
+  - 合规
+  - 可靠性
 ---
 
-# 🔒 Security at Keploy
+# 🔒 Keploy 安全机制
 
-At Keploy, your trust and data protection are our top priorities.  
-We provide a secure, reliable, and resilient platform—designed from the ground up with security in mind, following industry best practices every step of the way.
+在 Keploy，您的信任与数据保护是我们的首要任务。  
+我们提供安全、可靠且高可用的平台——从设计之初就将安全性纳入考量，全程遵循行业最佳实践。
 
-## ✅ Built on Industry Best Practices
+## ✅ 基于行业最佳实践构建
 
-- **End-to-End Security:** All data is protected in transit and at rest using strong encryption standards.
-- **Regular Audits:** Our platform undergoes continuous security reviews and assessments.
-- **Resilient Infrastructure:** Redundant, scalable systems ensure your tests and data are always safe and available.
-- **Least Privilege:** We follow the principle of least privilege, so your data and systems are never exposed unnecessarily.
+- **端到端安全防护:** 所有数据在传输和存储时均采用强加密标准保护。
+- **定期审计:** 我们的平台持续接受安全审查与评估。
+- **高可用架构:** 冗余可扩展的系统确保您的测试数据始终安全可用。
+- **最小权限原则:** 遵循最小权限原则，避免您的数据和系统不必要暴露。
 
-## 🛡️ Compliant with Leading Standards
+## 🛡️ 符合领先标准
 
-Keploy is committed to meeting the most stringent security and privacy standards:
+Keploy 致力于满足最严格的安全与隐私标准：
 
 - 🔒 **ISO 27001**
 - 🔒 **GDPR**
 - 🔒 **SOC 2**
 - 🔒 **HIPAA**
 
-Your data remains confidential and secure—whether you’re a startup or an enterprise.
+无论您是初创公司还是企业，您的数据都将保持机密安全。
 
-## 🤝 Responsible & Transparent
+## 🤝 负责且透明
 
-- **No Sharing of Your Data:** Your test data stays private and is never used for anything other than your own testing and analysis.
-- **Full Transparency:** We are open about our processes and happy to answer any questions you have about security or privacy.
+- **绝不共享数据:** 您的测试数据严格保密，仅用于您自身的测试与分析。
+- **完全透明:** 我们公开工作流程，并乐意解答任何安全或隐私相关问题。
 
-Have questions or need a security report for your team? [Contact us!](mailto:support@keploy.io)
+需要安全报告或有其他疑问？[联系我们！](mailto:support@keploy.io)

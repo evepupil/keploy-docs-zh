@@ -1,6 +1,6 @@
 ---
 id: javascript
-title: Merge Unit Test Coverage Data
+title: 合并单元测试覆盖率数据
 sidebar_label: Javascript
 tags:
   - javascript
@@ -25,43 +25,43 @@ import WhatAreKeployFeatures from './index.md'
 
 <WhatAreKeployFeatures/>
 
-## 🛠️ Language Specific Requirements
+## 🛠️ 语言特定要求
 
-| Programming Language | Prerequisites                            |
-| :------------------: | :--------------------------------------- |
-|      javascript      | [nyc](https://www.npmjs.com/package/nyc) |
+| 编程语言       | 前提条件                                |
+| :------------: | :--------------------------------------- |
+| javascript     | [nyc](https://www.npmjs.com/package/nyc) |
 
-## Usage
+## 使用方法
 
-### Update package file
+### 更新 package 文件
 
-Update the `package.json` file that runs the application:
+更新运行应用的 `package.json` 文件：
 
 ```json
   "scripts": {
-    //other scripts
+    //其他脚本
     "test": "jest --coverage --collectCoverageFrom='src/**/*.{js,jsx}'",
     "coverage:merge": "mkdir -p ./coverage && nyc merge ./coverage .nyc_output/out.json",
     "coverage:report": "nyc report --reporter=lcov --reporter=text",
-    //other scripts
+    //其他脚本
   }
 ```
 
-In the test script, the --coverage flag triggers report generation for Jest. For other testing frameworks like Mocha, Intern, or Tap, you will need to use their respective coverage tools.
+在测试脚本中，--coverage 标志会触发 Jest 的报告生成。对于其他测试框架如 Mocha、Intern 或 Tap，你需要使用它们各自的覆盖率工具。
 
-To generate coverage report for your unit tests, Run:
+要生成单元测试的覆盖率报告，运行：
 
 ```bash
 npm test
 ```
 
-To merge coverage data of unit tests with keploy tests, Run:
+要将单元测试的覆盖率数据与 keploy 测试合并，运行：
 
 ```bash
 npm run coverage:merge
 ```
 
-To get coverage related information for merged coverage data, Run:
+要获取合并后覆盖率数据的相关信息，运行：
 
 ```bash
 npm run coverage:report

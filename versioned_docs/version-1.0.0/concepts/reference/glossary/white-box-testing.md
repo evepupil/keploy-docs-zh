@@ -1,50 +1,50 @@
 ---
 id: white-box-testing
-title: White Box Testing (v1.0.0)
-sidebar_label: White Box Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 白盒测试 (v1.0.0)
+sidebar_label: 白盒测试
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-### White-Box Testing
+### 白盒测试
 
-White-box testing is a software testing technique that examines the internal structures of a program or application, such as the code, internal logic, and data flow. This test happens when the tester understands how the system works inside and utilizes that understanding to create and run test scenarios.
+白盒测试是一种软件测试技术，通过检查程序或应用的内部结构（如代码、内部逻辑和数据流）来进行验证。当测试人员了解系统内部工作原理，并利用这种理解来创建和执行测试场景时，就会进行此类测试。
 
-The primary goal of white-box testing is to verify that the software performs as expected, that all expected pathways and situations have been verified, and that the code has been thoroughly optimized for speed and efficiency.
+白盒测试的主要目标是验证软件是否按预期运行，确保所有预期路径和场景都经过验证，并且代码已针对速度和效率进行了全面优化。
 
-## White-Box Testing Techniques
+## 白盒测试技术
 
-White-box testing techniques include:
+白盒测试技术包括：
 
-- **Statement coverage:** This method tests every code statement. This ensures all code statements are executed, and no dead code or inaccessible statements exist.
-- **Branch coverage:** Testing all code branches. It tests all conditional statements and considers all outcomes.
-- **Path coverage:** Testing all code pathways. It tests all potential inputs and circumstances.
-- **Condition coverage:** Testing all code conditions.
-- **Data flow coverage:** Testing data flow via code. It prevents data corruption, loss, and improper processing.
-- **Loop testing:** Testing programming loops. It helps prevent endless loops and other loop difficulties by executing loops the right number of times.
-- **Code reviews:** detect coding flaws, security vulnerabilities, and performance bottlenecks.
+- **语句覆盖**：该方法测试每行代码语句。确保所有代码语句都被执行，且不存在死代码或不可达语句。
+- **分支覆盖**：测试所有代码分支。它测试所有条件语句并考虑所有可能结果。
+- **路径覆盖**：测试所有代码路径。它测试所有可能的输入和场景。
+- **条件覆盖**：测试所有代码条件。
+- **数据流覆盖**：测试代码中的数据流。防止数据损坏、丢失和不当处理。
+- **循环测试**：测试编程循环。通过正确执行循环次数，帮助避免无限循环和其他循环问题。
+- **代码审查**：检测编码缺陷、安全漏洞和性能瓶颈。
 
-## White-Box Testing Tools
+## 白盒测试工具
 
-White-box testing tools can help software developers and testers to automate testing and early detection of bugs. Some commonly used tools for white-box testing include:
+白盒测试工具可以帮助软件开发人员和测试人员自动化测试并早期发现缺陷。常用的白盒测试工具包括：
 
-- Code coverage tools: These tools aid in measuring the testing suite's code coverage by determining which lines of code are run during testing.
-- Debuggers: They assist developers in identifying and diagnosing code bugs by enabling them to walk through code and watch the program's behavior.
-- Static code analysis tools: These tools analyze code without running it to find possible coding flaws, security vulnerabilities, and performance difficulties.
-- Profiling tools: They aid in identifying performance bottlenecks in code by monitoring program execution and finding portions of code that use the most resources.
-- Frameworks for unit testing: These tools assist in automating the testing of individual code units or modules, ensuring that each unit functions as intended.
+- 代码覆盖率工具：通过确定测试期间执行了哪些代码行，帮助衡量测试套件的代码覆盖率。
+- 调试器：通过逐步执行代码并观察程序行为，帮助开发人员识别和诊断代码缺陷。
+- 静态代码分析工具：在不运行代码的情况下分析代码，以发现潜在的编码缺陷、安全漏洞和性能问题。
+- 性能分析工具：通过监控程序执行并找出消耗最多资源的代码部分，帮助识别代码中的性能瓶颈。
+- 单元测试框架：这些工具帮助自动化测试单个代码单元或模块，确保每个单元按预期工作。
 
-## Black-Box vs. White-Box Testing
+## 黑盒测试 vs. 白盒测试
 
-When it comes to testing software, there are two main schools of thought: black-box and white-box testing.
+在软件测试领域，主要有两种思想流派：黑盒测试和白盒测试。
 
-**Black-box testing:** Black-box testing focuses on the external operation and user interface of a software product. It does not require knowledge of the software's internal structure or design. Black-box testing can be used to verify that the software meets user requirements and that it works as expected from a user's perspective.
+**黑盒测试**：黑盒测试关注软件产品的外部操作和用户界面。它不需要了解软件的内部结构或设计。黑盒测试可用于验证软件是否满足用户需求，以及从用户角度是否按预期工作。
 
-**White-box testing:** White-box testing examines the internal structures of a program or application, such as the code, internal logic, and data flow. This test happens when the tester understands how the system works inside and utilizes that understanding to create and run test scenarios.
+**白盒测试**：白盒测试检查程序或应用的内部结构，如代码、内部逻辑和数据流。当测试人员了解系统内部工作原理，并利用这种理解来创建和执行测试场景时，就会进行此类测试。
 
-Both white-box and black-box testing are valuable software testing techniques, each with its own strengths and weaknesses. In general, white-box testing is more effective at finding bugs, but it can be more time-consuming and expensive to implement. Black-box testing is less effective at finding bugs, but it can be faster and less expensive to implement.
+白盒测试和黑盒测试都是有价值的软件测试技术，各有优缺点。一般来说，白盒测试在发现缺陷方面更有效，但实施起来可能更耗时且成本更高。黑盒测试在发现缺陷方面效果较差，但实施起来可能更快且成本更低。
 
-The best approach to software testing typically involves using a combination of white-box and black-box testing techniques. This can help to ensure that the software is thoroughly tested and that all potential bugs are identified and fixed.
+最佳的软件测试方法通常结合使用白盒和黑盒测试技术。这有助于确保软件经过全面测试，并识别和修复所有潜在缺陷。

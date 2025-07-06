@@ -7,7 +7,7 @@ function ResponsivePlayer({url, loop, playing}) {
       className="relative rounded-lg shadow-lg"
       style={{paddingTop: "56.25%"}}
     >
-      {/* /* Player ratio: 100 / (1280 / 720) */}
+      {/* 播放器比例：100 / (1280 / 720) */}
       <ReactPlayer
         className="absolute left-0 top-0"
         url={url}

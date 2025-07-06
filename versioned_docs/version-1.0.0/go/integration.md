@@ -1,27 +1,27 @@
 ---
 id: integration
-title: Integration for Go (v1.0.0)
-description: Add the Keploy Go SDK to your application.
+title: Go集成指南 (v1.0.0)
+description: 将Keploy Go SDK添加到您的应用程序中。
 tags:
-  - developer-guide
+  - 开发者指南
   - go
 ---
 
-### Get the SDK
+### 获取SDK
 
-Add the [Keploy Go SDK](https://github.com/keploy/go-sdk) to your project:
+将[Keploy Go SDK](https://github.com/keploy/go-sdk)添加到您的项目：
 
 ```bash
 go get -u github.com/keploy/go-sdk
 ```
 
-Or clone the Go SDK repo to your preferred location:
+或克隆Go SDK仓库到指定目录：
 
 ```bash
 git clone git@github.com:keploy/go-sdk.git
 ```
 
-## Integrate
+## 集成步骤
 
 ```go
 import(
@@ -30,22 +30,22 @@ import(
 )
 ```
 
-Create your app instance
+创建应用实例
 
 ```go
 k := keploy.New(keploy.Config{
      App: keploy.AppConfig{
-         Name: "<app_name>",
-         Port: "<app_port>",
+         Name: "<应用名称>",
+         Port: "<应用端口>",
      },
      Server: keploy.ServerConfig{
          URL: "<keploy_host>",
-         LicenseKey: "<license_key>", //optional for managed services
+         LicenseKey: "<license_key>", //托管服务可选
      },
     })
 ```
 
-{'<'}details{'>'}{'<'}summary{'>'} Example {'<'}/summary{'>'}
+{'<'}details{'>'}{'<'}summary{'>'} 示例 {'<'}/summary{'>'}
 
 ```go
 port := "6789"
@@ -62,18 +62,18 @@ port := "6789"
 
 {'<'}/details{'>'}
 
-Now wrap the routers, https clients and external dependencies like DBs.
+现在可以封装路由、HTTP客户端及数据库等外部依赖。
 
-## Wrapping Dependencies
+## 封装依赖项
 
 import SupportedFrameworks from './supported-frameworks.md'
 
 <SupportedFrameworks/>
 
-### SDK Modes
+### SDK模式
 
-[Learn more](../concepts/what-are-keploy-sdk-modes.md) about SDK modes
+[了解更多](../concepts/what-are-keploy-sdk-modes.md)关于SDK模式的信息
 
-### Where is the Go SDK technical reference?
+### Go SDK技术参考文档在哪？
 
-The [Keploy Go SDK API reference](https://pkg.go.dev/github.com/keploy/go-sdk) is published on [pkg.go.dev](https://pkg.go.dev/github.com/keploy/go-sdk)
+[Keploy Go SDK API参考](https://pkg.go.dev/github.com/keploy/go-sdk)发布于[pkg.go.dev](https://pkg.go.dev/github.com/keploy/go-sdk)

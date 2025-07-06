@@ -1,44 +1,44 @@
 ---
 id: application-settings
-title: Adding New Application to Keploy Cloud
-sidebar_label: Add Application 📝
+title: 在Keploy Cloud中添加新应用
+sidebar_label: 添加应用 📝
 tags:
-  - explanation
-  - feature guide
+  - 说明
+  - 功能指南
   - keploy cloud
-  - add application
-  - new application
-  - installation
+  - 添加应用
+  - 新应用
+  - 安装
 keywords:
   - keploy cloud
-  - installation
-  - API key
+  - 安装
+  - API密钥
 ---
 
-### Start Keploy Agent
+### 启动Keploy代理
 
-Before adding a new application or performing record-replay operations, please ensure that the keploy agent is running. You can bring up the agent by running
+在添加新应用或执行记录-回放操作前，请确保keploy代理正在运行。您可以通过以下命令启动代理：
 
 ```bash
 keploy agent-start
 ```
 
-Now that we have the agent running. Let's add a new application to Keploy Cloud.
+现在代理已运行，让我们在Keploy Cloud中添加一个新应用。
 
-### Step 1: Create a New Application
+### 步骤1：创建新应用
 
-To add the new application to Keploy Cloud, you need to login to [Keploy Console](https://app.keploy.io) and go to _New Application_.
+要将新应用添加到Keploy Cloud，您需要登录[Keploy控制台](https://app.keploy.io)并进入_新建应用_页面。
 
-### Step 2: Add Application Setup Workflow
+### 步骤2：添加应用设置工作流
 
-Now let's add the setup workflow. Add your application name and the setup workflow of the application. For example in the above screenshot you can see the setup workflow script for the [sample Go application](/docs/quickstart/samples-gin/).
+现在让我们添加设置工作流。输入您的应用名称和应用设置工作流脚本。例如在上方截图中，您可以看到[Go示例应用](/docs/quickstart/samples-gin/)的设置工作流脚本。
 
-<img src="/docs/img/keploy-cloud/keploy-cloud-new-app.png" alt="Add Keploy application"/>.
+<img src="/docs/img/keploy-cloud/keploy-cloud-new-app.png" alt="添加Keploy应用"/>.
 
-### Step 3: Edit Keploy Configuration
+### 步骤3：编辑Keploy配置
 
-Finally, edit the default [Keploy Config](/docs/running-keploy/configuration-file/) and click on the _Save_ button to add the application to Keploy Cloud.
+最后，编辑默认的[Keploy配置文件](/docs/running-keploy/configuration-file/)，点击_保存_按钮将应用添加到Keploy Cloud。
 
-### Need Help?
+### 需要帮助？
 
-If you have any questions or need assistance, our support team is here to help. You can reach out to us through our support portal, Slack or by emailing us.
+如果您有任何问题或需要协助，我们的支持团队随时为您服务。您可以通过支持门户、Slack或发送邮件联系我们。

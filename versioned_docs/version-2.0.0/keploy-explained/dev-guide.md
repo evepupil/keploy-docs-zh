@@ -1,168 +1,168 @@
 ---
 id: contribution-guide
-title: Contribution Guide
-sidebar_label: Contribution Guide
+title: 贡献指南
+sidebar_label: 贡献指南
 tags:
-  - explanation
-  - dev guide
-  - contribution guide
+  - 说明文档
+  - 开发指南
+  - 贡献指南
 ---
 
-# Contribution Guide 🚀
+# 贡献指南 🚀
 
-Welcome to the world of Keploy development! Here, we'll get you up and running smoothly, making your Keploy journey a breeze.
+欢迎来到Keploy开发世界！这里我们将帮助您快速上手，让您的Keploy之旅畅通无阻。
 
-### 1. **Setting Up Your Platform**:
+### 1. **平台设置**：
 
-Running Keploy on macOS or Windows? No problem! You'll need to create a Linux VM.
+在macOS或Windows上运行Keploy？没问题！您需要创建一个Linux虚拟机。
 
-- For macOS, install [Lima](https://github.com/lima-vm/lima#installation).
-- If you're on Windows, install [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+- macOS用户请安装[Lima](https://github.com/lima-vm/lima#installation)
+- Windows用户请安装[WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 
-Note: Linux Users are good to go.
+注意：Linux用户可直接开始
 
-### 2. **Pre-requisites**:
+### 2. **先决条件**：
 
-First things first, ensure you have [Golang](https://go.dev/doc/install) installed.
+首先确保已安装[Golang](https://go.dev/doc/install)
 
-### 3. **Cloning Keploy Repository**:
+### 3. **克隆Keploy仓库**：
 
-Time to get your hands on Keploy! Run these commands to clone the repository and download those Go dependencies:
+获取Keploy代码！运行以下命令克隆仓库并下载Go依赖：
 
 ```shell
 git clone https://github.com/keploy/keploy.git && cd keploy
 go mod download
 ```
 
-### 4. Running Keploy on v2:
+### 4. 在v2版本运行Keploy：
 
-The Keploy CLI operates by capturing all network traffic between your application and its dependencies.
-It meticulously records API calls, database queries, and any other interactions your application engages in.
+Keploy CLI通过捕获应用程序与其依赖项之间的所有网络流量来工作。
+它会详细记录API调用、数据库查询以及应用程序参与的所有其他交互。
 
-Once the recording phase is complete, Keploy can effortlessly generate test cases and data mocks in YAML format.
+记录阶段完成后，Keploy可以轻松生成YAML格式的测试用例和数据模拟。
 
-#### Keploy operates in two modes:
+#### Keploy有两种工作模式：
 
-- `record`: Capture Keploy test cases from API calls.
-- `test`: Execute recorded test cases and validate assertions.
+- `record`：从API调用捕获Keploy测试用例
+- `test`：执行记录的测试用例并验证断言
 
-To dive into Keploy, you can use the [gin-mongo URL Shortener](https://github.com/keploy/samples-go/tree/main/gin-mongo) sample application:
+要体验Keploy，您可以使用[gin-mongo URL Shortener](https://github.com/keploy/samples-go/tree/main/gin-mongo)示例应用：
 
-#### Let's clone sample app repo:
+#### 克隆示例应用仓库：
 
 ```shell
 git clone https://github.com/keploy/samples-go.git && cd samples-go/gin-mongo
-go mod download   # Download dependencies:
-go build -o gin-mongo-binary  # Generate binary of the application:
+go mod download   # 下载依赖：
+go build -o gin-mongo-binary  # 生成应用二进制文件：
 ```
 
-### Now let's try running keploy:
+### 现在尝试运行keploy：
 
-#### Capturing Test Cases:
+#### 捕获测试用例：
 
 ```shell
  go run -exec "sudo -E env 'PATH=$PATH'" -tags=viper_bind_struct main.go record -c "path/to/go/binary/of/application"
 ```
 
-After entering record mode, send requests to your application to generate test cases.
+进入记录模式后，向您的应用发送请求以生成测试用例。
 
-#### Running Test Cases:
+#### 运行测试用例：
 
 ```shell
 go run -exec "sudo -E env 'PATH=$PATH'" -tags=viper_bind_struct main.go test -c "path/to/go/binary/of/application" --delay 10
 ```
 
-Run Keploy server to expose test APIs:
+运行Keploy服务器暴露测试API：
 
 ```shell
 go run -exec "sudo -E env 'PATH=$PATH'" -tags=viper_bind_struct main.go test -c "path/to/go/binary/of/application" --delay 10 --coverage
 ```
 
-Generated test cases can be found inside the Keploy directory.
+生成的测试用例可在Keploy目录中找到。
 
-### 5. Setup Keploy using Binary:
+### 5. 使用二进制文件设置Keploy：
 
-#### Generate Keploy Binary:
+#### 生成Keploy二进制文件：
 
 ```shell
 go build -race -tags=viper_bind_struct -o keploy . && sudo mv keploy /usr/local/bin
 ```
 
-#### Capturing Test Cases:
+#### 捕获测试用例：
 
 ```shell
 sudo -E env PATH="$PATH" keploy record -c "path/to/go/binary"
 ```
 
-#### Running Test Cases:
+#### 运行测试用例：
 
 ```shell
 sudo -E env PATH="$PATH" keploy test -c "path/to/go/binary" --delay 10
 ```
 
-Note: Use the `--debug` flag to run Keploy in debug mode for detailed logs.
+注意：使用`--debug`标志可在调试模式下运行Keploy以获取详细日志。
 
-### 6. Setup Keploy via Docker:
+### 6. 通过Docker设置Keploy：
 
-#### Install the Keploy Docker Image:
+#### 安装Keploy Docker镜像：
 
 ```shell
 docker pull ghcr.io/keploy/keploy
 ```
 
-#### Create Keploy Alias:
+#### 创建Keploy别名：
 
 ```shell
 alias keployV2='sudo docker run --pull always --name keploy-v2 -p 16789:16789 --network keploy-network --privileged --pid=host -it -v $(pwd):$(pwd) -w $(pwd) -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/kernel/debug:/sys/kernel/debug -v /sys/fs/bpf:/sys/fs/bpf -v /var/run/docker.sock:/var/run/docker.sock --rm ghcr.io/keploy/keploy'
 ```
 
-#### Capture Test Cases:
+#### 捕获测试用例：
 
 ```shell
 keployV2 record -c "docker run -p 8080:8080 --name <containerName>  --network keploy-network --rm <imageName>"" --containerName  <containerName>
 ```
 
-#### Running Test Cases:
+#### 运行测试用例：
 
 ```shell
 keployV2 test --c "docker run -p 8080:8080  --name <containerName> --network keploy-network --rm <imageName>" --delay 10
 ```
 
-### 7. Testing Locally Built Docker Image:
+### 7. 测试本地构建的Docker镜像：
 
-#### Build Docker Image:
+#### 构建Docker镜像：
 
-Run the below command inside the keploy respository and make sure there is no directory by the name of keploy inside the main keploy repository.
+在keploy仓库内运行以下命令，确保主仓库中没有名为keploy的目录。
 
 ```shell
 sudo docker image build -t ghcr.io/keploy/keploy:v2-dev .
 ```
 
-#### Create Alias:
+#### 创建别名：
 
 ```shell
 alias keployV2='sudo docker run --name keploy-v2 -p 16789:16789 --privileged --pid=host -it -v $(pwd):$(pwd) -w $(pwd) -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/kernel/debug:/sys/kernel/debug -v /sys/fs/bpf:/sys/fs/bpf -v /var/run/docker.sock:/var/run/docker.sock -v '"$HOME"'/.keploy-config:/root/.keploy-config -v '"$HOME"'/.keploy:/root/.keploy --rm ghcr.io/keploy/keploy:v2-dev'
 ```
 
-#### Remember setting up the Keploy binary. See [Setup Keploy using Binary](#5-setup-keploy-using-binary) for details.
+#### 记得设置Keploy二进制文件。详情参见[使用二进制文件设置Keploy](#5-setup-keploy-using-binary)
 
-#### Capture Test Cases:
+#### 捕获测试用例：
 
 ```shell
 sudo -E env PATH="$PATH" keployV2 record -c "docker run -p 8080:8080 --name <containerName>  --network keploy-network --rm <imageName>"" --containerName  <containerName>
 ```
 
-#### Running Test Cases:
+#### 运行测试用例：
 
 ```shell
 sudo -E env PATH="$PATH" keployV2 test --c "docker run -p 8080:8080  --name <containerName> --network keploy-network --rm <imageName>" --delay 10
 ```
 
-There you have it! With this guide, you're all set to dive into Keploy development. Happy testing! 🧪🔍💻
+大功告成！通过本指南，您已准备好投入Keploy开发。祝您测试愉快！🧪🔍💻
 
-> **Note** :- Run `go run github.com/99designs/gqlgen generate --config pkg/graph/gqlgen.yml` to generate the graphql server stubs which can be used when working with unit testing libraries like JUnit, PyTest, etc..
+> **注意**：运行`go run github.com/99designs/gqlgen generate --config pkg/graph/gqlgen.yml`生成graphql服务器存根，可与JUnit、PyTest等单元测试库配合使用。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

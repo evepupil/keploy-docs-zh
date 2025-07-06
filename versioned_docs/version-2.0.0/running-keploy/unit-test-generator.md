@@ -1,55 +1,52 @@
 ---
 id: unit-test-generator
-title: Keploy Unit Test Generator
-sidebar_label: Unit Test Generator
-description: This section documents usecase of Keploy's Unit Test Generator
+title: Keploy 单元测试生成器
+sidebar_label: 单元测试生成器
+description: 本文档记录 Keploy 单元测试生成器的使用场景
 tags:
   - utg
-  - unit test generator
-  - generate unit test
-  - unit test
+  - 单元测试生成器
+  - 生成单元测试
+  - 单元测试
 keywords:
-  - unit test generator
-  - unit testing
-  - unit tests
-  - documentation
-  - testcases
-  - AI testing
+  - 单元测试生成器
+  - 单元测试
+  - 测试用例
+  - 文档
+  - AI测试
   - Gemini
   - OpenAI
 ---
 
-Keploy's unit test generator(ut-gen) implementation of Meta LLM research paper is a first which understands code semantics and generates meaningful unit tests, aiming to:
+Keploy 基于 Meta LLM 研究论文实现的单元测试生成器(ut-gen)是首个能理解代码语义并生成有意义单元测试的工具，旨在：
 
-- **Automate unit test generation (UTG):** Quickly generate comprehensive unit tests and reduce the redundant manual effort.
+- **自动化单元测试生成(UTG):** 快速生成全面的单元测试，减少冗余的手动工作。
+- **提升边缘场景覆盖:** 扩展并改进测试范围，覆盖更多手动测试常遗漏的复杂场景。
+- **提高测试覆盖率:** 随着代码库增长，确保全面覆盖变得可行。
 
-- **Improve edge cases:** Extend and improve the scope of tests to cover more complex scenarios that are often missed manually.
-
-- **Boost test coverage:** As codebase grows, ensuring exhaustive coverage should become feasible.
-
-## Usage
+## 使用方式
 
 ```bash
 keploy gen [flag]
 ```
 
-## Prerequisites
+## 前置条件
 
-`API KEY` of the AI model is needed, this can be from either of one these:
+需要配置以下任意一种AI模型的`API KEY`：
 
-- **OpenAI's [GPT-4o](https://platform.openai.com/) [preferred].**
-- Alternative LLMs via [litellm](https://github.com/BerriAI/litellm?tab=readme-ov-file#quick-start-proxy---cli).
-- [Azure OpenAI](https://azure.microsoft.com/en-in/products/ai-services/openai-service) Services
+- **OpenAI的[GPT-4o](https://platform.openai.com/) [推荐]**
+- 通过[litellm](https://github.com/BerriAI/litellm?tab=readme-ov-file#quick-start-proxy---cli)接入的其他LLM
+- [Azure OpenAI](https://azure.microsoft.com/en-in/products/ai-services/openai-service)服务
 
-Now, let's setup the `API_KEY` as environment variable : -
+设置环境变量`API_KEY`：
 
 ```bash
 export API_KEY=xxxx
 ```
 
-## Running with Javascript/TypeScript applications
+## 在Javascript/TypeScript项目中使用
 
-For the we need to make sure that the coverage report is in coberuta format, so to make sure let's modify our `package.json` by adding :
+确保覆盖率报告为cobertura格式，需在`package.json`中添加：
 
 ```json
 "jest": {
@@ -57,7 +54,7 @@ For the we need to make sure that the coverage report is in coberuta format, so 
     }
 ```
 
-or if `jest.config.js` is present then, we need to add :
+若存在`jest.config.js`则添加：
 
 ```js
 module.exports = {
@@ -65,26 +62,26 @@ module.exports = {
 };
 ```
 
-### Generating Unit Tests
+### 生成单元测试
 
-You can test a smaller section of application or to control costs, we can consider generating tests for a single source and its corresponding test file : -
+为控制成本，可以针对单个源文件及其对应测试文件生成测试：
 
 ```bash
-keploy gen --source-file-path="<path to source file>" \
-    --test-file-path="<path to test file for above source file>" \
+keploy gen --source-file-path="<源文件路径>" \
+    --test-file-path="<对应测试文件路径>" \
     --test-command="npm test" \
-    --coverage-report-path="<path to coverage.xml>"
+    --coverage-report-path="<覆盖率报告路径>"
 ```
 
-For Entire Application we can generate tests by using `--test-dir` instead of `--test-file-path`.
+对整个应用生成测试时，用`--test-dir`替代`--test-file-path`。
 
-> ⚠️ Warning: Executing command with `--test-dir` will generate unit tests for all files in the application. Depending on the size of the codebase, this process may take between 20 minutes to an hour and will incur costs related to LLM usage.
+> ⚠️ 警告：使用`--test-dir`会为应用中所有文件生成单元测试。根据代码库规模，此过程可能需要20分钟至1小时，并产生LLM使用费用。
 
-#### Example
+#### 示例
 
-Let us consider the [express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose) sample-application, where we have a jest testcases under `test` folder with name `routes.test.js`.
+以[express-mongoose](https://github.com/keploy/samples-typescript/tree/main/express-mongoose)示例项目为例，其测试文件为`test/routes.test.js`。
 
-We have modified our `package.json` by adding below : -
+在`package.json`中添加：
 
 ```json
   "jest": {
@@ -94,7 +91,7 @@ We have modified our `package.json` by adding below : -
   }
 ```
 
-Now let's run Keploy UTG command : -
+运行Keploy UTG命令：
 
 ```bash
 keploy gen \
@@ -104,39 +101,39 @@ keploy gen \
   --coverage-report-path="./coverage/cobertura-coverage.xml"
 ```
 
-We will get following output : -
+输出结果：
 
-<img src="/docs/img/express-mongoose-utg.png" alt="Keploy test coverage with ai generated unit tests for express-mongoose" width="100%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/express-mongoose-utg.png" alt="Keploy为express-mongoose生成的AI单元测试覆盖率" width="100%" style={{ borderRadius: '5px' }}/>
 
-_Voila!! The Generated Testcases have provided with 58% coverage🌟_
+_成功！生成的测试用例实现了58%的覆盖率🌟_
 
-## Running with Golang applications
+## 在Golang项目中使用
 
-To ensure Cobertura formatted coverage reports, we need to install the following : -
+安装以下工具确保生成Cobertura格式报告：
 
 ```bash
 go install github.com/axw/gocov/gocov@v1.1.0
 go install github.com/AlekSi/gocov-xml@v1.1.0
 ```
 
-### Generating Unit Tests
+### 生成单元测试
 
-With the above dependecies installed, we can now generate tests for our application by the following dommand : -
+安装依赖后执行：
 
 ```bash
-keploy gen --source-file-path="<path to source file>o" \
-  --test-file-path="<path to test file for above source file>" \
+keploy gen --source-file-path="<源文件路径>" \
+  --test-file-path="<对应测试文件路径>" \
   --test-command="go test -v ./... -coverprofile=coverage.out && gocov convert coverage.out | gocov-xml > coverage.xml" \
-  --coverage-report-path="<path to coverage.xml>"
+  --coverage-report-path="<覆盖率报告路径>"
 ```
 
-For Entire Application we can generate tests by using `--test-dir` instead of `--test-file-path`.
+对整个应用生成测试时，用`--test-dir`替代`--test-file-path`。
 
-> ⚠️ Warning: Executing command with `--test-dir` will generate unit tests for all files in the application. Depending on the size of the codebase, this process may take between 20 minutes to an hour and will incur costs related to LLM usage.
+> ⚠️ 警告：使用`--test-dir`会为应用中所有文件生成单元测试。根据代码库规模，此过程可能需要20分钟至1小时，并产生LLM使用费用。
 
-#### Example
+#### 示例
 
-Let us consider the [mux-sql](https://github.com/keploy/samples-go/tree/main/mux-sql/) sample-application, where we already have our `app_test.go` test file for `app.go` source file : -
+以[mux-sql](https://github.com/keploy/samples-go/tree/main/mux-sql/)项目为例，为`app.go`生成测试：
 
 ```bash
 keploy gen --source-file-path="app.go" \
@@ -145,23 +142,23 @@ keploy gen --source-file-path="app.go" \
   --coverage-report-path="./coverage.xml"
 ```
 
-We will get following output : -
+输出结果：
 
-<img src="/docs/img/mux-sql-utg.png" alt="Keploy test coverage with ai generated unit test for mux-sql" width="100%" style={{ borderRadius: '5px' }}/>
+<img src="/docs/img/mux-sql-utg.png" alt="Keploy为mux-sql生成的AI单元测试覆盖率" width="100%" style={{ borderRadius: '5px' }}/>
 
-_Voila!! The Generated Testcases have provided with 71% coverage in just 2 iterations 🌟_
+_成功！仅2次迭代就实现了71%的覆盖率🌟_
 
-## Frequently Asked Questions(FAQs)
+## 常见问题(FAQs)
 
-1. **What is Keploy's Unit Test Generator (UTG)?**<br/>
-   - Keploy's UTG automates the creation of unit tests based on code semantics, enhancing test coverage and reliability.
-2. **Does Keploy send your private data to any cloud server for test generation?**<br/>
-   - No, Keploy does not send any user code to remote systems, except when using the unit test generation feature. When using the UT gen feature, only the source code and the unit test code will be sent to the Large Language Model (LLM) you are using. By default, Keploy uses - litellm to support vast number of LLM backends. Yes, if your organization has its own LLM(a private one), you can use it with Keploy. This ensures that data is not sent to any external systems.
-3. **How does Keploy contribute to improving unit test coverage?**<br/>
-   - By providing a zero code platform for automated testing, Keploy empowers developers to scale up their unit test coverage without extensive coding knowledge. This integration enhances testing reports, ultimately boosting confidence in the product's quality.
-4. **Is Keploy cost-effective for automated unit testing?**<br/>
-   - Yes, Keploy optimizes costs by automating repetitive testing tasks and improving overall test efficiency.
-5. **How does Keploy generate coverage reports?**<br/>
-   - Keploy generates detailed Cobertura format reports, offering insights into test effectiveness and code quality.
-6. **Can Keploy handle large codebases efficiently?**<br/>
-   - Yes, Keploy is designed to handle large codebases efficiently, though processing time may vary based on project size and complexity.
+1. **Keploy单元测试生成器是什么？**<br/>
+   - 通过代码语义分析自动创建单元测试，提升测试覆盖率和可靠性。
+2. **会向云端发送私有数据吗？**<br/>
+   - 仅在使用UT gen功能时，源代码和单元测试代码会发送至您使用的LLM。支持通过litellm接入私有LLM。
+3. **如何提升测试覆盖率？**<br/>
+   - 提供零代码测试平台，无需深厚编码知识即可扩展测试覆盖。
+4. **成本效益如何？**<br/>
+   - 通过自动化重复测试任务优化成本。
+5. **如何生成覆盖率报告？**<br/>
+   - 生成Cobertura格式报告，直观展示测试效果。
+6. **能处理大型代码库吗？**<br/>
+   - 支持高效处理大型代码库，处理时间取决于项目复杂度。

@@ -1,67 +1,67 @@
 ---
 id: samples-nextjs
-title: NextJs Sample Application
+title: NextJs 示例应用
 sidebar_label: NextJS + SQL
-description: The following sample app to test Keploy integration capabilities using NextJS,Drizzle and Postgres.
+description: 以下示例应用用于测试 Keploy 与 NextJS、Drizzle 和 Postgres 的集成能力。
 tags:
   - NextJs
   - Postgres
 keyword:
   - NextJS
   - Postgres
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-This is a sample app to test Keploy integration capabilities using NextJS and Postgres with Drizzle ORM. Buckle up, it's gonna be a fun ride! 🎢
+这是一个使用 NextJS 和 Postgres 配合 Drizzle ORM 来测试 Keploy 集成能力的示例应用。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始使用！🎬
 
-Now that we have bun installed, we will setup our application.
+现在我们已经安装了 bun，接下来将设置我们的应用。
 
 ```bash
 git clone https://github.com/keploy/samples-typescript && cd samples-typscript/nextjs-postgres
 
-## Download node modules
+## 下载 node 模块
 npm install
 
-# start the database instance
+# 启动数据库实例
 docker-compose up
 ```
 
-## Installation 📥
+## 安装 📥
 
-- [Using Docker container for Postgres and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用 Docker 容器运行 Postgres 并在本地运行应用](#在-linuxwsl-上本地运行应用-)
 
-## Running App Locally on Linux/WSL 🐧
+## 在 Linux/WSL 上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (Redis) chill on Docker. Ready? Let's get the party started!🎉
+我们将在 Linux 上直接运行示例应用，但为了让事情更有趣一点，我们会让数据库（Redis）运行在 Docker 上。准备好了吗？让我们开始派对吧！🎉
 
-### Capture testcase
+### 捕获测试用例
 
-Ready, set, record! Here's how:
+准备，设置，开始记录！方法如下：
 
 ```bash
 sudo -E env PATH=$PATH keploy record -c 'npm run dev'
 ```
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls!
+好了，魔术师！应用已经启动并运行，让我们编织一些测试用例。咒语是什么？发起一些 API 调用！
 
-#### Generate testcases
+#### 生成测试用例
 
-**1. Create Post request**
+**1. 创建 Post 请求**
 
 ```sh
 curl -X POST -H "Content-Type: application/json" -d '{"name":"John","email":"doe@example.com"}' http://localhost:3000/api/users
 ```
 
-This will return the response:
+这将返回响应：
 
 ```json
 {
@@ -76,37 +76,37 @@ This will return the response:
 }
 ```
 
-**2. Make Get Request**
+**2. 发起 Get 请求**
 
 ```sh
 curl -X GET http://localhost:3000/api/users
 ```
 
-![Test Record](../../../static/img/nextjs-postgres-record.png)
+![测试记录](../../../static/img/nextjs-postgres-record.png)
 
-Give yourself a pat on the back! With that simple spell, you've conjured up test cases with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+给自己一个鼓励吧！通过这个简单的咒语，你已经用模拟数据生成了测试用例！探索 **Keploy 目录**，你会在 `test-1.yml` 和 `mocks.yml` 中发现你的成果。
 
-Want to see if everything works as expected?
+想看看一切是否如预期般工作吗？
 
-### Run Tests
+### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 sudo -E env PATH=$PATH keploy test -c "npm run dev" --delay 10
 ```
 
-![Test Record](../../../static/img/nextjs-postgres-test.png)
+![测试记录](../../../static/img/nextjs-postgres-test.png)
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay` 标志？哦，这只是为了让你的应用在测试用例到来之前稍作休息（以秒为单位）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后的想法？深入探索！尝试不同的 API 调用，在 `mocks.yml` 中调整数据库响应，或者在 `test-x.yml` 中修改请求或响应。再次运行测试，看看魔法如何展开！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜你完成了这段旅程！你已经见识了 Keploy 的强大，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，只要有合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对你有所帮助，如果还有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

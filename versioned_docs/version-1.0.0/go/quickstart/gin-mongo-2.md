@@ -1,7 +1,7 @@
 ---
 id: gin-mongo-2
-title: Users Profile Sample Application (v1.0.0)
-sidebar_label: Gin-Mongo Sample 2
+title: 用户档案示例应用 (v1.0.0)
+sidebar_label: Gin-Mongo 示例 2
 tags:
   - quickstart
   - go
@@ -11,23 +11,23 @@ keywords:
   - SDK
   - Docker
   - MongoDB
-  - API Testing
+  - API测试
 ---
 
-# User Profile Management Sample App
+# 用户档案管理示例应用
 
-A sample application that does CRUD (get, create, update, and delete) operations on a user in mongoDB .
+一个在mongoDB中对用户进行CRUD（获取、创建、更新和删除）操作的示例应用。
 
-## Installation
+## 安装
 
-Navigate to [Installation guide](../../server/server-installation.md) to quickly install and run the keploy server.
+导航至[安装指南](../../server/server-installation.md)快速安装并运行keploy服务器。
 
-### Start Docker and MongoDB locally
+### 本地启动Docker和MongoDB
 
-1. Open Docker application
-2. Run the command `docker container run -it -p27017:27017 mongo` to start MongoDB locally
+1. 打开Docker应用
+2. 运行命令`docker container run -it -p27017:27017 mongo`在本地启动MongoDB
 
-### Start Users-Profile sample application
+### 启动用户档案示例应用
 
 ```
 git clone https://github.com/keploy/samples-go
@@ -38,52 +38,52 @@ export KEPLOY_MODE=record
 go run .
 ```
 
-> export KEPLOY_MODE="record" changes the environment variables to record test cases
+> export KEPLOY_MODE="record"将环境变量更改为记录测试用例
 
-## Routes
+## 路由
 
-> Sample Application Port: http://localhost:8080
+> 示例应用端口: http://localhost:8080
 
-- `/user` : POST - Create a new user in the database
-- `/user/:userId` : GET - Get a user from the database
-- `/user/:userId` : PUT - Edit an existing user in the database
-- `/user/:userId` : DELETE - Delete an existing user from the database
-- `/users` : GET - Get all users from the database
+- `/user` : POST - 在数据库中创建新用户
+- `/user/:userId` : GET - 从数据库获取用户
+- `/user/:userId` : PUT - 编辑数据库中的现有用户
+- `/user/:userId` : DELETE - 从数据库中删除现有用户
+- `/users` : GET - 从数据库获取所有用户
 
-## Generate Test Cases
+## 生成测试用例
 
-To generate Test Cases, you need to make some API calls. It could be using Thunder Client, Postman Desktop Agent, or your preferred API testing tool.
+要生成测试用例，您需要发起一些API调用。可以使用Thunder Client、Postman Desktop Agent或您偏好的API测试工具。
 
-Let's see some requests here using Thunder Client:
+这里展示使用Thunder Client的请求示例：
 
-- POST Request
-  ![POST-Request](/img/POST-request.png)
-- GET Request
-  ![GET-Request](/img/GET-request.png)
+- POST请求
+  ![POST-请求](/img/POST-request.png)
+- GET请求
+  ![GET-请求](/img/GET-request.png)
 
-Once done, you can see the Test Cases on the Keploy server, like this:
+完成后，您可以在Keploy服务器上看到如下测试用例：
 
-![keploy-test-cases](/img/keploy-test-cases.png)
+![keploy测试用例](/img/keploy-test-cases.png)
 
-## Generate Test Runs
+## 生成测试运行
 
-To generate Test Runs, **close the application** and **run the below command** in the same _users-profile_ directory:
+要生成测试运行，**关闭应用**并在_users-profile_目录下运行以下命令：
 
 ```
 export KEPLOY_MODE=test
 go test -v -coverpkg=./... -covermode=atomic  ./...
 ```
 
-Once done, the Keploy terminal should look like this:
+完成后，Keploy终端应显示如下：
 
-![keploy-test-runs](/img/keploy-test-runs.png)
+![keploy测试运行](/img/keploy-test-runs.png)
 
-## Check the MongoDB database
+## 检查MongoDB数据库
 
-To check the actual data being changed in the database. Open MongoDB Compass and enter the URI below to check the data:
+要检查数据库中实际变更的数据。打开MongoDB Compass并输入以下URI查看数据：
 
 > mongodb://localhost:27017
 
-\*Would be used while making PUT Request - to get the "id" of a user
+\*在发起PUT请求时使用 - 用于获取用户的"id"
 
-**That's all for the users-profile!**
+**用户档案示例到此结束！**

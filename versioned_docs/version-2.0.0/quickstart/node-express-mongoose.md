@@ -1,8 +1,8 @@
 ---
 id: samples-nodejs
-title: NodeJS Sample Application
+title: NodeJS 示例应用
 sidebar_label: NodeJS - Express + Mongoose
-description: The following sample app showcases how to use NodeJS framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用 NodeJS 框架和 Keploy 平台。
 tags:
   - javascript
   - quickstart
@@ -10,60 +10,60 @@ tags:
   - examples
   - tutorial
 keyword:
-  - NodeJS Framework
+  - NodeJS 框架
   - MongoDB
   - NodeJS
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-A simple sample CRUD application and see how seamlessly Keploy integrates with Express and MongoDB. Buckle up, it's gonna be a fun ride! 🎢
+一个简单的 CRUD 示例应用，展示 Keploy 如何无缝集成 Express 和 MongoDB。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始使用！🎬
 
-Clone the repository and move to express-mongoose folder
+克隆仓库并进入 express-mongoose 文件夹
 
 ```bash
 git clone https://github.com/keploy/samples-typescript && cd samples-typescript/express-mongoose
 
-# Install the dependencies
+# 安装依赖
 npm install
 ```
 
-## Installation 📥
+## 安装 📥
 
-Depending on your OS, choose your adventure:
-There are 2 ways you can run this sample application.
+根据你的操作系统选择安装方式：
+有两种方式可以运行此示例应用。
 
-- [Using Docker compose : running application as well as MongoDb on Docker container](#using-docker-compose-)
-- [Using Docker container for mongoDb and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用 Docker compose：在 Docker 容器中运行应用和 MongoDB](#使用-docker-compose-)
+- [使用 Docker 容器运行 MongoDB 并在本地运行应用](#在-linuxwsl-上本地运行应用-)
 
-## Using Docker Compose 🐳
+## 使用 Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as MongoDb on Docker container.
+我们将使用 Docker compose 在 Docker 容器中运行应用和 MongoDB。
 
-### Lights, Camera, Record! 🎥
+### 准备，开始录制！🎥
 
-Fire up the application and mongoDB instance with Keploy. Keep an eye on the two key flags:
-`-c`: Command to run the app (e.g., `docker compose up`).
+启动应用和 MongoDB 实例并开始 Keploy 录制。注意两个关键标志：
+`-c`：运行应用的命令（例如 `docker compose up`）。
 
-`--container-name`: The container name in the `docker-compose.yml` for traffic interception.
+`--container-name`：`docker-compose.yml` 中用于流量拦截的容器名称。
 
 ```bash
 keploy record -c "docker compose up" --container-name "nodeMongoApp" --build-delay 50
 ```
 
-🔥 Challenge time! Generate some test cases. How? Just **make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥 挑战时间！生成一些测试用例。怎么做？只需**发起一些 API 调用**。可以使用 Postman、Hoppscotch 或 curl - 任你选择！
 
-#### Let's generate the testcases.
+#### 生成测试用例
 
-Make API Calls using [Postman](https://postman.com) or cURL command. Keploy with capture those calls to generate the test-suites containing testcases and data mocks.
+使用 [Postman](https://postman.com) 或 cURL 命令发起 API 调用。Keploy 将捕获这些调用来生成包含测试用例和数据模拟的测试套件。
 
 ```bash
 curl --request POST \
@@ -76,93 +76,93 @@ curl --request POST \
   }'
 ```
 
-Here's a peek of what you get:
+你会看到如下响应：
 
 ```
-Student registration successful!
+学生注册成功！
 ```
 
-🎉 Woohoo! With a simple API call, you've crafted a test case with a mock! Dive into the Keploy directory and feast your eyes on the newly minted `test-1.yml` and `mocks.yml`
+🎉 太棒了！通过一个简单的 API 调用，你已经创建了一个带有模拟数据的测试用例！查看 Keploy 目录，你会发现新生成的 `test-1.yml` 和 `mocks.yml`。
 
-_Time to perform more API magic!_
-Follow the breadcrumbs... or Make more API Calls
+_继续发起更多 API 调用来生成更多测试用例！_
+按照以下步骤...或发起更多 API 调用
 
 ```bash
 curl --request GET \
 --url http://localhost:8080/students
 ```
 
-Or simply wander over to your browser and visit `http://localhost:8000/students`.
+或者直接在浏览器中访问 `http://localhost:8000/students`。
 
-Did you spot the new test and mock scrolls in your project library? Awesome! 👏
+你注意到项目库中新增的测试和模拟文件了吗？太棒了！👏
 
-### Run Tests
+### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```bash
 keploy test -c "docker compose up" --container-name "nodeMongoApp" --build-delay 50 --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay` 标志？这是为了让你的应用在测试用例运行前有短暂的准备时间（以秒为单位）。
 
-Your results should be looking all _snazzy_, like this:
+你的测试结果应该看起来像这样：
 
-<img src="/docs/img/testrun-node-fail.png" alt="Sample Keploy Test Result Gin MongoDB" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/testrun-node-fail.png" alt="示例 Keploy 测试结果 Node MongoDB" width="100%" style={{ borderRadius: '5px' }} />
 
-Worry not, just add the ever-changing fields (like our **ts** here) to the **noise parameter** to **dodge those assertions**.
+别担心，只需将易变字段（如这里的 **ts**）添加到 **噪声参数** 中即可**跳过这些断言**。
 
-<img src="/docs/img/testrun-node-pass.png" alt="Sample Keploy Test Result Node MongoDB" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/testrun-node-pass.png" alt="示例 Keploy 测试结果 Node MongoDB" width="100%" style={{ borderRadius: '5px' }} />
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜你完成了这段旅程！你已经见识了 Keploy 的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！✨👩‍💻👨‍💻✨
 
 **\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***
 
-## Running App Locally on Linux/WSL 🐧
+## 在 Linux/WSL 上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (mongoDB) chill on Docker. Ready? Let's get the party started!🎉
+我们将在 Linux 上直接运行示例应用，但为了让事情更有趣，我们会将数据库（MongoDB）运行在 Docker 中。准备好了吗？让我们开始吧！🎉
 
-If you are using WSL on windows then use below to start wsl in the user's home directory:
+如果你在 Windows 上使用 WSL，请使用以下命令在用户主目录中启动 WSL：
 
 ```bash
 wsl ~
 ```
 
-First things first, update the MongoDB URL on line 4, in **`db/connection.js`**, from `mongodb://mongoDb:27017/keploy` to `mongodb://127.0.0.1:27017/keploy`.
+首先，更新 **`db/connection.js`** 第 4 行的 MongoDB URL，将 `mongodb://mongoDb:27017/keploy` 改为 `mongodb://127.0.0.1:27017/keploy`。
 
-#### 🍃 Kickstart MongoDB
+#### 🍃 启动 MongoDB
 
-We are going to run a mongo docker container which requires an existing docker network. We need to run the following command to create the required docker network:
+我们将运行一个需要现有 Docker 网络的 mongo 容器。运行以下命令创建所需的 Docker 网络：
 
 ```bash
 docker network create keploy-network
 ```
 
-Now, let's breathe life into your mongo container. A simple spell should do the trick:
+现在，启动你的 mongo 容器：
 
 ```bash
 docker compose up mongo
 ```
 
-### 📼 Roll the Tape - Recording Time!
+### 📼 开始录制！
 
-Ready, set, record! Here's how:
+准备好，开始录制！命令如下：
 
 ```bash
 sudo -E env PATH=$PATH keploy record -c 'node src/app.js'
 ```
 
-Keep an eye out for the `-c `flag! It's the command charm to run the app.
+注意 `-c` 标志！这是运行应用的命令。
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+好了，魔法师！应用已经启动，让我们生成一些测试用例。方法？发起一些 API 调用！可以使用 Postman、Hoppscotch 或经典的 curl - 选择你的工具。
 
-#### Let's generate the testcases.
+#### 生成测试用例
 
-Make API Calls using [Postman](https://postman.com) or cURL command. Keploy with capture those calls to generate the test-suites containing testcases and data mocks.
+使用 [Postman](https://postman.com) 或 cURL 命令发起 API 调用。Keploy 将捕获这些调用来生成包含测试用例和数据模拟的测试套件。
 
 ```bash
 curl --request POST \
@@ -175,45 +175,45 @@ curl --request POST \
   }'
 ```
 
-Here's a peek of what you get:
+你会看到如下响应：
 
 ```
-Student registration successful!
+学生注册成功！
 ```
 
-🎉 Woohoo! Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+🎉 太棒了！给自己鼓个掌！通过这个简单的操作，你已经生成了一个带有模拟数据的测试用例！查看 **Keploy 目录**，你会发现生成的 `test-1.yml` 和 `mocks.yml`。
 
-<img src="/docs/img/testcase-node.png" alt="Sample Keploy Test Result Node MongoDB" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/testcase-node.png" alt="示例 Keploy 测试结果 Node MongoDB" width="100%" style={{ borderRadius: '5px' }} />
 
-Now, the real fun begins. Let's weave more spells!
+现在，真正的乐趣开始了。继续生成更多测试用例！
 
-🚀 Follow the URL road...!
+🚀 按照以下步骤...！
 
 ```bash
 curl --request GET \  --url http://localhost:8080/students
 ```
 
-Or simply wander over to your browser and visit `http://localhost:8000/students`.
+或者直接在浏览器中访问 `http://localhost:8000/students`。
 
-Did you spot the new test and mock scrolls in your project library? Awesome! 👏
+你注意到项目库中新增的测试和模拟文件了吗？太棒了！👏
 
-### Run Tests 🏁
+### 运行测试 🏁
 
-Ready to put your spells to the test?
+准备好测试你的魔法了吗？
 
 ```bash
 sudo -E env PATH=$PATH keploy test -c "node src/app.js" --delay 10
 ```
 
-Worry not, just add the ever-changing fields (like our **ts** here) to the **noise parameter** to **dodge those assertions**.
+别担心，只需将易变字段（如这里的 **ts**）添加到 **噪声参数** 中即可**跳过这些断言**。
 
-<img src="/docs/img/testrun-node-pass.png" alt="Sample Keploy Test Result Node MongoDB" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/testrun-node-pass.png" alt="示例 Keploy 测试结果 Node MongoDB" width="100%" style={{ borderRadius: '5px' }} />
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜你完成了这段旅程！你已经见识了 Keploy 的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如果还有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

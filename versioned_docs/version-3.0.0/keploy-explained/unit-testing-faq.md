@@ -1,50 +1,50 @@
 ---
 id: unit-testing-faq
-title: Frequently Asked Questions
-sidebar_label: FAQs
+title: 常见问题解答
+sidebar_label: 常见问题
 tags:
   - explanation
   - faq
 ---
 
-# Got Questions? We’ve Got Answers! 🚀
+# 有问题？我们有答案！🚀
 
-Everything you want to know about Unit testing with Keploy—straightforward and no fluff.
+关于使用Keploy进行单元测试的一切疑问——直击要点，不绕弯子。
 
-### 1. What is Keploy's Unit Test Generator (UTG)?
+### 1. 什么是Keploy的单元测试生成器（UTG）？
 
-Keploy's UTG automates the creation of unit tests based on code semantics, enhancing test coverage and reliability.
+Keploy的UTG基于代码语义自动创建单元测试，提升测试覆盖率和可靠性。
 
-### 2. Does Keploy send your private data to any cloud server for test generation?
+### 2. Keploy会为了生成测试将您的私有数据发送到云端服务器吗？
 
-No, Keploy does not send any user code to remote systems, except when using the unit test generation feature. When using the UT gen feature, only the source code and the unit test code will be sent to the Large Language Model (LLM) you are using. By default, Keploy uses - litellm to support vast number of LLM backends. Yes, if your organization has its own LLM(a private one), you can use it with Keploy. This ensures that data is not sent to any external systems.
+不会，Keploy不会将用户代码发送到远程系统，除非使用单元测试生成功能。当使用UT生成功能时，仅源代码和单元测试代码会被发送到您使用的大型语言模型（LLM）。默认情况下，Keploy使用litellm来支持多种LLM后端。是的，如果您的组织拥有自己的LLM（私有模型），您可以将其与Keploy一起使用。这确保了数据不会被发送到任何外部系统。
 
-### 3. How does Keploy contribute to improving unit test coverage?
+### 3. Keploy如何帮助提高单元测试覆盖率？
 
-By providing a zero code platform for automated testing, Keploy empowers developers to scale up their unit test coverage without extensive coding knowledge. This integration enhances testing reports, ultimately boosting confidence in the product's quality.
+通过提供零代码的自动化测试平台，Keploy使开发者无需大量编码知识即可扩展单元测试覆盖率。这种集成增强了测试报告，最终提升对产品质量的信心。
 
-### 4. Is Keploy cost-effective for automated unit testing?
+### 4. Keploy对自动化单元测试来说具有成本效益吗？
 
-Yes, Keploy optimizes costs by automating repetitive testing tasks and improving overall test efficiency.
+是的，Keploy通过自动化重复测试任务和提高整体测试效率来优化成本。
 
-### 5. How does Keploy generate coverage reports?
+### 5. Keploy如何生成覆盖率报告？
 
-Keploy generates detailed Cobertura format reports, offering insights into test effectiveness and code quality.
+Keploy生成详细的Cobertura格式报告，提供测试有效性和代码质量的深入分析。
 
-### 6. Can Keploy handle large codebases efficiently?
+### 6. Keploy能高效处理大型代码库吗？
 
-Yes, Keploy is designed to handle large codebases efficiently, though processing time may vary based on project size and complexity.
+是的，Keploy设计用于高效处理大型代码库，尽管处理时间可能因项目规模和复杂度而异。
 
-### 7. Which method should I choose for generating unit tests?
+### 7. 我应该选择哪种方法来生成单元测试？
 
-- **PR Agent**: Best for teams using pull request workflows who want automatic test generation
-- **VS Code Extension**: Ideal for individual developers who prefer IDE integration
+- **PR代理**：最适合使用拉取请求工作流并希望自动生成测试的团队
+- **VS Code扩展**：适合偏好IDE集成的独立开发者
 
-### 8. Do I need an API key to use these two methods?
+### 8. 使用这两种方法需要API密钥吗？
 
-The API key is primarily required for the Command Line method. The PR Agent and VS Code Extension may have different authentication mechanisms depending on your setup.
+API密钥主要针对命令行方法需要。PR代理和VS Code扩展根据您的设置可能有不同的认证机制。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这些解答对您有帮助，如果还有其他问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

@@ -8,87 +8,51 @@ function About() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      title="About the docs"
+      title="关于文档"
       permalink="/about"
-      description="User General Information about Keploy's Documentation"
+      description="Keploy文档的通用用户信息"
     >
       <main className="margin-vert--lg container">
-        <h1>About the docs</h1>
+        <h1>关于文档</h1>
         <div className="margin-bottom--lg">
-          <h2 id="latest">Documentation SLA</h2>
+          <h2 id="latest">文档服务协议</h2>
           <p>
-            Keploy is constantly working to improve and expand its
-            documentation. As a result, some components may change without
-            notice. Page slugs (URLs), menu labels, and the location of
-            information are a few of the items you can expect to see altered as
-            we aim to try and give our users the best experience possible.
+            Keploy持续致力于改进和扩展其文档内容。因此，部分组件可能会未经通知即发生变更。页面永久链接（URL）、菜单标签以及信息位置等都可能随着我们努力为用户提供最佳体验而进行调整。
           </p>
           <p>
-            Visit{" "}
-            <a href="https://github.com/keploy/docs">keploy/docs on github</a>{" "}
-            for help if the information you are looking for appears to be
-            missing.
+            如果您查找的信息似乎缺失，请访问
+            <a href="https://github.com/keploy/docs">GitHub上的keploy/docs</a>获取帮助。
           </p>
           <p>
-            View the{" "}
-            <a href="https://github.com/keploy/docs">
-              source repository README
-            </a>{" "}
-            for contribution guidelines if you are looking to help improve the
-            Keploy documentation experience.
+            若您希望协助改进Keploy文档体验，请查看
+            <a href="https://github.com/keploy/docs">源代码仓库README</a>了解贡献指南。
           </p>
         </div>
         <div className="margin-bottom--lg">
-          <h2 id="next">MIT License</h2>
+          <h2 id="next">MIT许可证</h2>
           <pre>
-            <p>Copyright (c) 2021 Keploy Inc. All rights reserved.</p>
+            <p>版权所有 (c) 2021 Keploy Inc. 保留所有权利。</p>
 
             <p>
-              Permission is hereby granted, free of charge, to any person
-              obtaining a copy
+              特此免费授予任何获得本软件及相关文档文件（以下简称"软件"）副本的人士无限制使用软件的权利，
               <br />
-              of this software and associated documentation files (the
-              "Software"), to deal
+              包括但不限于使用、复制、修改、合并、发布、分发、再许可及/或销售软件副本的权利，
               <br />
-              in the Software without restriction, including without limitation
-              the rights
-              <br />
-              to use, copy, modify, merge, publish, distribute, sublicense,
-              and/or sell
-              <br />
-              copies of the Software, and to permit persons to whom the Software
-              is
-              <br />
-              furnished to do so, subject to the following conditions:
+              并允许向其提供软件的个人按以下条件行使上述权利：
             </p>
 
             <p>
-              The above copyright notice and this permission notice shall be
-              included in
-              <br />
-              all copies or substantial portions of the Software.
+              须在所有软件副本或实质性部分中包含上述版权声明和本许可声明。
             </p>
 
             <p>
-              THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-              EXPRESS OR
+              本软件按"原样"提供，不附带任何明示或默示的担保，包括但不限于对适销性、
               <br />
-              IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-              MERCHANTABILITY,
+              特定用途适用性和非侵权性的担保。在任何情况下，作者或版权持有人均不对
               <br />
-              FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-              SHALL THE
+              因软件或使用或其他交易行为引起的任何索赔、损害或其他责任承担责任，
               <br />
-              AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-              OTHER
-              <br />
-              LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-              ARISING FROM,
-              <br />
-              OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-              DEALINGS IN
-              <br />
-              THE SOFTWARE.
+              无论是合同诉讼、侵权行为或其他情形所导致。
             </p>
           </pre>
         </div>

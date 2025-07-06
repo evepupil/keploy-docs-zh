@@ -1,40 +1,40 @@
 ---
 id: error-guessing
-title: Error Guessing
-sidebar_label: Error Guessing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 错误猜测法
+sidebar_label: 错误猜测法
+description: 本术语表对初学者难以一眼理解的术语进行了详细解释。
 tags:
-  - explanation
-  - glossary
+  - 说明
+  - 术语表
 keywords:
   - API
 ---
 
-## What is Error Guessing?
+## 什么是错误猜测法？
 
-Error guessing is an intuitive and experience-based software testing technique that relies on developer and tester's knowledge and creativity to identify potential defects in a system. This method involves anticipating where errors are likely to occur based on past experiences, common programming mistakes, and an understanding of the system's architecture.
+错误猜测法是一种基于直觉和经验的软件测试技术，它依赖于开发人员和测试人员的知识及创造力来识别系统中的潜在缺陷。该方法通过结合过往经验、常见编程错误以及对系统架构的理解，来预判可能出错的位置。
 
-## Key aspects
+## 核心要素
 
-- **Intuition:** Testers use their instincts and experience to predict where errors might lurk.
-- **Domain knowledge:** Understanding the application's purpose and typical user behavior helps in identifying potential issues.
-- **Historical data:** Past bugs and common error patterns inform the guessing process.
-- **Creativity:** Testers think outside the box to imagine scenarios that might cause failures.
+- **直觉:** 测试人员凭借本能和经验预测可能隐藏错误的位置。
+- **领域知识:** 理解应用程序的用途和典型用户行为有助于识别潜在问题。
+- **历史数据:** 过往的缺陷记录和常见错误模式为猜测过程提供依据。
+- **创造力:** 测试人员跳出常规思维，设想可能导致故障的场景。
 
-## Benefits
+## 优势
 
-- **Uncovers unique defects:** Can reveal issues missed by systematic testing approaches.
-- **Cost-effective:** Requires minimal setup and can be performed quickly.
-- **Improves over time:** The technique becomes more effective as testers gain experience.
-- **Adaptable:** Can be applied to various types of software and testing phases.
+- **发现独特缺陷:** 能揭示系统化测试方法遗漏的问题。
+- **成本效益高:** 需要最少的准备工作且可快速执行。
+- **持续提升:** 随着测试人员经验积累，该技术会变得更有效。
+- **适应性强:** 可应用于各类软件和不同测试阶段。
 
-## Challenges
+## 挑战
 
-- **Subjectivity:** Relies heavily on individual tester's skills and experience.
-- **Lack of structure:** May not provide comprehensive coverage of all system aspects.
-- **Difficult to replicate:** Success varies between testers and isn't easily standardized.
-- **Time-consuming:** Can be inefficient if not guided by experience or historical data.
+- **主观性强:** 高度依赖测试人员个人的技能和经验。
+- **缺乏结构性:** 可能无法全面覆盖系统的所有方面。
+- **难以复现:** 测试效果因人而异，不易标准化。
+- **耗时:** 若缺乏经验或历史数据指导，可能效率低下。
 
-## Conclusion
+## 结论
 
-While error guessing is not systematic like other testing methods, it can be highly effective when combined with more structured approaches. It allows testers to explore edge cases and unusual scenarios that might be overlooked by conventional test cases. However, the success of error guessing largely depends on the tester's expertise and familiarity with the system. As such, it's often used as a complementary technique rather than a standalone method in comprehensive testing strategies.
+虽然错误猜测法不像其他测试方法那样系统化，但与结构化方法结合使用时效果显著。它能让测试人员探索常规测试用例可能忽略的边界情况和异常场景。然而，该方法的成功很大程度上取决于测试人员的专业水平和对系统的熟悉程度。因此，在全面测试策略中，它通常作为补充技术而非独立方法使用。

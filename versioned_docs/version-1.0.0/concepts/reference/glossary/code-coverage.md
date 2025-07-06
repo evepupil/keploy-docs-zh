@@ -1,12 +1,12 @@
 ---
 id: code-coverage
-title: Code Coverage (v1.0.0)
-sidebar_label: Code Coverage
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 代码覆盖率 (v1.0.0)
+sidebar_label: 代码覆盖率
+description: 本术语表对初学者难以一眼理解的术语进行了详细解释。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-Code coverage is a metric that measures the extent to which the code in a program has been executed during testing. It is a valuable tool for software testers because it can help them to identify areas of the code that have not been tested and to ensure that the entire program has been adequately tested.
+代码覆盖率是一种衡量指标，用于评估程序代码在测试过程中被执行的程度。它是软件测试人员的宝贵工具，能帮助他们识别未经测试的代码区域，并确保整个程序得到充分测试。

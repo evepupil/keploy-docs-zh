@@ -1,199 +1,199 @@
 ---
 id: common-errors
-title: Common Errors in Keploy
-sidebar_label: Common Errors
+title: Keploy 常见错误
+sidebar_label: 常见错误
 tags:
-  - explanation
-  - faq
+  - 问题解析
+  - 常见问题
 ---
 
-Let's check some of the common errors that you might encounter while working with Keploy!
+让我们来看看使用 Keploy 时可能遇到的一些常见错误！
 
-### 1. Dependency Not Found Error
+### 1. 依赖项未找到错误
 
-#### Description:
+#### 描述：
 
-This error occurs when Keploy cannot locate or access a required dependency, such as a database or external service.
+当 Keploy 无法定位或访问所需的依赖项（如数据库或外部服务）时，会出现此错误。
 
-#### Possible Cause:
+#### 可能原因：
 
-- The dependency may not be running or is incorrectly configured.
-- Networking issues may be preventing Keploy from connecting to external dependencies.
+- 依赖项可能未运行或配置不正确。
+- 网络问题可能阻止 Keploy 连接到外部依赖项。
 
-#### Solution:
+#### 解决方案：
 
-- Verify that all required services (e.g., databases, third-party APIs) are active and accessible.
-- Check the environment variables or configuration files to confirm the correct host and port details.
-- Use network diagnostic tools (e.g., ping, traceroute) to identify connectivity issues.
+- 确认所有必需服务（如数据库、第三方 API）处于活动状态且可访问。
+- 检查环境变量或配置文件，确保主机和端口信息正确。
+- 使用网络诊断工具（如 ping、traceroute）排查连接问题。
 
-### 2. Unable to Record API Calls
+### 2. 无法记录 API 调用
 
-#### Description:
+#### 描述：
 
-Keploy fails to record incoming API traffic, meaning no tests are generated.
+Keploy 未能记录传入的 API 流量，导致无法生成测试用例。
 
-#### Possible Cause:
+#### 可能原因：
 
-- Incorrect integration with the application.
-- Keploy may not be correctly started with the application, or the SDK is not configured properly.
-- The application may not be making API calls that are recognizable by Keploy.
+- 与应用程序集成不正确。
+- Keploy 可能未随应用程序正确启动，或 SDK 配置不当。
+- 应用程序可能未发出 Keploy 可识别的 API 调用。
 
-#### Solution:
+#### 解决方案：
 
-- Double-check the integration guide for the programming language you’re using.
-- Ensure that Keploy is properly hooked into the API layer.
-- Check Keploy logs for any missed or skipped requests.
+- 仔细检查所用编程语言的集成指南。
+- 确保 Keploy 已正确接入 API 层。
+- 查看 Keploy 日志，确认是否有请求被遗漏或跳过。
 
-### 3. Test Replay Failure
+### 3. 测试回放失败
 
-#### Description:
+#### 描述：
 
-Keploy is unable to replay recorded API requests.
+Keploy 无法回放已记录的 API 请求。
 
-#### Possible Cause:
+#### 可能原因：
 
-- External services or databases may be in a different state than they were during recording.
-- Non-deterministic values like timestamps, UUIDs, or random values are causing failures.
+- 外部服务或数据库状态与记录时不同。
+- 时间戳、UUID 或随机值等非确定性值导致失败。
 
-#### Solution:
+#### 解决方案：
 
-- Leverage Keploy’s mocking capabilities to simulate external services and databases.
-- Use configurations to handle or exclude non-deterministic values for consistent comparisons.
-- Regularly reset the database state to match the conditions during recording.
+- 利用 Keploy 的模拟功能来仿真外部服务和数据库。
+- 使用配置处理或排除非确定性值，确保比较一致性。
+- 定期重置数据库状态，使其与记录时条件匹配。
 
-### 4. Response Mismatch Error
+### 4. 响应不匹配错误
 
-#### Description:
+#### 描述：
 
-When Keploy replays API calls, it detects a mismatch between the recorded response and the current response.
+Keploy 回放 API 调用时，检测到记录的响应与当前响应不一致。
 
-#### Possible Cause:
+#### 可能原因：
 
-- The application’s behavior has changed, leading to different responses.
-- Changes in the response format, status codes, or headers that weren’t present during recording.
+- 应用程序行为变更导致响应不同。
+- 响应格式、状态码或标头在记录后发生变化。
 
-#### Solution:
+#### 解决方案：
 
-- Review the application changes and determine if the mismatch is expected (e.g., new features).
-- If the change is acceptable, update the test baseline to reflect the new behavior.
-- Use Keploy’s flexible comparison options to ignore certain fields or values (like timestamps or version numbers).
+- 审查应用程序变更，确认不匹配是否预期（如新功能引入）。
+- 若变更合理，更新测试基线以反映新行为。
+- 使用 Keploy 的灵活比较选项，忽略特定字段或值（如时间戳、版本号）。
 
-### 5. Incorrect Test Generation
+### 5. 测试生成不正确
 
-#### Description:
+#### 描述：
 
-Keploy generates tests that don’t properly reflect the API interactions.
+Keploy 生成的测试未能准确反映 API 交互。
 
-#### Possible Cause:
+#### 可能原因：
 
-- The API interaction may be too complex or involve custom logic that Keploy cannot automatically handle.
-- API parameters may be missing or misinterpreted during recording.
+- API 交互过于复杂或包含 Keploy 无法自动处理的定制逻辑。
+- API 参数在记录过程中缺失或被误解。
 
-#### Solution:
+#### 解决方案：
 
-- Review the recorded test cases for correctness.
-- Manually adjust the generated tests to include missing or misinterpreted parameters.
-- Make use of Keploy’s API to refine the recording process if necessary.
+- 检查记录的测试用例是否正确。
+- 手动调整生成的测试，补充缺失或被误解的参数。
+- 必要时使用 Keploy API 优化记录过程。
 
-### 6. Database Connection Error during Test Replay
+### 6. 测试回放期间的数据库连接错误
 
-#### Description:
+#### 描述：
 
-Keploy cannot connect to the database or other external systems during the replay of tests.
+Keploy 在回放测试时无法连接到数据库或其他外部系统。
 
-#### Possible Cause:
+#### 可能原因：
 
-- The test environment may not have access to the same database as the original recording.
-- Database credentials or host information could be incorrect or missing in the test environment.
+- 测试环境可能无法访问原始记录时的数据库。
+- 测试环境中的数据库凭据或主机信息错误或缺失。
 
-#### Solution:
+#### 解决方案：
 
-- Mirror the test environment configuration with the recording setup.
-- Use database mocks or stubs for isolated testing.
-- Double-check connection strings, credentials, and database availability.
+- 确保测试环境配置与记录设置一致。
+- 使用数据库模拟或桩模块进行隔离测试。
+- 仔细检查连接字符串、凭据及数据库可用性。
 
-### 7. Missing or Invalid Configuration Error
+### 7. 配置缺失或无效错误
 
-#### Description:
+#### 描述：
 
-Keploy cannot find a valid configuration file or encounters errors in the configuration.
+Keploy 找不到有效配置文件或配置中存在错误。
 
-#### Possible Cause:
+#### 可能原因：
 
-- The Keploy configuration file (keploy.yaml or similar) is missing or contains invalid values.
-- Environment variables required by Keploy may not be set.
+- Keploy 配置文件（如 keploy.yaml）缺失或包含无效值。
+- Keploy 所需的环境变量未设置。
 
-#### Solution:
+#### 解决方案：
 
-- Ensure the configuration file exists and follows the correct format.
-- Populate all required fields with valid values.
-- Check that environment variables are properly set.
+- 确保配置文件存在且格式正确。
+- 填写所有必填字段并确保值有效。
+- 检查环境变量是否已正确设置。
 
-### 8. Timeout Errors
+### 8. 超时错误
 
-#### Description:
+#### 描述：
 
-Keploy times out while recording or replaying API calls.
+Keploy 在记录或回放 API 调用时超时。
 
-#### Possible Cause:
+#### 可能原因：
 
-- Long-running API requests or slow external dependencies can cause timeout issues.
-- Keploy may have low timeout settings for API calls.
+- 长时间运行的 API 请求或缓慢的外部依赖项导致超时。
+- Keploy 的 API 调用超时设置可能过低。
 
-#### Solution:
+#### 解决方案：
 
-- Increase timeout settings in the Keploy configuration.
-- Identify and optimize slow-performing APIs or dependencies.
-- Use monitoring tools to analyze API performance.
+- 在 Keploy 配置中增加超时设置。
+- 定位并优化性能低下的 API 或依赖项。
+- 使用监控工具分析 API 性能。
 
-### 9. Insufficient Permissions
+### 9. 权限不足
 
-#### Description:
+#### 描述：
 
-Keploy fails due to insufficient permissions when accessing files, networks, or other resources.
+Keploy 因访问文件、网络或其他资源时权限不足而失败。
 
-#### Possible Cause:
+#### 可能原因：
 
-The user or service running Keploy may not have sufficient permissions to access resources like databases, APIs, or file systems.
+运行 Keploy 的用户或服务可能缺乏访问数据库、API 或文件系统等资源的足够权限。
 
-#### Solution:
+#### 解决方案：
 
-- Ensure that the user or service running Keploy has the necessary permissions.
-- Review system permissions and provide the required access rights for Keploy to function properly.
+- 确保运行 Keploy 的用户或服务具备必要权限。
+- 检查系统权限设置，为 Keploy 提供正常运行所需的访问权限。
 
-### 10. Version Compatibility Issues
+### 10. 版本兼容性问题
 
-#### Description:
+#### 描述：
 
-Errors occur because of version mismatches between Keploy, its dependencies, or the application it’s testing.
+因 Keploy、其依赖项或被测应用之间的版本不匹配导致错误。
 
-#### Possible Cause:
+#### 可能原因：
 
-- Using incompatible versions of Keploy or related SDKs with your application.
-- Dependencies of Keploy (e.g., for mocking or replaying) may have updated and broken compatibility.
+- 使用了与应用程序不兼容的 Keploy 或相关 SDK 版本。
+- Keploy 的依赖项（如模拟或回放组件）可能已更新并破坏兼容性。
 
-#### Solution:
+#### 解决方案：
 
-- Verify version compatibility for Keploy and its SDKs.
-- Consult Keploy documentation or release notes for known issues.
-- Use version pinning to maintain a stable environment.
+- 验证 Keploy 及其 SDK 的版本兼容性。
+- 查阅 Keploy 文档或发行说明，了解已知问题。
+- 使用版本锁定维持稳定环境。
 
-### 11. Unsupported Protocol or API
+### 11. 不支持的协议或 API
 
-#### Description:
+#### 描述：
 
-Keploy does not support the protocol or API structure you are using (e.g., gRPC, SOAP, etc.).
+Keploy 不支持您使用的协议或 API 结构（如 gRPC、SOAP 等）。
 
-#### Possible Cause:
+#### 可能原因：
 
-- The application might use an API or protocol that Keploy doesn’t yet support (e.g., WebSocket, gRPC).
+- 应用程序可能使用了 Keploy 尚未支持的 API 或协议（如 WebSocket、gRPC）。
 
-#### Solution:
+#### 解决方案：
 
-- Confirm the supported protocols (currently HTTP/REST and GraphQL).
-- Consider alternative tools or frameworks for unsupported protocols.
+- 确认支持的协议（当前为 HTTP/REST 和 GraphQL）。
+- 对于不支持的协议，考虑使用替代工具或框架。
 
-If you’re still encountering issues after trying these solutions, feel free to reach out to the Keploy team or consult the community forums for additional support. Happy testing!
+如果尝试上述解决方案后问题仍未解决，欢迎联系 Keploy 团队或访问社区论坛获取更多支持。祝测试愉快！
 
 import GetSupport from '../concepts/support.md'
 

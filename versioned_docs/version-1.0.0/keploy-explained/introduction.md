@@ -1,14 +1,14 @@
 ---
 id: introduction
-title: Introduction to Keploy (v1.0.0)
-sidebar_label: Introduction
+title: Keploy 简介 (v1.0.0)
+sidebar_label: 简介
 ---
 
 import WhatIsKeploy from '../concepts/what-is-keploy.md'
 
 <WhatIsKeploy/>
 
-## Keploy Features
+## Keploy 功能特性
 
 import WhatAreKeployFeatures from '../concepts/what-are-keploy-features.md'
 
@@ -20,6 +20,6 @@ import WhatIsAKeploySDK from '../concepts/what-is-a-keploy-sdk.md'
 
 <WhatIsAKeploySDK/>
 
-### Integrate SDK
+### 集成 SDK
 
-**Choose programming language to integrate [Keploy SDK](/application-development).**
+**选择编程语言以集成 [Keploy SDK](/application-development)。**

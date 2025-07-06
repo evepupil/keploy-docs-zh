@@ -1,32 +1,32 @@
 ---
 id: acceptance-testing
-title: Acceptance Testing (v1.0.0)
-sidebar_label: Acceptance Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 验收测试 (v1.0.0)
+sidebar_label: 验收测试
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-### What is Acceptance Testing?
+### 什么是验收测试？
 
-Acceptance testing (AT) is a formal testing process that is conducted to determine whether a software system meets the requirements of the customer or end user. AT is the last phase of software testing, and it is conducted after all other levels of testing have been completed.
+验收测试（AT）是一种正式的测试流程，用于确定软件系统是否符合客户或最终用户的需求。验收测试是软件测试的最后阶段，在所有其他级别的测试完成后进行。
 
-The purpose of AT is to ensure that the software system is acceptable to the customer or end user. This means that the system must meet the customer's or end user's needs and expectations. AT also helps to identify any defects or problems with the software system that may have been missed during earlier phases of testing.
+验收测试的目的是确保软件系统能够被客户或最终用户接受。这意味着系统必须满足客户或最终用户的需求和期望。验收测试还有助于识别在早期测试阶段可能遗漏的软件系统缺陷或问题。
 
-### Acceptance Testing Types:
+### 验收测试类型：
 
-- **User acceptance testing (UAT)**: This is the most common type of AT. It involves the customer or end user using the software system in a way that simulates how they will use it in the real world.
-- **Systematic testing**: This involves using a set of predetermined test cases to test the software system.
-- **Acceptance test-driven development (ATDD)**: This is a technique that combines AT with test-driven development (TDD). TDD is a software development process that involves writing unit tests before the code is written. ATDD extends TDD by adding acceptance tests to the mix.
+- **用户验收测试（UAT）**：这是最常见的验收测试类型。它涉及客户或最终用户以模拟实际使用场景的方式操作软件系统。
+- **系统化测试**：通过一组预定义的测试用例对软件系统进行测试。
+- **验收测试驱动开发（ATDD）**：这是一种将验收测试与测试驱动开发（TDD）相结合的技术。TDD是一种在编写代码前先编写单元测试的软件开发流程，ATDD通过加入验收测试扩展了TDD的范围。
 
-### Benefits of Acceptance Testing:
+### 验收测试的优势：
 
-- It helps to ensure that the software system meets the needs and expectations of the customer or end user.
-- It helps to identify any defects or problems with the software system that may have been missed during earlier phases of testing.
-- It helps to improve the overall quality of the software system.
-- It helps to reduce the risk of defects and problems with the software system.
-- It helps to ensure that the software system is ready for release.
+- 确保软件系统满足客户或最终用户的需求和期望。
+- 识别在早期测试阶段可能遗漏的软件系统缺陷或问题。
+- 提升软件系统的整体质量。
+- 降低软件系统出现缺陷和问题的风险。
+- 确保软件系统已具备发布条件。
 
-Acceptance testing is vital in ensuring software meets stakeholder demands and quality standards.
+验收测试对于确保软件满足利益相关者要求和质量标准至关重要。

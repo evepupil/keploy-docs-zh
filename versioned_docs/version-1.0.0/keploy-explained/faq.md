@@ -1,47 +1,47 @@
 ---
 id: faq
-title: Frequently Asked Questions (FAQ) (v1.0.0)
+title: 常见问题解答 (FAQ) (v1.0.0)
 sidebar_label: FAQ
 tags:
   - explanation
   - faq
 ---
 
-### 1. Is Keploy a unit testing framework?
+### 1. Keploy 是单元测试框架吗？
 
-No, keploy is designed to reduce time writing tests manually. It integrates with exising unit testing frameworks like (eg: go test, Junit, pytest, etc.) to ensure compatibility with existing tooling like code coverage, IDE support and CI pipeline/infrastructure support.
+不是，keploy 旨在减少手动编写测试的时间。它与现有的单元测试框架（如：go test、Junit、pytest 等）集成，确保与现有工具链（如代码覆盖率、IDE 支持和 CI 管道/基础设施支持）的兼容性。
 
-### 2. Does Keploy replace unit tests entirely?
+### 2. Keploy 能完全取代单元测试吗？
 
-If all your code paths can be invoked from API calls then yes, else you can still write testcases for some methods, but the idea is to save at least 80% of the effort.
+如果你的所有代码路径都可以通过 API 调用触发，那么可以。否则，你仍然需要为某些方法编写测试用例，但 keploy 的目标是至少节省 80% 的工作量。
 
-### 3. What code changes do I need to do?
+### 3. 需要进行哪些代码改动？
 
-For `Java`, `Javascript/Typescript`, `Python` there are **no code-changes**. However, for `Golang` applications :
+对于 `Java`、`Javascript/Typescript` 和 `Python`，**无需任何代码改动**。但对于 `Golang` 应用：
 
-- **Web Framework/Router middleware** needs to be added to ensure keploy can intercept incoming request and inject instrumentation data in the request context.
-- **Wrapping External calls** like database queries, http/gRPC calls needs to be done to ensure they are captured and correct mocks are generated for testing those requests.
+- 需要添加 **Web 框架/路由器中间件**，以确保 keploy 可以拦截传入请求并在请求上下文中注入插桩数据。
+- 需要 **封装外部调用**（如数据库查询、HTTP/gRPC 调用），以确保捕获这些调用并为测试生成正确的模拟数据。
 
-### 4. How do I run keploy in my CI pipeline?
+### 4. 如何在 CI 管道中运行 keploy？
 
-No changes necessary. You can reuse the pipeline which runs unit tests.
+无需任何改动。你可以直接复用运行单元测试的管道。
 
-### 5. Does Keploy support read after write to DB scenarios?
+### 5. Keploy 支持数据库的读写场景吗？
 
-Yes. Keploy records the write requests and read requests in the correct order. It then expects the application to perform the writes and reads in the same order. It would return the same database responses as captured earlier.
+支持。Keploy 会按正确顺序记录写请求和读请求，并期望应用以相同顺序执行这些操作。测试时会返回之前捕获的数据库响应。
 
-### 6. How does keploy handle fields like timestamps, random numbers (eg: uuids)?
+### 6. Keploy 如何处理时间戳、随机数（如 UUID）等字段？
 
-A request only becomes a testcase if it passes our deduplication algorithm. If its becoming a testcase, a second request is sent to the same application instance (with the same request params) to check for difference in responses. Fields such as timestamps, uuids would be automatically flagged by comparing the second response with the first response. These fields are then ignored during testing going forward.
+只有通过去重算法的请求才会成为测试用例。对于成为测试用例的请求，会向同一应用实例发送第二次请求（参数相同），通过对比两次响应自动标记时间戳、UUID 等字段。后续测试会忽略这些字段。
 
-### 7. Can I use keploy to generate tests from production environments automatically?
+### 7. 能否用 keploy 从生产环境自动生成测试？
 
-Not yet. We are working on making our deduplication algorithm scalable enough to be used safely in production. If you are interested in this use-case, please connect with us on slack. We'd love to work with you to build the deduplication system and load test it with your systems.
+目前不行。我们正在优化去重算法，以安全支持生产环境使用。如果你对此功能感兴趣，欢迎通过 Slack 联系我们，我们很乐意合作构建去重系统并进行负载测试。
 
-### 8. What if my application behaviour changes?
+### 8. 如果应用行为发生变化会怎样？
 
-If your application behaviour changes, the respective testcases would fail. You can then mark the new behaviour as normal by clicking on the normalise button.
+相关测试用例会失败。你可以通过点击标准化按钮将新行为标记为正常。
 
-### 9. Would keploy know if an external service changes?
+### 9. Keploy 能检测外部服务变更吗？
 
-Not yet. Unless that application is also using keploy, keploy would only test the functionality of the current application. We are working to detect scanning for API contract violations and adding multiple application to perform comprehensive integration tests. All contributions are welcome.
+目前不能。除非外部服务也使用 keploy，否则 keploy 仅测试当前应用的功能。我们正在开发 API 契约违规检测功能，并计划支持多应用集成测试。欢迎贡献代码。

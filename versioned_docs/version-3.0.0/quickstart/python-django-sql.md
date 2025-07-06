@@ -1,8 +1,8 @@
 ---
 id: samples-django
-title: Sample User Data CRUD App (Django)
+title: 用户数据CRUD应用示例（Django）
 sidebar_label: Django + Postgres
-description: The following sample app showcases how to use the Django framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用Django框架和Keploy平台。
 tags:
   - python
   - quickstart
@@ -12,54 +12,54 @@ tags:
   - python-framework
   - postgres
 keyword:
-  - Django Framework
+  - Django框架
   - Postgres
   - SQL
   - Python
-  - API Test generator
-  - Auto case generation
+  - API测试生成器
+  - 自动化用例生成
 ---
 
-# Introduction
+# 简介
 
-🪄 Dive into the world of User CRUD Apps and see how seamlessly Keploy integrated with Djangoand [PostgreSQL](https://www.postgresql.org/). Buckle up, it's gonna be a fun ride! 🎢
+🪄 进入用户CRUD应用的世界，看看Keploy如何与Django和[PostgreSQL](https://www.postgresql.org/)无缝集成。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始使用！🎬
 
-## Clone a sample user data CRUD app 🧪
+## 克隆用户数据CRUD示例应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-python.git && cd samples-python/django-postgres/django_postgres
 ```
 
-## Installation Keploy
+## 安装Keploy
 
-Depending on your OS, choose your adventure:
+根据您的操作系统选择安装方式：
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用：
 
-- [Using Docker compose : running application as well as Postgres on Docker container](#using-docker-compose-)
-- [Using Docker container for Postgres and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用Docker compose：在Docker容器中运行应用和Postgres](#使用docker-compose-)
+- [使用Docker容器运行Postgres并在本地运行应用](#在linuxwsl上本地运行应用-)
 
-## Using Docker Compose 🐳
+## 使用Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as Postgres on Docker container.
+我们将使用Docker compose在Docker容器中运行应用和Postgres。
 
-### Lights, Camera, Record! 🎥
+### 开始录制！🎥
 
-#### Start Postgres Instance
+#### 启动Postgres实例
 
-Start the Postgres instance using the `docker-compose` file-
+使用`docker-compose`文件启动Postgres实例：
 
 ```bash
 docker compose up -d postgres
 ```
 
-Change the database configuration in `django_postgres/settings.py` file to:
+修改`django_postgres/settings.py`文件中的数据库配置为：
 
 ```python
 DATABASES = {
@@ -74,27 +74,27 @@ DATABASES = {
 }
 ```
 
-Build the app image:
+构建应用镜像：
 
 ```bash
 docker build -t django-app:1.0 .
 ```
 
-Capture the test-cases-
+捕获测试用例：
 
 ```shell
 keploy record -c "docker run -p 8000:8000 --name djangoApp --network keploy-network django-app:1.0"
 ```
 
-🔥**Make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥**发起一些API调用**。可以使用Postman、Hoppscotch或curl。
 
-Let's make URLs short and sweet:
+让我们简化URL：
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+要生成测试用例，我们只需要**发起一些API调用**。
 
-**1. Make a POST request**
+**1. 发起POST请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/user/' \
@@ -107,13 +107,13 @@ curl --location 'http://127.0.0.1:8000/user/' \
   }'
 ```
 
-**2. Make a GET request**
+**2. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/user/'
 ```
 
-**3. Make a PUT request**
+**3. 发起PUT请求**
 
 ```bash
 curl --location --request PUT 'http://127.0.0.1:8000/user/<USER_ID>' \
@@ -126,19 +126,19 @@ curl --location --request PUT 'http://127.0.0.1:8000/user/<USER_ID>' \
   }'
 ```
 
-**4. Make a GET request**
+**4. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/user/<USER_ID>'
 ```
 
-**5. Make a DELETE request**
+**5. 发起DELETE请求**
 
 ```bash
  curl --location --request DELETE 'http://127.0.0.1:8000/user/<USER_ID>'
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+恭喜！通过这些简单的操作，您已经生成了一个包含模拟数据的测试用例！查看**Keploy目录**，您会发现`test-1.yml`和`mocks.yml`中的成果。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -192,7 +192,7 @@ curl: |
   --header 'Host: 127.0.0.1:8000' \
 ```
 
-This is how `mocks.yml` generated would look like:-
+生成的`mocks.yml`示例如下：
 
 ```yaml
   version: api.keploy.io/v1beta2
@@ -237,70 +237,70 @@ This is how `mocks.yml` generated would look like:-
       restimestampmock: 2023-11-05T12:49:22.47169658+05:30
 ```
 
-Want to see if everything works as expected?
+想看看一切是否如预期运行吗？
 
-#### Run Tests
+#### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 keploy test -c "docker run -p 8000:8000 --rm --network keploy-network --name djangoApp django-app:1.0" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`标志？这是为了让您的应用在测试用例运行前有短暂的休息时间（以秒为单位）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后建议？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或修改`test-x.yml`中的请求或响应。再次运行测试，见证奇迹发生！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜您完成这段旅程！您已经体验了Keploy的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！✨👩‍💻👨‍💻✨
 
 **\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***
 
-## Running App Locally on Linux/WSL 🐧
+## 在Linux/WSL上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (PostgreSQL) chill on Docker. Ready? Let's get the party started!🎉
+我们将在Linux上直接运行示例应用，但为了让事情更有趣，我们将让数据库（PostgreSQL）运行在Docker中。准备好了吗？让我们开始派对吧！🎉
 
-### 📼 Roll the Tape - Recording Time!
+### 📼 开始录制！
 
-Using the docker-compose file we will start our Postgres instance:-
+使用docker-compose文件启动Postgres实例：
 
 ```bash
 docker compose up -d postgres
 ```
 
-Now let's get the app up and running:
+现在让我们启动应用：
 
 ```bash
-#To setup the virtual environment, run:
+# 设置虚拟环境：
 python3 -m virtualenv venv
 source venv/bin/activate
 
-#To install dependencies, run:
+# 安装依赖：
 pip3 install -r requirements.txt
 
-# To create the required tables in the database, run:
+# 在数据库中创建所需的表：
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-Ready, set, record! Here's how:
+准备就绪，开始录制：
 
 ```bash
 sudo -E PATH=$PATH keploy record -c "python3 manage.py runserver"
 ```
 
-Keep an eye out for the `-c `flag! It's the command charm to run the app.
+注意`-c`标志！这是运行应用的命令。
 
-Alright, magician! With the app alive and kicking, let's weave some test cases. The spell? Making some API calls! Postman, Hoppscotch, or the classic curl - pick your wand.
+应用已经启动，让我们生成一些测试用例。方法？发起一些API调用！可以使用Postman、Hoppscotch或经典的curl。
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to **make some API calls.**
+要生成测试用例，我们只需要**发起一些API调用**。
 
-**1. Make a POST request**
+**1. 发起POST请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/user/' \
@@ -313,13 +313,13 @@ curl --location 'http://127.0.0.1:8000/user/' \
   }'
 ```
 
-**2. Make a GET request**
+**2. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/user/'
 ```
 
-**3. Make a PUT request**
+**3. 发起PUT请求**
 
 ```bash
 curl --location --request PUT 'http://127.0.0.1:8000/user/<USER_ID>' \
@@ -332,19 +332,19 @@ curl --location --request PUT 'http://127.0.0.1:8000/user/<USER_ID>' \
   }'
 ```
 
-**4. Make a GET request**
+**4. 发起GET请求**
 
 ```bash
 curl --location 'http://127.0.0.1:8000/user/<USER_ID>'
 ```
 
-**5. Make a DELETE request**
+**5. 发起DELETE请求**
 
 ```bash
  curl --location --request DELETE 'http://127.0.0.1:8000/user/<USER_ID>'
 ```
 
-Give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **Keploy directory** and you'll discover your handiwork in `test-1.yml` and `mocks.yml`.
+恭喜！通过这些简单的操作，您已经生成了一个包含模拟数据的测试用例！查看**Keploy目录**，您会发现`test-1.yml`和`mocks.yml`中的成果。
 
 ```yaml
 version: api.keploy.io/v1beta2
@@ -398,7 +398,7 @@ curl: |
   --header 'Host: 127.0.0.1:8000' \
 ```
 
-This is how `mocks.yml` generated would look like:-
+生成的`mocks.yml`示例如下：
 
 ```yaml
   version: api.keploy.io/v1beta2
@@ -443,25 +443,25 @@ This is how `mocks.yml` generated would look like:-
       restimestampmock: 2023-11-05T12:49:22.47169658+05:30
 ```
 
-Want to see if everything works as expected?
+想看看一切是否如预期运行吗？
 
-#### Run Tests
+#### 运行测试
 
-Time to put things to the test 🧪
+是时候进行测试了 🧪
 
 ```shell
 sudo -E PATH=$PATH keploy test -c "python3 manage.py runserver" --delay 10
 ```
 
-> The `--delay` flag? Oh, that's just giving your app a little breather (in seconds) before the test cases come knocking.
+> `--delay`标志？这是为了让您的应用在测试用例运行前有短暂的休息时间（以秒为单位）。
 
-Final thoughts? Dive deeper! Try different API calls, tweak the DB response in the `mocks.yml`, or fiddle with the request or response in `test-x.yml`. Run the tests again and see the magic unfold!✨👩‍💻👨‍💻✨
+最后建议？深入探索！尝试不同的API调用，调整`mocks.yml`中的数据库响应，或修改`test-x.yml`中的请求或响应。再次运行测试，见证奇迹发生！✨👩‍💻👨‍💻✨
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible. 😊🚀
+恭喜您完成这段旅程！您已经体验了Keploy的强大功能，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

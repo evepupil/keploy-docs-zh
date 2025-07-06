@@ -1,82 +1,82 @@
 ---
 id: mock-registry
-title: Mock Registry
-sidebar_label: Mock Registry 📦
+title: Mock 注册中心
+sidebar_label: Mock 注册中心 📦
 tags:
-  - explanation
-  - feature guide
-  - mock storage
+  - 说明文档
+  - 功能指南
+  - 模拟存储
 keywords:
-  - mock storage
-  - keploy cloud
-  - efficient testing
-  - cloud storage
+  - 模拟存储
+  - keploy 云服务
+  - 高效测试
+  - 云存储
 ---
 
-Mock Registry uploads mock files to cloud storage, keeping the application's repository lightweight and manageable.
+Mock 注册中心将模拟文件上传至云存储，保持应用仓库的轻量化和可管理性。
 
-When dealing with large mock files during tests, committing them to git repositories can be cumbersome. **Uploading such mocks to cloud storage** instead helps maintain a clean and performant repository, reducing complexity.
+在测试过程中处理大型模拟文件时，将其提交到 git 仓库可能十分繁琐。**将这些模拟文件上传至云存储**有助于保持仓库的整洁和高效，降低复杂度。
 
-## Usage 🛠️
+## 使用方法 🛠️
 
-### Disabling Mock Upload
+### 禁用模拟上传
 
-Mock are `uploaded to cloud by default` and can be disabled using CLI or keploy config.
+默认情况下，模拟文件会被`自动上传至云端`，可通过 CLI 或 keploy 配置文件禁用此功能。
 
-1. [Disable using CLI flag](#disable-using-cli-flag)
-2. [Disable using keploy config file](#disable-using-keploy-config-file)
+1. [通过 CLI 参数禁用](#通过-cli-参数禁用)
+2. [通过 keploy 配置文件禁用](#通过-keploy-配置文件禁用)
 
-### Disable using CLI flag
+### 通过 CLI 参数禁用
 
-To disable mock uploads for a specific test run, use the --disableMockUpload=true flag:
+要为特定测试运行禁用模拟上传，使用 --disableMockUpload=true 参数：
 
 ```bash
-keploy test -c "<appCmd>" --disableMockUpload=true
+keploy test -c "<应用命令>" --disableMockUpload=true
 ```
 
-### Disable using keploy config file
+### 通过 keploy 配置文件禁用
 
-Set the mock upload preference in the configuration file to enable or disable mock uploads by default for all test runs:
+在配置文件中设置模拟上传偏好，可为所有测试运行默认启用或禁用模拟上传：
 
 ```bash
 # keploy.yaml
 disableMockUpload: true
 ```
 
-## Mock Registry Behavior
+## Mock 注册中心行为
 
-### Test Run Passed ✅
+### 测试运行通过 ✅
 
-If test cases pass, mocks are uploaded to the cloud, added to .gitignore, and a config.yml is generated with a unique Mock ID.
+如果测试用例通过，模拟文件将被上传至云端，添加到 .gitignore 文件，并生成包含唯一 Mock ID 的 config.yml 文件。
 
-### TestRun Failed ❌
+### 测试运行失败 ❌
 
-If one or more test cases are failed, Mocks would not be uploaded to cloud and `config.yml` is not generated, but mocks would still be moved to `.gitignore`.
+如果一个或多个测试用例失败，模拟文件不会被上传至云端且不会生成 `config.yml` 文件，但模拟文件仍会被移入 `.gitignore`。
 
-### Local Mock is missing 🚫
+### 本地模拟文件缺失 🚫
 
-If mocks are missing locally, they will be downloaded from the cloud during the test run.
+如果本地缺少模拟文件，在测试运行时会从云端下载。
 
-### Different Mocks Locally and Cloud 🔄
+### 本地与云端模拟文件不同 🔄
 
-If mocks present locally and in the cloud are different, mocks from the cloud will be downloaded and used during the test run.
+如果本地和云端同时存在不同版本的模拟文件，测试运行时会下载并使用云端版本。
 
-### Upload Updated Mocks 📤
+### 上传更新后的模拟文件 📤
 
-To update mocks in the cloud, delete the `config.yml` under the test set folder. When tests are run, a new config file will be generated, and updated mocks will be uploaded to the cloud.
+要更新云端的模拟文件，删除测试集文件夹下的 `config.yml` 文件。运行测试时会生成新的配置文件，更新后的模拟文件将被上传至云端。
 
-### If using `--removeUnuseMocks` 🧹
+### 使用 `--removeUnuseMocks` 参数时 🧹
 
-When `--removeUnusedMocks` is used, `config.yml` will be updated with a new Mock ID, and those mocks will be treated as new mocks.
+当使用 `--removeUnusedMocks` 参数时，`config.yml` 会更新为新的 Mock ID，这些模拟文件将被视为新文件。
 
-### Public and Private Mocks 🔒
+### 公共与私有模拟文件 🔒
 
-Mocks can be classified as public or private based on their usage and accessibility:
+根据使用场景和访问权限，模拟文件可分为公共和私有两类：
 
-#### Public Mocks 🌐
+#### 公共模拟文件 🌐
 
-Public mocks are accessible by all users and can be shared across multiple projects. Use public mocks when the data is generic and not sensitive.
+所有用户均可访问公共模拟文件，并可在多个项目间共享。当数据具有通用性且不敏感时使用公共模拟文件。
 
-#### Private Mocks 🔐
+#### 私有模拟文件 🔐
 
-Private mocks are restricted to specific users or projects. Use private mocks for sensitive or project-specific data to ensure security and privacy.
+私有模拟文件仅限特定用户或项目访问。处理敏感数据或项目专属数据时使用私有模拟文件，确保安全性和隐私性。

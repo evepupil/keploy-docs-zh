@@ -1,20 +1,20 @@
 ---
 id: Idempotency
-title: Idempotency (v1.0.0)
-sidebar_label: Idempotency
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 幂等性 (v1.0.0)
+sidebar_label: 幂等性
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释
 keywords:
   - API
 ---
 
-Idempotence is a property of certain operations in mathematics and computer science whereby they can be applied multiple times without changing the result beyond the initial application. In other words, if an operation is idempotent, then applying it twice will have the same effect as applying it once.
+幂等性是数学和计算机科学中某些操作的特性，即这些操作可以多次应用而不会改变初次应用后的结果。换句话说，如果一个操作是幂等的，那么应用两次与应用一次的效果相同。
 
-It is also important in RESTful APIs. RESTful APIs are designed to be stateless, which means that the server does not need to keep track of the state of a client's request. This makes RESTful APIs more scalable and reliable.
+这在RESTful API中尤为重要。RESTful API被设计为无状态的，这意味着服务器不需要跟踪客户端请求的状态。这使得RESTful API更具可扩展性和可靠性。
 
-### Examples of idempotent HTTP methods:
+### 幂等的HTTP方法示例:
 
-- GET: The GET method is used to retrieve a resource. It is idempotent because retrieving a resource multiple times will always result in the same response.
-- PUT: The PUT method is used to update a resource. It is idempotent because updating a resource multiple times will only update the resource once.
-- DELETE: The DELETE method is used to delete a resource. It is idempotent because deleting a resource multiple times will only delete the resource once.
+- GET: GET方法用于检索资源。它是幂等的，因为多次检索资源总是会得到相同的响应。
+- PUT: PUT方法用于更新资源。它是幂等的，因为多次更新资源只会更新一次。
+- DELETE: DELETE方法用于删除资源。它是幂等的，因为多次删除资源只会删除一次。

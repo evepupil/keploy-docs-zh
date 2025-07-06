@@ -1,86 +1,85 @@
 ---
 id: samples-mysql
-title: Mux MySQL Sample Application
+title: Mux MySQL 示例应用
 sidebar_label: Mux + MySQL
-description: The following sample app showcases how to use Mux framework and the Keploy Platform.
+description: 以下示例应用展示了如何使用 Mux 框架和 Keploy 平台。
 tags:
   - go
-  - quickstart
-  - samples
-  - examples
-  - tutorial
+  - 快速入门
+  - 示例
+  - 教程
   - mysql
   - sql
-  - mux-framework
+  - mux框架
 keyword:
-  - Mux Framework
+  - Mux 框架
   - MySQL
   - Golang
-  - API Test generator
-  - Auto Testcase generation
+  - API 测试生成器
+  - 自动化测试用例生成
 ---
 
-## Introduction
+## 简介
 
-A sample url shortener app to test Keploy integration capabilities using [Mux](https://github.com/gorilla/mux) and MySQL. Buckle up, it's gonna be a fun ride! 🎢
+这是一个使用 [Mux](https://github.com/gorilla/mux) 和 MySQL 测试 Keploy 集成能力的 URL 缩短器示例应用。系好安全带，这将是一段有趣的旅程！🎢
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-## Get Started! 🎬
+## 开始吧！🎬
 
-## Clone a sample URL shortener app 🧪
+## 克隆示例 URL 缩短器应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-go.git && cd samples-go/mux-mysql
 go mod download
 ```
 
-## Installation Keploy
+## 安装 Keploy
 
-There are 2 ways you can run this sample application.
+有两种方式可以运行此示例应用。
 
-- [Using Docker compose : running application as well as MySQL on Docker container](#using-docker-compose-)
-- [Using Docker container for MySQL and running application locally](#running-app-locally-on-linuxwsl-)
+- [使用 Docker compose：在 Docker 容器中运行应用及 MySQL](#使用-docker-compose-)
+- [使用 Docker 容器运行 MySQL 并在本地运行应用](#在-linuxwsl-上本地运行应用-)
 
-## Using Docker Compose 🐳
+## 使用 Docker Compose 🐳
 
-We will be using Docker compose to run the application as well as MySQL on Docker container.
+我们将使用 Docker compose 在 Docker 容器中运行应用及 MySQL。
 
-### Start MySQL Instance
+### 启动 MySQL 实例
 
 ```bash
 docker run -p 3306:3306 --rm --name mysql --network keploy-network -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
 ```
 
-#### Creating Docker Volume
+#### 创建 Docker 卷
 
 ```bash
 docker volume create --driver local --opt type=debugfs --opt device=debugfs debugfs
 ```
 
-### Capture the Testcases
+### 捕获测试用例
 
-Now, we will create the docker image of our application:-
+现在，我们将创建应用的 Docker 镜像：
 
 ```zsh
 docker build -t url-short .
 ```
 
-Once we have our Docker image file ready,this command will start the recording of API calls using ebpf:-
+准备好 Docker 镜像文件后，此命令将开始使用 eBPF 记录 API 调用：
 
 ```shell
 keploy record -c "docker run -p 8080:8080 --name urlshort --rm --network keploy-network url-short:latest"
 ```
 
-Make API Calls using Postman or cURL command. Keploy with capture those calls to generate the test-suites containing testcases and data mocks.
+使用 Postman 或 cURL 命令发起 API 调用。Keploy 将捕获这些调用以生成包含测试用例和数据模拟的测试套件。
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to make some API calls. You can use [Postman](https://www.postman.com/) or simply `curl`
+要生成测试用例，我们只需发起一些 API 调用。您可以使用 [Postman](https://www.postman.com/) 或简单的 `curl`。
 
-#### Generate shortened url
+#### 生成短链接
 
 ```bash
 curl --request POST \
@@ -91,7 +90,7 @@ curl --request POST \
 }'
 ```
 
-this will return the shortened url. The ts would automatically be ignored during testing because it'll always be different.
+这将返回短链接。时间戳（ts）在测试时会自动被忽略，因为它总是不同的。
 
 ```bash
 {
@@ -101,56 +100,56 @@ this will return the shortened url. The ts would automatically be ignored during
 }
 ```
 
-#### Access all the shortened urls
+#### 访问所有短链接
 
 ```bash
 curl --request GET http://localhost:8080/all
 ```
 
-Now both these API calls were captured as **editable** testcases and written to `keploy/tests` folder. The keploy directory would also have `mocks` file that contains all the outputs of MySQL operations. Here's what the folder structure look like:
+现在，这两个 API 调用已被捕获为**可编辑**的测试用例，并写入 `keploy/tests` 文件夹。keploy 目录还会有一个包含所有 MySQL 操作输出的 `mocks` 文件。文件夹结构如下所示：
 
-![Testcase](/img/mux-mysql-keploy-record.png)
+![测试用例](/img/mux-mysql-keploy-record.png)
 
-Now, let's see the magic! ✨💫
+现在，让我们见证奇迹！✨💫
 
-Want to see if everything works as expected?
+想看看一切是否如预期般工作吗？
 
-### Run the Testcases
+### 运行测试用例
 
-Now let's run the test mode (in the echo-sql directory, not the Keploy directory).
+现在让我们运行测试模式（在 echo-sql 目录中，而不是 Keploy 目录）。
 
 ```shell
 keploy test -c "docker run -p 8080:8080 --name urlshort --rm --network keploy-network url-short:latest" --delay 10
 ```
 
-output should look like
+输出应如下所示：
 
-![Testrun](/img/mux-mysql-keploy-tests.png)
+![测试运行](/img/mux-mysql-keploy-tests.png)
 
-So no need to setup fake database/apis MySQL or write mocks for them. Keploy automatically mocks them and, **The application thinks it's talking to MySQL 😄**
+因此，无需设置虚假数据库/API MySQL 或为其编写模拟。Keploy 会自动模拟它们，**应用以为它在与 MySQL 对话 😄**
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜您完成这段旅程！您已经见识了 Keploy 的强大，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Happy coding! ✨👩‍💻👨‍💻✨
+编码愉快！✨👩‍💻👨‍💻✨
 
 **\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\_\_\_\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***
 
-## Running App Locally on Linux/WSL 🐧
+## 在 Linux/WSL 上本地运行应用 🐧
 
-We'll be running our sample application right on Linux, but just to make things a tad more thrilling, we'll have the database (MySQL) chill on Docker. Ready? Let's get the party started!🎉
+我们将在 Linux 上直接运行示例应用，但为了让事情更有趣一点，我们将让数据库（MySQL）在 Docker 上运行。准备好了吗？让我们开始派对吧！🎉
 
-> To establish a network for your application using Keploy on Docker, follow these steps.
-> If you're using a docker-compose network, replace keploy-network with your app's `docker_compose_network_name` below.
+> 要为您的应用在 Docker 上使用 Keploy 建立网络，请按照以下步骤操作。
+> 如果您使用 docker-compose 网络，请将下面的 keploy-network 替换为您的应用的 `docker_compose_network_name`。
 
-### Let's start the MySQL Instance
+### 启动 MySQL 实例
 
 ```zsh
 docker run -p 3306:3306 --rm --name mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
 ```
 
-Now, we will create the binary of our application:-
+现在，我们将创建应用的二进制文件：
 
 ```zsh
 export ConnectionString="root:my-secret-pw@tcp(localhost:3306)/mysql"
@@ -158,19 +157,19 @@ export ConnectionString="root:my-secret-pw@tcp(localhost:3306)/mysql"
 go build -o main
 ```
 
-### Capture the Testcases
+### 捕获测试用例
 
 ```zsh
 sudo -E PATH=$PATH keploy record -c "./main"
 ```
 
-![Testcase](https://github.com/heyyakash/samples-go/assets/85030597/2b4f3c04-4631-4f9a-b317-7fdb6db87879)
+![测试用例](https://github.com/heyyakash/samples-go/assets/85030597/2b4f3c04-4631-4f9a-b317-7fdb6db87879)
 
-### Generate testcases
+### 生成测试用例
 
-To generate testcases we just need to make some API calls. You can use Postman, Hoppscotch, or simply curl
+要生成测试用例，我们只需发起一些 API 调用。您可以使用 Postman、Hoppscotch 或简单的 curl。
 
-#### Generate shortened url
+#### 生成短链接
 
 ```bash
 curl --request POST \
@@ -181,7 +180,7 @@ curl --request POST \
 }'
 ```
 
-this will return the shortened url.
+这将返回短链接。
 
 ```json
 {
@@ -191,36 +190,36 @@ this will return the shortened url.
 }
 ```
 
-#### Redirect to original url from shortened url
+#### 从短链接重定向到原始链接
 
 ```zsh
 curl -request GET localhost:8080/links/1
 ```
 
-Now, let's see the magic! 🪄💫
+现在，让我们见证奇迹！🪄💫
 
-Now both these API calls were captured as a testcase and should be visible on the Keploy CLI. You should be seeing an app named keploy folder with the test cases we just captured and data mocks created
+现在，这两个 API 调用已被捕获为测试用例，并应在 Keploy CLI 上可见。您应该会看到一个名为 keploy 的文件夹，其中包含我们刚刚捕获的测试用例和创建的数据模拟。
 
-### Run the captured testcases
+### 运行捕获的测试用例
 
-Now that we have our testcase captured, run the test file.
+现在我们已经捕获了测试用例，运行测试文件。
 
 ```zsh
 sudo -E PATH=$PATH keploy test -c "./main" --delay 10
 ```
 
-So no need to setup dependencies like MySQL, web-go locally or write mocks for your testing.
+因此，无需在本地设置 MySQL、web-go 等依赖项或为测试编写模拟。
 
-The application thinks it's talking to MySQL 😄
+应用以为它在与 MySQL 对话 😄
 
-We will get output something like this:
-![Testrun](https://github.com/heyyakash/samples-go/assets/85030597/472cab5e-9687-4fc5-bd57-3c52f56feedf)
+我们将得到类似以下的输出：
+![测试运行](https://github.com/heyyakash/samples-go/assets/85030597/472cab5e-9687-4fc5-bd57-3c52f56feedf)
 
-### Wrapping it up 🎉
+### 总结 🎉
 
-Congrats on the journey so far! You've seen Keploy's power, flexed your coding muscles, and had a bit of fun too! Now, go out there and keep exploring, innovating, and creating! Remember, with the right tools and a sprinkle of fun, anything's possible.😊🚀
+恭喜您完成这段旅程！您已经见识了 Keploy 的强大，锻炼了编码能力，还享受了一些乐趣！现在，继续探索、创新和创造吧！记住，有了合适的工具和一点乐趣，一切皆有可能。😊🚀
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这对您有所帮助，如果您仍有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

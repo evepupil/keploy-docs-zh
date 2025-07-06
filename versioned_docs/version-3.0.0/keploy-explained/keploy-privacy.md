@@ -1,33 +1,33 @@
 ---
 id: keploy-privacy
-title: Code Privacy & Data Protection
-sidebar_label: Code Privacy & Data Protection
-description: Keploy’s privacy commitments—your code, data, and trust are safe with us.
+title: 代码隐私与数据保护
+sidebar_label: 代码隐私与数据保护
+description: Keploy的隐私承诺——您的代码、数据和信任在我们这里绝对安全。
 tags:
-  - privacy
-  - code privacy
-  - security
+  - 隐私
+  - 代码隐私
+  - 安全
 ---
 
-# 🛡️ Privacy at Keploy
+# 🛡️ Keploy的隐私保障
 
-Your code is yours—always.  
-Keploy is built with privacy as a core value. Here’s how we keep your code and data safe:
+您的代码永远属于您。  
+Keploy将隐私作为核心价值构建。以下是我们保护您代码和数据安全的方式：
 
-## 🚫 Code Privacy: Your Code is Never Used for Training
+## 🚫 代码隐私：您的代码绝不会用于训练
 
-- **No Model Training:** We do **not** use your code, test cases, or data to train our AI models.
-- **No Sharing:** Keploy never shares your code, test data, or usage information with any third parties.
-- **No Data Mining:** We do **not** mine, analyze, or extract information from your code for any commercial or marketing purposes.
+- **不用于模型训练：** 我们**不会**使用您的代码、测试用例或数据来训练AI模型。
+- **绝不共享：** Keploy永远不会与任何第三方共享您的代码、测试数据或使用信息。
+- **无数据挖掘：** 我们**不会**出于任何商业或营销目的挖掘、分析或提取您代码中的信息。
 
-## 🕵️‍♂️ General Privacy Commitments
+## 🕵️‍♂️ 基本隐私承诺
 
-- **End-to-End Confidentiality:** All code, data, and metadata processed by Keploy are encrypted and kept confidential.
-- **User Control:** You have full control over your data and can delete it at any time.
-- **Transparency:** We’re always open about our data handling practices—no hidden surprises.
+- **端到端保密：** Keploy处理的所有代码、数据和元数据都经过加密并严格保密。
+- **用户自主控制：** 您对自己的数据拥有完全控制权，可随时删除。
+- **透明公开：** 我们始终公开数据处理方式——绝无隐藏条款。
 
-## 🔒 Your Trust, Our Priority
+## 🔒 您的信任，我们的首要任务
 
-We’re committed to making privacy non-negotiable.
+我们致力于让隐私保护成为不可妥协的原则。
 
-Have questions, concerns, or requests? [Contact our team](mailto:support@keploy.io)—we’re here to help.
+如有疑问、顾虑或请求？[联系我们的团队](mailto:support@keploy.io)——我们随时为您服务。

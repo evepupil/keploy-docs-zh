@@ -6,11 +6,10 @@ function UTGMethods() {
   return (
     <div className="mb-8 rounded-lg">
       <h2 className="mb-6 text-2xl font-semibold tracking-wide md:text-3xl">
-        Three Ways to Generate Unit Tests 🚀
+        三种生成单元测试的方法 🚀
       </h2>
       <p className="mb-6 max-w-4xl text-lg">
-        Choose the method that best fits your workflow - from automated PR
-        integration to one-click IDE generation:
+        选择最适合您工作流程的方式——从自动化PR集成到一键式IDE生成：
       </p>
 
       <ul className="grid auto-cols-[300px] grid-flow-col gap-3 lg:gap-5">
@@ -41,15 +40,13 @@ function UTGMethods() {
                   <path d="m6 18 1.5-1.5L9 18l1.5-1.5" />
                 </svg>
                 <h2 className="mb-4 text-xl font-semibold">
-                  PR Agent (Latest)
+                  PR代理（最新）
                 </h2>
               </div>
               <ul>
                 <li>
                   <p className="font">
-                    Automatically generates unit tests when you create pull
-                    requests. Install once, get tests for every PR with changed
-                    files.
+                    创建拉取请求时自动生成单元测试。安装一次，即可为每个包含变更文件的PR获取测试。
                   </p>
                 </li>
               </ul>
@@ -83,15 +80,13 @@ function UTGMethods() {
                   <path d="m16 16-5 0" />
                 </svg>
                 <h2 className="mb-4 text-xl font-semibold">
-                  VS Code Extension
+                  VS Code扩展
                 </h2>
               </div>
               <ul>
                 <li>
                   <p className="font">
-                    One-click unit test generation directly in VS Code. Install
-                    the extension and generate tests for your entire project
-                    instantly.
+                    在VS Code中一键生成单元测试。安装扩展后立即为整个项目生成测试。
                   </p>
                 </li>
               </ul>
@@ -124,15 +119,13 @@ function UTGMethods() {
                   <line x1="12" x2="20" y1="19" y2="19" />
                 </svg>
                 <h2 className="mb-4 text-xl font-semibold">
-                  Command Line Interface
+                  命令行界面
                 </h2>
               </div>
               <ul>
                 <li>
                   <p className="font">
-                    Traditional CLI approach with full control over test
-                    generation. Perfect for CI/CD pipelines and automated
-                    workflows.
+                    传统CLI方式，完全控制测试生成。非常适合CI/CD流水线和自动化工作流。
                   </p>
                 </li>
               </ul>

@@ -1,170 +1,170 @@
 ---
 id: docs-dev-guide
-title: docs-dev-guide
-sidebar_label: Docs Dev Guide
+title: 文档开发指南
+sidebar_label: 文档开发指南
 tags:
-  - dev guide
-  - explanation
-  - contributing
+  - 开发指南
+  - 说明
+  - 贡献
 ---
 
-# How to contribute
+# 如何贡献
 
-We encourage contributions from the community.
+我们欢迎社区成员的贡献。
 
-**Create a [GitHub issue](https://github.com/keploy/docs/issues) for any changes beyond typos and small fixes.**
+**对于除错别字和小修正之外的任何更改，请创建[GitHub issue](https://github.com/keploy/docs/issues)。**
 
-If you do create a pull request (PR), please follow our style guidance.
+如果您要创建拉取请求(PR)，请遵循我们的风格指南。
 
-We review GitHub issues and PRs on a regular schedule.
+我们会定期审查GitHub issues和PRs。
 
-To ensure that each change is relevant and properly peer reviewed, please adhere to best practices for open-source contributions.
-This means that if you are outside the Keploy organization, you must fork the repository and create PRs from branches on your own fork.
-The README in GitHub's [first-contributions repo](https://github.com/firstcontributions/first-contributions) provides an example.
+为确保每次更改都相关且经过同行评审，请遵守开源贡献的最佳实践。
+这意味着如果您不属于Keploy组织，必须fork仓库并从您自己的fork创建PR分支。
+GitHub的[first-contributions仓库](https://github.com/firstcontributions/first-contributions)中的README提供了示例。
 
-## How to set up the docs website locally?
+## 如何本地设置文档网站？
 
-The Keploy documentation site uses Docusaurus 2 which is a static website generator.
+Keploy文档站点使用静态网站生成器Docusaurus 2。
 
-You can make changes locally without previewing them in the browser.
-However, if you want to build the site and preview changes in the browser, you need to have Docusaurus 2 dependencies installed.
+您可以在不预览浏览器更改的情况下本地进行修改。
+但如果要在浏览器中构建站点并预览更改，需要安装Docusaurus 2依赖项。
 
-Initialize Docusaurus 2 in the repo by running [`yarn`](https://classic.yarnpkg.com/en/docs/cli/) or [`npm`](https://docs.npmjs.com/cli/v10) once in the root directory of the repo.
+通过在仓库根目录运行[`yarn`](https://classic.yarnpkg.com/en/docs/cli/)或[`npm`](https://docs.npmjs.com/cli/v10)初始化Docusaurus 2。
 
-Now you can build and view the site locally:
-
-```shell
-npm start
-```
-
-or
+现在可以本地构建和查看站点：
 
 ```shell
 npm start
 ```
 
-or
+或
+
+```shell
+npm start
+```
+
+或
 
 ```shell
 yarn start
 ```
 
-The command starts a local development server and opens a browser window.
+该命令将启动本地开发服务器并打开浏览器窗口。
 
 ## Prettier
 
-**Note: The website has been migrated to use `npm` for building, testing, and deploying.**
+**注意：网站已迁移使用`npm`进行构建、测试和部署。**
 
-Steps 1 to 3 are the same for both `yarn` and `npm`
+步骤1至3对`yarn`和`npm`相同
 
-1. Fork the repository
+1. Fork仓库
 
-2. Clone the repository with the following command. Replace the {'<'}GITHUB_USERNAME{'>'} with your username
+2. 克隆仓库，替换{'<'}GITHUB_USERNAME{'>'}为您的用户名
 
 ```shell
 git clone https://github.com/<GITHUB_USERNAME>/docs.git
 ```
 
-3. Go into the directory containing the project
+3. 进入项目目录
 
 ```shell
 cd docs
 ```
 
-### Using `npm`
+### 使用`npm`
 
-4. Install all the dependencies
+4. 安装所有依赖
 
 ```shell
 npm install
 ```
 
-5. Start the development server.
+5. 启动开发服务器
 
 ```shell
 npm start
 ```
 
-6. To reformat:
+6. 格式化代码：
 
 ```shell
 npm prettier --write '**/*.{js,md}'
 ```
 
-### Using `yarn` (Legacy)
+### 使用`yarn`(旧版)
 
-4. Install all the dependencies
+4. 安装所有依赖
 
 ```shell
 yarn
 ```
 
-5. Start the development server.
+5. 启动开发服务器
 
 ```shell
 yarn start
 ```
 
-6. To reformat:
+6. 格式化代码：
 
 ```shell
 yarn prettier --write '**/*.{js,md}'
 ```
 
-When we merge your PR, a new build automatically occurs and your changes publish to [https://docs.keploy.io](https://docs.keploy.io).
+当您的PR被合并时，将自动触发新构建并将更改发布到[https://docs.keploy.io](https://docs.keploy.io)。
 
-## How to Contribute Code?
+## 如何贡献代码？
 
-Bug fixes, performance improvements, code formatting, ...
-There are a lot ways in which you can contribute code!
-The issues list of a project is a great place to find something that you can help us with.
+错误修复、性能改进、代码格式化...
+有很多方式可以贡献代码！
+项目的问题列表是寻找可协助内容的好地方。
 
-To increase the chances of your code getting merged, please ensure that:
+为提高代码合并几率，请确保：
 
-- You satisfy our contribution criteria
-- Your pull request:
-  - Passes all checks and has no conflicts.
-  - Has a well-written title and message that briefly explains your proposed changes.
+- 满足我们的贡献标准
+- 您的拉取请求：
+  - 通过所有检查且无冲突
+  - 具有简明扼要的标题和描述变更的消息
 
-## How to Report Bugs, Provide Feedback or Request Features?
+## 如何报告错误、提供反馈或请求功能？
 
-We welcome all kinds of bug reports, user feedback and feature requests! We've created some issue templates to assist you in this. Please use them to create a new issue in the relevant project's repository. If you are not sure how to create an issue, here are the steps:
+我们欢迎各类错误报告、用户反馈和功能请求！我们创建了一些问题模板来协助您。请在相关项目仓库中使用它们创建新问题。如果不确定如何创建问题，步骤如下：
 
-1. Navigate to the main page of the documentation website repository
+1. 导航至文档网站仓库主页
 
-2. Click `Issues`
+2. 点击`Issues`
 
-3. Click `New issue`
+3. 点击`New issue`
 
-4. Our repository uses issue templates, click `Get started` next to the type of issue you'd like to open
+4. 我们的仓库使用问题模板，点击对应类型问题旁的`Get started`
 
-5. Type a title for your issue. We advise you to stick to the issue template to describe the issue
+5. 输入问题标题。建议按照问题模板描述问题
 
-6. After you are finished, click `Submit new issue`
+6. 完成后点击`Submit new issue`
 
-## How to Open a Pull Request to Add New Documentation or Fix Bugs?
+## 如何提交拉取请求添加新文档或修复错误？
 
-After you have cloned the documentation repo to your computer locally, edit the files that you wish to change and follow the steps to open a pull request.
+在本地克隆文档仓库后，编辑要更改的文件并按照以下步骤提交拉取请求。
 
-1. `add` and `commit` your changes to your repository
+1. 将更改`add`和`commit`到您的仓库
 
-2. Git push your changes to your fork on Github
+2. 将更改Git push到您的Github fork
 
-3. On Github, click on the `Create a new Pull Request` button.
+3. 在Github上点击`Create a new Pull Request`按钮
 
-4. Use a succinct title and descriptive comments to describe your Pull Request. Also Ensure maintainers can understand your proposed changes from the description
+4. 使用简洁标题和描述性评论说明您的拉取请求。确保维护者能从描述中理解您的建议变更
 
-## How to Suggest UI/UX Improvements?
+## 如何建议UI/UX改进？
 
-One of the most important areas of improvement to our software Keploy UI. We really need your help with this!
+Keploy UI是我们软件最重要的改进领域之一。我们非常需要您的帮助！
 
-If you have ideas on how we can improve, please share them with us by creating a [new issue](https://github.com/keploy/keploy/issues/new/choose).
+如果有改进想法，请通过创建[新问题](https://github.com/keploy/keploy/issues/new/choose)与我们分享。
 
-## How to Contribute Translations?
+## 如何贡献翻译？
 
-Right now our interfaces do not support translations and we also don't have a translation strategy in place. But we want to change this. We want our projects to be accessible to non-English speakers. If you have any ideas then please share them with us by creating a [new issue].
+目前我们的界面不支持翻译，也没有翻译策略。但我们希望改变这一点。希望项目对非英语用户更友好。如果有任何想法，请通过创建[新问题]分享。
 
-Hope this helps you out, if you still have any questions, reach out to us .
+希望这些对您有所帮助，如果仍有疑问，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

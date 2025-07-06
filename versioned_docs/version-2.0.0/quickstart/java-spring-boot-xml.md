@@ -1,8 +1,8 @@
 ---
 id: java-spring-boot-xml
-title: Sample REST API with Spring-Boot and XML
-sidebar_label: XML API App
-description: This CRUD Application demonstrates REST API endpoints that serve XML responses using Spring Boot.
+title: 使用Spring-Boot和XML构建的REST API示例
+sidebar_label: XML API应用
+description: 本CRUD应用演示了使用Spring Boot提供XML响应的REST API端点。
 tags:
   - java
   - spring-boot
@@ -15,27 +15,27 @@ tags:
 keyword:
   - XML
   - Maven
-  - Springboot Framework
+  - Springboot框架
   - REST API
   - Java
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动化测试用例生成
   - JAXB
 ---
 
-## Introduction
+## 简介
 
-🌟 Explore creating REST APIs with XML responses using [Spring-Boot](https://github.com/spring-projects/spring-boot). Discover the ease of integrating XML serialization through JAXB. Let's dive right in! 🚀
+🌟 探索使用[Spring-Boot](https://github.com/spring-projects/spring-boot)创建返回XML格式的REST API。了解通过JAXB实现XML序列化的便捷性。让我们立即开始吧！🚀
 
-## Pre-Requisite 🛠️
+## 先决条件 🛠️
 
-- Install Java 17 and set JAVA_HOME environment variable.
-- Install [Maven](https://maven.apache.org/install.html)
-- Install [Docker](https://docs.docker.com/engine/install/) (optional)
+- 安装Java 17并设置JAVA_HOME环境变量
+- 安装[Maven](https://maven.apache.org/install.html)
+- 安装[Docker](https://docs.docker.com/engine/install/)（可选）
 
-## Get Started! 🎬
+## 快速开始 🎬
 
-### Clone and Build the Application
+### 克隆并构建应用
 
 ```bash
 git clone https://github.com/keploy/samples-java.git
@@ -43,45 +43,45 @@ cd spring-boot-xml/naive-spring-boot
 mvn clean install
 ```
 
-### Run the Application
+### 运行应用
 
-Start the Spring Boot application with:
+启动Spring Boot应用：
 
 ```bash
 mvn spring-boot:run
 ```
 
-> **Note**: For Windows users, commands remain the same.
+> **注意**：Windows用户使用相同命令。
 
-## API Endpoints 📡
+## API端点 📡
 
-### Get User Data (XML)
+### 获取用户数据(XML)
 
-- **Endpoint**: `GET /api/user`
+- **端点**: `GET /api/user`
 
-Make a request using `curl`:
+使用`curl`请求：
 
 ```bash
 curl -X GET -H \"Accept: application/xml\" http://localhost:8080/api/user
 ```
 
-- **Endpoint**: `GET /api/users`
+- **端点**: `GET /api/users`
 
-Make a request using `curl`:
+使用`curl`请求：
 
 ```bash
 curl -X GET http://localhost:8080/api/users -H "Accept: application/xml"
 ```
 
-- **Endpoint**: `GET /api/people`
+- **端点**: `GET /api/people`
 
-Make a request using `curl`:
+使用`curl`请求：
 
 ```bash
 curl -X GET http://localhost:8080/api/people -H "Accept: application/xml"
 ```
 
-### Example XML Response
+### XML响应示例
 
 ```xml
 <User>
@@ -91,53 +91,53 @@ curl -X GET http://localhost:8080/api/people -H "Accept: application/xml"
 </User>
 ```
 
-## Integrating with Keploy 📥
+## 集成Keploy 📥
 
-Harness Keploy's test generation capabilities easily:
+轻松使用Keploy的测试生成能力：
 
-### Install Keploy
+### 安装Keploy
 
 ```bash
  curl --silent -O -L https://keploy.io/install.sh && source install.sh
 ```
 
-or
+或
 
-### Install the cloud version -
+### 安装云版本 -
 
 ```bash
   curl --silent -O -L https://keploy.io/ent/install.sh && source install.sh
 ```
 
-### Record Test Cases
+### 记录测试用例
 
 ```bash
 keploy record -c "java -jar target/XML-0.0.1-SNAPSHOT.jar"
 ```
 
-Start recording interactions by running:
+开始记录交互：
 
 ```bash
 keploy record -c "java -jar target/XML-0.0.1-SNAPSHOT.jar"
 ```
 
-Then, invoke the API using `curl` or your favorite API testing tool.
+然后使用`curl`或您喜欢的API测试工具调用API。
 
-### Run Generated Tests
+### 运行生成的测试
 
-Execute recorded tests:
+执行记录的测试：
 
 ```bash
 keploy test -c "java -jar target/XML-0.0.1-SNAPSHOT.jar" --delay 10
 ```
 
-Review generated test reports in `Keploy/reports`.
+在`Keploy/reports`中查看生成的测试报告。
 
-## Handling Failing Tests ⚠️
+## 处理失败测试 ⚠️
 
-If you encounter failing tests due to variable or irrelevant data, like timestamps or dynamically generated fields, you can add them to the global noise configuration in your `keploy.yml`:
+如果遇到由于变量或无关数据（如时间戳或动态生成字段）导致的测试失败，可以将其添加到`keploy.yml`的全局噪声配置中：
 
-**Example:**
+**示例：**
 
 <img width="694" alt="Screenshot 2025-03-11 at 12 07 04 AM" src="https://github.com/user-attachments/assets/92dc6480-73f9-435c-a3b8-c918b2acc7a1" />
 
@@ -146,23 +146,23 @@ globalNoise:
   global:
     header.Date: []
     body:
-      # To ignore some values for a field, pass regex patterns to the corresponding array value
+      # 要忽略某些字段值，将正则模式传递给相应的数组值
       UserList: []
 ```
 
-After updating `keploy.yml` with the above configuration, rerun your tests, and the issue should be resolved.
+更新`keploy.yml`后重新运行测试，问题应得到解决。
 
 <img width="711" alt="Screenshot 2025-03-11 at 12 07 19 AM" src="https://github.com/user-attachments/assets/bed57c1e-e7a9-4cbd-80d6-f69a2024ba60" />
 
-## Dependencies 📚
+## 依赖项 📚
 
 - Spring Boot
 - Spring Web
-- JAXB (XML serialization)
+- JAXB (XML序列化)
 
-## Wrapping Up 🎉
+## 总结 🎉
 
-Fantastic! You've successfully navigated creating and testing XML APIs with Spring Boot and Keploy. Keep exploring, experimenting, and innovating! If you have any queries, we're here to help!
+太棒了！您已成功完成使用Spring Boot和Keploy创建和测试XML API的全过程。继续探索、实验和创新吧！如有任何疑问，我们随时为您提供帮助！
 
 import GetSupport from '../concepts/support.md'
 

@@ -2,14 +2,14 @@
   "sidebarExplanation": [
     {
       "type": "category",
-      "label": "API Testing",
+      "label": "API测试",
       "collapsed": false,
       "items": [
         "running-keploy/api-test-generator",
 
         {
           "type": "category",
-          "label": "Getting Started",
+          "label": "入门指南",
           "collapsed": false,
           "items": [
             "running-keploy/generate-api-tests-using-ai",
@@ -18,7 +18,7 @@
         },
          {
           "type": "category",
-          "label": "Test Operations",
+          "label": "测试操作",
           "collapsed": false,
           "items": [
             "running-keploy/review-and-improve-ai-generated-tests",
@@ -31,7 +31,7 @@
         },
         {
           "type": "category",
-          "label": "FAQs",
+          "label": "常见问题",
           "items": [
             "keploy-explained/keploy-security",
             "keploy-explained/keploy-privacy",
@@ -43,12 +43,12 @@
     },
     {
       "type": "category",
-      "label": "Integration Testing",
+      "label": "集成测试",
       "collapsed": false,
       "items": [
         {
           "type": "category",
-          "label": "Explanation",
+          "label": "说明文档",
           "items": [
             "keploy-explained/introduction",
             "keploy-explained/how-keploy-works",
@@ -57,12 +57,12 @@
         },
         {
           "type": "doc",
-          "label": "Installation",
+          "label": "安装指南",
           "id": "server/installation"
         },
         {
           "type": "category",
-          "label": "Running Guide",
+          "label": "运行指南",
           "items": [
             "running-keploy/cli-commands",
             "running-keploy/rename-testcases",
@@ -74,7 +74,7 @@
         },
         {
           "type": "category",
-          "label": "CI/CD Integration",
+          "label": "CI/CD集成",
           "items": [
             "ci-cd/github",
             "ci-cd/gitlab",
@@ -83,7 +83,7 @@
         },
         {
           "type": "category",
-          "label": "Test Coverage Integration",
+          "label": "测试覆盖率集成",
           "items": [
             "server/sdk-installation/go",
             "server/sdk-installation/java",
@@ -93,7 +93,7 @@
         },
         {
           "type": "category",
-          "label": "QuickStarts",
+          "label": "快速开始",
           "collapsible": true,
           "collapsed": true,
           "items": [
@@ -174,7 +174,7 @@
         },
         {
           "type": "category",
-          "label": "Keploy Enterprise",
+          "label": "Keploy企业版",
           "items": [
             "keploy-cloud/cloud-installation",
             "keploy-cloud/time-freezing",
@@ -190,13 +190,13 @@
     },
     {
       "type": "category",
-      "label": "Unit Testing",
+      "label": "单元测试",
       "collapsed": true,
       "items": [
         "running-keploy/about-unit-testing",
         {
           "type": "category",
-          "label": "Integration",
+          "label": "集成方案",
           "items": [
             "running-keploy/utg-pr-agent",
             "running-keploy/utg-vscode-extension",
@@ -205,7 +205,7 @@
         },
         {
           "type": "category",
-          "label": "FAQs",
+          "label": "常见问题",
           "items": [
             "keploy-explained/keploy-security",
             "keploy-explained/keploy-privacy",
@@ -220,7 +220,7 @@
   "sidebarContributionGuide": [
     {
       "type": "category",
-      "label": "Contribute",
+      "label": "贡献指南",
       "collapsible": true,
       "items": [
         "keploy-explained/contribution-guide",

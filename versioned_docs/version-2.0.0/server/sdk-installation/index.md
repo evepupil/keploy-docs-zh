@@ -1,12 +1,12 @@
 ---
 id: index
-title: Pre-requites 🛠️
+title: 前置要求 🛠️
 tags:
-  - coverage
+  - 覆盖率
 keyword:
-  - coverage
-  - unit tests
-  - code coverage
+  - 覆盖率
+  - 单元测试
+  - 代码覆盖率
   - Golang
   - Go Test
   - java
@@ -18,13 +18,13 @@ keyword:
   - coveragepy
 ---
 
-To get the coverage report, first make sure all the requirements are met and then run Keploy test as usual with your application command:
+要获取覆盖率报告，首先确保满足所有要求，然后像往常一样使用您的应用程序命令运行Keploy测试：
 
 ```bash
 keploy test -c "your_application_command"
 ```
 
-After successful execution of this command, A coverage report would be generated inside the test-run folder of keploy/reports.
+该命令成功执行后，将在keploy/reports的test-run文件夹中生成覆盖率报告。
 
 ```sh
 keploy

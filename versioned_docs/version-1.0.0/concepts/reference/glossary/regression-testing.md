@@ -1,29 +1,29 @@
 ---
 id: Regression-Testing
-title: Regression Testing (v1.0.0)
-sidebar_label: Regression Testing
-description: This glossary has an explanation of all the terminologies that beginners find difficult to understand at first glance.
+title: 回归测试 (v1.0.0)
+sidebar_label: 回归测试
+description: 本术语表解释了初学者初次接触时难以理解的所有专业术语。
 tags:
-  - explanation
+  - 解释说明
 keywords:
   - API
 ---
 
-Regression testing is a type of software testing that ensures that changes made to a software application do not negatively impact existing functionality. It is typically performed after a new feature is added, a bug is fixed, or a configuration change is made.
+回归测试是一种软件测试类型，用于确保对软件应用程序所做的更改不会对现有功能产生负面影响。通常在添加新功能、修复错误或进行配置更改后执行。
 
-Regression testing can be performed manually or using automated tools. Manual regression testing involves re-running a subset of test cases that have been previously executed to ensure that they still pass. Automated regression testing uses software to execute test cases automatically, which can save time and resources.
+回归测试可以手动执行，也可以使用自动化工具进行。手动回归测试涉及重新运行先前执行过的部分测试用例，以确保它们仍然通过。自动化回归测试使用软件自动执行测试用例，可以节省时间和资源。
 
-### Approaches to regression testing:
+### 回归测试方法：
 
-**Full regression testing**: This involves re-running all of the test cases in a test suite. This is the most comprehensive approach, but it can be time-consuming and resource-intensive.
-**Partial regression testing**: This involves re-running a subset of test cases that are likely to be affected by the changes made to the software. This approach is more efficient than full regression testing, but it may not catch all of the potential regressions.
-**Risk-based regression testing**: This approach prioritizes the test cases that are most likely to be affected by the changes made to the software. This approach can help to ensure that the most important test cases are re-run, while also minimizing the amount of time and resources that are spent on regression testing.
+**完全回归测试**：这种方法需要重新运行测试套件中的所有测试用例。这是最全面的方法，但可能耗时且资源密集。
+**部分回归测试**：这种方法仅重新运行可能受软件更改影响的测试用例子集。该方法比完全回归测试更高效，但可能无法发现所有潜在的回归问题。
+**基于风险的回归测试**：这种方法优先测试最可能受软件更改影响的测试用例。该方法可以确保最重要的测试用例被重新运行，同时最大限度地减少回归测试所花费的时间和资源。
 
-Regression testing is an important part of the software testing process. It helps to ensure that the software is stable and reliable, and that it continues to meet the requirements of the users.
+回归测试是软件测试过程中的重要环节。它有助于确保软件的稳定性和可靠性，并持续满足用户需求。
 
-### Benefits of regression testing:
+### 回归测试的优势：
 
-- It helps to ensure that the software is stable and reliable.
-- It helps to prevent regressions, which are defects that are introduced into the software when changes are made.
-- It helps to identify potential problems with the software before they are released to users.
-- It helps to save time and resources by preventing the need to fix regressions after the software is released.
+- 有助于确保软件的稳定性和可靠性
+- 有助于防止回归问题（即软件变更时引入的缺陷）
+- 有助于在软件发布前识别潜在问题
+- 通过避免在软件发布后修复回归问题，节省时间和资源

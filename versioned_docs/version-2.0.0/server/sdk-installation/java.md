@@ -1,6 +1,6 @@
 ---
 id: java
-title: Merge Unit Test Coverage Data
+title: 合并单元测试覆盖率数据
 sidebar_label: Java
 tags:
   - java
@@ -9,12 +9,12 @@ keyword:
   - MongoDB
   - Jacoco
   - Maven
-  - Springboot Framework
+  - Springboot框架
   - Postgres
   - SQL
   - Java
-  - API Test generator
-  - Auto Testcase generation
+  - API测试生成器
+  - 自动测试用例生成
   - Junit
 ---
 
@@ -22,41 +22,41 @@ import WhatAreKeployFeatures from './index.md'
 
 <WhatAreKeployFeatures/>
 
-## 🛠️ Language Specific Requirements
+## 🛠️ 语言特定要求
 
-| Programming Language | Prerequisites  |
-| :------------------: | :------------- |
-|         java         | [Jacoco 0.8.8] |
+| 编程语言 | 前提条件  |
+| :------: | :------- |
+|   java   | [Jacoco 0.8.8] |
 
-**Note**: In case of java application, before running test subcommand, you need to clean the project by removing any previously generated file, and run install command.
+**注意**：对于Java应用程序，在运行测试子命令前，需要清理项目，删除之前生成的所有文件，并运行install命令。
 
 ```bash
 mvn clean install -Dmaven.test.skip=true
 ```
 
-## Usage
+## 使用方法
 
-### Update `pom.xml` file
+### 更新 `pom.xml` 文件
 
-You will need to add the following plugins in `pom.xml` file of your application. :-
+你需要在应用程序的 `pom.xml` 文件中添加以下插件：-
 
 ```xml
 <build>
 	<plugins>
-		<!-- your plugins would go here -->
+		<!-- 你的插件会放在这里 -->
         <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.8</version>
             <executions>
-                <!-- Prepare the JaCoCo agent to track coverage during tests -->
+                <!-- 准备JaCoCo代理以在测试期间跟踪覆盖率 -->
                 <execution>
                     <id>prepare-agent</id>
                     <goals>
                         <goal>prepare-agent</goal>
                     </goals>
                 </execution>
-                <!-- Merge e2e & u-t execution data files after tests are run -->
+                <!-- 在测试运行后合并e2e和单元测试的执行数据文件 -->
                 <execution>
                     <id>merge-ut-e2e</id>
                     <phase>test</phase>
@@ -73,12 +73,12 @@ You will need to add the following plugins in `pom.xml` file of your application
                                 </includes>
                             </fileSet>
                         </fileSets>
-                        <!-- Output of merged data -->
+                        <!-- 合并数据的输出 -->
                         <destFile>${project.build.directory}/ut-e2e-merged.exec</destFile>
                     </configuration>
                 </execution>
-                <!-- Generate report based on the different execution data -->
-                <!-- Generate unit test report-->
+                <!-- 基于不同的执行数据生成报告 -->
+                <!-- 生成单元测试报告 -->
                 <execution>
                     <id>post-unit-test</id>
                     <phase>test</phase>
@@ -87,11 +87,11 @@ You will need to add the following plugins in `pom.xml` file of your application
                     </goals>
                     <configuration>
                         <dataFile>${project.build.directory}/jacoco.exec</dataFile>
-                        <!-- Use merged data file -->
+                        <!-- 使用合并的数据文件 -->
                         <outputDirectory>${project.reporting.outputDirectory}/ut</outputDirectory>
                     </configuration>
                 </execution>
-                <!-- Generate combined (e2e+ut) report test report-->
+                <!-- 生成组合（e2e+单元测试）测试报告 -->
                 <execution>
                     <id>combined-ut-e2e</id>
                     <phase>test</phase>
@@ -100,21 +100,21 @@ You will need to add the following plugins in `pom.xml` file of your application
                     </goals>
                     <configuration>
                         <dataFile>${project.build.directory}/ut-e2e-merged.exec</dataFile>
-                        <!-- Use merged data file -->
+                        <!-- 使用合并的数据文件 -->
                         <outputDirectory>${project.reporting.outputDirectory}/e2e-ut-aggregate</outputDirectory>
                     </configuration>
                 </execution>
             </executions>
         </plugin>
-		<!-- your plugins will go here -->
+		<!-- 你的插件会放在这里 -->
 	</plugins>
 </build>
 ```
 
-Now, To get the combined report as well as coverage report for your unit tests, Run
+现在，要获取组合报告以及单元测试的覆盖率报告，运行：
 
 ```bash
 mvn test
 ```
 
-The html file for unit tests report would be generated in target/site/ut directory and, for combined report it would be generated in target/site/e2e-ut-aggregate directory. Open index.html to visualize the report.
+单元测试报告的HTML文件将在target/site/ut目录中生成，组合报告将在target/site/e2e-ut-aggregate目录中生成。打开index.html以可视化报告。

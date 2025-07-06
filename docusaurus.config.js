@@ -7,17 +7,17 @@ const FontPreloadPlugin = require("webpack-font-preload-plugin");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "Keploy Documentation",
+  title: "Keploy官方文档|Keploy文档中文版",
   titleDelimiter: "🐰",
-  tagline: "API Test Generator Tool",
-  url: "https://keploy.io",
+  tagline: "API 测试生成工具",
+  url: "https://keploy.docslib.dev",
   baseUrl: "/docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   trailingSlash: true,
   favicon: "img/favicon.png",
-  organizationName: "keploy", // Usually your GitHub org/user name.
-  projectName: "docs", // Usually your repo name.
+  organizationName: "keploy", // 通常是 GitHub 组织/用户名
+  projectName: "docs", // 通常是仓库名
   plugins: [
     function preloadFontPlugin() {
       return {
@@ -35,7 +35,7 @@ module.exports = {
     canonicalBase: "https://www.keploy.io/",
     metadata: [
       {
-        description: "Documentation for Keploy Backend Test Generator",
+        description: "Keploy 后端测试生成器文档",
       },
       {
         name: "x-default",
@@ -44,17 +44,17 @@ module.exports = {
       {
         name: "description",
         content:
-          "Keploy - Open source tool that generates Regression Tests like unit tests with mocks and stubs from API calls.",
+          "Keploy - 开源工具，可从 API 调用生成带有模拟和桩的回归测试，类似单元测试。",
       },
       {
         name: "keywords",
         content:
-          "API testing, Keploy docs, incident replay, network calls, code paths, test scenarios, code coverage, stubs, junit, go-test, live environment, production incidents, open source, regression tests, ai tests",
+          "API 测试, Keploy 文档, 事件回放, 网络调用, 代码路径, 测试场景, 代码覆盖率, 桩, junit, go-test, 生产环境, 生产事件, 开源, 回归测试, AI 测试",
       },
       {name: "twitter:card", content: "summary_large_image"},
     ],
     headTags: [
-      // Preconnect tag
+      // 预连接标签
       {
         tagName: "link",
         attributes: {
@@ -71,9 +71,9 @@ module.exports = {
           "@context": "https://schema.org/",
           "@type": "Product",
           description:
-            "Keploy - Open source tool that generates integration tests like unit tests with mocks or stubs from API calls.",
+            "Keploy - 开源工具，可从 API 调用生成带有模拟或桩的集成测试，类似单元测试。",
           keywords:
-            "API testing, incident replay, network calls, code paths, test scenarios, code coverage, stubs, junit, go-test, live environment, production incidents, open source, regression tests, ai tests",
+            "API 测试, 事件回放, 网络调用, 代码路径, 测试场景, 代码覆盖率, 桩, junit, go-test, 生产环境, 生产事件, 开源, 回归测试, AI 测试",
           name: "Keploy",
           url: "https://keploy.io/",
           logo: "https://keploy.io/docs/img/favicon.png",
@@ -98,8 +98,8 @@ module.exports = {
       // },
     },
     announcementBar: {
-      id: "announcementBar_1", // Increment on change
-      content: `⭐️ If you like Keploy, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/keploy/keploy">GitHub</a> and follow us on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/keployio">Twitter</a> ❤️ `,
+      id: "announcementBar_1", // 变更时递增
+      content: `⭐️ 如果喜欢 Keploy，请在 <a target="_blank" rel="noopener noreferrer" href="https://github.com/keploy/keploy">GitHub</a> 上给我们点星，并在 <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/keployio">Twitter</a> 上关注我们 ❤️ `,
     },
     prism: {
       theme: prismThemes.vsLight,
@@ -110,42 +110,42 @@ module.exports = {
     navbar: {
       hideOnScroll: false,
       logo: {
-        alt: "Keploy logo",
+        alt: "Keploy 标志",
         src: "img/keploy-logo-dark.svg",
         srcDark: "img/keploy-logo-dark.svg",
       },
       items: [
         {
-          label: "Products",
+          label: "产品",
           position: "left",
           items: [
             {
-              label: "Integration Testing",
+              label: "集成测试",
               to: "/keploy-explained/introduction",
             },
             {
-              label: "API Testing (AI)",
+              label: "API 测试 (AI)",
               to: "/running-keploy/api-test-generator",
             },
             {
-              label: "Unit Testing",
+              label: "单元测试",
               to: "/running-keploy/utg-pr-agent",
             },
           ],
         },
         {
-          label: "Blog",
+          label: "博客",
           items: [
             {
-              label: "Tech Blogs",
+              label: "技术博客",
               href: "https://keploy.io/blog/technology",
             },
             {
-              label: "Community Articles",
+              label: "社区文章",
               href: "https://keploy.io/blog/community",
             },
             {
-              label: "Glossary",
+              label: "术语表",
               href: "/concepts/reference/glossary/",
             },
           ],
@@ -153,7 +153,7 @@ module.exports = {
         },
         {
           to: "/keploy-explained/contribution-guide",
-          label: "Contribution Guide",
+          label: "贡献指南",
           position: "left",
         },
         {
@@ -165,7 +165,7 @@ module.exports = {
           href: "https://github.com/keploy/keploy",
           position: "right",
           className: "header-github-link",
-          "aria-label": "GitHub repository",
+          "aria-label": "GitHub 仓库",
         },
       ],
     },
@@ -183,15 +183,15 @@ module.exports = {
         </svg></a>
         </div>
      <div className="footer__icons footer">
-    <a class="footer__link-item" href="https://docs.google.com/forms/d/e/1FAIpQLSdj9q7dyRh3D7ZzRExHLWRRkNPOnLnFfrbKqSwqH3Ur4HzP4g/viewform">Have a Keploy use-case? Let's Talk!</a> 
+    <a class="footer__link-item" href="https://docs.google.com/forms/d/e/1FAIpQLSdj9q7dyRh3D7ZzRExHLWRRkNPOnLnFfrbKqSwqH3Ur4HzP4g/viewform">有 Keploy 使用案例？联系我们！</a> 
     </div> 
-      <div class="footer__copyright"><span class="footer__block">Copyright © ${new Date().getFullYear()}</span> Keploy Inc.</div>
+      <div class="footer__copyright"><span class="footer__block">版权所有 © ${new Date().getFullYear()}</span> Keploy Inc.</div>
       <div>
-        <a class="footer__link-item" href="/about">About</a>
+        <a class="footer__link-item" href="/about">关于我们</a>
         <span class="footer__separators"> | </span>
-        <a class="footer__link-item" href="https://keploy.io/docs/security/">Security</a>
+        <a class="footer__link-item" href="https://keploy.io/docs/security/">安全</a>
         <span class="footer__separators"> | </span>
-        <a class="footer__link-item" href="/privacy-policy">Privacy Policy</a>
+        <a class="footer__link-item" href="/privacy-policy">隐私政策</a>
       </div>
       `,
     },
@@ -199,32 +199,31 @@ module.exports = {
       apiKey: "c4628c331b0f4997178c879978033276",
       indexName: "keploy",
       appId: "WZTL8PLCOD",
-      contextualSearch: true, // Optional, If you different version of docs etc (v1 and v2) doesn't display dup results
-      // algoliaOptions: {}, // Optional, if provided by Algolia
+      contextualSearch: true, // 可选，如果有不同版本的文档（如 v1 和 v2）不显示重复结果
+      // algoliaOptions: {}, // 可选，如果 Algolia 提供
     },
   },
   presets: [
     [
       "@docusaurus/preset-classic",
       {
-        // Will be passed to @docusaurus/plugin-content-docs
+        // 将传递给 @docusaurus/plugin-content-docs
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
-          exclude: ["**/shared/**"], // do not render "shared" content
+          exclude: ["**/shared/**"], // 不渲染 "shared" 内容
           editUrl: "https://github.com/keploy/docs/blob/master",
           /**
-           * Whether to display the author who last updated the doc.
+           * 是否显示最后更新文档的作者。
            */
           showLastUpdateAuthor: false,
           /**
-           * Whether to display the last date the doc was updated.
+           * 是否显示文档最后更新的日期。
            */
           showLastUpdateTime: false,
           /**
-           * Skip the next release docs when versioning is enabled.
-           * This will not generate HTML files in the production build for documents
-           * in `/docs/next` directory, only versioned docs.
+           * 启用版本控制时跳过下一个版本的文档。
+           * 这将不会为 `/docs/next` 目录中的文档生成生产环境的 HTML 文件，仅生成版本化文档。
            */
           // excludeNextVersionDocs: false,
           lastVersion: "3.0.0",
@@ -241,16 +240,15 @@ module.exports = {
             },
           },
           onlyIncludeVersions: ["1.0.0", "2.0.0", "3.0.0"],
-          includeCurrentVersion: true, // excludeNextVersionDocs is now deprecated
-          // // below remark plugin disabled until we can figure out why it is not transpiling to ESNext properly - swyx
+          includeCurrentVersion: true, // excludeNextVersionDocs 现已弃用
+          // // 下面的 remark 插件已禁用，直到我们弄清楚为什么它没有正确转译为 ESNext - swyx
           remarkPlugins: [
             [
               () =>
                 function addTSNoCheck(tree) {
-                  // Disable TS type checking for any TypeScript code blocks.
-                  // This is because imports are messy with snipsync: we don't
-                  // have a way to pull in a separate config for every example
-                  // snipsync pulls from.
+                  // 禁用任何 TypeScript 代码块的 TS 类型检查。
+                  // 这是因为使用 snipsync 时导入很混乱：我们无法为每个示例
+                  // snipsync 拉取的内容单独配置。
                   function visitor(node) {
                     if (!/^ts$/.test(node.lang)) {
                       return;
@@ -272,12 +270,12 @@ module.exports = {
                     if (node.value.startsWith("// @ts-nocheck\n")) {
                       node.value = node.value.slice("// @ts-nocheck\n".length);
                     }
-                    // If TS compiled output is empty, replace it with a more helpful comment
+                    // 如果 TS 编译输出为空，替换为更有帮助的注释
                     if (
                       node.lang === "js" &&
                       node.value.trim() === "export {};"
                     ) {
-                      node.value = "// Not required in JavaScript";
+                      node.value = "// JavaScript 中不需要";
                     } else if (node.lang === "js") {
                       node.value = convertIndent4ToIndent2(node.value).trim();
                     }
@@ -288,33 +286,33 @@ module.exports = {
             ],
           ],
         },
-        // Will be passed to @docusaurus/plugin-content-blog
-        // TODO : Add Blogging Section
+        // 将传递给 @docusaurus/plugin-content-blog
+        // TODO : 添加博客部分
         // blog: {
         //   routeBasePath: "blog",
         //   path: "blog",
         //   postsPerPage: 10,
         //   editUrl: "https://github.com/keploy/docs/blob/master",
-        //   blogTitle: "Keploy Blog",
-        //   showReadingTime: true, // Show estimated reading time for the blog post.
+        //   blogTitle: "Keploy 博客",
+        //   showReadingTime: true, // 显示博客文章的预计阅读时间。
         //   feedOptions: {
         //     type: "all",
-        //     copyright: `Copyright © ${new Date().getFullYear()} Keploy Inc.  All rights reserved.`,
+        //     copyright: `版权所有 © ${new Date().getFullYear()} Keploy Inc. 保留所有权利。`,
         //   },
         // },
-        // Will be passed to @docusaurus/theme-classic.
+        // 将传递给 @docusaurus/theme-classic。
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
         gtag: {
           trackingID: "G-LLS95VWZPC",
-          // Optional fields.
-          anonymizeIP: true, // Should IPs be anonymized?
+          // 可选字段。
+          anonymizeIP: true, // 是否匿名化 IP？
         },
-        // Will be passed to @docusaurus/plugin-content-sitemap
+        // 将传递给 @docusaurus/plugin-content-sitemap
         sitemap: {
-          // Per v2.0.0-alpha.72 cacheTime is now deprecated
-          //cacheTime: 600 * 1000, // 600 sec - cache purge period
+          // 从 v2.0.0-alpha.72 开始，cacheTime 现已弃用
+          //cacheTime: 600 * 1000, // 600 秒 - 缓存清除周期
           changefreq: "weekly",
           priority: 0.5,
         },
@@ -346,8 +344,8 @@ module.exports = {
 };
 
 function convertIndent4ToIndent2(code) {
-  // TypeScript always outputs 4 space indent. This is a workaround.
-  // See https://github.com/microsoft/TypeScript/issues/4042
+  // TypeScript 总是输出 4 空格缩进。这是一个变通方法。
+  // 参见 https://github.com/microsoft/TypeScript/issues/4042
   return code.replace(/^( {4})+/gm, (match) => {
     return "  ".repeat(match.length / 4);
   });

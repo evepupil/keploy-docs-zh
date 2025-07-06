@@ -1,149 +1,145 @@
 ---
 id: testing-guide
-title: testing Guide
-sidebar_label: Testing Guide
+title: 测试指南
+sidebar_label: 测试指南
 tags:
-  - explanation
-  - running guide
-  - ci guide
-  - limitations
+  - 说明文档
+  - 运行指南
+  - CI指南
+  - 限制条件
 ---
 
-# Testing Guide 🧪
+# 测试指南 🧪
 
-In this blog, we will learn how test bench of keploy works and how you can contribute to keploy's code coverage.
+本文将介绍Keploy测试平台的工作原理，以及如何为Keploy的代码覆盖率做贡献。
 
-## Keploy test Keploy?
+## Keploy如何测试自身？
 
-- Keploy's test bench is built on the principle that Keploy can test itself, operating in two distinct modes: `RECORD` and `TEST`. Each mode activates different sections of the codebase, with some overlap between the two. These modes can be executed concurrently to enhance testing efficiency.
+- Keploy的测试平台基于"Keploy可以测试自身"的原则构建，通过两种模式运行：`RECORD`（记录）和`TEST`（测试）。每种模式会激活代码库的不同部分，两者之间存在部分重叠。这些模式可以并发执行以提高测试效率。
 
-- `keployR` & `keployT` are similar binaries just the name is different for readability.
+- `keployR`和`keployT`是功能相同的二进制文件，仅命名不同以提高可读性。
 
-- For example, if you have recorded tests and mocks for a Go + MongoDB application [keploy/samples-go/gin-mongo](https://github.com/keploy/samples-go/tree/native-linux/gin-mongo), the test bench allows you to run Keploy in test mode (`keployT`) from within Keploy in record mode (`keployR`) using the following pseudo command: `keployR record -c "keployT test -c ./gin-mongo-app`. This command initiates Keploy in record mode, which in turn launches Keploy in test mode to run the application. As `keployT` executes the test sets, it simulates API calls for each test case. These simulated API calls are then recorded as tests by `keployR`, along with any external calls from the application being captured as mocks. Meanwhile, `keployT` generates a final report of the test runs. This approach allows for the simultaneous execution of both Keploy's record and test flows.
+- 举例来说，如果你已经为Go + MongoDB应用[keploy/samples-go/gin-mongo](https://github.com/keploy/samples-go/tree/native-linux/gin-mongo)录制了测试用例和模拟数据，测试平台允许你通过以下伪命令在记录模式(`keployR`)中运行测试模式(`keployT`)：`keployR record -c "keployT test -c ./gin-mongo-app`。该命令会启动记录模式的Keploy，继而运行测试模式的Keploy来执行应用。当`keployT`运行测试集时，它会为每个测试用例模拟API调用。这些模拟的API调用随后会被`keployR`记录为新的测试用例，同时应用产生的外部调用会被捕获为模拟数据。与此同时，`keployT`会生成测试运行的最终报告。这种方法实现了Keploy记录流和测试流的同步执行。
 
-- One significant benefit of this method is that it eliminates the need to set up external dependencies in the CI pipeline for testing. `KeployT` acts as a virtual database, with its calls being recorded by `keployR`, streamlining the testing process.
+- 这种方法的主要优势在于，它无需在CI流水线中设置外部依赖进行测试。`KeployT`充当虚拟数据库，其调用会被`keployR`记录，从而简化测试流程。
 
-## Running Guide
+## 运行指南
 
-This guide includes the recording and testing of tests and mocks with the help of keploy test-bench.
+本指南介绍如何使用Keploy测试平台进行测试用例和模拟数据的录制与测试。
 
-### Setup
+### 准备工作
 
-- Get the latest version of keploy by following [this](https://github.com/keploy/keploy?tab=readme-ov-file#-quick-installation). And rename the binary to `keployR` (released) using `sudo mv usr/local/bin/keploy /usr/local/bin/keployR`
+- 通过[此链接](https://github.com/keploy/keploy?tab=readme-ov-file#-quick-installation)获取最新版Keploy，并使用`sudo mv usr/local/bin/keploy /usr/local/bin/keployR`将二进制文件重命名为`keployR`（发布版）
 
-- Get the current version of keploy by building the binary with current changes using
+- 通过以下命令构建当前修改版本的Keploy二进制文件：
 
 ```bash
 go build -tags=viper_bind_struct -cover -o keployB . && sudo mv keployB /usr/local/bin/keployB
 ```
 
-- You will now have built and released binary of keploy as `keployB` and `keployR` respectively.
+- 现在你将拥有构建版和发布版两个Keploy二进制文件：`keployB`和`keployR`
 
-- Take any application, I've tested for the gin-mongo sample app so you can take that one as of now. And record test some cases, make at least two sessions of recording. Use the below command to record tests and mocks via the released binary of keploy
+- 准备一个应用（例如gin-mongo示例应用），录制至少两组测试用例。使用以下命令通过发布版Keploy录制测试和模拟数据：
 
 ```bash
 sudo -E env PATH=$PATH keployR record -c "<running cmd of gin-mongo>"
 ```
 
-- You will also be requiring [pilot](https://github.com/keploy/pilot) to assert tests and prepare mocks for assertion, you can get the latest pilot using:
+- 你还需要安装[pilot](https://github.com/keploy/pilot)来断言测试结果和准备模拟数据：
 
 ```bash
 curl --silent -o pilot --location "https://github.com/keploy/pilot/releases/latest/download/pilot_linux_amd64" &&
           sudo chmod a+x pilot && sudo mkdir -p /usr/local/bin && sudo mv pilot /usr/local/bin
 ```
 
-- To enable testing mode of keploy, `--enableTesting` flag is required.
+- 要启用Keploy的测试模式，需要添加`--enableTesting`标志。
 
-### Why both released and built keploy binaries?
+### 为何需要发布版和构建版两个二进制文件？
 
-Note: Here `keployR` is released binary and `keployB` is built binary.
-The idea is that there will be two cases:
+注意：此处`keployR`是发布版二进制文件，`keployB`是构建版二进制文件。
+设计这两种使用场景：
 
-1. The latest released version of keploy will be used for recording the tests & mocks using and built version of keploy will be used for testing.
-   i.e. `keployR record -c "keployB test -c ./gin-mongo-app`.
+1. 使用最新发布版Keploy录制测试和模拟数据，同时使用构建版Keploy进行测试：
+   `keployR record -c "keployB test -c ./gin-mongo-app`
 
-2. The latest released version of keploy will be used for testing and built version of keploy will be used for recording tests & mocks.
-   i.e. `keployB record -c "keployR test -c ./gin-mongo-app`.
+2. 使用最新发布版Keploy进行测试，同时使用构建版Keploy录制测试和模拟数据：
+   `keployB record -c "keployR test -c ./gin-mongo-app`
 
-These two scenarios are designed to ensure the detection of changes, including any potential breaking changes or adjustments that may affect backward compatibility.
+这两种场景旨在检测变更，包括可能影响向后兼容性的重大变更或调整。
 
-### Recording and testing of tests and mocks via test-bench
+### 通过测试平台录制和测试
 
-Right now, in this guide i am only showing the first scenario, to run the second scenario you just need to replace the binaries as mentioned in the **4th** step.
+本指南目前仅展示第一种场景，要运行第二种场景只需按照**第4步**说明替换二进制文件。
 
-#### Recording Phase 🎥
+#### 录制阶段 🎥
 
-1. Since you now already have some recorded tests and mocks of gin-mongo application, let's call it **pre-recorded** tests.
+1. 假设你已经录制了gin-mongo应用的测试和模拟数据，我们称之为**预录制**测试。
 
-2. To record tests and mocks via test-bench, you need to run this command to record test cases (for each test-set you have to run this command):
+2. 要通过测试平台录制测试和模拟数据，需要为每个测试集运行以下命令：
 
 ```bash
 sudo -E env PATH=$PATH keployR record -c "sudo -E env PATH=$PATH keployB test -c '<binary of gin-mongo>' --proxyPort 56789 --dnsPort 46789  --delay=<delay> --testsets <test-set-id> --configPath '<config-path>' --path '<path-to-pre-recorded-tests>' --enableTesting --generateGithubActions=false" --path "./test-bench/" --proxyPort=36789 --dnsPort 26789 --configPath '<config-path>' --enableTesting --generateGithubActions=false
 ```
 
-3. This above command will generate new tests and mocks from your existing **pre-recorded** tests and mocks.
+3. 上述命令将从你的**预录制**测试和模拟数据生成新的测试和模拟数据。
 
-4. For second scenario, you just need to use `keployB` for recording and `keployR` for testing.
+4. 对于第二种场景，只需用`keployB`录制，用`keployR`测试。
 
-#### Testing Phase 🧪
+#### 测试阶段 🧪
 
-1. **_Assert the tests_**
+1. **_断言测试结果_**
 
-With this step, your tests undergo validation as the pilot compares HTTP requests and responses from both the **pre-recorded** and **test-bench-recorded** tests. This comparison considers noisy fields, utilizing the configuration file for accuracy.
+此步骤通过pilot比较**预录制**和**测试平台录制**的HTTP请求和响应来验证测试结果，会根据配置文件考虑噪声字段。
 
 ```bash
 pilot -test-assert -preRecPath <path-to-pre-recorded-tests> -testBenchPath ./test-bench -configPath <path-to-config-file>
 ```
 
-2. **_Prepare mock assertions_**
+2. **_准备模拟数据断言_**
 
-By feeding the mocks from the newly recorded test cases into the pre-recorded ones (and vice versa), and observing if the results match those obtained with the original mocks, you can confirm the validity of the new mocks. This reciprocal testing ensures the integrity and reliability of the newly generated test data.
-
-However, Keploy uniquely incorporates the timestamps of each request and response in the tests (ingress) and compares these with the timestamps in the mocks (egress). This method significantly reduces the chances of mismatches by selectively retaining only the mocks that come under the request and response time of the test case.
-
-Directly incorporating mocks recorded through the testing approach into pre-recorded test cases could lead to failures, as these were initially recorded at much earlier times. To overcome this issue, we swap the timestamps of the request and response between the pre-recorded and newly recorded test cases. This adjustment ensures that the mocks are compatible and can be effectively utilized without disrupting the natural workflow of Keploy. Thus, this strategy allows us to use the mocks correctly and ensures the accuracy of our test validations.
+通过将新录制的模拟数据与预录制的相互验证，可以确认新模拟数据的有效性。Keploy独特地将每个请求和响应的时间戳纳入测试(ingress)，并与模拟数据(egress)的时间戳进行比较，从而降低不匹配概率。
 
 ```bash
 pilot -mock-assert -preRecPath <path-to-pre-recorded-tests> -testBenchPath ./test-bench -configPath <path-to-config-file>
 ```
 
-3. **_Do the actual mock assertion_**
+3. **_执行实际模拟数据断言_**
 
-You just need to run test mode for both the **pre-recorded** and newly **test-bench-recorded** tests and mocks via the released binary of keploy.
+只需使用发布版Keploy对**预录制**和**测试平台录制**的测试和模拟数据分别运行测试模式：
 
-- For **pre-recorded**:
+- **预录制**测试：
 
 ```bash
 sudo -E env PATH=$PATH keployR test -c "<app running command>" --delay <app delay> --path "<path-to-pre-recorded-tests>" --generateGithubActions=false
 ```
 
-- For **test-bench-recorded**:
+- **测试平台录制**测试：
 
 ```bash
 sudo -E env PATH=$PATH keployR test -c "<app running command>" --delay <app delay> --path "./test-bench" --generateGithubActions=false
 ```
 
-If both scenarios yield a "passed" result, it signifies that this approach mirrors the standard recording and testing process via Keploy. In that case, you're all set to proceed, and your tests and mocks are considered legitimate.
+如果两种场景都显示"passed"，则说明该方法与常规Keploy录制测试流程一致，你的测试和模拟数据验证通过。
 
-## Running the setup in CI (Github Actions)
+## 在CI中运行(Github Actions)
 
-- Implementing this setup in CI will enhance Keploy's testing by incorporating various sample applications with different supported dependencies. This comprehensive testing will thoroughly assess Keploy's major components, including the proxy and parsers.
+- 在CI中实施此设置将通过包含不同依赖的样本应用来增强Keploy测试，全面评估代理和解析器等主要组件。
 
-- To achieve this, you'll need to add two workflows for each sample application, covering both recording and testing scenarios.
+- 需要为每个样本应用添加两个工作流，涵盖录制和测试两种场景。
 
-## Limitations ⚠️
+## 限制条件 ⚠️
 
-- Port Configuration: The ports for Keploy Record (`keployR`) and Keploy Test (`keployT`) need to be hardcoded. You can't change the ports and run this entire setup properly.
-- Sequential Test Sets: Only one test set can be run at a time.
-- Limited Environment Support: This feature is currently available only for native binary environments and not for Docker environments.
-- Recording Delay: After the test runs, there is a waiting period of 1 second to ensure proper recording of test cases. (related to implementation)
-- Process Filtering: Internally, Keploy Record (`keployR`) should handle only application-related calls and not Keploy Test (`keployT`) related calls. To achieve this, `keployT` waits for `keployR` to retrieve the PID before starting the test run. This ensures that `keployR` can filter out `keployT` related calls based on the PID. (related to implementation)
-- As of now, running this setup on `WSL` is not handled.
-- Don't rename the **test-sets** or **test-cases** while running this setup.
+- 端口配置：Keploy Record(`keployR`)和Keploy Test(`keployT`)的端口需要硬编码，无法更改。
+- 测试集顺序：每次只能运行一个测试集。
+- 环境支持：目前仅支持原生二进制环境，不支持Docker环境。
+- 录制延迟：测试运行后需要等待1秒确保测试用例正确录制（与实现相关）。
+- 进程过滤：`keployR`应只处理应用相关调用，不处理`keployT`相关调用。为此`keployT`会等待`keployR`获取PID后再开始测试（与实现相关）。
+- 目前不支持在WSL上运行此设置。
+- 运行过程中请勿重命名**测试集**或**测试用例**。
 
-<!-- To understand the internals you can refer to this [blog](blog link). -->
+<!-- 要了解内部原理可参考此[博客](blog link)。 -->
 
-Hope this helps you out, if you still have any questions, reach out to us .
+如有任何问题，请联系我们。
 
 import GetSupport from '../concepts/support.md'
 

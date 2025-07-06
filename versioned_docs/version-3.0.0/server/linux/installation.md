@@ -1,6 +1,6 @@
 ---
 id: installation
-title: Linux Installation
+title: Linux 安装指南
 sidebar_label: Linux
 tags:
   - hello-world
@@ -21,27 +21,27 @@ keywords:
   - server-setup
 ---
 
-Keploy can be installed in two ways:
+Keploy 提供两种安装方式：
 
-1. [One-Click Install](#one-click-install-keploy).
-2. [Manual Install](#manual-install)
+1. [一键安装](#one-click-install-keploy)
+2. [手动安装](#manual-install)
 
-## One click install Keploy.
+## 一键安装 Keploy
 
 ```shell
  curl --silent -O -L https://keploy.io/install.sh && source install.sh
 ```
 
-## Manual Install
+## 手动安装
 
-There are two ways to use Keploy eBPF in linux, you can use either use:
+在 Linux 系统中，可以通过以下两种方式使用 Keploy eBPF：
 
-1. [Natively in Linux](#linux-native).
-2. Through [Using Docker](#using-docker).
+1. [原生安装](#linux-native)
+2. [使用 Docker](#using-docker)
 
-## Linux Native
+## Linux 原生安装
 
-### Download the Keploy Binary
+### 下载 Keploy 二进制文件
 
 ```shell
 curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz -C /tmp
@@ -50,7 +50,7 @@ sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin && keploy
 ```
 
 <details>
- <summary> <strong> ARM Architecture </strong> </summary>
+ <summary> <strong> ARM 架构 </strong> </summary>
 
 ```shell
 curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_arm64.tar.gz" | tar xz -C /tmp
@@ -60,69 +60,64 @@ sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin && keploy
 
 </details>
 
-#### Run the Record Mode
+#### 运行录制模式
 
-Run this command on your terminal to start the recording of API calls:-
+在终端执行以下命令开始录制 API 调用：
 
 ```shell
 sudo -E keploy record -c "CMD_TO_RUN_APP"
 ```
 
-Make API Calls using [Postman](https://www.postman.com/) or cURL command.
+使用 [Postman](https://www.postman.com/) 或 cURL 命令发起 API 调用。
 
-Keploy with capture the API calls you have made to generate the test-suites which will contain the testcases and data
-mocks into `YAML` format.
+Keploy 将捕获这些 API 调用并生成测试套件，其中包含测试用例和模拟数据，存储为 `YAML` 格式。
 
-#### Run the Test Mode
+#### 运行测试模式
 
-Run this command on your terminal to run the testcases and generate the test coverage report:-
+在终端执行以下命令运行测试用例并生成测试覆盖率报告：
 
 ```shell
 sudo -E keploy test -c "CMD_TO_RUN_APP" --delay 10
 ```
 
-Voilà! 🧑🏻‍💻 We have the server running!
+恭喜！🧑🏻‍💻 服务已成功运行！
 
 ---
 
-## Using Docker
+## 使用 Docker 安装
 
-We need to create a custom network for Keploy since we are using the Docker, therefore application container would
-require `docker network` to act as the bridge between them.
+由于使用 Docker，我们需要创建一个专用网络，使应用容器之间能通过 `docker network` 桥接通信。
 
-If you're using a **docker-compose network**, replace `keploy-network` with your app's `docker_compose_network_name`
-below.
+如果使用 **docker-compose 网络**，请将下方 `keploy-network` 替换为你的应用 `docker_compose_network_name`。
 
 ```shell
 docker network create keploy-network
 ```
 
-#### Capture the Testcases
+#### 录制测试用例
 
-Now, we will record the testcases.
+现在开始录制测试用例：
 
 ```shell
 keploy record -c "docker run -p <appPort>:<hostPort> --name <containerName> --network keploy-network --rm <applicationImage>" --containerName "<containerName>" --delay 10
 ```
 
-#### Run the Testcases
+#### 运行测试用例
 
-Now, we will test the testcases.
+现在开始测试录制好的用例：
 
 ```shell
 keploy test -c "docker run -p <appPort>:<hostPort> --name <containerName> --network keploy-network --rm <applicationImage>" --containerName "<containerName>" --delay 20
 ```
 
-> **CMD_to_run_user_container** is the docker command to run the application.
-> If you are using `docker compose` command to start the application, `--containerName` is required.
+> **CMD_to_run_user_container** 是运行应用的 docker 命令。
+> 如果使用 `docker compose` 命令启动应用，则必须指定 `--containerName` 参数。
 
-Voilà! 🧑🏻‍💻 We have the server running!
+恭喜！🧑🏻‍💻 服务已成功运行！
 
-You'll be able to see the test-cases that ran with the results report on the console as well locally in the `testReport`
-directory.
+你可以在控制台查看测试结果报告，同时本地 `testReport` 目录也会保存测试报告。
 
-**Footnote**
+**注意事项**
 
-1. `delay` is required while using Test Mode.
-2. containerName is optional if you are using `Docker run` command, as the Container name must be present within the
-   command itself.
+1. 测试模式必须设置 `delay` 参数
+2. 如果使用 `Docker run` 命令，可省略 `containerName` 参数（因为容器名已包含在命令中）

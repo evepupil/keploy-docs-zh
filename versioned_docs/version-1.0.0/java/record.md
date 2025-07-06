@@ -1,12 +1,12 @@
 ---
 id: record
-title: Record Test Cases and Mocks for Java (v1.0.0)
-description: Record API calls to Test Cases for Java in Keploy.
+title: Java版测试用例与Mock录制 (v1.0.0)
+description: 在Keploy中录制API调用生成Java测试用例
 tags:
-  - developer-guide
+  - 开发者指南
   - go
-  - record-guide
-  - record-test-case
+  - 录制指南
+  - 录制测试用例
 ---
 
 import RecordTest from '../operation/record.md'

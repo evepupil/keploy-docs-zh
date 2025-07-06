@@ -1,12 +1,12 @@
 ---
 id: record
-title: Record Test Cases and Mocks for Go (v1.0.0)
-description: Record API calls to Testcases for Go in Keploy.
+title: Go语言录制测试用例和模拟数据 (v1.0.0)
+description: 在Keploy中录制API调用生成Go测试用例。
 tags:
-  - developer-guide
+  - 开发者指南
   - go
-  - record-guide
-  - record-test-case
+  - 录制指南
+  - 录制测试用例
 ---
 
 import RecordTest from '../operation/record.md'

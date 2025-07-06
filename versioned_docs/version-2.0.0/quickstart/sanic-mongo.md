@@ -1,8 +1,8 @@
 ---
 id: sanic-mongo
-title: Sample Movie Management App (Sanic + Mongo)
+title: 示例电影管理应用（Sanic + Mongo）
 sidebar_label: Sanic + Mongo
-description: This application is a simple movie management API built using Python's Sanic framework and MongoDB for data storage. It allows you to perform basic CRUD (Create, Read, Update, Delete) operations on Movie records.
+description: 该应用是一个简单的电影管理API，使用Python的Sanic框架构建，MongoDB作为数据存储。支持对电影记录进行基础的CRUD（创建、读取、更新、删除）操作。
 
 tags:
   - python
@@ -16,39 +16,39 @@ tags:
   - sms
   - Mongo
 keyword:
-  - FastAPI Framework
+  - FastAPI框架
   - MongoDB
   - Sanic
   - Python
-  - API Test generator
-  - Auto case generation
+  - API测试生成器
+  - 自动化用例生成
 ---
 
-## Introduction
+## 简介
 
-This application is a simple movie management API built using Python's Sanic framework and MongoDB for data storage. It allows you to perform basic CRUD (Create, Read, Update, Delete) operations on Movie records.
+该应用是一个简单的电影管理API，使用Python的Sanic框架构建，MongoDB作为数据存储。支持对电影记录进行基础的CRUD（创建、读取、更新、删除）操作。
 
 import InstallationGuide from '../concepts/installation.md'
 
 <InstallationGuide/>
 
-# Get Started! 🎬
+# 快速开始！🎬
 
-## Clone the app 🧪
+## 克隆应用 🧪
 
 ```bash
 git clone https://github.com/keploy/samples-python.git && cd samples-python/sanic-mongo
 ```
 
-## Download the requirements.txt file and DB setup
+## 下载requirements.txt文件并设置数据库
 
-Head to the folder of the application and run
+进入应用目录并运行：
 
 ```shell
 pip3 install -r requirements.txt
 ```
 
-Open a different terminal and setup your MongoDB through docker
+打开新终端窗口，通过docker设置MongoDB：
 
 ```shell
 sudo docker network create keploy-network
@@ -58,27 +58,25 @@ sudo docker network create keploy-network
 docker run -p 27017:27017 -d --rm --name mongoDB --net keploy-network mongo
 ```
 
-## Lights, Camera, Record! 🎥
+## 灯光、摄影、录制！🎥
 
-Capture the test-cases-
+捕获测试用例：
 
 ```shell
 keploy record -c "python3 server.py"
 ```
 
-You should be able to see this in your terminal
+终端将显示如下内容：
 
-<img src="/docs/img/sanic-mongo-record.png" alt="Sample Keploy record sanic mongo" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/sanic-mongo-record.png" alt="Sanic Mongo录制示例" width="100%" style={{ borderRadius: '5px' }} />
 
-🔥**Make some API calls**. Postman, Hoppscotch or even curl - take your pick!
+🔥**发起一些API调用**。可以使用Postman、Hoppscotch或curl工具。
 
-Let's make URLs short and sweet:
+## 生成测试用例
 
-## Generate testcases
+只需**发起API调用**即可生成测试用例：
 
-To generate testcases we just need to **make some API calls.**
-
-1. **Make a POST request:**
+1. **发起POST请求**：
 
 ```bash
   curl -X "POST" "http://127.0.0.1:8000/add_movie" \
@@ -89,7 +87,7 @@ To generate testcases we just need to **make some API calls.**
     }'
 ```
 
-2. **Make a GET request:**
+2. **发起GET请求**：
 
 ```bash
   curl -X "GET" "http://127.0.0.1:8000/movies" \
@@ -97,18 +95,15 @@ To generate testcases we just need to **make some API calls.**
   -H 'Content-Type: application/json; charset=utf-8'
 ```
 
-3. **Make a DELETE request:**
+3. **发起DELETE请求**：
 
 ```bash
   curl -X "DELETE" "http://127.0.0.1:8000/movies" \
     -H 'Accept: application/json' \
     -H 'Content-Type: application/json; charset=utf-8'
-
 ```
 
-And once you are done, you can stop the recording and give yourself a pat on the back! With that simple spell, you've conjured up a test case with a mock! Explore the **keploy** directory and you'll discover your handiwork in `tests` directory and `mocks.yml`.
-
-This is an example of what your mocks would look like
+录制完成后停止即可。此时已在`tests`目录和`mocks.yml`中生成测试用例。以下是模拟数据的示例：
 
 ```yaml
 version: api.keploy.io/v1beta1
@@ -150,14 +145,14 @@ spec:
   resTimestampMock: 2024-06-26T01:16:23.026710262+05:30
 ```
 
-## **Time to put things to the test 🧪:**
+## **开始测试 🧪**:
 
 ```bash
  keploy test -c "python server.py"
 ```
 
-This is how your terminal would look like :
+终端输出示例如下：
 
-<img src="/docs/img/sanic-mongo-test.png" alt="Sample Keploy Test Sanic Mongo" width="100%" style={{ borderRadius: '5px' }} />
+<img src="/docs/img/sanic-mongo-test.png" alt="Sanic Mongo测试示例" width="100%" style={{ borderRadius: '5px' }} />
 
-You can experiment with different API calls, modify the database response in mocks.yml, or adjust the request or response in test-x.yml. Then, run the tests again to see the change in response
+您可以尝试不同的API调用，修改mocks.yml中的数据库响应，或调整test-x.yml中的请求/响应参数，然后重新运行测试观察变化。
