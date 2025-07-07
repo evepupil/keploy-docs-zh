@@ -1,8 +1,0 @@
-{
-    "outputDirectory": "build",
-    "rewrites": [
-      { "source": "/", "destination": "/docs/" },
-      { "source": "/:path*", "destination": "/docs/:path*" }
-    ],
-    "trailingSlash": true
-  }

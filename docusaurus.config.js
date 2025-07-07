@@ -11,8 +11,8 @@ module.exports = {
   titleDelimiter: "🐰",
   tagline: "API 测试生成工具",
   url: "https://keploy.docslib.dev",
-  baseUrl: "/docs/",
-  onBrokenLinks: "throw",
+  baseUrl: "/",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   trailingSlash: true,
   favicon: "img/favicon.png",
@@ -321,17 +321,17 @@ module.exports = {
   ],
   scripts: [
     {
-      src: "/docs/scripts/feedback.js",
+      src: "/scripts/feedback.js",
       async: true,
       defer: true,
     },
     {
-      src: "/docs/scripts/clarity.js",
+      src: "/scripts/clarity.js",
       async: true,
       defer: true,
     },
     {
-      src: "/docs/scripts/chat.js",
+      src: "/scripts/chat.js",
       async: true,
       defer: true,
     },
