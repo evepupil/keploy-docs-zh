@@ -7,7 +7,7 @@ const FontPreloadPlugin = require("webpack-font-preload-plugin");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "Keploy官方文档|Keploy文档中文版",
+  title: "Keploy官方文档中文版",
   titleDelimiter: "🐰",
   tagline: "API 测试生成工具",
   url: "https://keploy.docslib.dev",
